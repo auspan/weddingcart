@@ -23,6 +23,7 @@ sudo unzip phpMyAdmin-4.5.4.1-all-languages.zip
 sudo mv phpMyAdmin-4.5.4.1-all-languages /var/www/phpmyadmin
 sudo chmod -R 0755 /var/www/phpmyadmin
 ############XDEBUG#########
+echo "XDEBUG Setup"
 cd ~
 mkdir downloads
 wget -O ~/downloads/xdebug-2.4.0rc4.tgz http://xdebug.org/files/xdebug-2.4.0rc4.tgz
@@ -113,6 +114,7 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 EOF
 
+composer install
 php artisan migrate
 php artisan db:seed
 
