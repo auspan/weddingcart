@@ -15,20 +15,20 @@ mysql_secure_installation
 
 sudo apt-get install -y php7.0 php7.0-dev apache2 apache2-utils 
 sudo apt-get install -y libapache2-mod-php7.0 php7.0-curl php7.0-gd php7.0-mcrypt 
-sudo apt-get install -y php7.0-readline php7.0-mysql git-core 
+sudo apt-get install -y php7.0-readline php7.0-mysql git-core php7.0-mbstring php7.0-xml
 ############PHPMyadmin##############
 cd /usr/share
-sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.5.4.1/phpMyAdmin-4.5.4.1-all-languages.zip
-sudo unzip phpMyAdmin-4.5.4.1-all-languages.zip
+sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.5.4.1/phpMyAdmin-4.5.4.1-all-languages.zip >> /var/www/install.log
+sudo unzip phpMyAdmin-4.5.4.1-all-languages.zip >> /var/www/install.log
 sudo mv phpMyAdmin-4.5.4.1-all-languages /var/www/phpmyadmin
 sudo chmod -R 0755 /var/www/phpmyadmin
 ############XDEBUG#########
 echo "XDEBUG Setup"
 cd ~
 mkdir downloads
-wget -O ~/downloads/xdebug-2.4.0rc4.tgz http://xdebug.org/files/xdebug-2.4.0rc4.tgz
+wget -O ~/downloads/xdebug-2.4.0rc4.tgz http://xdebug.org/files/xdebug-2.4.0rc4.tgz >> /var/www/install.log
 cd downloads
-tar -xvzf xdebug-2.4.0rc4.tgz
+tar -xvzf xdebug-2.4.0rc4.tgz >> /var/www/install.log
 cd xdebug-2.4.0*
 phpize
 ./configure
@@ -114,7 +114,16 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 EOF
 
-composer install
+echo "Running composer for weddingcart"
+sudo chmod +x /usr/local/bin/composer
+
+cat << EOF |  sudo tee /home/vagrant/.config/composer/auth.json {
+    "github-oauth": {
+        "github.com": "7130794374e50abdff109f32ee16c125765152ad"
+    }
+}
+EOF
+composer -n install
 php artisan migrate
 php artisan db:seed
 
