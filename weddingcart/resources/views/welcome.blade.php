@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="css/font-icons.css" type="text/css">
     <link rel="stylesheet" href="css/animate.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/style1.css" type="text/css">
 
     <link rel="stylesheet" href="css/responsive.css" type="text/css">
+    <link rel="stylesheet" href="css/style1.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--[if lt IE 9]>
         <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -31,6 +31,7 @@
     <!-- Document Title
     ============================================= -->
     <title>WeddingCart | Transforming Indian Weddings</title>
+
 
 </head>
 
@@ -123,68 +124,51 @@
 
         </header><!-- #header end -->
 
-        <section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix slider_deg" >
-
-            <div class="swiper-container swiper-parent swiper_deg">
-                <div class="swiper-wrapper wrap_deg"><div class="swiper-slide dark swiper-slide-duplicate swipbackgroundimg">
+        <section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix">
+            <div class="swiper-container swiper-parent">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark welcome_slider1">
                         <div class="container clearfix">
-                            <div class="slider-caption slider-caption-center slider_deg">
-                                <p data-caption-animate="fadeInUp" class="not-animated">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia</p>
-                                
-                                <a href="{{ url('/login') }}" class="button button-border button-light button-rounded button-xlarge topmargin not-animated" data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
-                                
+                            <div class="slider-caption slider-caption-center">
+                                <p data-caption-animate="fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit cupidatat non proident sunt in culpa</p>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide dark swip_slide">
+                    <div class="swiper-slide dark welcome_slider2">
                         <div class="container clearfix">
-                            <div class="slider-caption slider-caption-center slider_deg1">
-                                <p data-caption-animate="fadeInUp" class="not-animated">Lorem ipsum dolor sit amet, consectetur adipiscing elit cupidatat non proident sunt in culpa</p>
+                            <div class="slider-caption slider-caption-center">
+                                <p data-caption-animate="fadeInUp">Sed do eiusmod tempor incididunt ut labore</p>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide dark swiper-slide-visible swiper-slide-active swip_slide1">
+                    <div class="swiper-slide dark welcome_slider3">
                         <div class="container clearfix">
-                            <div class="slider-caption slider-caption-center slider_deg2">
-                                <p data-caption-animate="fadeInUp" class="fadeInUp animated">Sed do eiusmod tempor incididunt ut labore</p>
+                            <div class="slider-caption slider-caption-center">
+                                <p data-caption-animate="fadeInUp">Ut enim ad minim veniam, quis nostrud exercitation</p>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide dark swip_slide2">
+                    <div class="swiper-slide dark welcome_slider4">
                         <div class="container clearfix">
-                            <div class="slider-caption slider-caption-center slider_deg3">
-                                <p data-caption-animate="fadeInUp" class="not-animated">Ut enim ad minim veniam, quis nostrud exercitation</p>
+                            <div class="slider-caption slider-caption-center">
+                                <p data-caption-animate="fadeInUp">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia</p>
+                                <a href="login-register.html" class="button button-border button-light button-rounded button-xlarge topmargin" data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide dark swip_slide3">
-                        <div class="container clearfix">
-                            <div class="slider-caption slider-caption-center slider_deg4">
-                                <p data-caption-animate="fadeInUp" class="not-animated">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia</p>
-                                
-                                <a href="{{ url('/login') }}" class="button button-border button-light button-rounded button-xlarge topmargin not-animated" data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                <div class="swiper-slide dark swiper-slide-duplicate swip_slide">
-                        <div class="container clearfix">
-                            <div class="slider-caption slider-caption-center slider_deg1">
-                                <p data-caption-animate="fadeInUp" class="not-animated">Lorem ipsum dolor sit amet, consectetur adipiscing elit cupidatat non proident sunt in culpa</p>
-                            </div>
-                        </div>
-                    </div></div>
-            <!--[arrow & pagination]>
+                </div>
+                <!--[arrow & pagination]>
                 <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
                 <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
-                <div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div>
-            <![end arrow & pagination]-->
-                <div class="swiper-pagination"><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span></div>
+                <div id="slide-number">
+                    <div id="slide-number-current"></div>
+                    <span>/</span>
+                    <div id="slide-number-total"></div>
+                </div>
+                <![end arrow & pagination]-->
+                <div class="swiper-pagination"></div>
             </div>
-
-            
-        </section>
-        
+        </section>        
         
         <!-- Content
         ============================================= -->

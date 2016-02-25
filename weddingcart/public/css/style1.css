@@ -158,7 +158,8 @@
      top: 138px;"
 }
 
-//home page & reg//
+/*home page & reg*/
+
 .swiper-pagination 
 {
 	 position: absolute;
@@ -193,88 +194,25 @@
 	 background-color: #FFF !important;
 }
 
-.slider_deg
-{
-	 height: 667px; 
-	 -webkit-transform: translate(0px, 0px); 
+.welcome_slider1{
+	background-image: url(../images/slider1.jpg);
 }
 
-.swiper_deg
-{
-	 cursor: -webkit-grab; 
+.welcome_slider2{
+	background-image: url(../images/slider2.jpg);
 }
 
-.wrap_deg
-{
-	 -webkit-transition-duration: 0s; 
-	 -webkit-transform: translate3d(-2698px, 0px, 0px); 
-	 width: 8094px; 
-	 height: 667px; 
-}
-.swipbackgroundimg
-{
-	 background-image: url(/images/slider4.jpg); 
-	 width: 1349px; 
-	 height: 667px; 
-}
-.slider_deg
-{
-	 -webkit-transform: translate(0px, 0px); 
-	 opacity: 2.2222222222222223; 
-	 top: 271px; 
+.welcome_slider3{
+	background-image: url(../images/slider3.jpg);
 }
 
-.swip_slide
-{
-	 background-image: url(/images/slider1.jpg); 
-	 width: 1349px; 
-	 height: 667px; 
+.welcome_slider4{
+	background-image: url(../images/slider4.jpg);
 }
-.slider_deg1
-{
-	 -webkit-transform: translate(0px, 0px); 
-	 opacity: 2.2222222222222223; 
-	 top: 329.5px; 
-}
-.swip_slide1
-{
-	 background-image: url(/images/slider2.jpg); 
-	 width: 1349px; 
-	 height: 667px; 
-}
-.slider_deg2
-{
-	-webkit-transform: translate(0px, 0px); 
-	opacity: 2.2222222222222223; 
-	top: 356.5px; 
-}
-.swip_slide2
-{
-	 background-image: url(images/slider3.jpg); 
-	 width: 1349px; 
-	 height: 667px; 
-}
-.slider_deg3
-{
-     -webkit-transform: translate(0px, 0px); 
-     opacity: 2.2222222222222223; 
-     top: 356.5px; "
-}
-.swip_slide3
-{
-	 background-image: url(images/slider4.jpg); 
-	 width: 1349px; 
-	 height: 667px; "
-}
-.slider_deg4
-{
-	 -webkit-transform: translate(0px, 0px); 
-	 opacity: 2.2222222222222223; 
-	 top: 271px; 
-}
+
 .divsecbackground
 {
-	 background-image: url(images/services/home-testi-bg.jpg); 
+	 background-image: url(../images/home-testi-bg.jpg); 
 	 padding-top: 100px; 
 	 padding-right: 0px; 
 	 padding-bottom: 100px; 
@@ -305,7 +243,7 @@
 {
 	 margin-top: 50px;
 }
-//createwishlist $ wedding//
+/* createwishlist $ wedding */
 
 .secstyle
 {
@@ -329,7 +267,7 @@
 {
 	 max-width:700px;
 }
-//weddingform//
+/*weddingform*/
 .secbkgrnd
 {
 	 background-color: rgb(255, 247, 207); 
