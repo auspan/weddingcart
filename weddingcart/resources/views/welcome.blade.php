@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/font-icons.css" type="text/css">
     <link rel="stylesheet" href="css/animate.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/style1.css" type="text/css">
 
     <link rel="stylesheet" href="css/responsive.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +26,7 @@
     ============================================= -->
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/datepicker.js"></script>
 
     <!-- Document Title
     ============================================= -->

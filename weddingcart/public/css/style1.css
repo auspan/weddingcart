@@ -213,7 +213,7 @@
 }
 .swipbackgroundimg
 {
-	 background-image: url(/images/slider/swiper/4.jpg); 
+	 background-image: url(/images/slider4.jpg); 
 	 width: 1349px; 
 	 height: 667px; 
 }
@@ -226,7 +226,7 @@
 
 .swip_slide
 {
-	 background-image: url(/images/slider/swiper/1.jpg); 
+	 background-image: url(/images/slider1.jpg); 
 	 width: 1349px; 
 	 height: 667px; 
 }
@@ -238,7 +238,7 @@
 }
 .swip_slide1
 {
-	 background-image: url(/images/slider/swiper/2.jpg); 
+	 background-image: url(/images/slider2.jpg); 
 	 width: 1349px; 
 	 height: 667px; 
 }
@@ -250,7 +250,7 @@
 }
 .swip_slide2
 {
-	 background-image: url(images/slider/swiper/3.jpg); 
+	 background-image: url(images/slider3.jpg); 
 	 width: 1349px; 
 	 height: 667px; 
 }
@@ -262,7 +262,7 @@
 }
 .swip_slide3
 {
-	 background-image: url(images/slider/swiper/4.jpg); 
+	 background-image: url(images/slider4.jpg); 
 	 width: 1349px; 
 	 height: 667px; "
 }
