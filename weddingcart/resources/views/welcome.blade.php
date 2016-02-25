@@ -88,8 +88,8 @@
                     <!-- Logo
                     ============================================= -->
                     <div id="logo">
-                        <a href="#" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo-dark.png" alt="WeddingCart Logo"></a>
-                        <a href="#" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo-dark@2x.png" alt="WeddingCart Logo"></a>
+                        <a href="#" class="standard-logo" data-dark-logo="../images/logo-dark.png"><img src="../images/logo-dark.png" alt="WeddingCart Logo"></a>
+                        <a href="#" class="retina-logo" data-dark-logo="../images/logo-dark@2x.png"><img src="../images/logo-dark@2x.png" alt="WeddingCart Logo"></a>
                     </div><!-- #logo end -->
 
                     <!-- Primary Navigation
@@ -240,7 +240,7 @@
                             <div class="slider-wrap">
                                 <div class="slide flex-active-slide">
                                     <div class="testi-image">
-                                        <a href="#"><img src="images/3.jpg" alt="Customer Testimonails" draggable="false"></a>
+                                        <a href="#"><img src="../images/3.jpg" alt="Customer Testimonails" draggable="false"></a>
                                     </div>
                                     <div class="testi-content">
                                         <p>Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?</p>
@@ -252,7 +252,7 @@
                                 </div>
                                 <div class="slide divslidedisplay1">
                                     <div class="testi-image">
-                                        <a href="#"><img src="images/2.jpg" alt="Customer Testimonails" draggable="false"></a>
+                                        <a href="#"><img src="../images/2.jpg" alt="Customer Testimonails" draggable="false"></a>
                                     </div>
                                     <div class="testi-content">
                                         <p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
@@ -264,7 +264,7 @@
                                 </div>
                                 <div class="slide" divslidedisplay1>
                                     <div class="testi-image">
-                                        <a href="#"><img src="images/1.jpg" alt="Customer Testimonails" draggable="false"></a>
+                                        <a href="#"><img src="../images/1.jpg" alt="Customer Testimonails" draggable="false"></a>
                                     </div>
                                     <div class="testi-content">
                                         <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum!</p>
@@ -293,7 +293,7 @@
 
                                 <div class="team">
                                     <div class="team-image">
-                                        <img src="images/3(1).jpg" alt="Sameer">
+                                        <img src="../images/3(1).jpg" alt="Sameer">
                                     </div>
                                     <div class="team-desc team-desc-bg">
                                         <div class="team-title"><h4>ASHUTOSH</h4><span>CEO</span></div>
@@ -318,7 +318,7 @@
 
                                 <div class="team">
                                     <div class="team-image">
-                                        <img src="images/2(1).jpg" alt="Josh Clark">
+                                        <img src="../images/2(1).jpg" alt="Josh Clark">
                                     </div>
                                     <div class="team-desc team-desc-bg">
                                         <div class="team-title"><h4>UTKAL</h4><span>Co-Founder</span></div>
@@ -343,7 +343,7 @@
 
                                 <div class="team">
                                     <div class="team-image">
-                                        <img src="images/1(1).jpg" alt="Mary Jane">
+                                        <img src="../images/1(1).jpg" alt="Mary Jane">
                                     </div>
                                     <div class="team-desc team-desc-bg">
                                         <div class="team-title"><h4>SAMEER</h4><span>Sales</span></div>
@@ -399,7 +399,7 @@
     
                             <div class="widget clearfix">
                                 <h4>Instagram Photos</h4>
-                                <div id="instagram-photos" class="instagram-photos masonry-thumbs col-5 instagram-img" data-user="269801886" data-count="15" data-type="tag"><a class="hyper1" href="#"><img src="images/12555862_1031179610256584_103590565_n.jpg"></a><a class="hyper2" href="#"><img src="images/12728654_458526854351752_1865284470_n.jpg"></a><a class="hyper3" href="#"><img src="images/12568786_562997210547522_1896593123_n.jpg"></a><a class="hyper4" href="#"><img src="images/12523557_960510624032659_1664409908_n.jpg"></a><a class="hyper5" href="#"><img src="images/12628050_835505843244306_2050364526_n.jpg"></a><a class="hyper6" href="#"><img src="images/12728565_188139424879030_1814123854_n.jpg"></a><a class="hyper7" href="#"><img src="images/12598948_1028254577231917_2010167342_n.jpg"></a><a class="hyper8" href="#"><img src="images/12716993_985474188212198_521071465_n.jpg"></a><a class="hyper9" href="#"><img src="images/12716890_948139271889573_794833359_n.jpg"></a><a class="hyper10" href="#"><img src="images/12599125_1567149036909350_2114197729_n.jpg"></a><a class="hyper11" href="#"><img src="images/12547644_746912408776421_1442814759_n.jpg"></a><a class="hyper12" href="#"><img src="images/12728414_223947837949052_1080489967_n.jpg"></a><a class="hyper13" href="#"><img src="images/11264521_1691210301150323_1505378586_n.jpg"></a><a class="hyper14" href="#"><img src="images/12599242_195293150832150_1950635222_n.jpg"></a><a class="hyper15" href="#"><img src="images/12716522_1718680511705282_289699095_n.jpg"></a></div>
+                                <div id="instagram-photos" class="instagram-photos masonry-thumbs col-5 instagram-img" data-user="269801886" data-count="15" data-type="tag"><a class="hyper1" href="#"><img src="../images/12555862_1031179610256584_103590565_n.jpg"></a><a class="hyper2" href="#"><img src="../images/12728654_458526854351752_1865284470_n.jpg"></a><a class="hyper3" href="#"><img src="../images/12568786_562997210547522_1896593123_n.jpg"></a><a class="hyper4" href="#"><img src="../images/12523557_960510624032659_1664409908_n.jpg"></a><a class="hyper5" href="#"><img src="../images/12628050_835505843244306_2050364526_n.jpg"></a><a class="hyper6" href="#"><img src="../images/12728565_188139424879030_1814123854_n.jpg"></a><a class="hyper7" href="#"><img src="../images/12598948_1028254577231917_2010167342_n.jpg"></a><a class="hyper8" href="#"><img src="../images/12716993_985474188212198_521071465_n.jpg"></a><a class="hyper9" href="#"><img src="../images/12716890_948139271889573_794833359_n.jpg"></a><a class="hyper10" href="#"><img src="../images/12599125_1567149036909350_2114197729_n.jpg"></a><a class="hyper11" href="#"><img src="../images/12547644_746912408776421_1442814759_n.jpg"></a><a class="hyper12" href="#"><img src="../images/12728414_223947837949052_1080489967_n.jpg"></a><a class="hyper13" href="#"><img src="../images/11264521_1691210301150323_1505378586_n.jpg"></a><a class="hyper14" href="#"><img src="../images/12599242_195293150832150_1950635222_n.jpg"></a><a class="hyper15" href="#"><img src="../images/12716522_1718680511705282_289699095_n.jpg"></a></div>
                             </div>
     
     
