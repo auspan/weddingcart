@@ -13,7 +13,7 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 sudo apt-get install -y mysql-server-5.6 mysql-client-core-5.6
 mysql_secure_installation
 
-sudo apt-get install -y php7.0 php7.0-dev apache2 apache2-utils 
+sudo apt-get install -y php7.0 php7.0-dev apache2 apache2-utils jenkins
 sudo apt-get install -y libapache2-mod-php7.0 php7.0-curl php7.0-gd php7.0-mcrypt 
 sudo apt-get install -y php7.0-readline php7.0-mysql git-core php7.0-mbstring php7.0-xml
 ############PHPMyadmin##############
