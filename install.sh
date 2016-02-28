@@ -4,6 +4,8 @@ sudo apt-get update
 sudo apt-get install -y vim curl python-software-properties unzip
 sudo apt-get install -y debconf-utils
 sudo apt-add-repository -y ppa:ondrej/php
+wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt-get update
 sudo apt-get upgrade
 
@@ -11,14 +13,15 @@ export DEBIAN_FRONTEND="noninteractive"
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 sudo apt-get install -y mysql-server-5.6 mysql-client-core-5.6
+sudo apt-get install jenkins
 mysql_secure_installation
 
-sudo apt-get install -y php7.0 php7.0-dev apache2 apache2-utils jenkins
+sudo apt-get install -y php7.0 php7.0-dev apache2 apache2-utils
 sudo apt-get install -y libapache2-mod-php7.0 php7.0-curl php7.0-gd php7.0-mcrypt 
 sudo apt-get install -y php7.0-readline php7.0-mysql git-core php7.0-mbstring php7.0-xml
 ############PHPMyadmin##############
 cd /usr/share
-sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.5.4.1/phpMyAdmin-4.5.4.1-all-languages.zip >> /var/www/install.log
+sudo wget -q https://files.phpmyadmin.net/phpMyAdmin/4.5.4.1/phpMyAdmin-4.5.4.1-all-languages.zip -o /var/www/xdeb.log
 sudo unzip phpMyAdmin-4.5.4.1-all-languages.zip >> /var/www/install.log
 sudo mv phpMyAdmin-4.5.4.1-all-languages /var/www/phpmyadmin
 sudo chmod -R 0755 /var/www/phpmyadmin
@@ -26,7 +29,7 @@ sudo chmod -R 0755 /var/www/phpmyadmin
 echo "XDEBUG Setup"
 cd ~
 mkdir downloads
-wget -O ~/downloads/xdebug-2.4.0rc4.tgz http://xdebug.org/files/xdebug-2.4.0rc4.tgz >> /var/www/install.log
+wget -q  -O ~/downloads/xdebug-2.4.0rc4.tgz http://xdebug.org/files/xdebug-2.4.0rc4.tgz -o /var/www/xdeb.log
 cd downloads
 tar -xvzf xdebug-2.4.0rc4.tgz >> /var/www/install.log
 cd xdebug-2.4.0*
