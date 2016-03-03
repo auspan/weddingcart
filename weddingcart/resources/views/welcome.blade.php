@@ -63,7 +63,7 @@
                             </li>
                             <li><a href="#">COUPLE</a>
                             </li>
-                            <li><a href="#">GUEST</a>
+                            <li><a href="{{ url('/invites') }}">GUEST</a>
                             </li>
                             <li><a href="{{ url('/login') }}">Login</a>
                             </li>
