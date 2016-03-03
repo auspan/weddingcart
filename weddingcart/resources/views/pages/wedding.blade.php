@@ -131,10 +131,10 @@
             
                 <div class="container clearfix divcon">
                 	<div class="col_half">
-						<img class="img-circle" src="images/2.jpg" alt="Bryant Kellam">
+						<img class="img-circle img-responsive" src="{{ asset('../uploads/' . $groom_image) }}" alt="Bryant Kellam" style="width: 300px; height: 300px">
 					</div>
 					<div class="col_half col_last">
-						<img class="img-circle" src="images/1.jpg" alt="Bryant Kellam">
+						<img class="img-circle img-responsive" src="{{ asset('../uploads/' . $bride_image) }}" alt="Bryant sdfg" style="width: 300px; height: 300px">
 					</div>
                 </div>
 

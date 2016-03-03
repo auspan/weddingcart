@@ -5,6 +5,8 @@ namespace weddingcart\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 use weddingcart\Http\Requests;
 use weddingcart\Http\Controllers\Controller;
 use weddingcart\EventAttribute;
@@ -53,9 +55,19 @@ class WeddingController extends Controller
             {
                 $bridename=$UserEventDetail['attribute_value'];
             }
+            if($UserEventDetail['attribute_code']=='gimg')
+            {
+                $groomimage=$UserEventDetail['attribute_value'];
+            }
+            if($UserEventDetail['attribute_code']=='bimg')
+            {
+                $brideimage=$UserEventDetail['attribute_value'];
+            }
         }
 
-        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename);
+
+        $data=array();
+        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage);
         
         return view('pages.wedding')->with($data);
 
@@ -102,15 +114,40 @@ class WeddingController extends Controller
     	 $weddingdate = $request->input('wedding_date');
         $groomname = $request->input('groom_name');
         $bridename = $request->input('bride_name');
-         $wedcode = $request->input('wed_date');
+        $groomimage=Input::file('groom_image');
+        $brideimage=Input::file('bride_image');
+        $wedcode = $request->input('wed_date');
         $groomcode = $request->input('groom');
         $bridecode = $request->input('bride');
+        $groomimagecode=$request->input('groom_img');
+        $brideimagecode=$request->input('bride_img');
+
+
+        $destinationPath = '../public/uploads/';
+        $groom_image = Str::lower(
+        pathinfo($groomimage->getClientOriginalName(), PATHINFO_FILENAME)
+        .'-'
+        .uniqid()
+        .'.'
+        .$groomimage->getClientOriginalExtension()
+        );
+
+        $bride_image = Str::lower(
+        pathinfo($brideimage->getClientOriginalName(), PATHINFO_FILENAME)
+        .'-'
+        .uniqid()
+        .'.'
+        .$brideimage->getClientOriginalExtension()
+        );
+
+        $groomimage->move($destinationPath, $groom_image);
+        $brideimage->move($destinationPath, $bride_image);
        // $weddinarray=array();
         //$weddinarray=array($weddingdate,$groomname,$bridename);
       
        
             $count=0;
-            while($count<3)
+            while($count<5)
             {
                 if($count==0)
                 {   
@@ -133,6 +170,22 @@ class WeddingController extends Controller
                      UserEventDetail::create(array(
                     'attribute_code'=>$bridecode,
                     'attribute_value'=>$bridename,
+                    'user_event_id'=>$userEvent['id'],
+                    ));
+                 }
+                 if($count==3)
+                {
+                     UserEventDetail::create(array(
+                    'attribute_code'=>$groomimagecode,
+                    'attribute_value'=>$groom_image,
+                    'user_event_id'=>$userEvent['id'],
+                    ));
+                 }
+                 if($count==4)
+                {
+                     UserEventDetail::create(array(
+                    'attribute_code'=>$brideimagecode,
+                    'attribute_value'=>$bride_image,
                     'user_event_id'=>$userEvent['id'],
                     ));
                  }

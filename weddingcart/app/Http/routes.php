@@ -38,6 +38,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/weddingdetails','WeddingController@UserEvent');
 	Route::post('/weddingcard','WeddingController@store');
 	Route::get('/wishlist','WishlistController@wishlist');
+    Route::get('/invites','WishlistController@invites');
 	Route::get('/create_wishlist','WishlistController@create');
 	Route::post('/wishlistdetails','WishlistController@store');
 

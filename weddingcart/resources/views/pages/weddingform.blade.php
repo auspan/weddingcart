@@ -38,7 +38,26 @@
 	============================================= -->
 	<title>WeddingCart | Transforming Indian Weddings</title>
 
+    <script>
+    function selectimage(txt)
+    {
+         var imageId=txt;
+        
+        document.getElementById(imageId).click() 
+        {
+           
+        $("#"+imageId).change(function(e){
+            // get file name only
+            //var fileName = e.target.files[0].name;
+            // get complete path of local machine
+            var fileName=URL.createObjectURL(e.target.files[0]); 
 
+            $("img#"+imageId).fadeIn("fast").attr('src',fileName);
+        });
+    }
+        return false;
+    }
+    </script>
 
 
 <body class="stretched device-lg">
@@ -138,7 +157,7 @@
     
                                <div class="clearfix">
                                		
-								{!! Form::open(['action'=>'WeddingController@store', 'class'=>'form-horizontal nobottommargin', 'method'=>'post']) !!}
+								{!! Form::open(['action'=>'WeddingController@store', 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
                                		<div class="row">
                                                 <div class="input-daterange travel-date-group bottommargin-sm">
                                                     <div class="col-md-4 divcenter">
@@ -163,9 +182,10 @@
                             <!-- Contact Form Overlay
                             ============================================= -->
                             <div id="contact-form-overlay" class="clearfix">
-                            
+                                <input id="bimg" name="bride_image" class="sm-form-control required" type="file" style="display: none">
+                                        <input type="hidden" name="bride_img" class="form-control" value="bimg">
 								<div class="bride-image divcenter">
-										<a href="#"><img src="images/1.jpg" alt="Groom"></a>
+										<a href="" onclick="return selectimage('bimg')"><img src="images/favatar.png" id="bimg" alt="Groom"></a>
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
                                 
@@ -176,7 +196,9 @@
                                     <center>
                                         <label for="template-contactform-service">Bride</label>
                                      </center>  
-                                  	</div>
+                                  	
+            
+                                    <div class="clear"></div>
             
                                     <div class="col_full">
                                         <label for="template-contactform-name">Name <small>*</small></label>
@@ -184,7 +206,7 @@
                                         <input type="hidden" name="bride" class="form-control" value="bnm">
                                     </div>
             
-                                    <div class="clear"></div>
+                             <!--       <div class="clear"></div>
             
                                     <div class="col_full">
                                         <label for="template-contactform-name">Father Name <small>*</small></label>
@@ -231,9 +253,9 @@
                                             <option value="Wordpress">Rajasthan</option>
                                             <option value="PHP / MySQL">Uttarakhand</option>
                                         </select>
-                                    </div>
+                                    </div>  -->
             
-                              
+                              </div>
             
                             </div><!-- Contact Form Overlay End -->
             
@@ -244,9 +266,12 @@
                             <!-- Contact Form Overlay
                             ============================================= -->
                             <div id="contact-form-overlay" class="clearfix">
-                            
+                                <input id="gimg" name="groom_image" class="sm-form-control required" type="file" style="display: none">
+
+                                <input type="hidden" name="groom_img" class="form-control" value="gimg">
+
 								<div class="bride-image divcenter">
-										<a href="#"><img src="images/2.jpg" alt="Groom"></a>
+										<a href="" onclick="return selectimage('gimg')"><img src="images/mavatar.png" id="gimg" alt="Groom"></a>
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
                                 
@@ -258,7 +283,8 @@
                                     	<center>
                                         <label for="template-contactform-service">Groom</label>
                                        	</center>
-                                    </div>
+                                    
+                                    <div class="clear"></div>
             
                                     <div class="col_full">
                                         <label for="template-contactform-name">Name <small>*</small></label>
@@ -266,7 +292,7 @@
                                         <input type="hidden" name="groom" class="form-control" value="gnm">
                                     </div>
             
-                                    <div class="clear"></div>
+                          <!--          <div class="clear"></div>
             
                                     <div class="col_full">
                                         <label for="template-contactform-name">Father Name <small>*</small></label>
@@ -313,7 +339,7 @@
                                             <option value="Wordpress">Rajasthan</option>
                                             <option value="PHP / MySQL">Uttarakhand</option>
                                         </select>
-                                    </div>
+                                    </div>  -->
             
                                
             
