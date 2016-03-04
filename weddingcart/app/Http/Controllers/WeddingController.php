@@ -55,11 +55,11 @@ class WeddingController extends Controller
             {
                 $bridename=$UserEventDetail['attribute_value'];
             }
-            if($UserEventDetail['attribute_code']=='gimg')
+            if($UserEventDetail['attribute_code']=='gim')
             {
                 $groomimage=$UserEventDetail['attribute_value'];
             }
-            if($UserEventDetail['attribute_code']=='bimg')
+            if($UserEventDetail['attribute_code']=='bim')
             {
                 $brideimage=$UserEventDetail['attribute_value'];
             }

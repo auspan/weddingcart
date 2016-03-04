@@ -175,12 +175,18 @@
                              </div>
 
                             <div class="divider divider-short divider-center"><i class="icon-heart-empty"></i></div>
-                                    
+                             
+                            <!--       
                             <div class="clearfix">
-                                <div class="first-name h3">{{ $groom_name }} s/o Mr. Praveen Kumar and Mrs. Swati Kumar</div>
+                                <div class="first-name h3">
+                                	{{ $groom_name }} 
+                                </div>
                                 <div class="and h1">&amp;</div>
-                                <div class="last-name h3">{{ $bride_name }} d/o Mr. Lokesh Verma and Mrs. Manisha Verma</div>
+                                <div class="last-name h3">
+                                	{{ $bride_name }}
+                                </div>
                             </div>
+                            -->
                             
 							<div class="center">
                                 <a href="#" class="button button-border button-rounded topmargin">Edit</a>

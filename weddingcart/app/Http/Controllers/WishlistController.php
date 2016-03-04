@@ -54,7 +54,7 @@ class WishlistController extends Controller
        public function invites()
     {
       
-        $userevent=UserEvent::all()->where('user_id',48);
+        $userevent=UserEvent::all()->where('user_id',50);
         
         //$user_event_id=array('usereventid',$userevent['id']);
         foreach ($userevent as $usereventid)
@@ -80,19 +80,21 @@ class WishlistController extends Controller
             {
                 $bridename=$UserEventDetail['attribute_value'];
             }
-            if($UserEventDetail['attribute_code']=='gimg')
+            if($UserEventDetail['attribute_code']=='gim')
             {
                 $groomimage=$UserEventDetail['attribute_value'];
             }
-            if($UserEventDetail['attribute_code']=='bimg')
+            if($UserEventDetail['attribute_code']=='bim')
             {
                 $brideimage=$UserEventDetail['attribute_value'];
             }
         }
 
+       
+
         $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage);
         
-        $UserEventRoleId=UserEventRole::all()->where('user_id',48);
+        $UserEventRoleId=UserEventRole::all()->where('user_id',50);
         foreach ($UserEventRoleId as $user_event_role_id) {
           $User_Event_Role_Id=$user_event_role_id['id'];
           break;

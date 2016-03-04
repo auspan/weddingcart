@@ -398,7 +398,7 @@ quisquam possimus eos aspernatur distinctio similique perferendis.</div>
 								<button type="submit" name="wedding-rsvp-submit" id="wedding-rsvp-submit" class="button button-3d btn-block nomargin button-dark button-xlarge" value="submit">Submit</button>
 							</div>
 							<br>
-							<p style="color: blue; font-size: 18px; text-align: center;">If Want To Register Click The Button Given Below</p>
+							<p class="heading-block title-center topmargin page-section" style="text-align: center;"><h2>If Want To Register Click Below</h2></p>
 							<div class="col_full nobottommargin">
 								<a href="{{url('/register')}}"><button type="button" name="register" id="register" class="button button-3d btn-block nomargin button-dark button-xlarge" value="Register">Register Here</button></a>
 							</div>

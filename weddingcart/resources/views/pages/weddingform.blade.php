@@ -183,7 +183,7 @@
                             ============================================= -->
                             <div id="contact-form-overlay" class="clearfix">
                                 <input id="bimg" name="bride_image" class="sm-form-control required" type="file" style="display: none">
-                                        <input type="hidden" name="bride_img" class="form-control" value="bimg">
+                                        <input type="hidden" name="bride_img" class="form-control" value="bim">
 								<div class="bride-image divcenter">
 										<a href="" onclick="return selectimage('bimg')"><img src="images/favatar.png" id="bimg" alt="Groom"></a>
 								</div>
@@ -268,7 +268,7 @@
                             <div id="contact-form-overlay" class="clearfix">
                                 <input id="gimg" name="groom_image" class="sm-form-control required" type="file" style="display: none">
 
-                                <input type="hidden" name="groom_img" class="form-control" value="gimg">
+                                <input type="hidden" name="groom_img" class="form-control" value="gim">
 
 								<div class="bride-image divcenter">
 										<a href="" onclick="return selectimage('gimg')"><img src="images/mavatar.png" id="gimg" alt="Groom"></a>
