@@ -307,7 +307,7 @@ class WeddingController extends Controller
 
         $data=array();
         $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage);
-        return view('wedding.editweddingform')->with($data);
+        return view('pages.editweddingform')->with($data);
         }
     }
 

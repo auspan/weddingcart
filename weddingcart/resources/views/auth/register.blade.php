@@ -5,7 +5,7 @@
 
     <!-- Stylesheets
     ============================================= -->
-    <link href="registerform_files/css.css" rel="stylesheet" type="text/css">
+    <link href="css/css.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/dark.css" type="text/css">
