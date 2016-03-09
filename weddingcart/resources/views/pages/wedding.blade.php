@@ -156,19 +156,19 @@
                              <div id="countdown-ex1" class="countdown countdown-large divcenter is-countdown divcount">
                              	<span class="countdown-row countdown-show4">
                              		<span class="countdown-section">
-                             			<span class="countdown-amount">150</span>
+                             			<span class="countdown-amount">{{ $days }}</span>
                              			<span class="countdown-period">Days</span>
                              		</span>
                              		<span class="countdown-section">
-                             			<span class="countdown-amount">10</span>
+                             			<span class="countdown-amount">{{ $hours }}</span>
                              			<span class="countdown-period">Hours</span>
                              		</span>
                              		<span class="countdown-section">
-                             			<span class="countdown-amount">21</span>
+                             			<span class="countdown-amount">{{ $minutes }}</span>
                              			<span class="countdown-period">Minutes</span>
                              		</span>
                              		<span class="countdown-section">
-                             			<span class="countdown-amount">43</span>
+                             			<span class="countdown-amount">{{ $seconds }}</span>
                              			<span class="countdown-period">Seconds</span>
                              		</span>
                              	</span>
@@ -177,13 +177,14 @@
                             <div class="divider divider-short divider-center"><i class="icon-heart-empty"></i></div>
                                     
                             <div class="clearfix">
-                                <div class="first-name h3">{{ $groom_name }} s/o Mr. Praveen Kumar and Mrs. Swati Kumar</div>
+                                <div class="first-name h3">{{ $groom_name }} <!--s/o Mr. Praveen Kumar and Mrs. Swati Kumar--></div>
                                 <div class="and h1">&amp;</div>
-                                <div class="last-name h3">{{ $bride_name }} d/o Mr. Lokesh Verma and Mrs. Manisha Verma</div>
+                                <div class="last-name h3">{{ $bride_name }}<!-- d/o Mr. Lokesh Verma and Mrs. Manisha Verma--></div>
                             </div>
                             
 							<div class="center">
-                                <a href="#" class="button button-border button-rounded topmargin">Edit</a>
+                                <a href="{{ url('/wedding/'. $UserId .'/edit') }}" class="button button-border button-rounded topmargin">Edit</a>
+
                             </div>
             
                         </div>

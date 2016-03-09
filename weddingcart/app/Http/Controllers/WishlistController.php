@@ -4,6 +4,7 @@ namespace weddingcart\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use DateTime;
 use weddingcart\UserEventRole;
 use weddingcart\UserEvent;
 use weddingcart\UserEventDetail;
@@ -24,7 +25,21 @@ class WishlistController extends Controller
         {
             return view('errors.503');
         }
-      $userrole=UserEventRole::all()->where('user_id',$userid);
+
+        $user_event=array();
+         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         foreach ($UserEvent as $Uevent) 
+         {
+            $user_event=$Uevent['id'];
+         }
+         if($user_event==null)
+         {
+         return view('pages.temp');  
+         }
+
+         else
+         {
+          $userrole=UserEventRole::all()->where('user_id',$userid);
 
         foreach ($userrole as $UserRole)
         {
@@ -48,13 +63,15 @@ class WishlistController extends Controller
        // $selected_product=Product::where('id',$selected_product_id)->first();
         //$selected_product_description=$selected_product->product_description;
          return view ('pages.wishlist',['Wishlist_Items'=>$array_wishlist_items]);
-       }
+        }
+    }
+
         //return view('pages.wishlist');
 
        public function invites()
     {
       
-        $userevent=UserEvent::all()->where('user_id',48);
+        $userevent=UserEvent::all()->where('user_id',50);
         
         //$user_event_id=array('usereventid',$userevent['id']);
         foreach ($userevent as $usereventid)
@@ -80,19 +97,27 @@ class WishlistController extends Controller
             {
                 $bridename=$UserEventDetail['attribute_value'];
             }
-            if($UserEventDetail['attribute_code']=='gimg')
+            if($UserEventDetail['attribute_code']=='gim')
             {
                 $groomimage=$UserEventDetail['attribute_value'];
             }
-            if($UserEventDetail['attribute_code']=='bimg')
+            if($UserEventDetail['attribute_code']=='bim')
             {
                 $brideimage=$UserEventDetail['attribute_value'];
             }
         }
 
-        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage);
+            $current_datetime = new DateTime();
+            $wedding_datetime = new DateTime($wed_date);
+            $diffrence = $current_datetime->diff($wedding_datetime);
+            $day=$diffrence->d;
+            $hour=$diffrence->h;
+            $minute=$diffrence->i;
+            $second=$diffrence->s;
+
+        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage, 'days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);
         
-        $UserEventRoleId=UserEventRole::all()->where('user_id',48);
+        $UserEventRoleId=UserEventRole::all()->where('user_id',50);
         foreach ($UserEventRoleId as $user_event_role_id) {
           $User_Event_Role_Id=$user_event_role_id['id'];
           break;
@@ -143,6 +168,19 @@ class WishlistController extends Controller
         {
             abort('503');
         }
+
+        $user_event=array();
+         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         foreach ($UserEvent as $Uevent) 
+         {
+            $user_event=$Uevent['id'];
+         }
+         if($user_event==null)
+          {
+            return view ('pages.temp');
+          }
+        else
+        {
         $userrole=UserEventRole::all()->where('user_id',$userid);
 
         foreach ($userrole as $UserRole)
@@ -242,4 +280,5 @@ class WishlistController extends Controller
             
              }*/
            }
+        }
     }

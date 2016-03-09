@@ -36,11 +36,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/wedding','WeddingController@wedding');
     Route::get('/weddingdetails','WeddingController@UserEvent');
-	Route::post('/weddingcard','WeddingController@store');
+	Route::post('/wedding','WeddingController@store');
 	Route::get('/wishlist','WishlistController@wishlist');
     Route::get('/invites','WishlistController@invites');
 	Route::get('/create_wishlist','WishlistController@create');
-	Route::post('/wishlistdetails','WishlistController@store');
+	Route::post('/wishlist','WishlistController@store');
+    Route::get('/wedding/{id}/edit','WeddingController@edit');
+    Route::post('/wedding/update','WeddingController@update');
 
     
 });

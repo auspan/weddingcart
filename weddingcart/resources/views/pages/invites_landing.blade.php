@@ -118,12 +118,13 @@
 
 				<p class="lead">Getting <strong>Hitched</strong> on:</p>
 
-				<div id="countdown-ex1" class="countdown countdown-large coming-soon divcenter is-countdown" style="max-width:700px;"><span class="countdown-row countdown-show4"><span class="countdown-section"><span class="countdown-amount">124</span><span class="countdown-period">Days</span></span><span class="countdown-section"><span class="countdown-amount">13</span><span class="countdown-period">Hours</span></span><span class="countdown-section"><span class="countdown-amount">22</span><span class="countdown-period">Minutes</span></span><span class="countdown-section"><span class="countdown-amount">46</span><span class="countdown-period">Seconds</span></span></span></div>
+				<div id="countdown-ex1" class="countdown countdown-large coming-soon divcenter is-countdown" style="max-width:700px;"><span class="countdown-row countdown-show4"><span class="countdown-section"><span class="countdown-amount">{{ $days }}</span><span class="countdown-period">Days</span></span><span class="countdown-section"><span class="countdown-amount">{{ $hours }}</span><span class="countdown-period">Hours</span></span><span class="countdown-section"><span class="countdown-amount">{{ $minutes }}</span><span class="countdown-period">Minutes</span></span><span class="countdown-section"><span class="countdown-amount">{{ $seconds }}</span><span class="countdown-period">Seconds</span></span></span></div>
 
 			</div>
 
 
 			<script>
+
 				jQuery(document).ready( function($){
 					var newDate = new Date(2016, 5, 31);
 					$('#countdown-ex1').countdown({until: newDate});
@@ -155,11 +156,11 @@
 
 						<ul class="one-page-menu sf-js-enabled">
 							<li><a href="#" data-href="#most-toppest"><div>Start</div></a></li>
-							<li class=""><a href="#" data-href="#section-couple"><div>The Couple</div></a></li>
-							<li class=""><a href="{{ url('/wishlist') }}" data-href="#section-list"><div>Wish List</div></a></li>
-							<li class=""><a href="#" data-href="#section-events"><div>Events Schedule</div></a></li>
-							<li class=""><a href="#" data-href="#section-locations"><div>Locations</div></a></li>
-							<li class=""><a href="#" data-href="#section-rsvp"><div>RSVP</div></a></li>
+							<li class=""><a href="javascript::void(0)" data-href="#section-couple"><div>The Couple</div></a></li>
+							<li class=""><a href="javascript::void(0)" data-href="#section-list"><div>Wish List</div></a></li>
+							<li class=""><a href="javascript::void(0)" data-href="#section-events"><div>Events Schedule</div></a></li>
+							<li class=""><a href="javascript::void(0)" data-href="#section-locations"><div>Locations</div></a></li>
+							<li class=""><a href="javascript::void(0)" data-href="#section-rsvp"><div>RSVP</div></a></li>
 						</ul>
 
 					</nav><!-- #primary-menu end -->
@@ -398,7 +399,7 @@ quisquam possimus eos aspernatur distinctio similique perferendis.</div>
 								<button type="submit" name="wedding-rsvp-submit" id="wedding-rsvp-submit" class="button button-3d btn-block nomargin button-dark button-xlarge" value="submit">Submit</button>
 							</div>
 							<br>
-							<p style="color: blue; font-size: 18px; text-align: center;">If Want To Register Click The Button Given Below</p>
+							<p class="heading-block title-center topmargin page-section" style="text-align: center;"><h2>If Want To Register Click Below</h2></p>
 							<div class="col_full nobottommargin">
 								<a href="{{url('/register')}}"><button type="button" name="register" id="register" class="button button-3d btn-block nomargin button-dark button-xlarge" value="Register">Register Here</button></a>
 							</div>

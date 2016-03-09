@@ -342,7 +342,7 @@
 
 				<div class="center bottommargin-lg">
 
-					<a href="#" class="button button-rounded button-xlarge">Wedding</a>
+					<a href="{{ url('/wedding') }}" class="button button-rounded button-xlarge">Wedding</a>
 					<a href="#" class="button button-rounded button-xlarge">Invite</a>
 
 				</div>

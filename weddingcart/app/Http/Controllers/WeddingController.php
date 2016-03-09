@@ -5,6 +5,7 @@ namespace weddingcart\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use DateTime;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 use weddingcart\Http\Requests;
@@ -26,9 +27,21 @@ class WeddingController extends Controller
         }
         else
         {
-            return view('errors.503');
+            return redirect('login');
         }
 
+        $user_event=array();
+         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         foreach ($UserEvent as $Uevent) 
+         {
+            $user_event=$Uevent['id'];
+         }
+         if($user_event==null)
+         {  
+            return view('pages.temp');
+         }
+         else
+         {
         $userevent=UserEvent::all()->where('user_id',$userid);
         
         //$user_event_id=array('usereventid',$userevent['id']);
@@ -55,45 +68,71 @@ class WeddingController extends Controller
             {
                 $bridename=$UserEventDetail['attribute_value'];
             }
-            if($UserEventDetail['attribute_code']=='gimg')
+            if($UserEventDetail['attribute_code']=='gim')
             {
                 $groomimage=$UserEventDetail['attribute_value'];
             }
-            if($UserEventDetail['attribute_code']=='bimg')
+            if($UserEventDetail['attribute_code']=='bim')
             {
                 $brideimage=$UserEventDetail['attribute_value'];
             }
         }
 
+        $current_datetime = new DateTime();
+        $wedding_datetime = new DateTime($wed_date);
+        $diffrence = $current_datetime->diff($wedding_datetime);
+        $day=$diffrence->d;
+        $hour=$diffrence->h;
+        $minute=$diffrence->i;
+        $second=$diffrence->s;
+       /* $date_diffrence=('days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);*/
+
+       /* $current_datetime_in_carbon=carbon::now();
+        var_dump($current_datetime_in_carbon);*/
 
         $data=array();
-        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage);
+        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage, 'days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);
         
-        return view('pages.wedding')->with($data);
+        
+        return view('pages.wedding',['UserId'=>$userid])->with($data);
 
-    
+        }
     }
 
      public function UserEvent()
-    {
-    	 /*$eventid = EventAttribute::all();
-    	 foreach ($eventid as $eid) {
-    	 	$event_id=$eid['event_id'];
-    	 }
-    	 
-    	 $userid=20;
-    	 UserEvent::create(array(
-                'event_id'=>$event_id,
-                'user_id'=>$userid,
-                
-            ));
-    	 $userevent=UserEvent::all();*/
+    {   
+        if(Auth::check())
+         {
+         $userid=Auth::User()->id;
+        }
+        else
+        {
+            return redirect('login');
+        }
+    	 $user_event=array();
+         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         foreach ($UserEvent as $Uevent) 
+         {
+            $user_event=$Uevent['id'];
+         }
+         if($user_event==null)
+         {  
     	 $eventattr=EventAttribute::all();
     	 return view('pages.weddingform', ['EventAttr'=> $eventattr]);
-    }
+            }
+            else
+            {
+                return $this->wedding();
+            }
+        }
 
     public function store(Request $request)
     {
+      $this->validate($request, ['wedding_date'=>'required',
+            'bride_image'   =>'required',
+            'groom_image'   =>'required',
+            'bride_name'  =>'required',
+            'groom_name'  =>'required',]);
     	$eventid = EventAttribute::all();
     	 foreach ($eventid as $eid) 
          {
@@ -105,8 +144,16 @@ class WeddingController extends Controller
     	}
     	else
     	{
-    		return view('errors.503');
+    		return redirect('login');
     	}
+        $user_event=array();
+         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         foreach ($UserEvent as $Uevent) 
+         {
+            $user_event=$Uevent['id'];
+         }
+         if($user_event==null)
+         {  
     	 $userEvent = UserEvent::create(array(
                 'event_id'=>$event_id,
                 'user_id'=>$userid,
@@ -122,6 +169,8 @@ class WeddingController extends Controller
         $groomimagecode=$request->input('groom_img');
         $brideimagecode=$request->input('bride_img');
 
+    
+    //$elapsed = $interval->format('%a days %h hours %i minutes %S seconds');
 
         $destinationPath = '../public/uploads/';
         $groom_image = Str::lower(
@@ -196,15 +245,74 @@ class WeddingController extends Controller
                 'role'=> 1,
                 'user_event_id'=> $userEvent['id'],
                 ));
-           /* $data = array('wedding_date'=>'$weddingdate','groom_name' => $groomname,
-                  'bride_name' => $bridename);
-            //$userevent=UserEvent::all();
-            return view('pages.wedding')->with($data);*/
-
             return $this->wedding();
+        }
+
+        else
+        {
+            return $this->wedding();
+        }
      }
 
-     public function gather(Request $request)
+     public function edit($id)
      {
+        $userId=$id;
+
+          if(Auth::check())
+         {
+         $userid=Auth::User()->id;
+        }
+        else 
+        {
+            return redirect('login');
+        }
+        if($userId==$userid)
+        {
+       $userevent=UserEvent::all()->where('user_id',$userid);
+        
+        //$user_event_id=array('usereventid',$userevent['id']);
+        foreach ($userevent as $usereventid)
+        {
+            $ueid=$usereventid['id'];
+            break;
+        }  
+        
+
+        $usereid=$ueid;
+        $usereventdetails=UserEventDetail::all()->where('user_event_id',$usereid);
+        foreach ($usereventdetails as $UserEventDetail) 
+        {
+            if($UserEventDetail['attribute_code']=='wdt')
+            {
+                $wed_date=$UserEventDetail['attribute_value'];
             }
+            if($UserEventDetail['attribute_code']=='gnm')
+            {
+                $groomname=$UserEventDetail['attribute_value'];
+            }
+            if($UserEventDetail['attribute_code']=='bnm')
+            {
+                $bridename=$UserEventDetail['attribute_value'];
+            }
+            if($UserEventDetail['attribute_code']=='gim')
+            {
+                $groomimage=$UserEventDetail['attribute_value'];
+            }
+            if($UserEventDetail['attribute_code']=='bim')
+            {
+                $brideimage=$UserEventDetail['attribute_value'];
+            }
+        }
+
+
+        $data=array();
+        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage);
+        return view('wedding.editweddingform')->with($data);
+        }
+    }
+
+     public function update()
+     {
+
+     }
 }
