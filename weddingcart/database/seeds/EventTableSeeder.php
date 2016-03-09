@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Event extends Seeder
+class EventTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,7 @@ class Event extends Seeder
      */
     public function run()
     {
+        //
         DB::table('events')->insert([
 			'event_name' => 'Wedding',
 			'created_by' => 'System',

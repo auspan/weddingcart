@@ -4,8 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="author" content="WeddingCart">
 
-	<!-- Stylesheets
-	============================================= -->
+	
 	<link href="css/css.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
@@ -18,29 +17,21 @@
 
 	<link rel="stylesheet" href="css/responsive.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--[if lt IE 9]>
-		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	<![endif]-->
-
-	<!-- External JavaScripts
-	============================================= -->
+	
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/plugins.js"></script>
 
-	<!-- Document Title
-	============================================= -->
+	
 	<title>WeddingCart | Transforming Indian Weddings</title>
 	
 </head>
 
 <body class="stretched device-lg">
 
-	<!-- Document Wrapper
-	============================================= -->
+	
 	<div id="wrapper" class="clearfix animate">
 
-		<!-- Header
-		============================================= -->
+		
 		<header id="header">
 
 			<div id="header-wrap">

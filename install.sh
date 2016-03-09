@@ -129,4 +129,7 @@ EOF
 composer -n install
 php artisan migrate
 php artisan db:seed
+cd public
+mkdir uploads
+cd ..
 
