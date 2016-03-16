@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="css/font-icons.css" type="text/css">
 	<link rel="stylesheet" href="css/animate.css" type="text/css">
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-	<link rel="stylesheet" href="css/style1.css" type="text/css">
+	<link rel="stylesheet" href="css/newstyle.css" type="text/css">
 	<link rel="stylesheet" href="css/responsive.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--[if lt IE 9]>

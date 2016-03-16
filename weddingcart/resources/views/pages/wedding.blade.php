@@ -8,10 +8,10 @@
             
                 <div class="container clearfix divcon">
                 	<div class="col_half">
-						<img class="img-circle img-responsive" src="{{ asset('../uploads/' . $groom_image) }}" alt="Bryant Kellam" style="width: 300px; height: 300px">
+						<img class="img-circle img-responsive" src="{{ asset('../uploads/' . $groom_image) }}" alt="Bryant Kellam" style="width: 150px; height: 150px; object-fit: cover;">
 					</div>
 					<div class="col_half col_last">
-						<img class="img-circle img-responsive" src="{{ asset('../uploads/' . $bride_image) }}" alt="Bryant sdfg" style="width: 300px; height: 300px">
+						<img class="img-circle img-responsive" src="{{ asset('../uploads/' . $bride_image) }}" alt="Bryant sdfg" style="width: 150px; height: 150px; object-fit: cover;">
 					</div>
                 </div>
 
@@ -62,7 +62,7 @@
                                 </div>
                             
 							<div class="center">
-                                <a href="{{ url('/wedding/'. $UserId .'/edit') }}" class="button button-border button-rounded topmargin">Edit</a>
+                                <a href="#" class="button button-border button-rounded topmargin">Edit</a>
 
                             </div>
             
@@ -77,7 +77,7 @@
 
 				<div class="center bottommargin-lg">
 
-					<a href="{{ url('/wishlist') }}" class="button button-rounded button-xlarge">Wish List</a>
+					<a href="#" class="button button-rounded button-xlarge">Wish List</a>
 					<a href="#" class="button button-rounded button-xlarge">Invite</a>
 
 				</div>

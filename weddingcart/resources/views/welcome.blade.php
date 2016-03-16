@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
 
     <link rel="stylesheet" href="css/responsive.css" type="text/css">
-    <link rel="stylesheet" href="css/style1.css" type="text/css">
+    <link rel="stylesheet" href="css/newstyle.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--[if lt IE 9]>
         <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -63,7 +63,7 @@
                             </li>
                             <li><a href="#">COUPLE</a>
                             </li>
-                            <li><a href="{{ url('/invites') }}">GUEST</a>
+                            <li><a href="#">GUEST</a>
                             </li>
                             <li><a href="{{ url('/login') }}">Login</a>
                             </li>

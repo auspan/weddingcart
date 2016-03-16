@@ -27,9 +27,9 @@
 								{!! Form::open(['action'=>'WeddingController@store', 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
                                		<div class="row">
                                                 <div class="input-daterange travel-date-group bottommargin-sm">
-                                                    <div class="col-md-4 divcenter">
+                                                    <div class="col-md-4 divcenter" style="position: relative; z-index: 10">
                                                         <label for="">Wedding Date</label>
-                                                        <input class="sm-form-control" name="wedding_date" placeholder="MM/DD/YYYY" type="text">
+                                                        <input class="sm-form-control" name="wedding_date" placeholder="MM/DD/YYYY" type="text" id="weddate">
                                                     </div>
                                                         <input type="hidden" name="wed_date" class="form-control" value="wdt">
                                                     
@@ -39,6 +39,11 @@
                                 </div>
     
                             </div>
+                            <script>
+                                 $(function() {
+        $( "#weddate" ).datepicker();
+        });
+                            </script>
     
                             
                                                 
@@ -52,7 +57,7 @@
                                 <input id="bimg" name="bride_image" class="sm-form-control required" type="file" style="display: none">
                                         <input type="hidden" name="bride_img" class="form-control" value="bim">
 								<div class="bride-image divcenter">
-										<a href="" onclick="return selectimage('bimg')"><img src="images/favatar.png" id="bimg" alt="Groom" class="img-rounded img-responsive"></a>
+										<a href="" onclick="return selectimage('bimg')"><img src="images/favatar.png" id="bimg" alt="Groom" class="img-rounded img-responsive" style="object-fit: cover;"></a>
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
 
@@ -160,7 +165,7 @@
                                 <input type="hidden" name="groom_img" class="form-control" value="gim">
 
 								<div class="bride-image divcenter">
-										<a href="" onclick="return selectimage('gimg')"><img src="images/mavatar.png" id="gimg" alt="Groom" class="img-responsive"></a>
+										<a href="" onclick="return selectimage('gimg')"><img src="images/mavatar.png" id="gimg" alt="Groom" class="img-responsive" style="object-fit: cover;"></a>
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
                                 

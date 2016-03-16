@@ -12,10 +12,12 @@
 	<link rel="stylesheet" href="css/font-icons.css" type="text/css">
 	<link rel="stylesheet" href="css/animate.css" type="text/css">
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-	<link rel="stylesheet" href="css/style1.css" type="text/css">
+	<link rel="stylesheet" href="css/newstyle.css" type="text/css">
     
 	<!-- Travel Demo Specific Stylesheet -->
-	<link rel="stylesheet" href="css/datepicker.css" type="text/css">
+	<link rel="stylesheet" href="css/jquery.ui.core.css" type="text/css">
+	<link rel="stylesheet" href="css/jquery.ui.theme.css" type="text/css">
+	<link rel="stylesheet" href="css/jquery.ui.datepicker.css" type="text/css">
 	<!-- / -->
 
 	<link rel="stylesheet" href="css/responsive.css" type="text/css">
@@ -148,8 +150,7 @@ in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
 pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
 qui officia deserunt mollit anim id est laborum.</p>
 
-                            <a href="#" class="button button-rounded button-large"><span>Login</span></a>
-
+                            
 						</div>
 
 					</div>
@@ -245,6 +246,7 @@ qui officia deserunt mollit anim id est laborum.</p>
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script type="text/javascript" src="js/newjs.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 	
 		
 		</body>

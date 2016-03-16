@@ -154,6 +154,41 @@ class WishlistController extends Controller
     	return view('pages.createwishlist', ['Products'=> $products]);
     }
 
+    public function makewishlist()
+    {
+     if(Auth::check())
+         {
+         $userid=Auth::User()->id;
+        }
+        else
+        {
+            return view('errors.503');
+        }
+        $user_event=array();
+         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         foreach ($UserEvent as $Uevent) 
+         {
+            $user_event=$Uevent['id'];
+         }
+         if($user_event==null)
+         {
+         return view('pages.temp');  
+         }
+
+         else
+         {
+        $products=Product::whereNotNull('parent_id')->get();
+        
+
+      return view('pages.makewishlist', ['Products'=> $products]); 
+    }
+  }
+
+    public function showwishlist()
+    {
+
+    }
+
     public function store(Request $request)
     {
     	if(Auth::check())
