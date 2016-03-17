@@ -39,13 +39,17 @@ Route::group(['middleware' => 'web'], function () {
 	Route::post('/wedding','WeddingController@store');
     Route::get('/wedding/{id}/edit','WeddingController@edit');
     Route::post('/wedding/update','WeddingController@update');
-
+Route::post('/wishlist/add','WishlistController@store_product_into_wishlist');
 	Route::get('/wishlist','WishlistController@wishlist');
     Route::get('/invites','WishlistController@invites');
 	Route::get('/create_wishlist','WishlistController@create');
+    Route::post('/wishlist','WishlistController@store');
+
+    // store product into user wishlist
     Route::get('/makewishlist','WishlistController@makewishlist');
+    
+    
     Route::post('/showwishlist','WishlistController@showwishlist');
-	Route::post('/wishlist','WishlistController@store');
     
     
 });

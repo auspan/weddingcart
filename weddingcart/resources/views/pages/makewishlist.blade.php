@@ -5,15 +5,22 @@
 		============================================= -->
 		<section id="content" style="background-color: rgb(255, 247, 207); margin-bottom: 0px;">
 
+		@if(Session::has('message'))
+		<ul class="alert alert-success">
+		<li type="1" style="margin-left: 20px">
+		{{ Session::get('message') }}
+		</li>
+		</ul>
+		@endif
 			<div class="content-wrap">
 
 				<div class="container clearfix">
                 
 					<div class="heading-block center">
 						<h2>Create your wish list</h2>
-						<span class="divcenter">Please fill-up the details of the Bride and Groom.</span>
+						
 					</div>
-
+						
 						<div id="shop" class="clearfix bottommargin-lg">
 							@foreach($Products as $product)
 							<div class="product clearfix">
@@ -21,7 +28,10 @@
 									<a href="#"><img src="data:image/jpeg;base64,{{ base64_encode( $product['product_image']  ) }}" alt="Checked Short Dress"></a>
 									<div class="sale-flash">14% Off*</div>
 									<div class="product-overlay">
-										<a href="#" class="add-to-cart"><i class="icon-line2-present"></i><span>Add to Wishlist</span></a>
+									{!! Form::open(['action'=>'WishlistController@store_product_into_wishlist', 'class'=>'form-horizontal nobottommargin', 'method'=>'post']) !!}
+										<input type="hidden" class="form-control" name="productid" id="productid" value="{{ $product['id'] }}">
+										<i class="icon-line2-present"></i><span><button type="submit" id="submit_product" name="submit_product" class="add-to-cart btn-btn-sm">Add to Wishlist</button></span>
+										</form>
 										<a href="#" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span>View Details</span></a>
 									</div>
 								</div>
@@ -36,8 +46,10 @@
 										<i class="icon-star-half-full"></i>
 									</div>-->
 								</div>
-							</div>
-							@endforeach
+								</div>
+								@endforeach
+							
+							
 						<!--	<div class="product clearfix">
 								<div class="product-image">
 									<a href="#"><img src="images/fridge1.jpg" alt="Slim Fit Chinos"></a>

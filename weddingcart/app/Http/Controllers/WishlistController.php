@@ -11,6 +11,7 @@ use weddingcart\UserEventDetail;
 use weddingcart\UserEventWishlistItem;
 use weddingcart\product;
 use weddingcart\Http\Requests;
+use weddingcart\Http\Redirect;
 use weddingcart\Http\Controllers\Controller;
 
 class WishlistController extends Controller
@@ -183,6 +184,41 @@ class WishlistController extends Controller
       return view('pages.makewishlist', ['Products'=> $products]); 
     }
   }
+
+    public function store_product_into_wishlist(Request $request)
+    {
+        $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
+
+        foreach ($userrole as $UserRole)
+        {
+            $userroleid=$UserRole['id'];
+            break;
+        }
+        $count=0;
+        $product_id=$request->input('productid');
+        
+        $products=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid)->pluck('product_id');
+
+        foreach ($products as $PID) {
+            if($product_id==$PID)
+            {
+                $count++;
+            }
+        }
+        
+        if($count==0)
+        {
+        UserEventWishlistItem::create(array(
+                'user_event_role_id'=> $userroleid,
+                'product_id'=> $product_id,
+                ));
+        return Redirect('/makewishlist')->with('message','Item Added Succesfully');
+    }
+    else
+    {
+        return Redirect('/makewishlist')->with('message','Item Already Exist');
+    }
+    }
 
     public function showwishlist()
     {
