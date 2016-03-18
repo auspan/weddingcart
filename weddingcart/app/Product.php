@@ -18,7 +18,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['product_type', 'product_name', 'product_description', 'is_active', 'product_image', 'parent_id', 'created_by', 'updated_by'];
+    protected $fillable = ['product_type', 'product_name', 'product_description', 'is_active', 'product_image', 'product_price', 'parent_id', 'created_by', 'updated_by'];
 
     //Relationships
 

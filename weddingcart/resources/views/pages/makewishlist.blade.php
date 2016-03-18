@@ -31,7 +31,8 @@
 									<div class="product-overlay">
 									{!! Form::open(['action'=>'WishlistController@store_product_into_wishlist', 'class'=>'form-horizontal nobottommargin', 'method'=>'post']) !!}
 									
-										<input type="hidden" class="form-control" name="productid" id="productid" value="{{ $product['id'] }}">
+										<input type="hidden" class="form-control" name="productId" id="productId" value="{{ $product['id'] }}">
+										<input type="hidden" class="form-control" name="productPrice" id="productPrice" value="{{ $product['product_price'] }}">
 										<i class="icon-line2-present"></i><span><button type="submit" id="submit_product" name="submit_product" class="add-to-cart btn-btn-sm">Add to Wishlist</button></span>
 										</form>
 										<a href="#" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span>View Details</span></a>
@@ -39,7 +40,7 @@
 								</div>
 								<div class="product-desc">
 									<div class="product-title"><h3><a href="#">{{ $product['product_description'] }}</a></h3></div>
-									<div class="product-price"> <ins>Rs 129,990</ins></div>
+									<div class="product-price"> <ins>Rs {{ $product['product_price'] }}</ins></div>
 									<!--<div class="product-rating">
 										<i class="icon-star3"></i>
 										<i class="icon-star3"></i>

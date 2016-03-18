@@ -50,32 +50,26 @@ class WishlistController extends Controller
 
         
         $user_event_wishlist_items=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid);
-        //$selected_product_id=$request->input('product1');
-        
-         $array_wishlist_items=array();
-        
+          $array_wishlist_items=array();
         foreach ($user_event_wishlist_items as $User_Event_Wishlist_Items)
         {
-         $selected_product=Product::where('id',$User_Event_Wishlist_Items['product_id'])->first();
+            $selected_product=Product::where('id',$User_Event_Wishlist_Items['product_id'])->first();
 
-          $array_wishlist_items[]=$selected_product->product_description;
+            $array_wishlist_items[]=$selected_product->product_description;
          }
 
-       
-       // $selected_product=Product::where('id',$selected_product_id)->first();
-        //$selected_product_description=$selected_product->product_description;
          return view ('pages.wishlist',['Wishlist_Items'=>$array_wishlist_items]);
         }
     }
 
-        //return view('pages.wishlist');
+       
 
        public function invites()
     {
       
         $userevent=UserEvent::all()->where('user_id',50);
         
-        //$user_event_id=array('usereventid',$userevent['id']);
+        
         foreach ($userevent as $usereventid)
         {
             $ueid=$usereventid['id'];
@@ -198,8 +192,8 @@ class WishlistController extends Controller
             break;
         }
         $count=0;
-        $product_id=$request->input('productid');
-        
+        $product_id=$request->input('productId');
+        $product_price=$request->input('productPrice');
         $products=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid)->pluck('product_id');
 
         foreach ($products as $PID) {
@@ -214,6 +208,7 @@ class WishlistController extends Controller
         UserEventWishlistItem::create(array(
                 'user_event_role_id'=> $userroleid,
                 'product_id'=> $product_id,
+                'wish_list_item_price'=>$product_price,
                 ));
         return Redirect('/makewishlist')->with('message','Item Added Succesfully');
     }
