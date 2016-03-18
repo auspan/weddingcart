@@ -19,7 +19,7 @@
                         @if($errors->any())
                             <ul class="alert alert-danger">
                                 @foreach($errors->all() as $error)
-                                    <li> {{ $error }} </li>
+                                    <li type="1"> {{ $error }} </li>
                                 @endforeach
                             </ul>
                         @endif

@@ -4,14 +4,7 @@
 		<!-- Content
 		============================================= -->
 		<section id="content" style="background-color: rgb(255, 247, 207); margin-bottom: 0px;">
-		
-		@if(Session::has('message'))
-		<div class="alert alert-success">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		{{ Session::get('message') }}
-		</div>
-		
-		@endif
+
 		
 			<div class="content-wrap">
 
@@ -26,11 +19,10 @@
 							@foreach($Products as $product)
 							<div class="product clearfix">
 								<div class="product-image">
-									<a href="#"><img src="{{ asset('../uploads/Products/' . $product['product_image']) }} " alt="Checked Short Dress"></a>
+									<a href="#"><img src="data:image/jpeg;base64,{{ base64_encode( $product['product_image']  ) }}" alt="Checked Short Dress"></a>
 									<div class="sale-flash">14% Off*</div>
 									<div class="product-overlay">
 									{!! Form::open(['action'=>'WishlistController@store_product_into_wishlist', 'class'=>'form-horizontal nobottommargin', 'method'=>'post']) !!}
-									
 										<input type="hidden" class="form-control" name="productid" id="productid" value="{{ $product['id'] }}">
 										<i class="icon-line2-present"></i><span><button type="submit" id="submit_product" name="submit_product" class="add-to-cart btn-btn-sm">Add to Wishlist</button></span>
 										</form>
@@ -48,7 +40,7 @@
 										<i class="icon-star-half-full"></i>
 									</div>-->
 								</div>
-							</div>
+								</div>
 								@endforeach
 							
 							

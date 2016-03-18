@@ -16,9 +16,11 @@
 					
             
 				<ul class="skills col-lg-8 divcenter">
-				@foreach($Wishlist_Items as $items)
+							@foreach($Wishlist_Items as $Items)
+							
 							<li data-percent="80">
-								<span>{{ $items }}</span>
+								<span>{{ $Items }}</span>
+
 								<div  class="progress skills-animated divprogress">
 									<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="0" data-refresh-interval="30" data-speed="1100">0</span>%</div></div>
 								</div>

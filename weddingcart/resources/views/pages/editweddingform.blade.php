@@ -44,7 +44,7 @@
                                 <input id="bimg" name="bride_image" class="sm-form-control required" type="file" style="display: none">
                                         <input type="hidden" name="bride_img" class="form-control" value="bim">
 								<div class="bride-image divcenter">
-										<a href="" onclick="return selectimage('bimg')"><img src="{{ asset('../uploads/' . $bride_image) }}" id="bimg" alt="Groom"></a>
+										<a href="" onclick="return selectimage('bimg')"><img src="{{ asset('../uploads/' . $bride_image) }}" id="bimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
 
@@ -151,7 +151,7 @@
                                 <input type="hidden" name="groom_img" class="form-control" value="gim">
 
 								<div class="bride-image divcenter">
-										<a href="" onclick="return selectimage('gimg')"><img src="{{ asset('../uploads/' . $groom_image) }}" id="gimg" alt="Groom"></a>
+										<a href="" onclick="return selectimage('gimg')"><img src="{{ asset('../uploads/' . $groom_image) }}" id="gimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
                                 

@@ -62,7 +62,7 @@
                                 </div>
                             
 							<div class="center">
-                                <a href="#" class="button button-border button-rounded topmargin">Edit</a>
+                                <a href="{{ url('/wedding/'.$UserId.'/edit') }}" class="button button-border button-rounded topmargin">Edit</a>
 
                             </div>
             

@@ -24,7 +24,7 @@ class WishlistController extends Controller
       }
         else
         {
-            return view('errors.503');
+            return Redirect('/login');
         }
 
         $user_event=array();
@@ -47,18 +47,21 @@ class WishlistController extends Controller
             $userroleid=$UserRole['id'];
             break;
         }
+
         
         $user_event_wishlist_items=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid);
         //$selected_product_id=$request->input('product1');
         
-        $array_wishlist_items=array();
+         $array_wishlist_items=array();
+        
         foreach ($user_event_wishlist_items as $User_Event_Wishlist_Items)
         {
          $selected_product=Product::where('id',$User_Event_Wishlist_Items['product_id'])->first();
 
-          $selected_product_description=$selected_product->product_description;
-          $array_wishlist_items[]=$selected_product_description;
-        }
+          $array_wishlist_items[]=$selected_product->product_description;
+         }
+
+       
        // $selected_product=Product::where('id',$selected_product_id)->first();
         //$selected_product_description=$selected_product->product_description;
          return view ('pages.wishlist',['Wishlist_Items'=>$array_wishlist_items]);
@@ -222,7 +225,8 @@ class WishlistController extends Controller
 
     public function showwishlist()
     {
-
+       
+        
     }
 
     public function store(Request $request)
