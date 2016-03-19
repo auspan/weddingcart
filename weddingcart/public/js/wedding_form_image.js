@@ -1,4 +1,3 @@
-<script>
     function selectimage(txt)
     {
          var imageId=txt;
@@ -17,4 +16,3 @@
     }
         return false;
     }
-    </script>

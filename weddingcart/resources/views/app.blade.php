@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="author" content="WeddingCart">
 
-	
+	<base href="/" target="_top">
 	<link href="css/css.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
 	<link rel="stylesheet" href="css/newstyle.css" type="text/css">
     
-	<!-- Travel Demo Specific Stylesheet -->
 	<link rel="stylesheet" href="css/jquery.ui.core.css" type="text/css">
 	<link rel="stylesheet" href="css/jquery.ui.theme.css" type="text/css">
 	<link rel="stylesheet" href="css/jquery.ui.datepicker.css" type="text/css">

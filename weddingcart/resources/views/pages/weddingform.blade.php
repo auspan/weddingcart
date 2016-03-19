@@ -67,7 +67,7 @@
     {
          var imageId=txt;
         
-        document.getElementById(imageId).click() 
+        document.getElementById(imageId).click()
         {
            
         $("#"+imageId).change(function(e){
