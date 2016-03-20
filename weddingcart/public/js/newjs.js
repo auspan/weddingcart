@@ -1,5 +1,6 @@
 
-                jQuery(document).ready(function($){
+                jQuery(document).ready(function($)
+                {
                     var swiperSlider = new Swiper('.swiper-parent',{
                         paginationClickable: false,
                         slidesPerView: 1,
@@ -64,8 +65,10 @@
                                     }, toAnimateDelayTime);
                                 }
                             });
-                        }
-                    });
+                        };
+                    };
+
+                    
 
                     $('#slider-arrow-left').on('click', function(e){
                         e.preventDefault();
@@ -98,6 +101,7 @@
                                 });
 
 
+
                             jQuery(document).ready( function($){
                                 var newDate = new Date(2016, 5, 31);
                                 $('#countdown-ex1').countdown({until: newDate});
@@ -107,22 +111,16 @@
                                     $( '.flexslider .slide' ).resize();
                                 },500);
                             });
-
-
-      $(/*function() {
+                
+                /*$(function() {
                $('.travel-date-group').datepicker({
                  autoclose: true,
                  startDate: "today"
                  });
                 });*/
 
-                $(function() {
-        $( "#weddate" ).datepicker();
-        });
-
-
-
-                        jQuery(document).ready(function($) {
+                     jQuery(document).ready(function($)
+                      {
 
                             var ocTesti = $("#oc-testi");
 
@@ -136,9 +134,49 @@
                                     768:{ items:2 },
                                     992:{ items:3 }
                                 }
-                            });
+                                });
 
-                        });
+                             $("#quick-contact-form").validate({
+                                          submitHandler: function(form) {
+                                              $(form).animate({ opacity: 0.4 });
+                                              $(form).find('.form-process').fadeIn();
+                                              $(form).ajaxSubmit({
+                                                  target: '#quick-contact-form-result',
+                                                  success: function() {
+                                                      $(form).animate({ opacity: 1 });
+                                                      $(form).find('.form-process').fadeOut();
+                                                      $(form).find('.form-control').val('');
+                                                      $('#quick-contact-form-result').attr('data-notify-msg', $('#quick-contact-form-result').html()).html('');
+                                                      SEMICOLON.widget.notifications($('#quick-contact-form-result'));
+                                                  }
+                                              });
+                                          }
+                                      });
+      
+                                      $('#quick-contact-form-nophone').hide();
+                                
+
+                                Rs ("#widget-subscribe-form").validate({
+                                    submitHandler: function(form) {
+                                        Rs (form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
+                                        Rs (form).ajaxSubmit({
+                                            target: '#widget-subscribe-form-result',
+                                            success: function() {
+                                                Rs (form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
+                                                Rs ('#widget-subscribe-form').find('.form-control').val('');
+                                                Rs ('#widget-subscribe-form-result').attr('data-notify-msg', Rs ('#widget-subscribe-form-result').html()).html('');
+                                                SEMICOLON.widget.notifications(Rs ('#widget-subscribe-form-result'));
+                                            }
+                                        });
+                                    }
+                                });
+                            
+
+                     });
+
+                     
+
+
 
                           
 

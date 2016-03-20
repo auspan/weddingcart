@@ -29,7 +29,7 @@
                                                 <div class="input-daterange travel-date-group bottommargin-sm">
                                                     <div class="col-md-4 divcenter" style="position: relative; z-index: 10">
                                                         <label for="">Wedding Date</label>
-                                                        <input class="sm-form-control" name="wedding_date" placeholder="MM/DD/YYYY" type="text" id="weddate">
+                                                        <input class="sm-form-control" id="weddate" name="wedding_date" placeholder="MM/DD/YYYY" type="text">
                                                     </div>
                                                         <input type="hidden" name="wed_date" class="form-control" value="wdt">
                                                     
@@ -39,11 +39,7 @@
                                 </div>
     
                             </div>
-                            <script>
-                                 $(function() {
-        $( "#weddate" ).datepicker();
-        });
-                            </script>
+                            
     
                             
                                                 
@@ -62,27 +58,7 @@
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
 
                               
-                                <script>
-    function selectimage(txt)
-    {
-         var imageId=txt;
         
-        document.getElementById(imageId).click() 
-        {
-           
-        $("#"+imageId).change(function(e){
-            // get file name only
-            //var fileName = e.target.files[0].name;
-            // get complete path of local machine
-            var fileName=URL.createObjectURL(e.target.files[0]); 
-
-            $("img#"+imageId).fadeIn("fast").attr('src',fileName);
-        });
-    }
-        return false;
-    }
-    </script>
-                                
                                 <!-- Contact Form
                                 ============================================= -->
                                

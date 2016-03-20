@@ -298,7 +298,7 @@
 
                             <div class="center">
       		                          <a href="#" class="button button-border button-rounded topmargin">Add</a>
-      		                          <a href="{{ url('/wishlist') }}" class="button button-border button-rounded topmargin">View Wishlist</a>
+      		                          <a href="{{ url('wishlist') }}" class="button button-border button-rounded topmargin">View Wishlist</a>
           			                </div>
 
             

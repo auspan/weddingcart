@@ -4,6 +4,7 @@ namespace weddingcart\Http\Controllers\Auth;
 
 use weddingcart\User;
 use Validator;
+use weddingcart\UserEvent;
 use weddingcart\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -28,13 +29,18 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
+     protected $redirectTo = '/home';
+        
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
+
+    
+
+
+
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);

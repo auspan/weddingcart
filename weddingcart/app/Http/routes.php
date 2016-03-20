@@ -33,25 +33,25 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
-    Route::get('/wedding','WeddingController@wedding');
-    Route::get('/weddingdetails','WeddingController@UserEvent');
-	Route::post('/wedding','WeddingController@store');
-    Route::get('/wedding/{id}/edit','WeddingController@edit');
-    Route::post('/wedding/update','WeddingController@update');
+    Route::get('home', 'HomeController@index');
+    Route::get('wedding','WeddingController@wedding');
+    Route::get('weddingdetails','WeddingController@UserEvent');
+	Route::post('wedding','WeddingController@store');
+    Route::get('wedding/{id}/edit','WeddingController@edit');
+    Route::post('wedding/update','WeddingController@update');
     // store product into user wishlist
     Route::post('/wishlist/add','WishlistController@store_product_into_wishlist');
     // end of stronig product into user wishlist
-	Route::get('/wishlist','WishlistController@wishlist');
-    Route::get('/invites','WishlistController@invites');
-	Route::get('/create_wishlist','WishlistController@create');
-    Route::post('/wishlist','WishlistController@store');
+	Route::get('wishlist','WishlistController@wishlist');
+    Route::get('invites','WishlistController@invites');
+	Route::get('create_wishlist','WishlistController@create');
+    Route::post('wishlist','WishlistController@store');
 
     
-    Route::get('/makewishlist','WishlistController@makewishlist');
+    Route::get('makewishlist','WishlistController@makewishlist');
     
     
-    Route::get('/showwishlist','WishlistController@showwishlist');
+    Route::get('showwishlist','WishlistController@showwishlist');
     
     
 });

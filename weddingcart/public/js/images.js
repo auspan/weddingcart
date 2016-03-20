@@ -1,4 +1,11 @@
-<script>
+
+$(document).ready(function() {
+ 
+  $( "#weddate" ).datepicker();
+ 
+});
+                            
+
     function selectimage(txt)
     {
          var imageId=txt;
@@ -17,4 +24,4 @@
     }
         return false;
     }
-    </script>
+   

@@ -50,15 +50,15 @@ class WishlistController extends Controller
 
         
         $user_event_wishlist_items=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid);
-          $array_wishlist_items=array();
+          $wishlist_items=array();
         foreach ($user_event_wishlist_items as $User_Event_Wishlist_Items)
         {
             $selected_product=Product::where('id',$User_Event_Wishlist_Items['product_id'])->first();
 
-            $array_wishlist_items[]=$selected_product->product_description;
+            $wishlist_items[]=$selected_product->product_description;
          }
 
-         return view ('pages.wishlist',['Wishlist_Items'=>$array_wishlist_items]);
+         return view ('pages.wishlist',['Wishlist_Items'=>$wishlist_items]);
         }
     }
 
@@ -178,7 +178,7 @@ class WishlistController extends Controller
         $products=Product::whereNotNull('parent_id')->get();
         
 
-      return view('pages.makewishlist', ['Products'=> $products]); 
+      return view('pages.wishlist_form', ['Products'=> $products]); 
     }
   }
 

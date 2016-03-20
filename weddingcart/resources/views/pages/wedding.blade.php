@@ -30,25 +30,7 @@
             
                             <p class="lead">Getting <strong>Hitched</strong> on:</p>
             
-                             <div id="countdown-ex1" class="countdown countdown-large divcenter is-countdown divcount">
-                             	<span class="countdown-row countdown-show4">
-                             		<span class="countdown-section">
-                             			<span class="countdown-amount">{{ $days }}</span>
-                             			<span class="countdown-period">Days</span>
-                             		</span>
-                             		<span class="countdown-section">
-                             			<span class="countdown-amount">{{ $hours }}</span>
-                             			<span class="countdown-period">Hours</span>
-                             		</span>
-                             		<span class="countdown-section">
-                             			<span class="countdown-amount">{{ $minutes }}</span>
-                             			<span class="countdown-period">Minutes</span>
-                             		</span>
-                             		<span class="countdown-section">
-                             			<span class="countdown-amount">{{ $seconds }}</span>
-                             			<span class="countdown-period">Seconds</span>
-                             		</span>
-                             	</span>
+                             <div id="countdown-ex1" class="countdown countdown-large divcenter is-countdown divcount"><span class="countdown-row countdown-show4"><span class="countdown-section"><span class="countdown-amount">{{ $days }}</span><span class="countdown-period">Days</span></span><span class="countdown-section"><span class="countdown-amount">{{ $hours }}</span><span class="countdown-period">Hours</span></span><span class="countdown-section"><span class="countdown-amount">{{ $minutes }}</span><span class="countdown-period">Minutes</span></span><span class="countdown-section"><span class="countdown-amount">{{ $seconds }}</span><span class="countdown-period">Seconds</span></span></span>
                              </div>
 
                             <div class="divider divider-short divider-center"><i class="icon-heart-empty"></i></div>
@@ -62,7 +44,7 @@
                                 </div>
                             
 							<div class="center">
-                                <a href="{{ url('/wedding/'.$UserId.'/edit') }}" class="button button-border button-rounded topmargin">Edit</a>
+                                <a href="{{ url('wedding/'.$UserId.'/edit') }}" class="button button-border button-rounded topmargin">Edit</a>
 
                             </div>
             
