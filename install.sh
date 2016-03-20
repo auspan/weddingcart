@@ -20,6 +20,7 @@ sudo apt-get install -y php7.0 php7.0-dev apache2 apache2-utils
 sudo apt-get install -y libapache2-mod-php7.0 php7.0-curl php7.0-gd php7.0-mcrypt 
 sudo apt-get install -y php7.0-readline php7.0-mysql git-core php7.0-mbstring php7.0-xml
 ############PHPMyadmin##############
+echo "Installing Php Myadmin"
 cd /usr/share
 sudo wget -q https://files.phpmyadmin.net/phpMyAdmin/4.5.4.1/phpMyAdmin-4.5.4.1-all-languages.zip -o /var/www/xdeb.log
 sudo unzip phpMyAdmin-4.5.4.1-all-languages.zip >> /var/www/install.log
@@ -29,12 +30,12 @@ sudo chmod -R 0755 /var/www/phpmyadmin
 echo "XDEBUG Setup"
 cd ~
 mkdir downloads
-wget -q  -O ~/downloads/xdebug-2.4.0rc4.tgz http://xdebug.org/files/xdebug-2.4.0rc4.tgz -o /var/www/xdeb.log
+wget -q  -O ~/downloads/xdebug-2.4.0.tgz http://xdebug.org/files/xdebug-2.4.0.tgz -o /var/www/xdeb.log
 cd downloads
-tar -xvzf xdebug-2.4.0rc4.tgz >> /var/www/install.log
+tar -xvzf xdebug-2.4.0.tgz >> /var/www/install.log
 cd xdebug-2.4.0*
 phpize
-./configure
+./configure --enable-xdebug
 make
 sudo cp modules/xdebug.so /usr/lib/php/20151012
 echo "zend_extension = /usr/lib/php/20151012/xdebug.so" | sudo tee -a /etc/php/7.0/cli/php.ini
@@ -54,6 +55,9 @@ xdebug.remote_port=9000
 xdebug.remote_autostart=1
 EOF
 
+sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/apache2/conf.d/20-xdebug.ini
+sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini
+sudo /etc/init.d/php7.0-fpm restart
 sudo a2enmod rewrite
 
 sed -i "s/error_reporting =.*/error_reporting = E_ALL/" /etc/php/7.0/apache2/php.ini
@@ -78,8 +82,9 @@ sudo sed -i 's|#ServerName www.example.com|ServerName phpmyadmin.local|' phpmyad
 sudo sed -i 's|/var/www/html|/var/www|' ubuntu.conf
 sudo sed -i 's|#ServerName www.example.com|ServerName ubuntu.local|' ubuntu.conf
 echo "Enabling Sites"
-sudo a2ensite weddingcart ubuntu phpmyadmin
+sudo a2ensite weddingcart ubuntu phpmyadmin weddingcart
 
+cd ~
 #sudo service apache2 reload
 sudo service apache2 restart
 
@@ -91,45 +96,11 @@ mysql -u root -proot -e "create database weddingcart; GRANT ALL PRIVILEGES ON we
 
 echo "App environment setup, Creating DB objects and Populating Database"
 cd /var/www/weddingcart
-cat << EOF |  sudo tee -a .env
-APP_ENV=local
-APP_DEBUG=true
-APP_KEY=v5KT7Ykk7hM3wDZzQOLZ41PCzEMyxyj0
-
-DB_HOST=localhost
-DB_DATABASE=weddingcart
-DB_USERNAME=wcdb
-DB_PASSWORD=wcdb123
-
-CACHE_DRIVER=file
-SESSION_DRIVER=file
-QUEUE_DRIVER=sync
-
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-
-MAIL_DRIVER=smtp
-MAIL_HOST=mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-EOF
 
 echo "Running composer for weddingcart"
 sudo chmod +x /usr/local/bin/composer
 
-cat << EOF |  sudo tee /home/vagrant/.config/composer/auth.json {
-    "github-oauth": {
-        "github.com": "7130794374e50abdff109f32ee16c125765152ad"
-    }
-}
-EOF
 composer -n install
 php artisan migrate
 php artisan db:seed
-cd public
-mkdir uploads
-cd ..
 
