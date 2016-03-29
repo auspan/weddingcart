@@ -24,92 +24,88 @@ class WeddingController extends Controller
         if(Auth::check())
          {
          $userid=Auth::User()->id;
-        }
+         }
         else
         {
-            return redirect('login');
+          return redirect('login');
         }
 
         $user_event=array();
-         $UserEvent=UserEvent::all()->where('user_id',$userid);
-         foreach ($UserEvent as $Uevent) 
-         {
-            $user_event=$Uevent['id'];
-         }
-         if($user_event==null)
-         {  
-            return view('pages.temp');
-         }
-         else
-         {
-        $userevent=UserEvent::all()->where('user_id',$userid);
-        
-        //$user_event_id=array('usereventid',$userevent['id']);
-        foreach ($userevent as $usereventid)
+        $UserEvent=UserEvent::all()->where('user_id',$userid);
+        foreach ($UserEvent as $Uevent) 
         {
+          $user_event=$Uevent['id'];
+        }
+        if($user_event==null)
+        {  
+          return view('pages.temp');
+        }
+        else
+        {
+          $userevent=UserEvent::all()->where('user_id',$userid);
+        
+          foreach ($userevent as $usereventid)
+          {
             $ueid=$usereventid['id'];
             break;
-        }  
+          }  
         
 
-        $usereid=$ueid;
-        $usereventdetails=UserEventDetail::all()->where('user_event_id',$usereid);
-        foreach ($usereventdetails as $UserEventDetail) 
-        {
-            if($UserEventDetail['attribute_code']=='wdt')
-            {
-                $wed_date=$UserEventDetail['attribute_value'];
-            }
-            if($UserEventDetail['attribute_code']=='gnm')
-            {
-                $groomname=$UserEventDetail['attribute_value'];
-            }
-            if($UserEventDetail['attribute_code']=='bnm')
-            {
-                $bridename=$UserEventDetail['attribute_value'];
-            }
-            if($UserEventDetail['attribute_code']=='gim')
-            {
-                $groomimage=$UserEventDetail['attribute_value'];
-            }
-            if($UserEventDetail['attribute_code']=='bim')
-            {
-                $brideimage=$UserEventDetail['attribute_value'];
-            }
-        }
+          $usereid=$ueid;
+          $usereventdetails=UserEventDetail::all()->where('user_event_id',$usereid);
+          foreach ($usereventdetails as $UserEventDetail) 
+          {
+              if($UserEventDetail['attribute_code']=='wdt')
+              {
+                  $wed_date=$UserEventDetail['attribute_value'];
+              }
+              if($UserEventDetail['attribute_code']=='gnm')
+              {
+                  $groomname=$UserEventDetail['attribute_value'];
+              }
+              if($UserEventDetail['attribute_code']=='bnm')
+              {
+                  $bridename=$UserEventDetail['attribute_value'];
+              }
+              if($UserEventDetail['attribute_code']=='gim')
+              {
+                  $groomimage=$UserEventDetail['attribute_value'];
+              }
+              if($UserEventDetail['attribute_code']=='bim')
+              {
+                  $brideimage=$UserEventDetail['attribute_value'];
+              }
+          }
 
-        $current_datetime = new DateTime();
-        $wedding_datetime = new DateTime($wed_date);
-        $diffrence = $current_datetime->diff($wedding_datetime);
-        $day=$diffrence->d;
-        $hour=$diffrence->h;
-        $minute=$diffrence->i;
-        $second=$diffrence->s;
-       /* $date_diffrence=('days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);*/
+          $current_datetime = new DateTime();
+          $wedding_datetime = new DateTime($wed_date);
+          $diffrence = $current_datetime->diff($wedding_datetime);
+          $day=$diffrence->d;
+          $hour=$diffrence->h;
+          $minute=$diffrence->i;
+          $second=$diffrence->s;
+         
 
-       /* $current_datetime_in_carbon=carbon::now();
-        var_dump($current_datetime_in_carbon);*/
-
-        $data=array();
-        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage, 'days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);
-        
-        
-        return view('pages.wedding',['UserId'=>$userid])->with($data);
+          $data=array();
+          $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage, 'days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);
+          
+          
+          return view('pages.wedding',['UserId'=>$userid])->with($data);
 
         }
     }
 
      public function UserEvent()
-    {   
+     {   
         if(Auth::check())
-         {
+        {
          $userid=Auth::User()->id;
         }
         else
         {
-            return redirect('login');
+          return redirect('login');
         }
-    	 $user_event=array();
+    	   $user_event=array();
          $UserEvent=UserEvent::all()->where('user_id',$userid);
          foreach ($UserEvent as $Uevent) 
          {
@@ -117,14 +113,14 @@ class WeddingController extends Controller
          }
          if($user_event==null)
          {  
-    	 $eventattr=EventAttribute::all();
-    	 return view('pages.weddingform', ['EventAttr'=> $eventattr]);
-            }
-            else
-            {
-                return $this->wedding();
-            }
-        }
+    	     $eventattr=EventAttribute::all();
+    	     return view('pages.weddingform', ['EventAttr'=> $eventattr]);
+         }
+         else
+         {
+           return $this->wedding();
+         }
+      }
 
     public function store(Request $request)
     {
@@ -258,24 +254,24 @@ class WeddingController extends Controller
      {
         $userId=$id;
 
-          if(Auth::check())
+         if(Auth::check())
          {
-         $userid=Auth::User()->id;
-        }
-        else 
-        {
-            return redirect('login');
-        }
-        if($userId==$userid)
-        {
-       $userevent=UserEvent::all()->where('user_id',$userid);
-        
-        //$user_event_id=array('usereventid',$userevent['id']);
-        foreach ($userevent as $usereventid)
-        {
-            $ueid=$usereventid['id'];
-            break;
-        }  
+          $userid=Auth::User()->id;
+         }
+          else 
+          {
+              return redirect('login');
+          }
+          if($userId==$userid)
+          { 
+         $userevent=UserEvent::all()->where('user_id',$userid);
+          
+          //$user_event_id=array('usereventid',$userevent['id']);
+          foreach ($userevent as $usereventid)
+          {
+              $ueid=$usereventid['id'];
+              break;
+          }  
         
 
         $usereid=$ueid;
