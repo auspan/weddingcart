@@ -99,6 +99,7 @@ class WeddingController extends Controller
           return view('pages.wedding',['UserId'=>$userid])->with($data);
 
         }
+      } 
     }
 
      public function UserEvent()
