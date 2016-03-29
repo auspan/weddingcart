@@ -19,19 +19,16 @@ use weddingcart\UserEventRole;
 class WeddingController extends Controller
 {
 
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 	public function wedding()
     {
-        if(Auth::check())
-         {
-         $userid=Auth::User()->id;
-         }
-        else
-        {
-          return redirect('login');
-        }
-
+        
         $user_event=array();
-        $UserEvent=UserEvent::all()->where('user_id',$userid);
+        $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
 
         foreach ($UserEvent as $Uevent)
         {
@@ -43,12 +40,12 @@ class WeddingController extends Controller
          }
          else
          {
-            $userevent=UserEvent::all()->where('user_id',$userid);
+            $userevent=UserEvent::all()->where('user_id',Auth::User()->id);
         
         //$user_event_id=array('usereventid',$userevent['id']);
         foreach ($userevent as $usereventid)
         {
-          $userevent=UserEvent::all()->where('user_id',$userid);
+          $userevent=UserEvent::all()->where('user_id',Auth::User()->id);
         
           foreach ($userevent as $usereventid)
           {
@@ -96,7 +93,7 @@ class WeddingController extends Controller
           $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage, 'days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);
           
           
-          return view('pages.wedding',['UserId'=>$userid])->with($data);
+          return view('pages.wedding',['UserId'=>Auth::User()->id])->with($data);
 
         }
       } 
@@ -104,16 +101,9 @@ class WeddingController extends Controller
 
      public function UserEvent()
      {   
-        if(Auth::check())
-        {
-         $userid=Auth::User()->id;
-        }
-        else
-        {
-          return redirect('login');
-        }
+       
     	   $user_event=array();
-         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
          foreach ($UserEvent as $Uevent) 
          {
             $user_event=$Uevent['id'];
@@ -141,16 +131,9 @@ class WeddingController extends Controller
          {
     	 	$event_id=$eid['event_id'];
     	 }
-    	 if(Auth::check())
-    	 {
-    	 $userid=Auth::User()->id;
-    	}
-    	else
-    	{
-    		return redirect('login');
-    	}
+    	 
         $user_event=array();
-         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
          foreach ($UserEvent as $Uevent) 
          {
             $user_event=$Uevent['id'];
@@ -159,7 +142,7 @@ class WeddingController extends Controller
          {  
     	 $userEvent = UserEvent::create(array(
                 'event_id'=>$event_id,
-                'user_id'=>$userid,
+                'user_id'=>Auth::User()->id,
           ));
     	 $weddingdate = $request->input('wedding_date');
         $groomname = $request->input('groom_name');
@@ -244,7 +227,7 @@ class WeddingController extends Controller
                  $count++;
             }
            UserEventRole::create(array(
-                'user_id'=> $userid,
+                'user_id'=> Auth::User()->id,
                 'role'=> 1,
                 'user_event_id'=> $userEvent['id'],
                 ));
@@ -261,17 +244,10 @@ class WeddingController extends Controller
      {
         $userId=$id;
 
-         if(Auth::check())
-         {
-          $userid=Auth::User()->id;
-         }
-          else 
-          {
-              return redirect('login');
-          }
-          if($userId==$userid)
+         
+          if($userId==Auth::User()->id)
           { 
-         $userevent=UserEvent::all()->where('user_id',$userid);
+         $userevent=UserEvent::all()->where('user_id',Auth::User()->id);
           
           //$user_event_id=array('usereventid',$userevent['id']);
           foreach ($userevent as $usereventid)

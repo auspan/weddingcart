@@ -16,19 +16,17 @@ use weddingcart\Http\Controllers\Controller;
 
 class WishlistController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function wishlist()
     {	
-    	if(Auth::check())
-      {
-         $userid=Auth::User()->id;
-      }
-        else
-        {
-            return Redirect('/login');
-        }
-
+    	
         $user_event=array();
-         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
          foreach ($UserEvent as $Uevent) 
          {
             $user_event=$Uevent['id'];
@@ -40,7 +38,7 @@ class WishlistController extends Controller
 
          else
          {
-          $userrole=UserEventRole::all()->where('user_id',$userid);
+          $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
 
         foreach ($userrole as $UserRole)
         {
@@ -138,14 +136,7 @@ class WishlistController extends Controller
 
     public function create()
     {
-    	 if(Auth::check())
-         {
-         $userid=Auth::User()->id;
-        }
-        else
-        {
-            return view('errors.503');
-        }
+    	 
         $products=Product::whereNotNull('parent_id')->get();
         
 
@@ -154,16 +145,9 @@ class WishlistController extends Controller
 
     public function makewishlist()
     {
-     if(Auth::check())
-         {
-         $userid=Auth::User()->id;
-        }
-        else
-        {
-            return view('errors.503');
-        }
+     
         $user_event=array();
-         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
          foreach ($UserEvent as $Uevent) 
          {
             $user_event=$Uevent['id'];
@@ -226,17 +210,9 @@ class WishlistController extends Controller
 
     public function store(Request $request)
     {
-    	if(Auth::check())
-        {
-         $userid=Auth::User()->id;
-        }
-        else
-        {
-            abort('503');
-        }
-
+    	
         $user_event=array();
-         $UserEvent=UserEvent::all()->where('user_id',$userid);
+         $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
          foreach ($UserEvent as $Uevent) 
          {
             $user_event=$Uevent['id'];
@@ -247,7 +223,7 @@ class WishlistController extends Controller
           }
         else
         {
-        $userrole=UserEventRole::all()->where('user_id',$userid);
+        $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
 
         foreach ($userrole as $UserRole)
         {
