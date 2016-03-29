@@ -36,17 +36,12 @@
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix animate">
-
 		<!-- Header
 		============================================= -->
 		<header class="sticky-header" id="header">
-
 			<div id="header-wrap">
-
 				<div class="container clearfix">
-
 					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
 					<!-- Logo
 					============================================= -->
 					<div id="logo">
@@ -58,7 +53,7 @@
 					============================================= -->
 					<nav id="primary-menu">
 
-						<ul class="sf-js-enabled">
+						<ul class="sf-menu">
 							<li class="current"><a href="{{url("/")}}"><div>Home</div></a></li>
 							<li><a href="#"><div>Services</div></a></li>
 							<li><a href="#"><div>Testimonials</div></a></li>
@@ -92,151 +87,70 @@
 				<div class="container clearfix">
 
 					<div class="accordion accordion-lg divcenter nobottommargin clearfix accordion-lgdiv">
-
-						<div class="acctitle"><i class="acc-closed icon-lock3"></i><i class="acc-open icon-unlock"></i>Login to your Account</div>
+						<div class="acctitle">
+							<i class="acc-closed icon-lock3"></i>
+							<i class="acc-open icon-unlock"></i>Login to your Account
+						</div>
 						<div class="acc_content clearfix acc_content">
-							<!--<form id="login-form" name="login-form" role="from" class="nobottommargin" action="{ url('/login') }}" method="post">
-								<div class="col_full">
-									<label for="login-form-username">Username:</label>
-									<input id="login-form-username" name="login-form-username" class="form-control" type="text">
-								</div>
-
-								<div class="col_full">
-									<label for="login-form-password">Password:</label>
-									<input id="login-form-password" name="login-form-password" value="" class="form-control" type="password">
-								</div>
-
-								<div class="col_full nobottommargin">
-									<button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
-									<a href="{{ url('/password/reset') }}" class="fright">Forgot Password?</a>
-								</div>
-							</form>-->
-
 							<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                        		{!! csrf_field() !!}
+                    			<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+									<div class="col-md-12">
+										<label for="login-form-username">E-Mail Address</label>
+										<input type="email" id="login-form-username" value="" class="form-control" name="email" value="{{ old('email') }}">
+										@if ($errors->has('email'))
+											<span class="help-block">
+												<strong>{{ $errors->first('email') }}</strong>
+											</span>
+										@endif
+									</div>
+                        		</div>
+			                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    		    	<div class="col-md-12">
+										<label for="login-form-password">Password</label>
+										<input type="password" id="login-form-password" value="" class="form-control" name="password">
+										@if ($errors->has('password'))
+											<span class="help-block">
+												<strong>{{ $errors->first('password') }}</strong>
+											</span>
+		                                @endif
+        		                    </div>
+		                        </div>
 
-                        {!! csrf_field() !!}
-                    
-                    <label for="login-form-username">E-Mail Address</label>
-                        <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                         
-                         	<div class="col-md-12">
-                                <input type="email" id="login-form-username" value="" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    <label for="login-form-password">Password</label>
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                           
-                           <div class="col-md-12">
-                                <input type="password" id="login-form-password" value="" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                           <div class="col_full nobottommargin">
-									<button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
-									<a href="{{ url('/password/reset') }}" class="fright">Forgot Password?</a>
+								<div class="form-group">
+									<div class="col-md-12">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="remember"> Remember Me
+											</label>
+										</div>
+									</div>
 								</div>
-                        </div>
+
+								<div class="form-group">
+								   <div class="col_full nobottommargin">
+											<button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+											<a href="{{ url('/password/reset') }}" class="fright">Forgot Password?</a>
+										</div>
+								</div>
                    
                             
-							<div class="line line-sm"></div>
+								<div class="line line-sm"></div>
 
-							<div class="center">
-								<h4 class="divcenterh4">or Login with:</h4>
-								<a href="#" class="button button-rounded si-facebook si-colored">Facebook</a>
-									<span class="hidden-xs">or</span>
-									<a href="#" class="button button-rounded si-google si-colored">Gmail</a>
+								<div class="center">
+									<h4 class="divcenterh4">or Login with:</h4>
+									<a href="{{ url('/social/auth/redirect', ['facebook']) }}" class="button button-rounded si-facebook si-colored">Facebook</a>
+										<span class="hidden-xs">or</span>
+										<a href="{{ url('/social/auth/redirect', ['google']) }}" class="button button-rounded si-google si-colored">Google</a>
 								</div>
+							</form>
+							<div class="acctitle acctitlec">
+								<i class="acc-closed icon-user4"></i>
+								<i class="acc-open icon-ok-sign"></i>Don't have an Account?<a href="{{ url('/register') }}"> Register Now</a>
+							</div>
 						</div>
-					</form>
-						<div class="acctitle acctitlec"><i class="acc-closed icon-user4"></i><i class="acc-open icon-ok-sign"></i>Don't have an Account?<a href="{{ url('/register') }}"> Register Now</a></div>
-						<div class="acc_content clearfix div_con">
-							
-
-							<form class="form-horizontal" class="nobottommargin" role="form" method="POST" action="{{ url('/register') }}">
-                        {!! csrf_field() !!}
-                    <label for="register-form-username">Name:</label>
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                           <div class="col-md-12">
-                                <input type="text" id="register-form-username" class="form-control" name="name" value="{{ old('name') }}">
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    <label for="register-form-EmailAddress">E-Mail Address:</label>
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                          <div class="col-md-12">
-                                <input type="email" id="register-form-EmailAddress" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                     <label for="register-form-password">Password:</label>
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <div class="col-md-12">
-                                <input type="password" id="register-form-password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    <label for="register-form-confirmpassword">Confirm Password:</label>
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                           <div class="col-md-12">
-                                <input type="password" id="register-form-confirmpassword" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                           <div class="col_full nobottommargin">
-                                    <button class="button button-3d button-black nomargin" id="register-form-submit" name="register-form-submit" value="Register">Register Now</button>
-                            </div>
-                        </div>            
-                    </form>
-						</div>
-
 					</div>
-
 				</div>
-
 			</div>
 
 		</section><!-- #content end -->
@@ -274,51 +188,6 @@ qui officia deserunt mollit anim id est laborum.</p>
                             <div class="widget clearfix">
                                 <h4>Instagram Photos</h4>
                                 <div id="instagram-photos" class="instagram-photos masonry-thumbs col-5 instagram-img" data-user="269801886" data-count="15" data-type="tag">
-                                	<a class="hyper1" href="#">
-                                		<img src="images/12555878_188238081533165_640356224_n.jpg">
-                                	</a>
-                                	<a class="hyper2" href="#">
-                                		<img src="images/12501967_978230242271209_857803718_n.jpg">
-                                	</a>
-                                	<a class="hyper3" href="#">
-                                		<img src="images/12568188_1688046084804432_1926321366_n.jpg">
-                                	</a>
-                                	<a class="hyper4" href="#">
-                                		<img src="images/12716988_1659886770892373_432994149_n.jpg">
-                                	</a>
-                                	<a class="hyper5" href="#">
-                                		<img src="images/12545473_588857034595095_1014176981_n.jpg">
-                                	</a>
-                                	<a class="hyper6" href="#">
-                                		<img src="images/12599353_963222677099849_202858577_n.jpg">
-                                	</a>
-                                	<a class="hyper7" href="#">
-                                		<img src="images/12599353_963222677099849_202858577_n.jpg">
-                                	</a>
-                                	<a class="hyper8" href="#">
-                                		<img src="images/12545347_464508217083387_1401162239_n.jpg">
-                                	</a>
-                                	<a class="hyper9" href="#">
-                                		<img src="images/12627997_1653493874901913_1543590537_n.jpg">
-                                	</a>
-                                	<a class="hyper10" href="#">
-                                		<img src="images/12547212_473465702839684_1082559451_n.jpg">
-                                	</a>
-                                	<a class="hyper11" href="#">
-                                		<img src="images/12716993_985474188212198_521071465_n.jpg">
-                                	</a>
-                                	<a class="hyper12" href="#">
-                                		<img src="images/12568204_234976083504657_569276587_n.jpg">
-                                	</a>
-                                	<a hyper13 href="#">
-                                		<img src="images/12716841_528248660687131_1736073586_n.jpg">
-                                	</a>
-                                	<a class="hyper14" href="#">
-                                		<img src="images/12446155_767393880071025_1829055534_n.jpg">
-                                	</a>
-                                	<a class="hyper15" href="#">
-                                		<img src="images/12599353_963222677099849_202858577_n.jpg">
-                                	</a>
                                 </div>
                             </div>
     
@@ -405,7 +274,6 @@ qui officia deserunt mollit anim id est laborum.</p>
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
-	<script type="text/javascript" src="js/newjs.js"></script>
 
 
 </body></html>

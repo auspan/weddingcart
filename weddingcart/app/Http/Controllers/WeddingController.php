@@ -32,15 +32,21 @@ class WeddingController extends Controller
 
         $user_event=array();
         $UserEvent=UserEvent::all()->where('user_id',$userid);
-        foreach ($UserEvent as $Uevent) 
+
+        foreach ($UserEvent as $Uevent)
         {
-          $user_event=$Uevent['id'];
+            $user_event=$Uevent['id'];
         }
-        if($user_event==null)
-        {  
-          return view('pages.temp');
-        }
-        else
+         if($user_event==null)
+         {  
+            return view('pages.temp');
+         }
+         else
+         {
+            $userevent=UserEvent::all()->where('user_id',$userid);
+        
+        //$user_event_id=array('usereventid',$userevent['id']);
+        foreach ($userevent as $usereventid)
         {
           $userevent=UserEvent::all()->where('user_id',$userid);
         

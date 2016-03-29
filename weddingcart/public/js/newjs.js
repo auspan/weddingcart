@@ -111,13 +111,7 @@
                                     $( '.flexslider .slide' ).resize();
                                 },500);
                             });
-                
-                /*$(function() {
-               $('.travel-date-group').datepicker({
-                 autoclose: true,
-                 startDate: "today"
-                 });
-                });*/
+
 
                      jQuery(document).ready(function($)
                       {
@@ -173,17 +167,3 @@
                             
 
                      });
-
-                     
-
-
-
-                          
-
-                       
-                  
-                            
-                    
-                                     
-                           
-

@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
  
   $( "#weddate" ).datepicker();
@@ -24,4 +23,4 @@ $(document).ready(function() {
     }
         return false;
     }
-   
+

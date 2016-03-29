@@ -54,4 +54,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('showwishlist','WishlistController@showwishlist');
     
     
+
+    Route::get('social/auth/redirect/{provider}', 'Auth\AuthController@redirectToProvider');
+    Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
+
 });
