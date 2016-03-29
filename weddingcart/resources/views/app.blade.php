@@ -71,7 +71,7 @@
 					============================================= -->
 					<nav id="primary-menu">
 
-						<ul class="sf-js-enabled">
+						<ul class="sf-menu">
 							<li><a href="#"><div>Home</div></a></li>
 							<li><a href="#"><div>Services</div></a></li>
 							<li><a href="#"><div>Testimonials</div></a></li>
@@ -244,10 +244,10 @@ qui officia deserunt mollit anim id est laborum.</p>
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 	<script type="text/javascript" src="js/newjs.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
-	
+
 		
 		</body>
 		</html>

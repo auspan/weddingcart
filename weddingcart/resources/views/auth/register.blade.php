@@ -57,7 +57,7 @@
                     ============================================= -->
                     <nav id="primary-menu">
 
-                        <ul class="sf-js-enabled">
+                        <ul class="sf-menu">
                             <li class="current"><a href="{{ url('/') }}"><div>Home</div></a></li>
                             <li><a href="#"><div>Services</div></a></li>
                             <li><a href="#"><div>Testimonials</div></a></li>

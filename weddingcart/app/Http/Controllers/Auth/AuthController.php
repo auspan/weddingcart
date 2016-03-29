@@ -2,6 +2,7 @@
 
 namespace weddingcart\Http\Controllers\Auth;
 
+use Socialite;
 use weddingcart\User;
 use Validator;
 use weddingcart\Http\Controllers\Controller;
@@ -69,4 +70,60 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Redirect the user to the social provider authentication page.
+     *
+     * @param $provider
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return \Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from social provider.
+     *
+     * @param $provider
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+
+        $user = Socialite::driver($provider)->user();
+        dd($user);
+//        try {
+//            $user = Socialite::driver($provider)->user();
+//        } catch (Exception $e) {
+//            return Redirect::to('/auth/login');
+//        }
+//
+//        $authUser = $this->findOrCreateUser($user, $provider);
+//
+//        auth()->login($authUser, true);
+//
+//        return redirect()->to('/');
+    }
+
+    /**
+     * Return user if exists; create and return if doesn't
+     *
+     * @param $socialLiteUser
+     * @param $key
+     * @return User
+     */
+    private function findOrCreateUser($socialLiteUser, $key)
+    {
+
+        $user = User::updateOrCreate([
+            'email' => $socialLiteUser->email,
+        ], [
+            $key . '_id' => $socialLiteUser->id,
+            'name' => $socialLiteUser->name
+        ]);
+
+        return $user;
+    }
+
 }

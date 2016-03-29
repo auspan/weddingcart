@@ -148,8 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-       
-
+        Artdarek\OAuth\OAuthServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -157,6 +156,8 @@ return [
         weddingcart\Providers\AuthServiceProvider::class,
         weddingcart\Providers\EventServiceProvider::class,
         weddingcart\Providers\RouteServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -172,7 +173,6 @@ return [
     */
 
     'aliases' => [
-
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,
@@ -206,7 +206,8 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Carbon'    => 'Carbon\Carbon',
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'OAuth'     => Artdarek\OAuth\Facade\OAuth::class,
     ],
 
 ];
