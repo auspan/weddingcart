@@ -38,25 +38,27 @@ phpize
 ./configure --enable-xdebug
 make
 sudo cp modules/xdebug.so /usr/lib/php/20151012
-echo "zend_extension = /usr/lib/php/20151012/xdebug.so" | sudo tee -a /etc/php/7.0/cli/php.ini
+echo ";zend_extension = /usr/lib/php/20151012/xdebug.so" | sudo tee -a /etc/php/7.0/cli/php.ini
 #################
 
 #php7.0-xdebug
 cat << EOF |  sudo tee -a /etc/php/7.0/mods-available/xdebug.ini
-xdebug.scream=1
+zend_extension = /usr/lib/php/20151012/xdebug.so
+
+xdebug.scream=0
+xdebug.remote_enable=1
+;xdebug.remote_connect_back=1
+xdebug.remote_port=9000
 xdebug.cli_color=1
 xdebug.show_local_vars=1
-xdebug.default_enable=1
- 
-xdebug.remote_enable=1
-xdebug.remote_handler=dbgp
-xdebug.remote_host=localhost
-xdebug.remote_port=9000
-xdebug.remote_autostart=1
+xdebug.idekey=PHPSTORM
+xdebug.extended_info=1
+xdebug.remote_host=10.0.2.2
 EOF
 
 sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/apache2/conf.d/20-xdebug.ini
 sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini
+sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
 sudo /etc/init.d/php7.0-fpm restart
 sudo a2enmod rewrite
 
