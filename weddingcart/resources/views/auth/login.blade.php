@@ -129,7 +129,9 @@
                         </div>
                         <div class="form-group">
                            <div class="col_full nobottommargin">
+                           		<center>
                                     <button class="button button-3d button-black nomargin" id="register-form-submit" name="register-form-submit" value="Register">Register Now</button>
+                                </center>
                             </div>
                         </div>            
                     </form>

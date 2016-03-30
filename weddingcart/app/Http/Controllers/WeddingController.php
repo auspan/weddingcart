@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use DateTime;
+use weddingcart\Http\Requests\WeddingFormRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 use weddingcart\Http\Requests;
@@ -119,14 +120,9 @@ class WeddingController extends Controller
          }
       }
 
-    public function store(Request $request)
+    public function store(WeddingFormRequest $request)
     {
-      $this->validate($request, ['wedding_date'=>'required',
-            'bride_image'   =>'required',
-            'groom_image'   =>'required',
-            'bride_name'  =>'required',
-            'groom_name'  =>'required',]);
-    	$eventid = EventAttribute::all();
+      $eventid = EventAttribute::all();
     	 foreach ($eventid as $eid) 
          {
     	 	$event_id=$eid['event_id'];
@@ -159,21 +155,9 @@ class WeddingController extends Controller
     //$elapsed = $interval->format('%a days %h hours %i minutes %S seconds');
 
         $destinationPath = '../public/uploads/';
-        $groom_image = Str::lower(
-        pathinfo($groomimage->getClientOriginalName(), PATHINFO_FILENAME)
-        .'-'
-        .uniqid()
-        .'.'
-        .$groomimage->getClientOriginalExtension()
-        );
+        $groom_image = ImageName($groomimage);  // helper function call
 
-        $bride_image = Str::lower(
-        pathinfo($brideimage->getClientOriginalName(), PATHINFO_FILENAME)
-        .'-'
-        .uniqid()
-        .'.'
-        .$brideimage->getClientOriginalExtension()
-        );
+        $bride_image = ImageName($brideimage);  // helper function call
 
         $groomimage->move($destinationPath, $groom_image);
         $brideimage->move($destinationPath, $bride_image);
@@ -290,7 +274,7 @@ class WeddingController extends Controller
         }
     }
 
-     public function update()
+     public function update($id, WeddingFormRequest $request)
      {
 
      }

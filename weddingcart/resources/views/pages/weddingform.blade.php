@@ -16,13 +16,7 @@
     
                                <div class="clearfix">
 
-                        @if($errors->any())
-                            <ul class="alert alert-danger">
-                                @foreach($errors->all() as $error)
-                                    <li type="1"> {{ $error }} </li>
-                                @endforeach
-                            </ul>
-                        @endif
+                                @include('errors.weddValidation')
                                		
 								{!! Form::open(['action'=>'WeddingController@store', 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
                                		<div class="row">
@@ -223,7 +217,8 @@
 
 					{!! Form::button('Save', ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
 					<a href="#" class="button button-rounded button-xlarge">Back</a>
-					</form>
+					
+                    {!! Form::close() !!}
             </div>
 
 			</div>

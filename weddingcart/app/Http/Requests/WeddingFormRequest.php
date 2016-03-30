@@ -4,7 +4,7 @@ namespace weddingcart\Http\Requests;
 
 use weddingcart\Http\Requests\Request;
 
-class WeddingFromRequest extends Request
+class WeddingFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class WeddingFromRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,8 +25,8 @@ class WeddingFromRequest extends Request
     {
         return [
             'wedding_date'=>'required',
-            'bride_img'   =>'required',
-            'groom_img'   =>'required',
+            'bride_image'   =>'required',
+            'groom_image'   =>'required',
             'bride_name'  =>'required',
             'groom_name'  =>'required',  
         ];

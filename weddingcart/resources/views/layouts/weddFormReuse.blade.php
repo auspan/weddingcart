@@ -1,29 +1,8 @@
-    @extends('app')
-
-    @section('content')
-
-		<section id="content" class="secbkgrnd">
-
-			<div class="content-wrap">
-
-				<div class="container clearfix">
-                
-						<div class="heading-block center">
-							<h2>Create your event</h2>
-							<span class="divcenter">Please fill-up the details of the Bride and Groom.</span>
-                            
-                            <div class="tab-container">
-    
-                               <div class="clearfix">
-
-                               @include('errors.weddValidation')
-
-                               {!! Form::open(['action'=>'WeddingController@update', 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
-                               		<div class="row">
+<div class="row">
                                                 <div class="input-daterange travel-date-group bottommargin-sm">
                                                     <div class="col-md-4 divcenter" style="position: relative; z-index: 10">
                                                         <label for="">Wedding Date</label>
-                                                        <input class="sm-form-control" name="wedding_date" placeholder="MM/DD/YYYY" type="text"  id="weddate" value="{{ $wedding_date }}">
+                                                        <input class="sm-form-control" id="weddate" name="wedding_date" placeholder="MM/DD/YYYY" type="text">
                                                     </div>
                                                         <input type="hidden" name="wed_date" class="form-control" value="wdt">
                                                     
@@ -33,6 +12,7 @@
                                 </div>
     
                             </div>
+                            
     
                             
                                                 
@@ -46,13 +26,13 @@
                                 <input id="bimg" name="bride_image" class="sm-form-control required" type="file" style="display: none">
                                         <input type="hidden" name="bride_img" class="form-control" value="bim">
 								<div class="bride-image divcenter">
-										<a href="" onclick="return selectimage('bimg')"><img src="{{ asset('../uploads/' . $bride_image) }}" id="bimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
+										<a href="" onclick="return selectimage('bimg')"><img src="images/favatar.png" id="bimg" alt="Groom" class="img-rounded img-responsive" style="object-fit: cover;"></a>
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
 
-
-                                
-                                <!-- Contact Form
+                              
+        
+                               <!-- Contact Form
                                 ============================================= -->
                                
                                     <div class="col_full">
@@ -65,7 +45,7 @@
             
                                     <div class="col_full">
                                         <label for="template-contactform-name">Name <small>*</small></label>
-                                        <input id="template-contactform-name" name="bride_name" class="sm-form-control required" type="text" value="{{ $bride_name }}">
+                                        <input id="template-contactform-name" name="bride_name" class="sm-form-control required" type="text">
                                         <input type="hidden" name="bride" class="form-control" value="bnm">
                                     </div>
             
@@ -134,7 +114,7 @@
                                 <input type="hidden" name="groom_img" class="form-control" value="gim">
 
 								<div class="bride-image divcenter">
-										<a href="" onclick="return selectimage('gimg')"><img src="{{ asset('../uploads/' . $groom_image) }}" id="gimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
+										<a href="" onclick="return selectimage('gimg')"><img src="images/mavatar.png" id="gimg" alt="Groom" class="img-responsive" style="object-fit: cover;"></a>
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
                                 
@@ -151,7 +131,7 @@
             
                                     <div class="col_full">
                                         <label for="template-contactform-name">Name <small>*</small></label>
-                                        <input id="template-contactform-name" name="groom_name" class="sm-form-control required" type="text" value="{{ $groom_name }}">
+                                        <input id="template-contactform-name" name="groom_name" class="sm-form-control required" type="text">
                                         <input type="hidden" name="groom" class="form-control" value="gnm">
                                     </div>
             
@@ -214,14 +194,5 @@
 
 				<div class="center bottommargin-lg">
 
-					{!! Form::button('Update', ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
+					{!! Form::button($submitButtonValue, ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
 					<a href="#" class="button button-rounded button-xlarge">Back</a>
-					{!! Form::close() !!}
-
-				</div>
-
-			</div>
-
-		</section><!-- #content end -->
-
-		@stop
