@@ -13,8 +13,8 @@ class AddSocialColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('facebook_id');
-            $table->string('google_id');
+            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
         });
     }
 

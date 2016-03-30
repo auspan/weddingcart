@@ -2,13 +2,12 @@
 
 namespace weddingcart\Http\Controllers\Auth;
 
-use Socialite;
-use weddingcart\User;
-use Validator;
-use weddingcart\UserEvent;
-use weddingcart\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Socialite;
+use Validator;
+use weddingcart\Http\Controllers\Controller;
+use weddingcart\User;
 
 class AuthController extends Controller
 {
@@ -97,19 +96,17 @@ class AuthController extends Controller
     public function handleProviderCallback($provider)
     {
 
-        $user = Socialite::driver($provider)->user();
-        dd($user);
-//        try {
-//            $user = Socialite::driver($provider)->user();
-//        } catch (Exception $e) {
-//            return Redirect::to('/auth/login');
-//        }
-//
-//        $authUser = $this->findOrCreateUser($user, $provider);
-//
-//        auth()->login($authUser, true);
-//
-//        return redirect()->to('/');
+        try {
+            $user = Socialite::driver($provider)->user();
+        } catch (Exception $e) {
+            return Redirect::to('/auth/login');
+        }
+
+        $authUser = $this->findOrCreateUser($user, $provider);
+
+        auth()->login($authUser, true);
+
+        return redirect()->to('/home');
     }
 
     /**
@@ -122,10 +119,21 @@ class AuthController extends Controller
     private function findOrCreateUser($socialLiteUser, $key)
     {
 
+        $googleId = null;
+        $facebookId = null;
+
+        if($key=='google'){
+            $googleId = $socialLiteUser->id;
+        } else {
+            $facebookId = $socialLiteUser->id;
+        }
+        $socialColumn = $key . '_id';
+//        dd("Social Column: ".$socialColumn);
         $user = User::updateOrCreate([
             'email' => $socialLiteUser->email,
         ], [
-            $key . '_id' => $socialLiteUser->id,
+            'google_id' => $googleId,
+            'facebook_id' => $facebookId,
             'name' => $socialLiteUser->name
         ]);
 
