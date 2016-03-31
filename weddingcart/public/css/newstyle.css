@@ -158,7 +158,7 @@
      left: 276px; 
      top: 138px;"
 }
-
+/*end style*/
 /*home page & reg*/
 
 .swiper-pagination 
@@ -244,6 +244,7 @@
 {
 	 margin-top: 50px;
 }
+/*end style*/
 /* createwishlist $ wedding */
 
 .secstyle
@@ -268,6 +269,7 @@
 {
 	 max-width:700px;
 }
+/*end style*/
 /*weddingform*/
 .secbkgrnd
 {
@@ -293,9 +295,854 @@
 	 width: 366.667px; 
 	 margin-right: 20px;"
 }
-
+/*end style*/
 /*wishlist_form*/
 .divsty
 {
 	width: 0%;
 }
+/*end style*/
+/*invites landing page style*/
+    
+  .gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div
+  {
+    font-size:10px;
+  }
+		
+    .divtopstyl
+    {
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    left: 0;
+     background-color: #333;
+    }
+
+@media print 
+{  
+  .gm-style .gmnoprint, .gmnoprint 
+  { 
+     display:none  
+     }
+     }
+     @media screen
+      {
+        .gm-style .gmnoscreen, .gmnoscreen
+         {  
+           display:none 
+            }
+            }
+      .gm-style
+      {
+        font-family:Roboto,Arial,sans-serif;
+        font-size:11px;
+        font-weight:400;
+        text-decoration:none
+        }
+        .gm-style img
+        {
+          max-width:none
+          }
+
+          .sectionstyl
+          {
+            height: 657px;
+           transform: translate(0px, 0px);
+          }
+          .divflexstyl
+          {
+            height: 100% !important;
+          }
+          .divslidr
+          {
+           height: inherit;
+          }
+      .divslidflex
+      {
+        background: transparent url(&quot;images/slider/swiper/1.jpg&quot;) repeat scroll center center / cover ;
+         height: 100% ! important; 
+         width: 100%; 
+         float: left; 
+         margin-right: -100%; 
+         position: relative; 
+         opacity: 0.958384; 
+         display: block; 
+         z-index: 2;
+      }
+      .divslidflex1
+      {
+        background: transparent url(&quot;images/slider/swiper/2.jpg&quot;) repeat scroll center center / cover ; 
+        height: 100% ! important;
+         width: 100%; 
+         float: left;
+          margin-right: -100%; 
+          position: relative; 
+          opacity: 0; 
+          display: block; 
+          z-index: 1;
+      }
+      .divslidflex2
+      {
+         background: transparent url(&quot;images/slider/swiper/3.jpg&quot;) repeat scroll center center / cover ;
+         height: 100% ! important; 
+         width: 100%; 
+         float: left; 
+         margin-right: -100%; 
+         position: relative; 
+         opacity: 0.041616; 
+         display: block; 
+         z-index: 1;
+      }
+      .divconverticl
+      {
+        z-index: 2;  
+        position: absolute; 
+        top: 50%; 
+        width: 100%; 
+        padding-top: 0px; 
+        padding-bottom: 0px; 
+        margin-top: -272px; 
+        opacity: 1.11111;
+      }
+      .countdown
+      {
+        color:#FFFFFF;
+      }
+      .progper1
+      {
+        width: 80%;
+      }
+      .progper2
+      {
+        width: 60%;
+      }
+      .progper3
+      {
+        width: 90%;
+      }
+      .progper4
+      {
+        width: 70%;
+      }
+      .progper5
+      {
+        width: 40%;
+      }
+      .progper6
+      {
+        width: 56%;
+      }
+      .progper7
+      {
+        width: 36%;
+      }
+      .progper8
+      {
+        width: 23%;
+      }
+      .divhyper1
+   {
+      height: 500px; 
+      position: relative; 
+      background-color: rgb(229, 227, 223); 
+      overflow: hidden;
+   }
+   .divhyper2
+   {
+      position: absolute; 
+      left: 0px;
+       top: 0px;
+       overflow: hidden; 
+      width: 100%;
+       height: 100%; 
+      z-index: 0;
+   }
+   .divhyper3
+   {
+      position: absolute; 
+      left: 0px; 
+      top: 0px; 
+      overflow: hidden; 
+      width: 100%; 
+      height: 100%; 
+      z-index: 0; 
+      cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;
+   }
+   .divhyper4
+   {
+      position: absolute; 
+      left: 0px;
+      top: 0px; 
+      z-index: 1;
+      width: 100%;
+   }
+   .divhyper5
+   {
+   position: absolute; 
+   left: 0px; 
+   top: 0px; 
+   z-index: 100; 
+   width: 100%;
+   }
+   .divhyper6
+   {
+   position: absolute; 
+   left: 0px; 
+   top: 0px; 
+   z-index: 0;
+   }
+   .divhyper7
+   {
+      position: absolute; 
+      left: 0px; 
+      top: 0px; 
+      z-index: 1; 
+      visibility: inherit;
+   }
+
+   .divhyper8
+   {
+      width: 256px;
+       height: 256px; 
+      position: absolute; 
+      left: 555px; 
+      top: -4px;
+   }
+   .divhyper9
+   {
+      width: 256px;
+       height: 256px;
+       position: absolute; 
+       left: 555px;
+       top: 252px;
+   }
+
+   .divhyper10
+   {
+      width: 256px; 
+      height: 256px;
+       position: absolute; 
+       left: 299px; 
+       top: -4px;
+   }
+
+   .divhyper11
+   {
+      width: 256px;
+       height: 256px;
+        position: absolute; 
+        left: 299px; 
+        top: 252px;
+   }
+
+   .divhyper12
+   {
+      width: 256px; 
+      height: 256px; 
+      position: absolute; 
+      left: 811px;
+       top: -4px;
+   }
+
+   .divhyper13
+   {
+      width: 256px;
+       height: 256px; 
+       position: absolute; 
+       left: 811px; 
+       top: 252px;
+   }
+.divhyper14
+   {
+      width: 256px;
+       height: 256px;
+     position: absolute; 
+     left: 43px; 
+     top: -4px;
+   }
+
+   .divhyper15
+   {
+      width: 256px;
+       height: 256px;
+        position: absolute; 
+        left: 43px; 
+        top: 252px;
+   }
+
+   .divhyper16
+   {
+      width: 256px;
+       height: 256px;
+        position: absolute; 
+        left: 1067px; 
+        top: -4px;
+   }
+
+   .divhyper17
+   {
+      width: 256px; 
+      height: 256px;
+       position: absolute; 
+       left: 1067px; 
+       top: 252px;
+   }
+
+   .divhyper18
+   {
+      width: 256px;
+       height: 256px; 
+       position: absolute; 
+       left: -213px; 
+       top: -4px;
+   }
+
+   .divhyper19
+   {
+      width: 256px; 
+      height: 256px;
+      position: absolute; 
+      left: -213px; 
+      top: 252px;
+   }
+
+   .divhyper20
+   {
+      width: 256px;
+       height: 256px;
+        position: absolute; 
+        left: 1323px; 
+        top: -4px;
+   }
+ .divhyper21
+   {
+      width: 256px;
+       height: 256px;
+        position: absolute; 
+        left: 1323px; 
+        top: 252px;
+   }
+
+   .divhyper22
+   {
+      position: absolute; 
+      left: 0px;
+       top: 0px; 
+       z-index: 101; 
+       width: 100%;
+   }
+
+   .divhyper23
+   {
+      position: absolute;
+       left: 0px; 
+       top: 0px; 
+       z-index: 102; 
+       width: 100%;
+   }
+
+   .divhyper24
+   {
+      position: absolute; 
+      left: 0px; 
+      top: 0px; 
+      z-index: 103; 
+      width: 100%;
+   }
+
+   .divhyper25
+   {
+      position: absolute;
+       left: 0px; 
+       top: 0px; 
+       z-index: -1;
+   }
+
+   .divhyper26
+   {
+      position: absolute; 
+      left: 0px; 
+      top: 0px; 
+      z-index: 1; 
+      visibility: inherit;
+   }
+
+   .divhyper27
+   {
+      width: 256px;
+       height: 256px; 
+       overflow: hidden;
+        position: absolute;
+        left: 555px;
+        top: -4px;"
+   }
+   .canvasstyl
+   {
+      -moz-user-select: none;
+       position: absolute; 
+       left: 0px; 
+       top: 0px; 
+       height: 256px; 
+       width: 256px;
+   }
+
+   .divhyper28
+   {
+      width: 256px;
+       height: 256px; 
+    overflow: hidden;
+     position: absolute;
+      left: 555px; 
+      top: 252px;
+   }
+
+   .divhyper29
+   {
+      width: 256px; 
+      height: 256px; 
+      overflow: hidden; 
+      position: absolute; 
+      left: 299px; 
+      top: -4px;"
+   }
+   .divhyper30
+   {
+      width: 256px; 
+      height: 256px; 
+      overflow: hidden; 
+      position: absolute; 
+      left: 299px; 
+      top: 252px;"
+   }
+
+   .divhyper31
+   {
+      width: 256px; 
+      height: 256px; 
+      overflow: hidden; 
+      position: absolute; 
+      left: 811px; 
+      top: -4px;
+   }
+   .divhyper32
+   {
+      width: 256px; 
+      height: 256px;
+       overflow: hidden; 
+       position: absolute; 
+       left: 811px; 
+       top: 252px;
+   }
+
+   .divhyper33
+   {
+      width: 256px;
+       height: 256px;
+        overflow: hidden; 
+        position: absolute; 
+        left: 43px; 
+        top: -4px;
+   }
+.divhyper34
+   {
+      width: 256px;
+       height: 256px;
+        overflow: hidden; 
+        position: absolute; 
+        left: 43px; 
+        top: 252px;
+   }
+
+   .divhyper35
+   {
+   width: 256px;
+    height: 256px; 
+    overflow: hidden; 
+    position: absolute; 
+    left: 1067px; 
+    top: -4px;"
+   }
+
+   .divhyper36
+   {
+      width: 256px; 
+      height: 256px; 
+      overflow: hidden; 
+      position: absolute; 
+      left: 1067px; 
+      top: 252px;
+   }
+
+   .divhyper37
+   {
+      width: 256px; 
+      height: 256px; 
+      overflow: hidden; 
+      position: absolute; 
+      left: -213px; 
+      top: -4px;
+   }
+
+   .divhyper38
+   {
+      width: 256px; 
+      height: 256px;
+       overflow: hidden; 
+       position: absolute; 
+       left: -213px; 
+       top: 252px;
+   }
+
+   .divhyper39
+   {
+      width: 256px; 
+      height: 256px;
+       overflow: hidden; 
+       position: absolute; 
+       left: 1323px; 
+       top: -4px;
+   }
+
+   .divhyper40
+   {
+      width: 256px; 
+      height: 256px; 
+      overflow: hidden; 
+      position: absolute; 
+      left: 1323px; 
+      top: 252px;
+   }
+.divhyper41
+{
+position: absolute; 
+left: 0px; 
+top: 0px; 
+z-index: 0;
+}
+.divhyper42
+{
+   position: absolute; 
+   left: 0px;
+    top: 0px;
+    z-index: 1; 
+   visibility: inherit;
+}
+.divhyper43
+{
+   position: absolute;
+    left: 811px;
+    top: -4px; 
+   transition: opacity 200ms ease-out 0s;
+}
+.divhyperimg
+   {
+   position: absolute; 
+   left: 0px; 
+   top: 0px; 
+   width: 256px; 
+   height: 256px; 
+   -moz-user-select: none; 
+   border: 0px none; 
+   padding: 0px; 
+   margin: 0px; 
+   max-width: none;
+   }
+   .divhyper44
+   {
+      position: absolute;
+       left: 299px; 
+       top: 252px; 
+       transition: opacity 200ms ease-out 0s;"
+   }
+   .divhyper45
+   {
+       position: absolute; 
+       left: 1067px; 
+       top: -4px; 
+       transition: opacity 200ms ease-out 0s;
+   }
+.divhyper46
+{
+   position: absolute;
+    left: 1323px; 
+    top: -4px; 
+    transition: opacity 200ms ease-out 0s;
+}
+.divhyper47
+{
+   position: absolute; 
+   left: 43px; 
+   top: 252px; 
+   transition: opacity 200ms ease-out 0s;
+}
+.divhyper48
+{
+   position: absolute; 
+   left: 43px; 
+   top: 252px; 
+   transition: opacity 200ms ease-out 0s;
+}
+.divhyper49
+{
+   position: absolute; 
+   left: 299px; 
+   top: -4px; 
+   transition: opacity 200ms ease-out 0s;
+}
+.divhyper50
+{
+   position: absolute; 
+   left: 299px; 
+   top: -4px; 
+   transition: opacity 200ms ease-out 0s;
+}
+.divhyper51
+{
+   position: absolute; 
+   left: 299px; 
+   top: -4px; 
+   transition: opacity 200ms ease-out 0s;
+}
+.divhyper52
+{
+   position: absolute; 
+   left: 1323px; 
+   top: 252px; 
+   transition: opacity 200ms ease-out 0s;
+}
+.divhyper53
+{
+   position: absolute;
+    left: -213px; 
+    top: 252px; 
+    transition: opacity 200ms ease-out 0s;
+}
+.divhyper54
+{
+   position: absolute; 
+   left: -213px;
+    top: 252px; 
+    transition: opacity 200ms ease-out 0s;
+}
+.divhyper55
+{
+   position: absolute; 
+   left: 811px; 
+   top: 252px; 
+   transition: opacity 200ms ease-out 0s;
+}
+.divhyper56
+{
+   position: absolute;
+    left: 555px; 
+    top: -4px; transition: 
+    opacity 200ms ease-out 0s;
+}
+.divhyper57
+{
+position: absolute; 
+left: 555px; 
+top: -4px; 
+transition: opacity 200ms ease-out 0s;
+}
+.divhyper58
+{
+   position: absolute; 
+   left: 0px; 
+   top: 0px; 
+   z-index: 3; 
+   width: 100%;
+}
+.divhyper59
+{
+   position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;
+}
+.divhyper60
+{
+position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;
+}
+.divhyper61
+{
+ position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;
+}
+.divhyper62
+{
+position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;
+}
+.divhyper63
+{
+background-color: white; 
+padding: 15px 21px; 
+border: 1px solid rgb(171, 171, 171); 
+font-family: Roboto,Arial,sans-serif; 
+color: rgb(34, 34, 34); 
+box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); 
+z-index: 10000002; display: none; 
+width: 256px; height: 148px; 
+position: absolute; left: 525px; top: 160px;
+}
+.divhyper64
+{
+   padding: 0px 0px 10px; font-size: 16px;
+}
+.divhyper65
+{
+font-size: 13px;
+}
+.divhyper66
+{
+width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7;
+ right: 12px; top: 12px; z-index: 10000; cursor: pointer;
+}
+.divhyperimg1
+{
+   position: absolute; left: -2px; top: -336px; width: 59px;
+    height: 492px; -moz-user-select: none; border: 0px none; 
+    padding: 0px; margin: 0px; max-width: none;
+}
+.divhyper67
+{
+   z-index: 1000001; position: absolute; 
+   right: 161px; bottom: 0px; width: 121px;
+}
+.divhyper68
+{
+   -moz-user-select: none; height: 14px; line-height: 14px;
+}
+.divhyper69
+{
+   opacity: 0.7; width: 100%; height: 100%; position: absolute;
+}
+.divhyper70
+{
+   width: 1px;
+}
+.divhyper71
+{
+   background-color: rgb(245, 245, 245); 
+   width: auto; height: 100%; margin-left: 1px;
+}
+.divhyper72
+{
+position: relative; padding-right: 6px; padding-left: 6px; 
+font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68);
+ white-space: nowrap; direction: ltr; text-align: right; 
+ vertical-align: middle; display: inline-block;
+}
+.astyl3
+{
+   color: rgb(68, 68, 68); text-decoration: none; 
+   cursor: pointer; display: none;
+}
+.divhyper73
+{
+   position: absolute; right: 0px; bottom: 0px;
+}
+.divhyper74
+{
+   font-family: Roboto,Arial,sans-serif; font-size: 11px; 
+   color: rgb(68, 68, 68); direction: ltr; text-align: right; 
+   background-color: rgb(245, 245, 245);
+}
+.divhyper75
+{
+   z-index: 1000001; -moz-user-select: none; height: 14px; 
+   line-height: 14px; position: absolute; right: 92px; bottom: 0px;
+}
+.divhyper76
+{
+   opacity: 0.7; width: 100%; height: 100%; position: absolute;
+}
+.divhyper77
+{
+   width: 25px; height: 25px; margin-top: 10px;
+    overflow: hidden; display: none; margin-right: 14px;
+     position: absolute; top: 0px; right: 0px;
+}
+.divhyperimg3
+{
+position: absolute; left: -52px; top: -86px;
+ width: 164px; height: 112px; -moz-user-select: none;
+  border: 0px none; padding: 0px; margin: 0px;
+}
+.divhyper78
+{
+-moz-user-select: none; height: 14px; line-height: 14px;
+ position: absolute; right: 0px; bottom: 0px;
+}
+.astyl4
+{
+font-family: Roboto,Arial,sans-serif; font-size: 10px; 
+color: rgb(68, 68, 68); text-decoration: none; position: relative;
+}
+.divhyper79
+{
+margin: 10px; -moz-user-select: none; position: absolute; 
+bottom: 69px; right: 28px;
+}
+.divhyper80
+{
+position: absolute; left: 0px; top: 0px;
+}
+.divhyper81
+{
+-moz-user-select: none; box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); 
+border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255);
+ width: 28px; height: 55px;
+}
+.divhyper82
+{
+   position: relative; width: 28px; height: 27px; left: 0px; top: 0px;
+}
+.divhyper83
+{
+   overflow: hidden; position: absolute; width: 15px;
+    height: 15px; left: 7px; top: 6px;
+}
+.divhyperimg4
+{
+   position: absolute; left: 0px; top: 0px; -moz-user-select: none;
+    border: 0px none; padding: 0px; margin: 0px; max-width: none;
+     width: 120px; height: 54px;
+}
+.divhyper84
+{
+   position: relative; overflow: hidden; width: 67%; height: 1px;
+    left: 16%; background-color: rgb(230, 230, 230); top: 0px;
+}
+.divhyper85
+{
+   position: relative; width: 28px; height: 27px; left: 0px; top: 0px;
+}
+.divhyper86
+{
+   overflow: hidden; position: absolute; width: 15px;
+    height: 15px; left: 7px; top: 6px;
+}
+.divhyperimg5
+{
+   position: absolute; left: 0px; top: -15px; 
+   -moz-user-select: none; border: 0px none; padding: 0px;
+    margin: 0px; max-width: none; width: 120px; height: 54px;
+}
+.divhyper87
+{
+   margin-left: 5px; margin-right: 5px; z-index: 1000000;
+    position: absolute; left: 0px; bottom: 0px;
+}
+.astyl5
+{
+   position: static; overflow: visible; float: none; display: inline;
+}
+.divhyper88
+{
+width: 66px; height: 26px; cursor: pointer;
+}
+.divhyperimg6
+{
+   position: absolute; left: 0px; top: 0px; width: 66px;
+    height: 26px; -moz-user-select: none; 
+    border: 0px none; padding: 0px; margin: 0px;
+}.
+/*end style*/
