@@ -247,6 +247,6 @@ qui officia deserunt mollit anim id est laborum.</p>
 	<script type="text/javascript" src="js/newjs.js"></script>
 	<script type="text/javascript" src="js/images.js"></script>
 	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
 		</body>
 		</html>

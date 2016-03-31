@@ -3,9 +3,8 @@ $(document).ready(function() {
   $( "#weddate" ).datepicker();
  
 });
-                            
 
-    function selectimage(txt)
+ function selectimage(txt)
     {
          var imageId=txt;
         
@@ -23,4 +22,12 @@ $(document).ready(function() {
     }
         return false;
     }
+
+
+    
+
+
+
+
+
 
