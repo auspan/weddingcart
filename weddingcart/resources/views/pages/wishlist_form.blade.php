@@ -3,13 +3,20 @@
 @section('content')
 
   <script>
+    
      function addProduct()
-    {
+      {
+      var counter=$("#totalProduct").html();
+
+     
       var ifCheckedOrNot=$("#addNewProduct").is(':checked');
       if(ifCheckedOrNot==true)
       {
-      $("#newProductContainer").append('<div id="product" class="entry clearfix"><div class="col-md-2"><form novalidate="novalidate" id="quick-contact-form" name="quick-contact-form" action="#" method="post" files="true" class="quick-contact-form nobottommargin"><div class="entry-title"><span>New Product</span></div><div class="clear"></div><div><input id="newProductImage" name="newProductImage" class="sm-form-control required" type="file" style="display: none"><a href="javascript::void(0)"><img src="" alt="Nemo quaerat nam beatae iusto minima vel"></a></div></div><div class="col-md-9"><div class="quick-contact-widget clearfix"><div class="input-group col_two_third"><input aria-required="true" class="required form-control" id="quick-contact-form-name" name="quick-contact-form-name" placeholder="Item Description" type="text"></div><div class="input-group col_one_third col_last"><input aria-required="true" class="required form-control email" id="quick-contact-form-email" name="quick-contact-form-email" placeholder="Amount" type="text"></div><input class="acc_content" id="quick-contact-form-nophone" name="quick-contact-form-nophone" class="form-control" placeholder="Phone" type="text"><textarea aria-required="true" class="required form-control short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="2" cols="30" placeholder="Message"></textarea></form></div><div class="skills"><li data-percent="0"><div class="progress skills-animated divsty"><div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="0" data-refresh-interval="30" data-speed="1100">0</span>%</div></div></div></li></div></div><div class="col-md-1 col_last tright"><a href="javascript::void(0)" id="remove" class="btn btn-danger" onclick="return removeContainer(product)">Remove</a></div></div>');
+      $("#newProductContainer").append('<div id="product'+counter+'" class="entry clearfix"><div class="col-md-2"><div class="entry-title"><input aria-required="true" class="required form-control" id="productName'+counter+'" name="" placeholder="Product Name" type="text" value=""></div><div class="clear"></div><div><input id="newProductImage" name="newProductImage" class="sm-form-control required" type="file" style="display: none"><a href="javascript::void(0)"><img src="images/fridge2.jpg" alt="Nemo quaerat nam beatae iusto minima vel" id="productImage'+counter+'"></a></div></div><div class="col-md-9"><div class="quick-contact-widget clearfix"><div class="input-group col_two_third"><input aria-required="true" class="required form-control" id="productDescription'+counter+'" name="quick-contact-form-name" placeholder="Item Description" type="text"></div><div class="input-group col_one_third col_last"><input aria-required="true" class="required form-control email" id="productPrice'+counter+'" name="quick-contact-form-email" placeholder="Amount" type="text"></div><input class="acc_content" id="quick-contact-form-nophone" name="quick-contact-form-nophone" class="form-control" placeholder="Phone" type="text"><textarea aria-required="true" class="required form-control short-textarea" id="message'+counter+'" name="quick-contact-form-message" rows="2" cols="30" placeholder="Message"></textarea></div><div class="skills"><li data-percent="0"><div class="progress skills-animated divsty"><div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="0" data-refresh-interval="30" data-speed="1100">0</span>%</div></div></div></li></div></div><div class="col-md-1 col_last tright"><a href="javascript::void(0)" id="remove" class="btn btn-danger" onclick="return removeContainer(product'+counter+')">Remove</a></div></div>');
         $("#addNewProduct").attr('checked',false);
+        $("#saveChanges").attr('data-dismiss',"modal");
+        counter++;
+        $("#totalProduct").html(counter++);
         }
     }
     function removeContainer(divid)
@@ -33,32 +40,32 @@
                     
                     <div id="posts" class="events small-thumbs">
                       <?php $count=0 ?>
+                       <form novalidate="novalidate" id="quick-contact-form" name="quick-contact-form" action="#" method="post" class="quick-contact-form nobottommargin">
                         @foreach($Products as $product)
                         <div id="product{{ $count }}" class="entry clearfix">
                             <div class="col-md-2">
+                             
                                 <div class="entry-title">
-                                    <span>{{ $product['product_name'] }}</span>
+                                  <input aria-required="true" class="required form-control" id="productName{{ $count }}" name="" placeholder="Product Name" type="text" value="{{ $product['product_name'] }}">
+                                   
                                 </div>
                                 <div class="clear"></div>
                                 <a href="#">
-                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Nemo quaerat nam beatae iusto minima vel">
+                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Nemo quaerat nam beatae iusto minima vel" id="productImage{{ $count }}">
                                 </a>
                             </div>
                             <div class="col-md-9">
                               <div class="quick-contact-widget clearfix">
-      
-                                  <form novalidate="novalidate" id="quick-contact-form" name="quick-contact-form" action="#" method="post" class="quick-contact-form nobottommargin">
-      
-                                      <div class="input-group col_two_third">
-                                          <input aria-required="true" class="required form-control" id="quick-contact-form-name" name="quick-contact-form-name" placeholder="Item Description" type="text" value="{{ $product['product_description'] }}">
+                                  <div class="input-group col_two_third">
+                                          <input aria-required="true" class="required form-control" id="productDescription{{ $count }}" name="quick-contact-form-name" placeholder="Item Description" type="text" value="{{ $product['product_description'] }}">
                                       </div>
                                       <div class="input-group col_one_third col_last">
-                                          <input aria-required="true" class="required form-control email" id="quick-contact-form-email" name="quick-contact-form-email" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
+                                          <input aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="quick-contact-form-email" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
                                       </div>
                                       <input class="acc_content" id="quick-contact-form-nophone" name="quick-contact-form-nophone" class="form-control" placeholder="Phone" type="text">
-                                      <textarea aria-required="true" class="required form-control short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="2" cols="30" placeholder="Message"></textarea>
+                                      <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="quick-contact-form-message" rows="2" cols="30" placeholder="Message"></textarea>
       
-                                  </form>
+                                  
       
                               </div>
                               <div class="skills">
@@ -75,6 +82,8 @@
                         </div>
                         <?php $count++  ?>
                         @endforeach
+                        </form>
+                        <div style="display: none;" id="totalProduct">{{ $count }}</div>
 
                         <div id="newProductContainer">
                         </div>
@@ -329,7 +338,7 @@
                         <button class="button button-border button-rounded topmargin" data-toggle="modal" data-target=".bs-example-modal-sm">Add</button>
                     </div>
                     
-                    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div id="productModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm">
                             <div class="modal-body">
                                 <div class="modal-content">
@@ -352,7 +361,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal" checked="false">Close</button>
-                                        <button type="button" class="btn btn-success" onclick="return addProduct()">Save changes</button>
+                                        <button type="button" id="saveChanges" class="btn btn-success" onclick="return addProduct()">Save changes</button>
                                     </div>
                                 </div>
                             </div>
@@ -364,7 +373,7 @@
 
 				<div class="center bottommargin-lg">
 
-        <a href="javascript::void(0)" id="addProduct" onclick="return addProduct()" class="button button-rounded button-xlarge">Add More</a>
+        
 
 					<a href="javascript::void(0)" class="button button-rounded button-xlarge">Save</a>
 					<a href="#" class="button button-rounded button-xlarge">Back</a>

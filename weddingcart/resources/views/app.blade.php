@@ -103,7 +103,7 @@
 			<div id="page-menu-wrap">
 
 				<div class="container clearfix">
-
+				
 					<div class="menu-title"><a href="{{ url('/logout') }}">Logout</a>
 					</div>
 
