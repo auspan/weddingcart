@@ -3,6 +3,8 @@
 @section('content')
 
   <script>
+
+  
     
      function addProduct()
       {
@@ -12,7 +14,7 @@
       var ifCheckedOrNot=$("#addNewProduct").is(':checked');
       if(ifCheckedOrNot==true)
       {
-      $("#newProductContainer").append('<div id="product'+counter+'" class="entry clearfix"><div class="col-md-2"><div class="entry-title"><input aria-required="true" class="required form-control" id="productName'+counter+'" name="" placeholder="Product Name" type="text" value=""></div><div class="clear"></div><div><input id="newProductImage" name="newProductImage" class="sm-form-control required" type="file" style="display: none"><a href="javascript::void(0)"><img src="images/fridge2.jpg" alt="Nemo quaerat nam beatae iusto minima vel" id="productImage'+counter+'"></a></div></div><div class="col-md-9"><div class="quick-contact-widget clearfix"><div class="input-group col_two_third"><input aria-required="true" class="required form-control" id="productDescription'+counter+'" name="quick-contact-form-name" placeholder="Item Description" type="text"></div><div class="input-group col_one_third col_last"><input aria-required="true" class="required form-control email" id="productPrice'+counter+'" name="quick-contact-form-email" placeholder="Amount" type="text"></div><input class="acc_content" id="quick-contact-form-nophone" name="quick-contact-form-nophone" class="form-control" placeholder="Phone" type="text"><textarea aria-required="true" class="required form-control short-textarea" id="message'+counter+'" name="quick-contact-form-message" rows="2" cols="30" placeholder="Message"></textarea></div><div class="skills"><li data-percent="0"><div class="progress skills-animated divsty"><div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="0" data-refresh-interval="30" data-speed="1100">0</span>%</div></div></div></li></div></div><div class="col-md-1 col_last tright"><a href="javascript::void(0)" id="remove" class="btn btn-danger" onclick="return removeContainer(product'+counter+')">Remove</a></div></div>');
+      $("#newProductContainer").append('<div id="product'+counter+'" class="entry clearfix"><div class="col-md-2"><div class="entry-title"><input required aria-required="true" class="required form-control" id="productName'+counter+'" name="productName'+counter+'" placeholder="Product Name" type="text" value=""></div><div class="clear"></div><div><input id="newProductImage" name="newProductImage" class="sm-form-control required" type="file" style="display: none"><a href="javascript::void(0)" id="openDialog"><img src="images/fridge2.jpg" alt="Nemo quaerat nam beatae iusto minima vel" id="productImage'+counter+'" name="productImage'+counter+'" required></a></div></div><div class="col-md-9"><div class="quick-contact-widget clearfix"><div class="input-group col_two_third"><input required aria-required="true" class="required form-control" id="productDescription'+counter+'" name="productDescription'+counter+'" placeholder="Item Description" type="text"></div><div class="input-group col_one_third col_last"><input required aria-required="true" class="required form-control email" id="productPrice'+counter+'" name="productPrice'+counter+'" placeholder="Amount" type="text"></div><textarea aria-required="true" class="required form-control short-textarea" id="message'+counter+'" name="message'+counter+'" rows="2" cols="30" placeholder="Message"></textarea><input type="hidden" id="hiddenValue'+counter+'" name="hiddenProductValue'+counter+'" value="dfgds"></div><div class="skills"><li data-percent="0"><div class="progress skills-animated divsty"><div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="0" data-refresh-interval="30" data-speed="1100">0</span>%</div></div></div></li></div></div><div class="col-md-1 col_last tright"><a href="javascript::void(0)" id="remove" class="btn btn-danger" onclick="return removeContainer(product'+counter+')">Remove</a></div></div>');
         $("#addNewProduct").attr('checked',false);
         $("#saveChanges").attr('data-dismiss',"modal");
         counter++;
@@ -39,33 +41,35 @@
 					</div>
                     
                     <div id="posts" class="events small-thumbs">
-                      <?php $count=0 ?>
-                       <form novalidate="novalidate" id="quick-contact-form" name="quick-contact-form" action="#" method="post" class="quick-contact-form nobottommargin">
+                      <?php $count=1 ?>
+                      {!! Form::open(['action'=>'WishlistController@store', 'class'=>'form-horizontal nobottommargin quick-contact-from', 'method'=>'post', 'files'=>true]) !!}
+                       
                         @foreach($Products as $product)
                         <div id="product{{ $count }}" class="entry clearfix">
                             <div class="col-md-2">
                              
                                 <div class="entry-title">
-                                  <input aria-required="true" class="required form-control" id="productName{{ $count }}" name="" placeholder="Product Name" type="text" value="{{ $product['product_name'] }}">
+                                  <input required aria-required="true" class="required form-control" id="productName{{ $count }}" name="productName{{ $count }}" placeholder="Product Name" type="text" value="{{ $product['product_name'] }}">
                                    
                                 </div>
                                 <div class="clear"></div>
+
                                 <a href="#">
-                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Nemo quaerat nam beatae iusto minima vel" id="productImage{{ $count }}">
+                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Nemo quaerat nam beatae iusto minima vel" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
                                 </a>
                             </div>
                             <div class="col-md-9">
                               <div class="quick-contact-widget clearfix">
                                   <div class="input-group col_two_third">
-                                          <input aria-required="true" class="required form-control" id="productDescription{{ $count }}" name="quick-contact-form-name" placeholder="Item Description" type="text" value="{{ $product['product_description'] }}">
+                                          <input required aria-required="true" class="required form-control" id="productDescription{{ $count }}" name="productDescription{{ $count }}" placeholder="Item Description" type="text" value="{{ $product['product_description'] }}">
                                       </div>
                                       <div class="input-group col_one_third col_last">
-                                          <input aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="quick-contact-form-email" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
+                                          <input required aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="productPrice{{ $count }}" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
                                       </div>
-                                      <input class="acc_content" id="quick-contact-form-nophone" name="quick-contact-form-nophone" class="form-control" placeholder="Phone" type="text">
-                                      <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="quick-contact-form-message" rows="2" cols="30" placeholder="Message"></textarea>
+                                      
+                                      <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message"></textarea>
       
-                                  
+                                      <input type="hidden" id="hiddenValue{{ $count }}" name="hiddenProductValue{{ $count }}" value="{{ $product['id'] }}">
       
                               </div>
                               <div class="skills">
@@ -82,7 +86,7 @@
                         </div>
                         <?php $count++  ?>
                         @endforeach
-                        </form>
+                        
                         <div style="display: none;" id="totalProduct">{{ $count }}</div>
 
                         <div id="newProductContainer">
@@ -334,9 +338,7 @@
                     
                     </div>
                     
-                    <div class="center">
-                        <button class="button button-border button-rounded topmargin" data-toggle="modal" data-target=".bs-example-modal-sm">Add</button>
-                    </div>
+                    
                     
                     <div id="productModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm">
@@ -375,8 +377,12 @@
 
         
 
-					<a href="javascript::void(0)" class="button button-rounded button-xlarge">Save</a>
+					{!! Form::button('Save', ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
+          {!! Form::close() !!}
 					<a href="#" class="button button-rounded button-xlarge">Back</a>
+          <div class="center">
+                        <button class="button button-border button-rounded topmargin" data-toggle="modal" data-target=".bs-example-modal-sm">Add More</button>
+                    </div>
 
 
 				</div>
