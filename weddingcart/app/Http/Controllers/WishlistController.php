@@ -9,6 +9,7 @@ use weddingcart\UserEventRole;
 use weddingcart\UserEvent;
 use weddingcart\UserEventDetail;
 use weddingcart\UserEventWishlistItem;
+use Illuminate\Support\Facades\Input;
 use weddingcart\product;
 use weddingcart\Http\Requests;
 use weddingcart\Http\Redirect;
@@ -72,8 +73,17 @@ class WishlistController extends Controller
 
     public function makewishlist()
     {
-     
+        $storeProduct=array();
+        $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
+
+            foreach ($userrole as $UserRole)
+            {
+                $userroleid=$UserRole['id'];
+                break;
+            }
+
         $user_event=array();
+        $wishlistdata=array();
          $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
          foreach ($UserEvent as $Uevent) 
          {
@@ -86,10 +96,24 @@ class WishlistController extends Controller
 
          else
          {
+            $userEventWishlistData=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid);
+            foreach ($userEventWishlistData as $data) {
+                $wishlistdata=$data['user_event_role_id'];
+                break;
+            }
+            
+            if($wishlistdata!=null)
+            {
+                $storeProduct=$userEventWishlistData;
+                return view('pages.wishlist_form', ['Products'=> $storeProduct]); 
+            }
+            else
+            {
         $products=Product::whereNotNull('parent_id')->get();
-        
+        $storeProduct=$products;
 
-      return view('pages.wishlist_form', ['Products'=> $products]); 
+      return view('pages.wishlist_form', ['Products'=> $storeProduct]); 
+            }
     }
   }
 
@@ -137,9 +161,10 @@ class WishlistController extends Controller
 
     public function store(Request $request)
     {
-    	
+            	
         $user_event=array();
          $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
+
          foreach ($UserEvent as $Uevent) 
          {
             $user_event=$Uevent['id'];
@@ -157,7 +182,34 @@ class WishlistController extends Controller
             $userroleid=$UserRole['id'];
             break;
         }
-         $products=array($request->input('product1'),$request->input('product2'),$request->input('product3'),$request->input('product4'),$request->input('product5'),$request->input('product6'),$request->input('product7'),$request->input('product8'),$request->input('product9'),$request->input('product10'),$request->input('product11'));
+       
+        $count=1;
+        $temp=6;
+        while($count!=$temp)
+        {
+            
+            if($request->input('productName'.$count)!=null)
+            {
+
+                UserEventWishlistItem::create(array(
+                'user_event_role_id'=> $userroleid,
+                'product_name'=>$request->input('productName'.$count),
+                'product_description'=> $request->input('productDescription'.$count),
+                'product_image'=>Input::file('productImage'.$count),
+                'wish_list_item_price'=>$request->input('productPrice'.$count)
+                )); 
+        
+        /*$products=array($request->input('productName'.$count),Input::file('productImage'.$count),$request->input('productDescription'.$count),$request->input('productPrice'.$count));
+
+        var_dump($products);  */
+          
+}
+        $count++;
+    }
+       
+
+        
+        /* $products=array($request->input('product1'),$request->input('product2'),$request->input('product3'),$request->input('product4'),$request->input('product5'),$request->input('product6'),$request->input('product7'),$request->input('product8'),$request->input('product9'),$request->input('product10'),$request->input('product11'));
 
          foreach ($products as $productid)
           {
@@ -168,11 +220,11 @@ class WishlistController extends Controller
                 'product_id'=> $productid,
                 ));
             }
-          }
+          }*/
         
 
         
-        $user_event_wishlist_items=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid);
+       /* $user_event_wishlist_items=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid);
         
         $array_wishlist_items=array();
         foreach ($user_event_wishlist_items as $User_Event_Wishlist_Items)
@@ -184,7 +236,7 @@ class WishlistController extends Controller
 
           
         }
-         return view ('pages.wishlist',['Wishlist_Items'=>$array_wishlist_items]);
+         return view ('pages.wishlist',['Wishlist_Items'=>$array_wishlist_items]);*/
        
       
         

@@ -40,13 +40,13 @@ minim veniam, quis nostrud exercitation ullamco</p>
 						<div class="col_half">
 						<div class="feature-box fbox-center fbox-effect fbox-bg fbox-light fbox-border fbox-effect">
 								<div class="fbox-icon">
-									<a href="#"><i class="icon-magic"></i></a>
+									<a href="{{ url('/contacts') }}"><i class="icon-magic"></i></a>
 								</div>
 								<h1>Invite</h1>
 								<p>Lorem ipsum dolor sit onsectetur adipiscing elit, sed do 
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
 minim veniam, quis nostrud exercitation ullamco</p>
-                                <a href="#" class="button button-border button-rounded button-xlarge topmargin">Creat</a>
+                                <a href="{{ url('/contacts') }}" class="button button-border button-rounded button-xlarge topmargin">Contacts</a>
 
 							</div>
 						</div>
