@@ -4,6 +4,7 @@ namespace weddingcart\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
 use Socialite;
 use Validator;
 use weddingcart\Http\Controllers\Controller;
@@ -84,16 +85,25 @@ class AuthController extends Controller
      */
     public function redirectToProvider($provider)
     {
-        return \Socialite::driver($provider)->redirect();
+        $googleScopes = ['https://www.googleapis.com/auth/contacts.readonly', 'https://www.googleapis.com/auth/plus.login'];
+        if($provider == 'google')
+        {
+            return \Socialite::driver($provider)->scopes($googleScopes)->redirect();
+        }
+        else
+        {
+            return \Socialite::driver($provider)->redirect();
+        }
     }
 
     /**
      * Obtain the user information from social provider.
      *
      * @param $provider
+     * @param Request $request
      * @return Response
      */
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback($provider, Request $request)
     {
 
         try {
@@ -101,6 +111,8 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return Redirect::to('/auth/login');
         }
+
+        $request->session()->put('socialToken', $user->token);
 
         $authUser = $this->findOrCreateUser($user, $provider);
 
