@@ -2,6 +2,8 @@
 
     @section('content')
 
+    
+
 		<section id="content" class="secbkgrnd">
 
 			<div class="content-wrap">
@@ -43,7 +45,8 @@
                             <!-- Contact Form Overlay
                             ============================================= -->
                             <div id="contact-form-overlay" class="clearfix">
-                                <input id="bimg" name="bride_image" class="sm-form-control required" type="file" style="display: none">
+                                <input id="bimg" name="bride_image" class="sm-form-control required" value="" type="file" style="display: none">
+                                
                                         <input type="hidden" name="bride_img" class="form-control" value="bim">
 								<div class="bride-image divcenter">
 										<a href="" onclick="return selectimage('bimg')"><img src="{{ asset('../uploads/' . $bride_image) }}" id="bimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>

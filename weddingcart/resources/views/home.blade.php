@@ -33,7 +33,7 @@ minim veniam, quis nostrud exercitation ullamco</p>
 								<p>Lorem ipsum dolor sit onsectetur adipiscing elit, sed do 
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
 minim veniam, quis nostrud exercitation ullamco</p>
-                                <a href="{{ url('makewishlist') }}" class="button button-border button-rounded button-xlarge topmargin">Creat</a>
+                                <a href="{{ url('wishlist') }}" class="button button-border button-rounded button-xlarge topmargin">Creat</a>
 							</div>
 						</div>
                         

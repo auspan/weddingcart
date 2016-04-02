@@ -23,7 +23,7 @@ class WishlistController extends Controller
         $this->middleware('auth');
     }
 
-    public function wishlist()
+ /*   public function wishlist()
     {	
     	
          $user_event=array();
@@ -59,7 +59,7 @@ class WishlistController extends Controller
 
          return view ('pages.wishlist',['Wishlist_Items'=>$wishlist_items]);
         }
-    }
+    }   */
 
     
     public function create()
@@ -73,6 +73,7 @@ class WishlistController extends Controller
 
     public function makewishlist()
     {
+        
         $storeProduct=array();
         $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
 
@@ -101,11 +102,12 @@ class WishlistController extends Controller
                 $wishlistdata=$data['user_event_role_id'];
                 break;
             }
+            $products=Product::whereNotNull('parent_id')->get();
             
             if($wishlistdata!=null)
             {
                 $storeProduct=$userEventWishlistData;
-                return view('pages.wishlist_form', ['Products'=> $storeProduct]); 
+                return view('pages.userwishlist', ['Products'=> $storeProduct,'MasterProducts'=>$products]); 
             }
             else
             {
@@ -117,7 +119,7 @@ class WishlistController extends Controller
     }
   }
 
-    public function store_product_into_wishlist(Request $request)
+ /*   public function store_product_into_wishlist(Request $request)
     {
         $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
 
@@ -157,12 +159,12 @@ class WishlistController extends Controller
     {
        
         
-    }
+    }   */
 
     public function store(Request $request)
     {
             	
-        $user_event=array();
+         $user_event=array();
          $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
 
          foreach ($UserEvent as $Uevent) 
@@ -175,71 +177,69 @@ class WishlistController extends Controller
           }
         else
         {
-        $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
+            $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
 
-        foreach ($userrole as $UserRole)
-        {
-            $userroleid=$UserRole['id'];
-            break;
-        }
-       
-        $count=1;
-        $temp=6;
-        while($count!=$temp)
-        {
-            
-            if($request->input('productName'.$count)!=null)
+            foreach ($userrole as $UserRole)
             {
-
-                UserEventWishlistItem::create(array(
-                'user_event_role_id'=> $userroleid,
-                'product_name'=>$request->input('productName'.$count),
-                'product_description'=> $request->input('productDescription'.$count),
-                'product_image'=>Input::file('productImage'.$count),
-                'wish_list_item_price'=>$request->input('productPrice'.$count)
-                )); 
-        
-        /*$products=array($request->input('productName'.$count),Input::file('productImage'.$count),$request->input('productDescription'.$count),$request->input('productPrice'.$count));
-
-        var_dump($products);  */
-          
-}
-        $count++;
-    }
-       
-
-        
-        /* $products=array($request->input('product1'),$request->input('product2'),$request->input('product3'),$request->input('product4'),$request->input('product5'),$request->input('product6'),$request->input('product7'),$request->input('product8'),$request->input('product9'),$request->input('product10'),$request->input('product11'));
-
-         foreach ($products as $productid)
-          {
-            if($productid!='Select')
-            {
-                UserEventWishlistItem::create(array(
-                'user_event_role_id'=> $userroleid,
-                'product_id'=> $productid,
-                ));
+                $userroleid=$UserRole['id'];
+                break;
             }
-          }*/
-        
+            
+            $count=1;
+            $temp=10;
+            $value="asd";
+            while($count!=$temp)
+            {
+                
+                
+                if($request->input('productName'.$count)!=null && $request->input('hiddenProductValue'.$count)==0)
+                {
 
-        
-       /* $user_event_wishlist_items=UserEventWishlistItem::all()->where('user_event_role_id',$userroleid);
-        
-        $array_wishlist_items=array();
-        foreach ($user_event_wishlist_items as $User_Event_Wishlist_Items)
-        {
-         $selected_product=Product::where('id',$User_Event_Wishlist_Items['product_id'])->first();
 
-          $selected_product_description=$selected_product->product_description;
-          $array_wishlist_items[]=$selected_product_description;
-
-          
+                    UserEventWishlistItem::create(array(
+                    'user_event_role_id'=> $userroleid,
+                    'product_name'=>$request->input('productName'.$count),
+                    'product_description'=> $request->input('productDescription'.$count),
+                    'product_image'=>Input::file('productImage'.$count),
+                    'product_price'=>$request->input('productPrice'.$count)
+                    )); 
+                }
+                    $count++;
+            }
         }
-         return view ('pages.wishlist',['Wishlist_Items'=>$array_wishlist_items]);*/
+
+                    return $this->makewishlist();
+    }
+
+    public function deleteproduct(Request $request)
+    {
+        $productid=UserEventWishlistItem::find($request->input('id'));
+        if($productid)
+        {
+            $productid->delete();
+            return $this->makewishlist();
+        }
+    }
+
+    public function edit($id)
+    {
+
+        $productid=$id;
+        $products=UserEventWishlistItem::all()->where('id',$productid);
+        var_dump($products);
+        return view('pages.editproduct',compact('products'));
+    }
+
+    public function update(Request $request)
+    {
+
+    }
+}
+       
+
+        
+        
        
       
         
-           }
-        }
-    }
+          

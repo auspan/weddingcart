@@ -42,13 +42,15 @@ Route::group(['middleware' => 'web'], function () {
     // store product into user wishlist
     Route::post('/wishlist/add','WishlistController@store_product_into_wishlist');
     // end of stronig product into user wishlist
-	Route::get('wishlist','WishlistController@wishlist');
+	//Route::get('wishlist','WishlistController@wishlist');
     Route::get('invites','InvitesController@invites');
 	Route::get('create_wishlist','WishlistController@create');
     Route::post('wishlist','WishlistController@store');
-
+    Route::post('wishlist/destroy','WishlistController@deleteproduct');
+    Route::get('wishlist/{id}/edit','WishlistController@edit');
+    Route::post('wishlist/update','WishlistController@update');
     
-    Route::get('makewishlist','WishlistController@makewishlist');
+    Route::get('wishlist','WishlistController@makewishlist');
     
     
     Route::get('showwishlist','WishlistController@showwishlist');
