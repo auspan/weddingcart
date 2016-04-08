@@ -1,7 +1,7 @@
     @extends('app')
 
     @section('content')
-
+       
     
 
 		<section id="content" class="secbkgrnd">
@@ -20,7 +20,7 @@
 
                                @include('errors.weddValidation')
 
-                               {!! Form::open(['action'=>'WeddingController@update', 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
+                               {!! Form::open(['action'=>['WeddingController@update',$userEventId], 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
                                		<div class="row">
                                                 <div class="input-daterange travel-date-group bottommargin-sm">
                                                     <div class="col-md-4 divcenter" style="position: relative; z-index: 10">
@@ -47,9 +47,11 @@
                             <div id="contact-form-overlay" class="clearfix">
                                 <input id="bimg" name="bride_image" class="sm-form-control required" value="" type="file" style="display: none">
                                 
+                                
                                         <input type="hidden" name="bride_img" class="form-control" value="bim">
 								<div class="bride-image divcenter">
 										<a href="" onclick="return selectimage('bimg')"><img src="{{ asset('../uploads/' . $bride_image) }}" id="bimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
+                                        <input type="text" value="{{ $bride_image }}" id="brideImage" name="brideImage" style="display: none;">
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
 
@@ -138,6 +140,7 @@
 
 								<div class="bride-image divcenter">
 										<a href="" onclick="return selectimage('gimg')"><img src="{{ asset('../uploads/' . $groom_image) }}" id="gimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
+                                        <input type="text" value="{{ $groom_image }}" id="groomImage" name="groomImage" style="display: none;">
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
                                 

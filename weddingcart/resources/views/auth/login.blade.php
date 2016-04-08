@@ -70,7 +70,7 @@
 							</form>
 							<div class="acctitle acctitlec">
 								<i class="acc-closed icon-user4"></i>
-								<i class="acc-open icon-ok-sign"></i>Don't have an Account? Register Now
+								<i class="acc-open icon-ok-sign"></i>Don't have an Account? <a href="javascript::void(0)" style="color: red">Register Now</a>
 							</div>
 
 

@@ -10,6 +10,7 @@ use weddingcart\UserEvent;
 use weddingcart\UserEventDetail;
 use weddingcart\UserEventWishlistItem;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 use weddingcart\product;
 use weddingcart\Http\Requests;
 use weddingcart\Http\Redirect;
@@ -177,6 +178,7 @@ class WishlistController extends Controller
           }
         else
         {
+
             $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
 
             foreach ($userrole as $UserRole)
@@ -186,23 +188,43 @@ class WishlistController extends Controller
             }
             
             $count=1;
-            $temp=10;
-            $value="asd";
+            //$finalValue=$request->input('totalProduct');
+            //var_dump($finalValue);
+            $temp=20;
+
             while($count!=$temp)
             {
+
                 
                 
                 if($request->input('productName'.$count)!=null && $request->input('hiddenProductValue'.$count)==0)
                 {
-
+                    if(Input::file('productImage'.$count)!=null)
+                    {
+                    $productImage=Input::file('productImage'.$count);
+                    $destinationPath = '../public/uploads/products';
+                    $product_image = ImageName($productImage);
+                    $productImage->move($destinationPath, $product_image);
 
                     UserEventWishlistItem::create(array(
                     'user_event_role_id'=> $userroleid,
                     'product_name'=>$request->input('productName'.$count),
                     'product_description'=> $request->input('productDescription'.$count),
-                    'product_image'=>Input::file('productImage'.$count),
+                    'product_image'=>$product_image,
                     'product_price'=>$request->input('productPrice'.$count)
                     )); 
+                    }
+
+                    else
+                    {
+                        UserEventWishlistItem::create(array(
+                    'user_event_role_id'=> $userroleid,
+                    'product_name'=>$request->input('productName'.$count),
+                    'product_description'=> $request->input('productDescription'.$count),
+                    'product_image'=>$request->input('imgname'.$count),
+                    'product_price'=>$request->input('productPrice'.$count)
+                    )); 
+                    }
                 }
                     $count++;
             }
@@ -224,10 +246,10 @@ class WishlistController extends Controller
     public function edit($id)
     {
 
-        $productid=$id;
-        $products=UserEventWishlistItem::all()->where('id',$productid);
-        var_dump($products);
-        return view('pages.editproduct',compact('products'));
+        
+        $product=UserEventWishlistItem::findOrFail($id);
+        
+        return view('pages.editproduct',compact('product'));
     }
 
     public function update(Request $request)

@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/animate.css" type="text/css">
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
 	<link rel="stylesheet" href="css/newstyle.css" type="text/css">
+	<link rel="stylesheet" href="css/dropdown.css" type="text/css">
     
 	<link rel="stylesheet" href="css/jquery.ui.core.css" type="text/css">
 	<link rel="stylesheet" href="css/jquery.ui.theme.css" type="text/css">
@@ -103,10 +104,34 @@
 			<div id="page-menu-wrap">
 
 				<div class="container clearfix">
-				
-					<div class="menu-title"><a href="{{ url('/logout') }}">Logout</a>
-					</div>
 
+					<div class="menu-title">
+						<div style='margin:11px'>
+					<div class="dropdown">
+	<a class="account" >
+	<span style="color: white">My Account</span>
+	</a>
+	<div class="submenu" style="display: none; ">
+
+	  <ul class="root">
+<li >
+	      <a href="{{ url('/home') }}" id="1" >Dashboard</a>
+	    </li>
+
+	    
+	    
+
+	    <li>
+	      <a href="{{ url('/logout') }}">Sign Out</a>
+	    </li>
+	  </ul>
+	</div>
+	</div>
+	
+	</div>
+
+					</div>
+                
 					<nav>
 						<ul>
 							<li><a href="{{ url('/home') }}">Dashboard</a></li>
@@ -247,7 +272,11 @@ qui officia deserunt mollit anim id est laborum.</p>
 	<script type="text/javascript" src="js/newjs.js"></script>
 	<script type="text/javascript" src="js/images.js"></script>
 	<script type="text/javascript" src="js/countdown.js"></script>
+<<<<<<< HEAD
 	<script type="text/javascript" src="js/wishlistform.js"></script>
+=======
+	<script type="text/javascript" src="js/dropdown.js"></script>
+>>>>>>> c77feccdb60efd91df9ebf2ee8d35258fbad7581
 	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 	
 		</body>

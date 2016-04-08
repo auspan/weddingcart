@@ -1,7 +1,17 @@
 @extends('app')
 
 @section('content')
-
+      <script>
+      
+        $(document).ready(function(){
+          
+        var imgsrc=$("img#productImage".count).attr("src");
+        
+         $("#imgsrc").val(imgsrc);
+         
+        })
+        
+        </script>
 
 		<section id="content" class="secstyle">
 
@@ -27,10 +37,11 @@
                                    
                                 </div>
                                 <div class="clear"></div>
-
-                                <a href="#">
-                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Nemo quaerat nam beatae iusto minima vel" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
+                                 <!--   <input id="productImage{{ $count }}" name="productImage{{ $count }}" class="sm-form-control required" type="file" value="" style="display: none">
+                                <a href="javascript::void(0)" onclick="return selectimage('productImage{{ $count }}')">-->
+                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Product_Image" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
                                 </a>
+                                    <input type="text" value="{{ $product['product_image'] }}" id="imgsrc{{ $count }}" name="imgname{{ $count }}" style="display: none;">
                             </div>
                             <div class="col-md-9">
                               <div class="quick-contact-widget clearfix">
@@ -61,7 +72,8 @@
                         <?php $count++  ?>
                         @endforeach
                         
-                        <div style="display: none;" id="totalProduct">{{ $count }}</div>
+                        <div style="display: none;" name="totalproduct" id="totalProduct">{{ $count }}</div>
+
 
                         <div id="newProductContainer">
                         </div>

@@ -1,6 +1,11 @@
     @extends('app')
 
     @section('content')
+    <script>
+        $(document).ready(function(){
+            alert($("input#bimg").val());
+        });
+    </script>>
     
 		<section id="content" class="secbkgrnd">
 
@@ -44,7 +49,7 @@
                             <!-- Contact Form Overlay
                             ============================================= -->
                             <div id="contact-form-overlay" class="clearfix">
-                                <input id="bimg" name="bride_image" class="sm-form-control required" type="file" style="display: none">
+                                <input id="bimg" name="bride_image" class="sm-form-control required" type="file" value="" style="display: none">
                                         <input type="hidden" name="bride_img" class="form-control" value="bim">
 								<div class="bride-image divcenter">
 										<a href="" onclick="return selectimage('bimg')"><img src="images/favatar.png" id="bimg" alt="Groom" class="img-rounded img-responsive" style="object-fit: cover;"></a>

@@ -16,7 +16,7 @@
                     
                     <div id="posts" class="events small-thumbs">
                      
-                      {!! Form::open(['url'=>'wishlist/update', 'class'=>'form-horizontal nobottommargin quick-contact-from', 'method'=>'post', 'files'=>true]) !!}
+                      {!! Form::model($product,['method'=>'PATCH','url'=>'wishlist/update/'.$product->id, 'class'=>'form-horizontal','files'=>true]) !!}
                        
                        
                         <div id="product" class="entry clearfix">
@@ -49,7 +49,7 @@
                               
                             </div>
                             <div class="col-md-1 col_last tright">
-                                {!! Form::button('Update', ['class'=>'btn btn-Success', 'type'=>'submit'] ) !!}
+                                {!! Form::button('Update', ['class'=>'btn btn-primary', 'type'=>'submit'] ) !!}
                                 
                             </div>
                             {!! Form::close() !!}

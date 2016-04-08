@@ -7,6 +7,7 @@ use Auth;
 use DB;
 use DateTime;
 use weddingcart\Http\Requests\WeddingFormRequest;
+use weddingcart\Http\Requests\EditWeddingFormRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 use weddingcart\Http\Requests;
@@ -269,13 +270,14 @@ class WeddingController extends Controller
 
 
         $data=array();
-        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage);
+        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage,'userEventId'=>$usereid);
         return view('pages.editweddingform')->with($data);
         }
     }
 
-     public function update($id, WeddingFormRequest $request)
+     public function update($id, EditWeddingFormRequest $request)
      {
-
+        /*$userEventDetailId=UserEventDetail::all()->where('user_event_id',$id);
+        var_dump($userEventDetailId);*/
      }
 }

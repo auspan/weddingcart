@@ -4,7 +4,7 @@ namespace weddingcart\Http\Requests;
 
 use weddingcart\Http\Requests\Request;
 
-class WeddingFormRequest extends Request
+class EditWeddingFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,8 @@ class WeddingFormRequest extends Request
     {
         return [
             'wedding_date'=>'required',
-            'bride_image'   =>'required|mimes:jpeg,jpg,png,gif|image|max:255',
-            'groom_image'   =>'required|mimes:jpeg,jpg,png,gif|image|max:255',
-            'bride_name'  =>'required|Alpha',
-            'groom_name'  =>'required|Alpha',  
+            'bride_name'  =>'required',
+            'groom_name'  =>'required', 
         ];
     }
 }
