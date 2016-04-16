@@ -1,42 +1,33 @@
 @extends('app')
 
 @section('content')
+
+<meta name="_token" content="{{ csrf_token() }}">
       
-    <script>
-    $(document).ready(function(){
-      $(".deleteProduct").click(function(){
-       var data=$("#delid").val();
 
-        $.ajax({
-            type:"POST",
-            url:'/wishlist/destroy',
-            data:{_method: 'delete',"id":data, "_token": "{{ csrf_token() }}" },
-            success:function(result)
-            {
-              alert(result);
-            }
-        })
-      })
-    })
-    </script>
-		<section id="content" class="secstyle">
+    <section id="content" class="secstyle">
 
-			<div class="content-wrap">
+      <div class="content-wrap">
 
-				<div class="container clearfix">
+        <div class="container clearfix">
                 
-        @if($x==0)
+        @if($x==1)
                
-					<div class="heading-block center">
-						<h2>Create your wish list</h2>
-						
-					</div>
+          <div class="heading-block center">
+            <h2>Create your wish list</h2>
+            
+          </div>
                     
                     <div id="posts" class="events small-thumbs">
                       <?php $count=1 ?>
-                      {!! Form::open(['action'=>'WishlistController@store', 'class'=>'form-horizontal nobottommargin quick-contact-from', 'method'=>'post', 'files'=>true]) !!}
+                      <div class="alert alert-success" id="success" style="display: none;">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      
+                      </div>
+                      @foreach($Products as $product)
+                      <div id="formdiv{{$count}}">
                        
-                        @foreach($Products as $product)
+                        
                         <div id="product{{ $count }}" class="entry clearfix">
                             <div class="col-md-2">
                               
@@ -62,7 +53,8 @@
                                       
                                       <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message"></textarea>
       
-                                      <input type="hidden" id="hiddenValue{{ $count }}" name="hiddenProductValue{{ $count }}" value="0">
+                                      <input type="hidden" id="countervalue" name="countervalue" value="{{ $count }}">
+                                      <div id="product_id{{$count}}" class="productId" style="display: none">NULL</div>
       
                               </div>
                               <div class="skills">
@@ -75,8 +67,16 @@
                             </div>
                             <div class="col-md-1 col_last tright">
                                 <a href="javascript::void(0)" id="remove" class="btn btn-danger" onclick="return removeContainer(product{{$count}})">Remove</a>
+                                <br><br>
+                                <button type="button" class="btn btn-primary btn-addtowishlist" value="add" id="btn-addwishlist-{{ $count }}">Add</button>
+                                <button type="button" class="btn btn-primary btn-editwishlist" value="edit" id="btn-editwishlist-{{ $count }}" style="display: none">Edit</button>
+                                <button type="button" class="btn btn-primary btn-updatewishlist" value="update" id="btn-updatewishlist-{{ $count }}" style="display: none">Update</button>
+                                <button type="button" class="btn btn-primary btn-canceltoupdatewishlist" value="cancel" id="btn-canceltoupdatewishlist-{{ $count }}" style="display: none">Cancel</button>
+                                <button type="button" class="btn btn-primary btn-deletewishlist" value="delete" id="btn-deletewishlist-{{ $count }}" style="display: none">Delete</button>
                                 
                             </div>
+                            
+                        </div>
                         </div>
                         <?php $count++  ?>
                         @endforeach
@@ -116,61 +116,68 @@
                             </div>
                         </div>
                     </div>
-				
+        
                 
-				<div class="divider divider-center"><a href="#" data-scrollto="#header"><i class="icon-chevron-up"></i></a></div>
+        <div class="divider divider-center"><a href="#" data-scrollto="#header"><i class="icon-chevron-up"></i></a></div>
 
-				<div class="center bottommargin-lg">
+        <div class="center bottommargin-lg">
 
         
 
-					{!! Form::button('Save', ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
-          {!! Form::close() !!}
-					<a href="{{ url('/home') }}" class="button button-rounded button-xlarge">Back</a>
+          
+          
+          <a href="{{ url('/home') }}" class="button button-rounded button-xlarge">Back</a>
           <div class="center">
                         <button class="button button-border button-rounded topmargin" data-toggle="modal" data-target=".bs-example-modal-sm">Add More</button>
                     </div>
           </div>
-        @endif
 
-        @if($x==1)
+          @endif
+
+          @if($x==0)
         
           <div class="heading-block center">
-            <h2>Your wish list</h2>
+            <h2>Your Wishlist</h2>
             
           </div>
                     
                     <div id="posts" class="events small-thumbs">
                       <?php $count=1 ?>
-                       @foreach($Products as $product)
+                      <div class="alert alert-success" id="success" style="display: none;">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       
+                      </div>
+                      @foreach($Products as $product)
+                      <div id="formdiv{{$count}}">
                        
-                       
+                        
                         <div id="product{{ $count }}" class="entry clearfix">
                             <div class="col-md-2">
                               
                                 <div class="entry-title">
-                                  <span>{{ $product['product_name'] }}</span>
+                                  <input required aria-required="true" class="required form-control" id="productName{{ $count }}" name="productName{{ $count }}" placeholder="Product Name" type="text" value="{{ $product['product_name'] }}">
                                    
                                 </div>
                                 <div class="clear"></div>
-
-                                <a href="#">
-                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Nemo quaerat nam beatae iusto minima vel" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
+                                 <!--   <input id="productImage{{ $count }}" name="productImage{{ $count }}" class="sm-form-control required" type="file" value="" style="display: none">
+                                <a href="javascript::void(0)" onclick="return selectimage('productImage{{ $count }}')">-->
+                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Product_Image" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
                                 </a>
+                                    <input type="text" value="{{ $product['product_image'] }}" id="imgsrc{{ $count }}" name="imgname{{ $count }}" style="display: none;">
                             </div>
                             <div class="col-md-9">
                               <div class="quick-contact-widget clearfix">
                                   <div class="input-group col_two_third">
-                                          <span>{{ $product['product_description'] }}</span>
+                                          <input required aria-required="true" class="required form-control" id="productDescription{{ $count }}" name="productDescription{{ $count }}" placeholder="Item Description" type="text" value="{{ $product['product_description'] }}">
                                       </div>
                                       <div class="input-group col_one_third col_last">
-                                          <span>{{ $product['product_price'] }}</span>
+                                          <input required aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="productPrice{{ $count }}" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
                                       </div>
                                       
-                                      <span></span>
+                                      <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message"></textarea>
       
-                                      <input type="hidden" id="hiddenValue{{ $count }}" name="hiddenProductValue{{ $count }}" value="0">
+                                      <input type="hidden" id="countervalue" name="countervalue" value="{{ $count }}">
+                                      <div id="product_id{{$count}}" class="productId" style="display: none">{{ $product['id'] }}</div>
       
                               </div>
                               <div class="skills">
@@ -182,26 +189,32 @@
                               </div>
                             </div>
                             <div class="col-md-1 col_last tright">
-                                {!! Form::open(['url'=>'wishlist/destroy',  'class'=>'form-horizontal nobottommargin quick-contact-from']) !!}
-                                <input type="hidden" id="delid" name="delid" value="{{ $product['id'] }}">
-                                {!! Form::button('delete', ['class'=>'btn btn-danger deleteproduct', 'type'=>'submit','id'=>'deleteProduct'] ) !!}
-                                {{Form::token()}}
-                                {!! Form::close() !!}
-                                <br>
-                                
-                                <a href="{{ url('wishlist/'.$product['id'].'/edit') }}" class="btn btn-primary">Edit</a>
-                                
+                                <a href="javascript::void(0)" id="remove" class="btn btn-danger" onclick="return removeContainer(product{{$count}})">Remove</a>
+                                <br><br>
+                                <button type="button" class="btn btn-primary btn-addtowishlist" value="add" id="btn-addwishlist-{{ $count }}">Add</button>
+                                <button type="button" class="btn btn-primary btn-editwishlist" value="edit" id="btn-editwishlist-{{ $count }}" style="display: none">Edit</button>
+                                <button type="button" class="btn btn-primary btn-updatewishlist" value="update" id="btn-updatewishlist-{{ $count }}" style="display: none">Update</button>
+                                <button type="button" class="btn btn-primary btn-canceltoupdatewishlist" value="cancel" id="btn-canceltoupdatewishlist-{{ $count }}" style="display: none">Cancel</button>
+                                <button type="button" class="btn btn-primary btn-deletewishlist" value="delete" id="btn-deletewishlist-{{ $count }}" style="display: none">Delete</button>
                                 
                             </div>
+                            
+                        </div>
                         </div>
                         <?php $count++  ?>
                         @endforeach
                         
-                        <div style="display: none;" id="totalProduct">{{ $count }}</div>
-                        {!! Form::open(['action'=>'WishlistController@store', 'class'=>'form-horizontal nobottommargin quick-contact-from', 'method'=>'post', 'files'=>true]) !!}
+                        <div style="display: none;" name="totalproduct" id="totalProduct">{{ $count }}</div>
+
+
                         <div id="newProductContainer">
                         </div>
+                    
+            
                     </div>
+                    
+                    
+                    
                     <div id="productModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm">
                             <div class="modal-body">
@@ -211,8 +224,8 @@
                                         <h4 class="modal-title" id="myModalLabel">Select Item</h4>
                                     </div>
                                     <div class="modal-body">
-                                      @foreach($MasterProducts as $masterProducts)
-                                        <p class="nobottommargin"><input name="#" value="{{ $product['product_name'] }}" type="checkbox">  {{ $masterProducts['product_name'] }}</p>
+                                      @foreach($MasterProducts as $product)
+                                        <p class="nobottommargin"><input name="#" value="{{ $product['product_name'] }}" type="checkbox">  {{ $product['product_name'] }}</p>
                                          @endforeach
                                   
                                         <p class="nobottommargin"><input name="addNewProduct" id="addNewProduct" value="Custom" type="checkbox"> Custom</p>
@@ -234,19 +247,22 @@
 
         
 
-          {!! Form::button('Save', ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
-          {!! Form::close() !!}
+          
+          
           <a href="{{ url('/home') }}" class="button button-rounded button-xlarge">Back</a>
           <div class="center">
                         <button class="button button-border button-rounded topmargin" data-toggle="modal" data-target=".bs-example-modal-sm">Add More</button>
                     </div>
-                </div>
+          </div>
 
-      @endif
+          }
 
-				</div>
+          @endif
+       
+        </div>
 
-			</div>
+      </div>
 
-		</section>
-	@stop
+    </section>
+     
+  @stop

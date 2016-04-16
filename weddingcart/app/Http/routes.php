@@ -46,6 +46,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('invites','InvitesController@invites');
 	Route::get('create_wishlist','WishlistController@create');
     Route::post('wishlist','WishlistController@store');
+    Route::get('/showproducts','WishlistController@showproducts');   //for ajax
+    Route::post('/ajaxwishlist','WishlistController@addproduct');     // for ajax
+    Route::post('/editwishlist','WishlistController@editproduct');     // for ajax
+    Route::post('/updatewishlist','WishlistController@updateproduct');     // for ajax
+    Route::post('/deletewishlist','WishlistController@removeproduct');     // for ajax
+
     Route::post('wishlist/destroy','WishlistController@deleteproduct');
     Route::get('wishlist/{id}/edit','WishlistController@edit');
     Route::post('wishlist/update/{id}','WishlistController@update');
@@ -61,4 +67,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
     Route::get('contacts', 'ContactsController@getGoogleContacts');
 
+
+    // for ajax
+   
 });
