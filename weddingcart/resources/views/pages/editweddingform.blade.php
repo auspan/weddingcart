@@ -1,10 +1,7 @@
     @extends('app')
 
     @section('content')
-       
-    
-
-		<section id="content" class="secbkgrnd">
+    <section id="content" class="secbkgrnd">
 
 			<div class="content-wrap">
 

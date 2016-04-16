@@ -1,11 +1,7 @@
     @extends('app')
 
     @section('content')
-    <script>
-        $(document).ready(function(){
-            alert($("input#bimg").val());
-        });
-    </script>>
+    
     
 		<section id="content" class="secbkgrnd">
 
