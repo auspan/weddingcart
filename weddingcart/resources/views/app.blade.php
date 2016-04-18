@@ -109,7 +109,7 @@
 						<div style='margin:11px'>
 					<div class="dropdown">
 	<a class="account" >
-	<span style="color: white">My Account</span>
+	<span style="color: white">{{ Auth::user()->name }}</span>
 	</a>
 	<div class="submenu" style="display: none; ">
 
@@ -137,7 +137,7 @@
 							<li><a href="{{ url('/home') }}">Dashboard</a></li>
 							<li class="current"><a href="{{ url('/wedding') }}">Wedding</a></li>
 							<li><a href="{{ url('/showproducts') }}">Wish List</a></li>
-							<li><a href="#">Invite</a></li>
+							<li><a href="{{ url('/invites') }}">Invite</a></li>
 							<li><a href="#">Send</a></li>
 						</ul>
 					</nav>
@@ -272,11 +272,11 @@ qui officia deserunt mollit anim id est laborum.</p>
 	<script type="text/javascript" src="js/newjs.js"></script>
 	<script type="text/javascript" src="js/images.js"></script>
 	<script type="text/javascript" src="js/countdown.js"></script>
-<<<<<<< HEAD
-	
-=======
+
+	<script type"text/javascript" src="js/wishlistform.js"></script>
+
 	<script type="text/javascript" src="js/dropdown.js"></script>
->>>>>>> c77feccdb60efd91df9ebf2ee8d35258fbad7581
+
 	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
 	
