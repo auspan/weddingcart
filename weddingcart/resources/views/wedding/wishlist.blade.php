@@ -17,6 +17,6 @@
 </div>
 
 <div class="center bottommargin-lg">
-    <a href="#" class="button button-rounded button-xlarge">Manage</a>
+    <a href="{{ url('/showproducts') }}" class="button button-rounded button-xlarge">Manage</a>
 </div>
 
