@@ -2,6 +2,8 @@
 
 namespace weddingcart\Http\Controllers;
 
+use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 use weddingcart\Http\Requests;
 use Illuminate\Http\Request;
 use Auth;
@@ -15,6 +17,8 @@ class HomeController extends Controller
      *
      * @return void
      */
+    protected  $userEventRole;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -27,26 +31,35 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::check())
-         {
-         $userid=Auth::User()->id;
+        if(Auth::user()->isHost()){
+            $userEventRole = Auth::user()->userEventRoles()->first();
+            $data = $userEventRole->userEvent()->first()->userEventAttributes();
+
+            $current_datetime = new DateTime();
+            $wedding_datetime = new DateTime($data['wdt']);
+            $difference = $current_datetime->diff($wedding_datetime);
+
+            $data['days']    = $difference->d;
+            $data['hours']   = $difference->h;
+            $data['minutes'] = $difference->i;
+            $data['seconds'] = $difference->s;
+
+            $data['bride_name'] = $this->splitname($data['bnm']);
+            $data['groom_name'] = $this->splitname($data['gnm']);
+            $array_wishlist_items = $userEventRole->userEventWishlistItems()->pluck('product_name');
+
+            return view('wedding.weddingpage',['wishlist_items'=>$array_wishlist_items])->with($data->toArray());
+//            return view('pages.invites_landing',['wishlist_items'=>$array_wishlist_items])->with($data->toArray());
         }
         else
         {
-            return view('errors.503');
+            return view('pages.createwedding');
         }
-        /*$count=0;
-        $userevent=UserEvent::all()->where('user_id',$userid);
-        foreach ($userevent as $usereventid) {
-            $ueid=$usereventid['id'];
-            $count++;
-        }
-        if($count>0)
-        {
-            $disable=0;
-        }*/
-        $userrole=UserEventRole::all()->where('user_id',$userid);
-        
-        return view('home',['roleid'=>$userrole]);
     }
+
+    public function splitname(String $name){
+
+        return str_word_count($name, 1);
+    }
+
 }

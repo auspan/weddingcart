@@ -56,4 +56,37 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('weddingcart\WishlistItemContribution');
 
     }
+
+    public function isNew()
+    {
+        if($this->userEventRoles()->count() == 0){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function isHost()
+    {
+        if($this->userEventRoles()->count() == 1 && $this->userEventRoles()->first()->role == 1){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function isGuest()
+    {
+        if($this->userEventRoles()->count() == 1 && $this->userEventRoles()->first()->role == 2){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

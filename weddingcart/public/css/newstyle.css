@@ -1,165 +1,150 @@
-
-<style id="fit-vids-style">.fluid-width-video-wrapper
-{
-	width:100%;
-	position:relative;animate
-	padding:0;
-}
-	.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed
-{
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-}
-
 .animate
 {
-     animation-duration: 1.5s;
-     opacity: 1;"
+    animation-duration: 1.5s;
+    opacity: 1;"
 }
 .sectionmar
 {
-	 margin-bottom: 0px;
-}     
+    margin-bottom: 0px;
+}
 .contdeg
 {
-     background-color: rgba(200,200,200,0.5);
-     background-size: cover;
+    background-color: rgba(200,200,200,0.5);
+    background-size: cover;
 }
 .accordion-lgdiv
 {
-     max-width: 550px;
-     background-color: rgba(255,255,255,0.93);
-     padding: 40px;"     
+    max-width: 550px;
+    background-color: rgba(255,255,255,0.93);
+    padding: 40px;"
 }
 
 .acc_content
 {
-	display: none;
+    display: none;
 }
 .divcenterh4
 {
-	 margin-bottom: 15px;
+    margin-bottom: 15px;
 
 }
 .div_con
 {
-     display: block;
+    display: block;
 }
 .instagram-img
 {
-     position: relative;
-     height: 207px;
+    position: relative;
+    height: 207px;
 }
 .hyper1
 {
-	 width: 69px; 
-	 position: absolute;
-	 left: 0px; 
-	 top: 0px;
+    width: 69px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
 }
 .hyper2
 {
-	 width: 69px;
-	 position: absolute; 
-	 left: 69px; 
-	 top: 0px;
+    width: 69px;
+    position: absolute;
+    left: 69px;
+    top: 0px;
 }
 .hyper3
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 138px; 
-	 top: 0px;
+    width: 69px;
+    position: absolute;
+    left: 138px;
+    top: 0px;
 }
 .hyper4
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 207px; 
-	 top: 0px;
+    width: 69px;
+    position: absolute;
+    left: 207px;
+    top: 0px;
 }
 .hyper5
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 276px; 
-	 top: 0px;"
+    width: 69px;
+    position: absolute;
+    left: 276px;
+    top: 0px;"
 }
 .hyper6
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 0px; 
-	 top: 69px;
+    width: 69px;
+    position: absolute;
+    left: 0px;
+    top: 69px;
 }
 .hyper7
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 69px; 
-	 top: 69px;
+    width: 69px;
+    position: absolute;
+    left: 69px;
+    top: 69px;
 }
 .hyper8
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 138px; 
-	 top: 69px;
+    width: 69px;
+    position: absolute;
+    left: 138px;
+    top: 69px;
 }
 .hyper9
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 207px; 
-	 top: 69px;
+    width: 69px;
+    position: absolute;
+    left: 207px;
+    top: 69px;
 }
 .hyper10
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 276px; 
-	 top: 69px;
+    width: 69px;
+    position: absolute;
+    left: 276px;
+    top: 69px;
 }
 .hyper11
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 0px; 
-	 top: 138px;
+    width: 69px;
+    position: absolute;
+    left: 0px;
+    top: 138px;
 }
 .hyper12
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 69px; 
-	 top: 138px;
+    width: 69px;
+    position: absolute;
+    left: 69px;
+    top: 138px;
 }
 .hyper13
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 138px; 
-	 top: 138px;
+    width: 69px;
+    position: absolute;
+    left: 138px;
+    top: 138px;
 }
 .hyper14
 {
-	 width: 69px; 
-	 position: absolute; 
-	 left: 207px; 
-	 top: 138px;
+    width: 69px;
+    position: absolute;
+    left: 207px;
+    top: 138px;
 }
 .hyper15
 {
-	 width: 69px;
-	 position: absolute; 
-     left: 276px; 
-     top: 138px;"
+    width: 69px;
+    position: absolute;
+    left: 276px;
+    top: 138px;"
 }
-/*end style*/
-/*home page & reg*/
+      /*end style*/
+
+      /*home page & reg*/
 
 .swiper-pagination 
 {
@@ -309,15 +294,15 @@
     font-size:10px;
   }
 		
-    .divtopstyl
-    {
-    position: absolute; 
-    width: 100%; 
-    height: 100%; 
-    top: 0; 
-    left: 0;
-     background-color: #333;
-    }
+  .divtopstyl
+  {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #333;
+  }
 
 @media print 
 {  
@@ -347,32 +332,35 @@
 
           .sectionstyl
           {
-            height: 657px;
-           transform: translate(0px, 0px);
+              height: 657px;
+              transform: translate(0px, 0px);
           }
+
           .divflexstyl
           {
             height: 100% !important;
           }
+
           .divslidr
           {
            height: inherit;
           }
+
       .divslidflex
       {
-        background: transparent url(&quot;images/slider/swiper/1.jpg&quot;) repeat scroll center center / cover ;
-         height: 100% ! important; 
-         width: 100%; 
+        background: transparent url(../images/slider1.jpg) repeat scroll center center / cover ;
+         height: 100% !important;
+         width: 100%;
          float: left; 
          margin-right: -100%; 
          position: relative; 
-         opacity: 0.958384; 
+         opacity: 0.958384;
          display: block; 
          z-index: 2;
       }
       .divslidflex1
       {
-        background: transparent url(&quot;images/slider/swiper/2.jpg&quot;) repeat scroll center center / cover ; 
+        background: transparent url(../images/slider2.jpg) repeat scroll center center / cover ;
         height: 100% ! important;
          width: 100%; 
          float: left;
@@ -384,13 +372,13 @@
       }
       .divslidflex2
       {
-         background: transparent url(&quot;images/slider/swiper/3.jpg&quot;) repeat scroll center center / cover ;
+         background: transparent url(../images/slider3.jpg) repeat scroll center center / cover ;
          height: 100% ! important; 
          width: 100%; 
          float: left; 
          margin-right: -100%; 
          position: relative; 
-         opacity: 0.041616; 
+         opacity: 0.041616;
          display: block; 
          z-index: 1;
       }
@@ -402,7 +390,7 @@
         width: 100%; 
         padding-top: 0px; 
         padding-bottom: 0px; 
-        margin-top: -272px; 
+        /*margin-top: -272px; */
         opacity: 1.11111;
       }
       .countdown
@@ -467,7 +455,7 @@
       width: 100%; 
       height: 100%; 
       z-index: 0; 
-      cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;
+      cursor: url('http://maps.gstatic.com/mapfiles/openhand_8_8.cur'), default;
    }
    .divhyper4
    {
@@ -1144,5 +1132,8 @@ width: 66px; height: 26px; cursor: pointer;
    position: absolute; left: 0px; top: 0px; width: 66px;
     height: 26px; -moz-user-select: none; 
     border: 0px none; padding: 0px; margin: 0px;
-}.
+}
+#slider{
+    height: 100%;
+}
 /*end style*/

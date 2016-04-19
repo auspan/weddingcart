@@ -22,16 +22,18 @@ class UserEventRole extends Model
 
     // Relationships
 
-    public function userEvent() {
-
+    public function userEvent()
+    {
         return $this->belongsTo('weddingcart\UserEvent');
-    
     }
 
-    public function user() {
-
+    public function user()
+    {
         return $this->belongsTo('weddingcart\User');
     }
 
-
+    public function userEventWishlistItems()
+    {
+        return $this->hasMany('weddingcart\UserEventWishlistItem');
+    }
 }
