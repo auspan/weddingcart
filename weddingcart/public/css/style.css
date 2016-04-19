@@ -284,6 +284,7 @@ span.middot {
 	float: none !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
+    max-width: 700px;
 }
 
 .bgcolor,
@@ -546,7 +547,6 @@ body.stretched .container-fullwidth {
 	position: relative;
 	display: block;
 	width: 100%;
-	height: auto;
 	overflow: hidden;
 	-webkit-backface-visibility: hidden;
 }
@@ -575,6 +575,7 @@ html[xmlns] .slider-wrap {display: block;}
 
 .flex-viewport {
 	max-height: 2000px;
+	height: 100%;
 	-webkit-transition: all 1s ease;
 	-o-transition: all 1s ease;
 	transition: all 1s ease;
@@ -2814,6 +2815,7 @@ body.side-panel-open:not(.device-xxs):not(.device-xs):not(.device-sm) .body-over
 	background-repeat: no-repeat;
 	background-size: cover;
 	overflow: hidden;
+	width: 100%;
 }
 
 .swiper-slide [data-caption-animate] { -webkit-backface-visibility: hidden; }

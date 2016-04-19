@@ -62,7 +62,15 @@ class InvitesController extends Controller
             $minute=$diffrence->i;
             $second=$diffrence->s;
 
-        $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage, 'days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);
+        $data=array('wedding_date'=>$wed_date
+                    , 'groom_name'=>$groomname
+                    , 'bride_name'=>$bridename
+                    , 'groom_image'=>$groomimage
+                    , 'bride_image'=>$brideimage
+                    , 'days'=>$day
+                    , 'hours'=>$hour
+                    , 'minutes'=>$minute
+                    , 'seconds'=>$second);
 
         $UserEventRoleId=UserEventRole::all()->where('user_id',90);
         foreach ($UserEventRoleId as $user_event_role_id) 
