@@ -59,3 +59,6 @@
         </div>
     </div>
 </div>
+<div class="center bottommargin-lg">
+    <a href="{{ url('wedding/'.Auth::user()->id.'/edit') }}" class="button button-rounded button-xlarge">EDIT</a>
+</div>

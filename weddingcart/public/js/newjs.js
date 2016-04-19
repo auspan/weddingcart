@@ -109,11 +109,13 @@ jQuery(document).ready(function($)
 
 jQuery(document).ready( function($){
     var weddate=$("#dates").html();
-    var dateFields=weddate.split(/[/]/);
 
-    var newDate = new Date(dateFields[2], dateFields[0], dateFields[1]);
-    //alert(newDate);
-    $('#countdown-ex1').countdown({until: newDate});
+    if(weddate != null){
+        var dateFields=weddate.split(/[/]/);
+        var newDate = new Date(dateFields[2], dateFields[0], dateFields[1]);
+        //alert(newDate);
+        $('#countdown-ex1').countdown({until: newDate});
+    }
 });
 
 jQuery(window).load(function()

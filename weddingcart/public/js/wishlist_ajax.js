@@ -1,6 +1,6 @@
   
     $(document).ready(function(){
-     
+
       var values = $('.hiddenproductId').map(function (index, el) {
        return $(el).attr('id'); 
       }).get();                 // get the value of all div having this id 
