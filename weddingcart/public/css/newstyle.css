@@ -343,7 +343,7 @@
 
           .divslidr
           {
-           height: inherit;
+           height: inherit !important;
           }
 
       .divslidflex
