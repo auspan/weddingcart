@@ -18,7 +18,7 @@ class InvitesController extends Controller
       public function invites()
       {
       
-        $userevent=UserEvent::all()->where('user_id',4);
+        $userevent=UserEvent::all()->where('user_id',90);
         
         
         foreach ($userevent as $usereventid)
@@ -64,7 +64,7 @@ class InvitesController extends Controller
 
         $data=array('wedding_date'=>$wed_date, 'groom_name'=>$groomname, 'bride_name'=>$bridename, 'groom_image'=>$groomimage, 'bride_image'=>$brideimage, 'days'=>$day, 'hours'=>$hour, 'minutes'=>$minute, 'seconds'=>$second);
 
-        $UserEventRoleId=UserEventRole::all()->where('user_id',4);
+        $UserEventRoleId=UserEventRole::all()->where('user_id',90);
         foreach ($UserEventRoleId as $user_event_role_id) 
         {
           $User_Event_Role_Id=$user_event_role_id['id'];

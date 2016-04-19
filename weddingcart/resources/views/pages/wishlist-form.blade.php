@@ -18,7 +18,7 @@
             
           </div>
                     
-                    <div id="posts" class="events small-thumbs">
+          <div id="posts" class="events small-thumbs">
                       <?php $count=1 ?>
                       <div class="alert alert-success" id="success" style="display: none;">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -54,7 +54,8 @@
                                       <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message"></textarea>
       
                                       <input type="hidden" id="countervalue" name="countervalue" value="{{ $count }}">
-                                      <div id="product_id{{$count}}" class="productId" style="display: none">NULL</div>
+                                      <div id="product_id_{{$count}}" class="hiddenproductId" style="display: none">NULL</div>
+
       
                               </div>
                               <div class="skills">
@@ -66,7 +67,7 @@
                               </div>
                             </div>
                             <div class="col-md-1 col_last tright">
-                                <a href="javascript::void(0)" id="remove" class="btn btn-danger" onclick="return removeContainer(product{{$count}})">Remove</a>
+                                <button type="button" class="btn btn-danger btn-removewishlist" value="add" id="btn-removewishlist-{{$count}}">Remove</button>
                                 <br><br>
                                 <button type="button" class="btn btn-primary btn-addtowishlist" value="add" id="btn-addwishlist-{{ $count }}">Add</button>
                                 <button type="button" class="btn btn-primary btn-editwishlist" value="edit" id="btn-editwishlist-{{ $count }}" style="display: none">Edit</button>
@@ -164,7 +165,7 @@
                                     <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Product_Image" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
                                 </a>
                                     <input type="text" value="{{ $product['product_image'] }}" id="imgsrc{{ $count }}" name="imgname{{ $count }}" style="display: none;">
-                            </div>
+                                  </div>
                             <div class="col-md-9">
                               <div class="quick-contact-widget clearfix">
                                   <div class="input-group col_two_third">
@@ -177,19 +178,21 @@
                                       <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message"></textarea>
       
                                       <input type="hidden" id="countervalue" name="countervalue" value="{{ $count }}">
-                                      <div id="product_id{{$count}}" class="productId" style="display: none">{{ $product['id'] }}</div>
+                                      <div id="product_id_{{$count}}" class="hiddenproductId" style="display: none">{{ $product['id'] }}</div>
+                                      
       
                               </div>
                               <div class="skills">
                                 <li data-percent="0">
                                     <div class="progress skills-animated divsty">
-                                        <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="0" data-refresh-interval="30" data-speed="1100">0</span>%</div></div>
+                                        <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" id="progressbar_{{$count}}" class="progressbar"  data-to="0" data-refresh-interval="30" data-speed="1100">0</span>%</div></div>
                                     </div>
                                 </li>
                               </div>
                             </div>
                             <div class="col-md-1 col_last tright">
-                                <a href="javascript::void(0)" id="remove" class="btn btn-danger" onclick="return removeContainer(product{{$count}})">Remove</a>
+                                
+                                <button type="button" class="btn btn-danger btn-removewishlist" value="add" id="btn-removewishlist-{{$count}}">Remove</button>
                                 <br><br>
                                 <button type="button" class="btn btn-primary btn-addtowishlist" value="add" id="btn-addwishlist-{{ $count }}">Add</button>
                                 <button type="button" class="btn btn-primary btn-editwishlist" value="edit" id="btn-editwishlist-{{ $count }}" style="display: none">Edit</button>
@@ -201,6 +204,7 @@
                             
                         </div>
                         </div>
+
                         <?php $count++  ?>
                         @endforeach
                         

@@ -208,7 +208,7 @@ quisquam possimus eos aspernatur distinctio similique perferendis.</div>
                                     <li data-percent="80">
                                         <span>{{ $items }}</span>
                                         <div class="progress skills-animated divprogress">
-                                            <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="0" data-refresh-interval="30" data-speed="1100">0</span>%</div></div>
+                                            <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="80" data-refresh-interval="30" data-speed="1100">0</span>%</div></div>
                                         </div>
                                     </li>
                                     @endforeach

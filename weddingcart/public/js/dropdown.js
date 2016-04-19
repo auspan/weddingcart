@@ -3,6 +3,7 @@ $(document).ready(function()
 {
 $(".account").click(function()
 {
+	
 var X=$(this).attr('id');
 
 if(X==1)

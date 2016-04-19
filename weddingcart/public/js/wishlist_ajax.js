@@ -1,4 +1,4 @@
-
+  
     $(document).ready(function(){
      
       var values = $('.hiddenproductId').map(function (index, el) {
@@ -20,7 +20,7 @@
           var splitId=values[i].split(/[_]/);
           var getOnlyIdNumber=splitId[2];
           $("#btn-editwishlist-"+getOnlyIdNumber).css("display","inherit");
-          $("#btn-deletewishlist-"+getOnlyIdNumber).css("display","inherit");
+          $("#btn-removewishlist-"+getOnlyIdNumber).css("display","inherit");
           $("#btn-addwishlist-"+getOnlyIdNumber).css("display","none");
           $("#btn-updatewishlist"+getOnlyIdNumber).css("display","none");
           $("#btn-canceltoupdatewishlist"+getOnlyIdNumber).css("display","none");
@@ -28,6 +28,7 @@
           $('#productDescription'+getOnlyIdNumber).attr("disabled", "disabled");
           $('#productPrice'+getOnlyIdNumber).attr("disabled", "disabled");
           $('#message'+getOnlyIdNumber).attr("disabled", "disabled");
+          
         }
         if($("#"+progressBarId).attr('data-to')>0)
         {
@@ -37,8 +38,10 @@
           
         }
         }
+
+        
       
-      $('.btn-addtowishlist').click(function(){
+      $('#posts').on('click', '.btn-addtowishlist', function(event){
 
         var id = $(this).attr('id');
         var idfields=id.split(/[-]/);
@@ -81,7 +84,8 @@
               $("#success").append("Item Added Succesfully");
               $("#product_id_"+counter).html(productid);
               $("#btn-editwishlist-"+counter).css("display","inherit");
-              $("#btn-deletewishlist-"+counter).css("display","inherit");
+              $("#btn-removewishlist-"+counter).css("display","inherit");
+              //$("#remove_"+counter).css("display","none");
               $("#btn-addwishlist-"+counter).css("display","none");
               $('#productName'+counter).attr("disabled", "disabled");
               $('#productDescription'+counter).attr("disabled", "disabled");
@@ -101,12 +105,15 @@
         })
       })
 
-      $('.btn-deletewishlist').click(function(){
+      $('#posts').on('click', '.btn-removewishlist', function(event){
 
         var id = $(this).attr('id');
         var idfields=id.split(/[-]/);
         var counter=idfields[2];
         // alert(counter);
+        if($("#product_id_"+counter).html()!="NULL")
+        {
+
        $.ajaxSetup({
           headers:{
             'X-CSRF-Token':$('meta[name="_token"]').attr('content')
@@ -135,7 +142,7 @@
               $('#productDescription'+counter).removeAttr("disabled");
               $('#productPrice'+counter).removeAttr("disabled");
               $('#message'+counter).removeAttr("disabled");
-
+              $('#formdiv'+counter).remove();
             }
             if(result==0)
             {
@@ -147,16 +154,23 @@
             alert(data);
           }
         })
+      }
+      else
+      {
+        $("#formdiv"+counter).hide(1000, function(){
+          $(this).remove();
+        })
+      }
       })
 
-      $('.btn-editwishlist').click(function(){
+      $('#posts').on('click', '.btn-editwishlist', function(event){
 
         var id = $(this).attr('id');
         var idfields=id.split(/[-]/);
         var counter=idfields[2];
         
               $("#btn-editwishlist-"+counter).css("display","none");
-              $("#btn-deletewishlist-"+counter).css("display","none");
+              $("#btn-removewishlist-"+counter).css("display","inherit");
               $("#btn-addwishlist-"+counter).css("display","none");
               $("#btn-updatewishlist-"+counter).css("display","inherit");
               $("#btn-canceltoupdatewishlist-"+counter).css("display","inherit");
@@ -167,7 +181,7 @@
             
       })
 
-      $('.btn-canceltoupdatewishlist').click(function(){
+      $('#posts').on('click', '.btn-canceltoupdatewishlist', function(event){
 
         var id = $(this).attr('id');
         var idfields=id.split(/[-]/);
@@ -177,9 +191,8 @@
               $('#productDescription'+counter).attr("disabled", "disabled");
               $('#productPrice'+counter).attr("disabled", "disabled");
               $('#message'+counter).attr("disabled", "disabled");
-        
               $("#btn-editwishlist-"+counter).css("display","inherit");
-              $("#btn-deletewishlist-"+counter).css("display","inherit");
+              $("#btn-removewishlist-"+counter).css("display","inherit");
               $("#btn-addwishlist-"+counter).css("display","none");
               $("#btn-updatewishlist-"+counter).css("display","none");
               $("#btn-canceltoupdatewishlist-"+counter).css("display","none");
@@ -190,7 +203,7 @@
             
       })
 
-      $('.btn-updatewishlist').click(function(){
+      $('#posts').on('click', '.btn-updatewishlist', function(event){
 
         var id = $(this).attr('id');
         var idfields=id.split(/[-]/);
@@ -224,7 +237,7 @@
             {
               alert("Product Updated Succesfully");
               $("#btn-editwishlist-"+counter).css("display","inherit");
-              $("#btn-deletewishlist-"+counter).css("display","inherit");
+              $("#btn-removewishlist-"+counter).css("display","inherit");
               $("#btn-addwishlist-"+counter).css("display","none");
               $("#btn-updatewishlist-"+counter).css("display","none");
               $("#btn-canceltoupdatewishlist-"+counter).css("display","none");
