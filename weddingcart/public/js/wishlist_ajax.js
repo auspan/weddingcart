@@ -34,7 +34,7 @@
         {
           var splitProgressBarId=contributionvalues[i].split(/[_]/);
           var lastindex=splitProgressBarId[1];
-          $("#remove_"+lastindex).attr("disabled","disabled");
+          $("#btn-removewishlist-"+lastindex).attr("disabled","disabled");
           
         }
         }
