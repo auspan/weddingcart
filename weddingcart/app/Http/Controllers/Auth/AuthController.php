@@ -23,6 +23,8 @@ class AuthController extends Controller
     |
     */
 
+    
+
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
@@ -31,17 +33,12 @@ class AuthController extends Controller
      * @var string
      */
      protected $redirectTo = '/home';
-        
+
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-
-    
-
-
-
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);

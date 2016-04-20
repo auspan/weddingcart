@@ -39,21 +39,16 @@ Route::group(['middleware' => 'web'], function () {
 	Route::post('wedding','WeddingController@store');
     Route::get('wedding/{id}/edit','WeddingController@edit');
     Route::post('wedding/update/{id}','WeddingController@update');
-    // store product into user wishlist
-    Route::post('/wishlist/add','WishlistController@store_product_into_wishlist');
-    // end of stronig product into user wishlist
-	//Route::get('wishlist','WishlistController@wishlist');
+    
     Route::get('invites','InvitesController@invites');
-	Route::get('create_wishlist','WishlistController@create');
-    Route::post('wishlist','WishlistController@store');
-    Route::post('wishlist/destroy','WishlistController@deleteproduct');
-    Route::get('wishlist/{id}/edit','WishlistController@edit');
-    Route::post('wishlist/update/{id}','WishlistController@update');
+	
+    Route::get('/showproducts','WishlistController@showproducts');   
+    Route::post('/ajaxwishlist','WishlistController@addproduct');     
+    Route::post('/editwishlist','WishlistController@editproduct');     
+    Route::post('/updatewishlist','WishlistController@updateproduct');     
+    Route::post('/deletewishlist','WishlistController@removeproduct'); 
+
     
-    Route::get('wishlist','WishlistController@makewishlist');
-    
-    
-    Route::get('showwishlist','WishlistController@showwishlist');
     
     
 
@@ -62,4 +57,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('contacts', 'ContactsController@getGoogleContacts');
     Route::post('savecontact','ContactsController@savecontacts');
 
+
+    
+   
 });

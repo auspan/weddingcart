@@ -32,7 +32,7 @@ class UserEventWishlistItem extends Model
         return $this->belongsTo('weddingcart\Product');
     }
 
-    public function WishlistitemContributions() {
+    public function wishlistItemContributions() {
 
         return $this->hasMany('weddingcart\WishlistItemContribution');
     }

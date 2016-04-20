@@ -22,6 +22,9 @@ class UserEvent extends Model
 
     // Relationships
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user() {
 
         return $this->belongsTo('weddingcart\User');
@@ -51,4 +54,8 @@ class UserEvent extends Model
 
     }
 
+    public function userEventAttributes()
+    {
+        return $this->userEventDetails()->pluck('attribute_value', 'attribute_code');
+    }
  }

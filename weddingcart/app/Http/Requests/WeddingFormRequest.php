@@ -25,8 +25,8 @@ class WeddingFormRequest extends Request
     {
         return [
             'wedding_date'=>'required',
-            'bride_image'   =>'required|mimes:jpeg,jpg,png,gif|image|max:255',
-            'groom_image'   =>'required|mimes:jpeg,jpg,png,gif|image|max:255',
+            'bride_image'   =>'required|mimes:jpeg,jpg,png,gif|image',
+            'groom_image'   =>'required|mimes:jpeg,jpg,png,gif|image',
             'bride_name'  =>'required|Alpha',
             'groom_name'  =>'required|Alpha',  
         ];

@@ -15,6 +15,8 @@ class AddForeignKeysToWishlistItemContributionsTable extends Migration {
 		Schema::table('wishlist_item_contributions', function(Blueprint $table)
 		{
 			$table->foreign('event_wishlist_item_id', 'fk_wishlist_item_contributions_user_event_wishlist_items1')->references('id')->on('user_event_wishlist_items')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('user_id', 'fk_wishlist_item_contributions_users1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+
 		});
 	}
 
