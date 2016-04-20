@@ -7,6 +7,7 @@
 	<base href="/" target="_top">
 	<link href="css/css.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+	
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/dark.css" type="text/css">
 	<link rel="stylesheet" href="css/font-icons.css" type="text/css">
@@ -14,7 +15,7 @@
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
 	<link rel="stylesheet" href="css/newstyle.css" type="text/css">
 	<link rel="stylesheet" href="css/dropdown.css" type="text/css">
-    
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css" type="text/css">
 	<link rel="stylesheet" href="css/jquery.ui.core.css" type="text/css">
 	<link rel="stylesheet" href="css/jquery.ui.theme.css" type="text/css">
 	<link rel="stylesheet" href="css/jquery.ui.datepicker.css" type="text/css">
@@ -272,12 +273,11 @@ qui officia deserunt mollit anim id est laborum.</p>
 	<script type="text/javascript" src="js/newjs.js"></script>
 	<script type="text/javascript" src="js/images.js"></script>
 	<script type="text/javascript" src="js/countdown.js"></script>
-<<<<<<< HEAD
 	<script type="text/javascript" src="js/wishlistform.js"></script>
-=======
 	<script type="text/javascript" src="js/dropdown.js"></script>
->>>>>>> c77feccdb60efd91df9ebf2ee8d35258fbad7581
 	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
 	
 		</body>
 		</html>

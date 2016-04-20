@@ -60,5 +60,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('social/auth/redirect/{provider}', 'Auth\AuthController@redirectToProvider');
     Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
     Route::get('contacts', 'ContactsController@getGoogleContacts');
+    Route::post('savecontact','ContactsController@savecontacts');
 
 });

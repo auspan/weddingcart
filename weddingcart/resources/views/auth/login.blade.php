@@ -51,7 +51,7 @@
 								</div>
 
 								<div class="form-group">
-								   <div class="col_full nobottommargin">
+								  	<div class="col_full nobottommargin">
 											<button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
 											<a href="{{ url('/password/reset') }}" class="fright">Forgot Password?</a>
 										</div>
