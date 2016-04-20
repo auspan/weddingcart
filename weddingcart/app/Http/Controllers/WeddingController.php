@@ -277,7 +277,11 @@ class WeddingController extends Controller
 
      public function update($id, EditWeddingFormRequest $request)
      {
-        /*$userEventDetailId=UserEventDetail::all()->where('user_event_id',$id);
-        var_dump($userEventDetailId);*/
+      
+        // dd($id);
+        $userEventId = intval($id);
+        // dd($userEventId);
+        $userEventDetailId=UserEventDetail::all()->where('user_event_id',$userEventId);
+        dd($userEventDetailId);
      }
 }
