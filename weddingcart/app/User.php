@@ -62,7 +62,8 @@ class User extends Model implements AuthenticatableContract,
      {
     
         return $this->hasMany('weddingcart\contact');
-     }
+    }
+
 
     public function isNew()
     {
