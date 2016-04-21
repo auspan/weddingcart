@@ -141,7 +141,7 @@ class WeddingController extends Controller
                 'event_id'=>$event_id,
                 'user_id'=>Auth::User()->id,
           ));
-    	 $weddingdate = $request->input('wedding_date');
+    	   $weddingdate = $request->input('wedding_date');
         $groomname = $request->input('groom_name');
         $bridename = $request->input('bride_name');
         $groomimage=Input::file('groom_image');
@@ -278,10 +278,53 @@ class WeddingController extends Controller
      public function update($id, EditWeddingFormRequest $request)
      {
       
-        // dd($id);
         $userEventId = intval($id);
-        // dd($userEventId);
-        $userEventDetailId=UserEventDetail::all()->where('user_event_id',$userEventId);
-        dd($userEventDetailId);
+        $userEventDetailId=UserEventDetail::all()->where('user_event_id',$userEventId)->pluck('id');
+
+
+        $weddingdate = $request->input('wedding_date');
+        $groomname = $request->input('groom_name');
+        $bridename = $request->input('bride_name');
+        $brideimg= $request->input('brideImage');
+        $groomimg= $request->input('groomImage');
+         $groomimage=Input::file('groom_image');
+        $brideimage=Input::file('bride_image');
+        $wedcode = $request->input('wed_date');
+        $groomcode = $request->input('groom');
+        $bridecode = $request->input('bride');
+        $groomimagecode=$request->input('groom_img');
+        $brideimagecode=$request->input('bride_img');
+
+        DB::table('user_event_details')->where('id',$userEventDetailId[0])->update(['attribute_value'=>$weddingdate]);
+        DB::table('user_event_details')->where('id',$userEventDetailId[1])->update(['attribute_value'=>$groomname]);
+        DB::table('user_event_details')->where('id',$userEventDetailId[2])->update(['attribute_value'=>$bridename]);
+        if(Input::file('groom_image')!=null)
+        {
+          $destinationPath = '../public/uploads/';
+          $groom_image = ImageName($groomimage);
+          $groomimage->move($destinationPath, $groom_image);
+          DB::table('user_event_details')->where('id',$userEventDetailId[3])->update(['attribute_value'=>$groom_image]); 
+        }
+        else
+        {
+          DB::table('user_event_details')->where('id',$userEventDetailId[3])->update(['attribute_value'=>$groomimg]); 
+        }
+        if(Input::file('bride_image')!=null)
+        {
+          $destinationPath = '../public/uploads/';
+          $bride_image = ImageName($brideimage);
+          $brideimage->move($destinationPath, $bride_image);
+          DB::table('user_event_details')->where('id',$userEventDetailId[4])->update(['attribute_value'=>$bride_image]); 
+        }
+        else
+        {
+          DB::table('user_event_details')->where('id',$userEventDetailId[4])->update(['attribute_value'=>$brideimg]); 
+        }
+        
+        
+        return redirect('home');
+
+
+        
      }
 }

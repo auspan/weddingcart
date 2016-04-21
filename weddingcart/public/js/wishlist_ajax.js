@@ -52,7 +52,7 @@
             'X-CSRF-Token':$('meta[name="_token"]').attr('content')
           }
         })
-        
+        var changedImage=$("#productImage"+counter).val();
         var productName=$("#productName"+counter).val();
         var productImage=$("#imgsrc"+counter).val();
         var productDescription=$("#productDescription"+counter).val();
@@ -68,7 +68,9 @@
               productName:productName,
               productImage:productImage,
               productDescription:productDescription,
-              productPrice:productPrice
+              productPrice:productPrice,
+              changedImage:changedImage
+
               
             },
           
