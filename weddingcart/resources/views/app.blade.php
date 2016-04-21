@@ -17,7 +17,6 @@
 		<link rel="stylesheet" href="css/animate.css" type="text/css">
 		<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
 		<link rel="stylesheet" href="css/newstyle.css" type="text/css">
-		<link rel="stylesheet" href="css/dropdown.css" type="text/css">
 		<link rel="stylesheet" href="css/jquery.ui.core.css" type="text/css">
 		<link rel="stylesheet" href="css/jquery.ui.theme.css" type="text/css">
 		<link rel="stylesheet" href="css/jquery.ui.datepicker.css" type="text/css">
@@ -69,7 +68,6 @@
 	<script type="text/javascript" src="js/images.js"></script>
 	<script type="text/javascript" src="js/countdown.js"></script>
 	<script type="text/javascript" src="js/wishlistform.js"></script>
-	<script type="text/javascript" src="js/dropdown.js"></script>
 	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>

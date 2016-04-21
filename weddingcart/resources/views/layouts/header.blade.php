@@ -17,7 +17,14 @@
             <nav id="primary-menu">
                 <ul class="sf-menu">
                     <li><a href="#"><div>Home</div></a></li>
-                    <li><a href="/logout"><div>{{ Auth::user()->name }}</div></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="width: 50px">
+                          <li><a href="{{ url('/logout')  }}">Sign Out</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
 
@@ -36,4 +43,10 @@
             </nav><!-- #primary-menu end -->
         </div>
     </div>
+
+    <script>
+    $('#uls').click(function(){
+        $('#lis').css("display","inherit");
+    })
+    </script>
 </header><!-- #header end -->
