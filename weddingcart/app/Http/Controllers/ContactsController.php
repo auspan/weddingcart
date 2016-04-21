@@ -3,8 +3,10 @@
 namespace weddingcart\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use weddingcart\Http\Requests;
+use weddingcart\contact;
+use Illuminate\Support\Facades\Input;
 
 class ContactsController extends Controller
 {
@@ -79,6 +81,18 @@ class ContactsController extends Controller
         $googleClient->setAccessToken(['access_token' => $token, 'expires_in' => 3600]);
         $googleClient->setScopes(['https://www.googleapis.com/auth/contacts.readonly', 'https://www.googleapis.com/auth/plus.login']);
         return $googleClient;
+    }
+
+    public function savecontacts()
+    {
+        $userid=Auth::User()->id;
+        contact::create(array(
+                'Name'=>Input::get('personName'),
+                'Email'=>Input::get('personEmail'),
+                'Phone'=>Input::get('personPhone'),
+                'user_id'=>$userid
+            ));
+        return 1;
     }
     //
 }

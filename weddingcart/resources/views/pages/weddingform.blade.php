@@ -22,7 +22,7 @@
 								{!! Form::open(['action'=>'WeddingController@store', 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
                                		<div class="row">
                                                 <div class="input-daterange travel-date-group bottommargin-sm">
-                                                    <div class="col-md-4 divcenter" style="position: relative; z-index: 10">
+                                                    <div class="col-md-3 divcenter" style="position: relative; z-index: 10">
                                                         <label for="">Wedding Date</label>
                                                         <input class="sm-form-control" id="weddate" name="wedding_date" placeholder="MM/DD/YYYY" type="text">
                                                     </div>
