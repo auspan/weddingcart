@@ -93,7 +93,6 @@ class WishlistController extends Controller
             {       
                     
                     $productImage=Input::get('changedImage');
-                    dd($productImage);
                     $destinationPath = '../public/uploads/products';
                     $product_image = ImageName($productImage);
                     $productImage->move($destinationPath, $product_image);

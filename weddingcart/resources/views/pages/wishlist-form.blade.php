@@ -95,10 +95,11 @@
                                     </div>
                                     <div class="modal-body">
                                       @foreach($Products as $product)
-                                        <p class="nobottommargin"><input name="#" value="{{ $product['product_name'] }}" type="checkbox">  {{ $product['product_name'] }}</p>
+                                        <p class="nobottommargin"><input name="#" value="{{ $product['product_name'] }}" type="checkbox" class="chk" id="{{$product['id']}}">  {{ $product['product_name'] }}</p>
+                                        <input type="hidden" class="productHiddenId" id="productHiddenId-{{$product['id']}}" value="{{ $product['product_name'] }}-{{ $product['product_description'] }}-{{ $product['product_price'] }}-{{ $product['product_image'] }}">
                                          @endforeach
                                   
-                                        <p class="nobottommargin"><input name="addNewProduct" id="addNewProduct" value="Custom" type="checkbox"> Custom</p>
+                                        <p class="nobottommargin"><input name="addNewProduct" id="addNewProduct" value="Custom" type="checkbox" class="chk" id="0"> Custom</p>
                                        
                                     </div>
                                     <div class="modal-footer">
@@ -152,10 +153,9 @@
                                    
                                 </div>
                                 <div class="clear"></div>
-                                 <!--   <input id="productImage{{ $count }}" name="productImage{{ $count }}" class="sm-form-control required" type="file" value="" style="display: none">
-                                <a href="javascript::void(0)" onclick="return selectimage('productImage{{ $count }}')">-->
+                                 
                                     <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Product_Image" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
-                                </a>
+                                
                                     <input type="text" value="{{ $product['product_image'] }}" id="imgsrc{{ $count }}" name="imgname{{ $count }}" style="display: none;">
                                   </div>
                             <div class="col-md-9">
@@ -221,10 +221,11 @@
                                     </div>
                                     <div class="modal-body">
                                       @foreach($MasterProducts as $product)
-                                        <p class="nobottommargin"><input name="#" value="{{ $product['product_name'] }}" type="checkbox">  {{ $product['product_name'] }}</p>
+                                        <p class="nobottommargin"><input name="#" value="{{ $product['product_name'] }}" type="checkbox" class="chk" id="{{$product['id']}}">  {{ $product['product_name'] }}</p>
+                                        <input type="hidden" class="productHiddenId" id="productHiddenId-{{$product['id']}}" value="{{ $product['product_name'] }}-{{ $product['product_description'] }}-{{ $product['product_price'] }}-{{ $product['product_image'] }}">
                                          @endforeach
                                   
-                                        <p class="nobottommargin"><input name="addNewProduct" id="addNewProduct" value="Custom" type="checkbox"> Custom</p>
+                                        <p class="nobottommargin"><input name="addNewProduct" id="addNewProduct" value="Custom" type="checkbox" class="chk"> Custom</p>
                                        
                                     </div>
                                     <div class="modal-footer">
