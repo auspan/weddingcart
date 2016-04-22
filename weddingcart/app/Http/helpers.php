@@ -21,9 +21,8 @@ use Illuminate\Support\Str;
          
       }*/
 
-    function ImageName($image_name)
-    {
-
+function ImageName($image_name)
+{
     return Str::lower(
         pathinfo($image_name->getClientOriginalName(), PATHINFO_FILENAME)
         .'-'
@@ -31,8 +30,14 @@ use Illuminate\Support\Str;
         .'.'
         .$image_name->getClientOriginalExtension()
         );
+}
 
+function flash($title = null, $message = null)
+{
+    $flash = app('weddingcart\Http\Flash');
+
+    if (func_num_args() == 0) {
+        return $flash;
     }
-
-
-?>
+    return $flash->info($title, $message);
+}

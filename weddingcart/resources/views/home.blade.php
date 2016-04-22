@@ -13,7 +13,7 @@
 						<div class="feature-box fbox-center fbox-effect fbox-bg fbox-light fbox-border fbox-effect">
 						
 								<div class="fbox-icon">
-									<a href="#"><i class="icon-line-paper"></i></a>
+									<a href="{{ url('weddingdetails') }}"><i class="icon-line-paper"></i></a>
 								</div>
 								<h1>Wedding</h1>
 								<p>Lorem ipsum dolor sit onsectetur adipiscing elit, sed do 

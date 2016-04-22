@@ -27,8 +27,8 @@ class WeddingFormRequest extends Request
             'wedding_date'=>'required',
             'bride_image'   =>'required|mimes:jpeg,jpg,png,gif|image',
             'groom_image'   =>'required|mimes:jpeg,jpg,png,gif|image',
-            'bride_name'  =>'required|Alpha',
-            'groom_name'  =>'required|Alpha',  
+            'bride_name'  =>'required',
+            'groom_name'  =>'required',
         ];
     }
 }

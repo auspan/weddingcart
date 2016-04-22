@@ -182,3 +182,14 @@ jQuery(document).ready(function($)
                             
 
                      });
+
+function showAlert(title, message, level){
+
+    swal({
+        title: title,
+        text: message,
+        type: level,
+        timer: 1500,
+        showConfirmButton: false
+    });
+}

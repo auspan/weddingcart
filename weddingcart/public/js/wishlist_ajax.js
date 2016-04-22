@@ -76,14 +76,13 @@
           
           success:function(data){
 
-            var result=data;
-            var productid=result['1'];
-            if(result['0']==1)
+            //var result=data;
+            var productid=data.id;
+            if(data.status==1)
             {
               
-              alert("Added To Wishlist");
-              $("#success").css("display","inherit");
-              $("#success").append("Item Added Succesfully");
+              //alert("Added To Wishlist");
+              showAlert(data.title, data.message, data.level);
               $("#product_id_"+counter).html(productid);
               $("#btn-editwishlist-"+counter).css("display","inherit");
               $("#btn-removewishlist-"+counter).css("display","inherit");
@@ -131,10 +130,11 @@
             },
           
           success:function(data){
-            var result=data;
-            if(result==1)
+            //var result=data;
+            if(data.status==1)
             {
-              alert("Product Removed Succesfully");
+              //alert("Product Removed Succesfully");
+                showAlert(data.title, data.message, data.level);
               $("#product_id_"+counter).html("NULL");
               $("#btn-editwishlist-"+counter).css("display","none");
               $("#btn-deletewishlist-"+counter).css("display","none");
@@ -234,10 +234,12 @@
             },
           
           success:function(data){
-            var result=data;
-            if(result==1)
+            //var result=data;
+            if(data.status==1)
             {
-              alert("Product Updated Succesfully");
+              //alert("Product Updated Succesfully");
+                showAlert(data.title, data.message, data.level);
+
               $("#btn-editwishlist-"+counter).css("display","inherit");
               $("#btn-removewishlist-"+counter).css("display","inherit");
               $("#btn-addwishlist-"+counter).css("display","none");
@@ -259,7 +261,7 @@
           }
         })
       })
-     
-     
+
+
     })
     
