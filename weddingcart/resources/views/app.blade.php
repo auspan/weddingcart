@@ -71,6 +71,6 @@
 	<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
-	
+	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
 		</body>
 		</html>

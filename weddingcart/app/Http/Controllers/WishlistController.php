@@ -79,6 +79,7 @@ class WishlistController extends Controller
     public function addproduct(Request $request)
     {
         
+            //dd($request);
             $userrole=UserEventRole::all()->where('user_id',Auth::User()->id);
             foreach ($userrole as $UserRole)
             {
@@ -86,16 +87,16 @@ class WishlistController extends Controller
                 break;
             }
             $result=array();
-            /*$count=$request->input('countervalue');
-            var_dump($count);
-            if($request->input('productImage'.$count)!=null)
-            {
-                    $productImage=Input::file('productImage'.$count);
+            
+            if(Input::get('changedImage')!="")
+            {       
+                    
+                    $productImage=Input::get('changedImage');
                     $destinationPath = '../public/uploads/products';
                     $product_image = ImageName($productImage);
                     $productImage->move($destinationPath, $product_image);
 
-            $userEventWishlistItem = UserEventWishlistItem::create(array(
+                    $userEventWishlistItem = UserEventWishlistItem::create(array(
                     'user_event_role_id'=> $userroleid,
                     'product_name'=>Input::get('productName'),
                     'product_description'=>Input::get('productDescription'),
@@ -105,19 +106,20 @@ class WishlistController extends Controller
             
             }
             else
-            {*/
-                $userEventWishlistItem = UserEventWishlistItem::create(array(
+            {
+                    $userEventWishlistItem = UserEventWishlistItem::create(array(
                     'user_event_role_id'=> $userroleid,
                     'product_name'=>Input::get('productName'),
                     'product_description'=>Input::get('productDescription'),
                     'product_image'=>Input::get('productImage'),
                     'product_price'=>Input::get('productPrice')
                     )); 
-          //  }
-         $id=$userEventWishlistItem['id'];
-         $result=[1,$id];
-       return $result;
+            }
+            $id=$userEventWishlistItem['id'];
+            $result=[1,$id];
+            return $result;
    }
+
 
     public function editproduct()
     {

@@ -34,6 +34,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('home', 'HomeController@index');
+    
     Route::get('wedding','WeddingController@wedding');
     Route::get('weddingdetails','WeddingController@UserEvent');
 	Route::post('wedding','WeddingController@store');
@@ -47,10 +48,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/editwishlist','WishlistController@editproduct');     
     Route::post('/updatewishlist','WishlistController@updateproduct');     
     Route::post('/deletewishlist','WishlistController@removeproduct'); 
-
-    
-    
-    
 
     Route::get('social/auth/redirect/{provider}', 'Auth\AuthController@redirectToProvider');
     Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
