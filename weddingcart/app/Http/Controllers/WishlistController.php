@@ -16,6 +16,7 @@ use weddingcart\product;
 use weddingcart\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use weddingcart\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class WishlistController extends Controller
 {
@@ -117,8 +118,15 @@ class WishlistController extends Controller
             }
             $id=$userEventWishlistItem['id'];
             $result=[1,$id];
-            return $result;
-   }
+            $response = [ 'id' => $id,
+                'status' => 1,
+                'title' => 'Success',
+                'message' => 'Item added to Wishlist',
+                'level' => 'success'
+            ];
+//            return 1;
+        return response()->json($response);
+    }
 
 
     public function editproduct()
@@ -135,7 +143,12 @@ class WishlistController extends Controller
         {
 
             DB::table('user_event_wishlist_items')->where('id',$ProductId)->update(['product_name'=>Input::get('productName'),'product_description'=>Input::get('productDescription'),'product_image'=>Input::get('productImage'),'product_price'=>Input::get('productPrice')]);
-            return 1;
+            $response = [ 'status' => 1,
+                'title' => 'Success',
+                'message' => 'Item updated successfully',
+                'level' => 'success'
+            ];
+            return response()->json($response);
         }
         else
         {
@@ -147,11 +160,19 @@ class WishlistController extends Controller
     {
         $ProductId=Input::get('productid');
         $productid=UserEventWishlistItem::find($ProductId);
+//        flash()->success('Success!', 'Item removed from Wishlist');
+
         if($productid)
         {
             $productid->delete();
-            return 1;
-        } 
+            $response = [ 'status' => 1,
+                'title' => 'Success',
+                'message' => 'Item removed from Wishlist',
+                'level' => 'success'
+            ];
+//            return 1;
+            return response()->json($response);
+        }
         else
         {
             return 0;

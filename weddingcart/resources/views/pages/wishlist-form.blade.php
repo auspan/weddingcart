@@ -6,39 +6,32 @@
       
 
     <section id="content" class="secstyle">
-
       <div class="content-wrap">
-
         <div class="container clearfix">
-                
+
         @if($x==1)
                
           <div class="heading-block center">
             <h2>Create your wish list</h2>
-            
           </div>
                     
           <div id="posts" class="events small-thumbs">
-                      <?php $count=1 ?>
-                      <div class="alert alert-success" id="success" style="display: none;">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      
-                      </div>
-                      @foreach($Products as $product)
-                      <div id="formdiv{{$count}}">
-                       
-                        
-                        <div id="product{{ $count }}" class="entry clearfix">
-                            <div class="col-md-2">
-                              
-                                <div class="entry-title">
-                                  <input required aria-required="true" class="required form-control" id="productName{{ $count }}" name="productName{{ $count }}" placeholder="Product Name" type="text" value="{{ $product['product_name'] }}">
-                                   
-                                </div>
-                                <div class="clear"></div>
-                                 
-                                    <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Product_Image" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
-                                
+              <?php $count=1 ?>
+              @foreach($Products as $product)
+                <div id="formdiv{{$count}}">
+                    <div id="product{{ $count }}" class="entry clearfix">
+                        <div class="col-md-2">
+                            <div class="entry-title">
+                                <input required aria-required="true"
+                                       class="required form-control"
+                                       id="productName{{ $count }}"
+                                       name="productName{{ $count }}"
+                                       placeholder="Product Name"
+                                       type="text" value="{{ $product['product_name'] }}">
+                            </div>
+
+                            <div class="clear"></div>
+                                <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Product_Image" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
                                     <input type="text" value="{{ $product['product_image'] }}" id="imgsrc{{ $count }}" name="imgname{{ $count }}" style="display: none;">
                             </div>
                             <div class="col-md-9">

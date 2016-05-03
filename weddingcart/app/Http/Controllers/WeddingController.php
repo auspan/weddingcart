@@ -123,6 +123,9 @@ class WeddingController extends Controller
 
     public function store(WeddingFormRequest $request)
     {
+//        $user = Auth::user();
+
+
       $eventid = EventAttribute::all();
     	 foreach ($eventid as $eid) 
          {
@@ -216,12 +219,12 @@ class WeddingController extends Controller
                 'role'=> 1,
                 'user_event_id'=> $userEvent['id'],
                 ));
-            return $this->wedding();
+            return redirect('home');
         }
 
         else
         {
-            return $this->wedding();
+            return redirect('home');
         }
      }
 
