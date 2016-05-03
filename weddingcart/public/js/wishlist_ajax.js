@@ -75,7 +75,7 @@
             },
           
           success:function(data){
-
+            alert(data);
             var result=data;
             var productid=result['1'];
             if(result['0']==1)
@@ -144,7 +144,9 @@
               $('#productDescription'+counter).removeAttr("disabled");
               $('#productPrice'+counter).removeAttr("disabled");
               $('#message'+counter).removeAttr("disabled");
-              $('#formdiv'+counter).remove();
+              $('#formdiv'+counter).hide(1000, function () {
+              $(this).remove();
+              });
             }
             if(result==0)
             {

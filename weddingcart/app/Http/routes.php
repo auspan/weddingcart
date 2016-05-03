@@ -42,7 +42,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('wedding/update/{id}','WeddingController@update');
     
     Route::get('invites','InvitesController@invites');
-	
+    Route::post('productdetails','InvitesController@productDetails');
+    Route::post('contribution/{id}','InvitesController@contribution');
+    Route::get('product/{id}','InvitesController@selectedProductDetails');
+    
     Route::get('/showproducts','WishlistController@showproducts');   
     Route::post('/ajaxwishlist','WishlistController@addproduct');     
     Route::post('/editwishlist','WishlistController@editproduct');     

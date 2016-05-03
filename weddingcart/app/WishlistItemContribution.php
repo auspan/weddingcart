@@ -29,12 +29,12 @@ class WishlistItemContribution extends Model
 
     public function UsereventWishlistItem() {
 
-        return this->belongsTo('weddingcart\UserEventWishlistItem');
+        return $this->belongsTo('weddingcart\UserEventWishlistItem');
     }
 
     public function user() {
         
-        return this->belongsTo('weddingcart\Users');
+        return $this->belongsTo('weddingcart\Users');
     }
     
 }

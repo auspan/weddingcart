@@ -3,10 +3,13 @@
 namespace weddingcart\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use weddingcart\Http\Requests;
 use Auth;
 use DateTime;
+use Illuminate\Support\Facades\Input;
 use weddingcart\UserEventRole;
+use weddingcart\WishlistItemContribution;
 use weddingcart\UserEvent;
 use weddingcart\UserEventDetail;
 use weddingcart\UserEventWishlistItem;
@@ -14,11 +17,15 @@ use weddingcart\product;
 use weddingcart\Http\Redirect;
 class InvitesController extends Controller
 {
-    
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
       public function invites()
       {
       
-        $userevent=UserEvent::all()->where('user_id',90);
+        $userevent=UserEvent::all()->where('user_id',Auth::User()->id);
         
         
         foreach ($userevent as $usereventid)
@@ -72,26 +79,45 @@ class InvitesController extends Controller
                     , 'minutes'=>$minute
                     , 'seconds'=>$second);
 
-        $UserEventRoleId=UserEventRole::all()->where('user_id',90);
+        $UserEventRoleId=UserEventRole::all()->where('user_id',Auth::User()->id);
         foreach ($UserEventRoleId as $user_event_role_id) 
         {
           $User_Event_Role_Id=$user_event_role_id['id'];
           break;
         }
         $user_event_wishlist_items=UserEventWishlistItem::all()->where('user_event_role_id',$User_Event_Role_Id);
-        
-        
-        $array_wishlist_items=array();
-        foreach ($user_event_wishlist_items as $User_Event_Wishlist_Items)
-        {
-         $selected_product=Product::where('id',$User_Event_Wishlist_Items['product_id'])->first();
-
-          $selected_product_description=$selected_product->product_description;
-          $array_wishlist_items[]=$selected_product_description;
-        }
-       
-       
-      return view ('pages.invites_landing',['Wishlist_Items'=>$array_wishlist_items])->with($data);
+      return view ('pages.invites_landing',['Wishlist_Items'=>$user_event_wishlist_items])->with($data);
     }
+
+    public function productDetails()
+    {
+        $product_id = intval(Input::get('id'));
+        $product_details = UserEventWishlistItem::all()->where('id',$product_id);
+        return response()->json($product_details);  
+        //return json_encode($product_details);
+        //return response()->json(['details'=>$product_details]);
+    }
+
+    public function selectedProductDetails($id)
+    {
+        $productId = intval($id);
+        $productDetails = UserEventWishlistItem::all()->where('id',$productId);
+        return view('pages.contribution',['ProductDetails'=>$productDetails]);
+    }
+
+    public function contribution($id , Request $request)
+    {
+        
+        $productId = $id;
+         WishlistItemContribution::create(array(
+                'user_id' => Auth::User()->id,
+                'contribution_amount' => $request->input('contributionproductPrice'),
+                'message' => $request->input('contributionmessage'),
+                'event_wishlist_item_id' => $productId
+            ));
+        
+        return redirect('invites');
+    }
+
     
 }

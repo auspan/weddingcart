@@ -26,7 +26,7 @@
 
 	<!-- External JavaScripts
 	============================================= -->
-	<script style="" type="text/javascript" src="js/jquery_002.js"></script>
+	<script type="text/javascript" src="js/jquery_002.js"></script>
 	<script type="text/javascript" src="js/plugins.js"></script>
 
 	<!-- Document Title
@@ -43,7 +43,7 @@
 	<script src="js/stats.js" charset="UTF-8" type="text/javascript"></script>
 	<script src="js/controls.js" charset="UTF-8" type="text/javascript"></script>
 
-	
+	<meta name="_token" content="{{ csrf_token() }}">
 	</head>
 
 <body class="stretched device-lg">
@@ -69,9 +69,9 @@
 			<div class="container vertical-middle dark center clearfix divconverticl">
 
 				<div class="wedding-head clearfix">
-					<div class="first-name">{{ $gnm }}</div>
+					<div class="first-name">{{ $groom_name }}</div>
 					<div class="and">&amp;</div>
-					<div class="last-name">{{ $bnm }}</div>
+					<div class="last-name">{{ $bride_name }}</div>
 				</div>
 
 				<div class="divider divider-short divider-center"><i class="icon-heart3"></i></div>
@@ -79,7 +79,7 @@
 				<p class="lead">Getting <strong>Hitched</strong> on:</p>
 				<div id="divforcountdown" class="countdown"></div>
 				<div id="countdown-ex1" class="countdown countdown-large coming-soon divcenter is-countdown" style="max-width:700px;"><span class="countdown-row countdown-show4"><span class="countdown-section"><span id="days" class="countdown-amount"></span><span class="countdown-period">Days</span></span><span class="countdown-section"><span id="hours" class="countdown-amount"></span><span class="countdown-period">Hours</span></span><span class="countdown-section"><span id="minutes" class="countdown-amount"></span><span class="countdown-period">Minutes</span></span><span class="countdown-section"><span id="seconds" class="countdown-amount"></span><span class="countdown-period">Seconds</span></span></span>
-				<div id="dates" style="display: none">{{ $wdt }}</div>
+				<div id="dates" class="hide-content">{{ $wedding_date }}</div>
 
 				</div>
 				<center><strong><div id="checkWedding" style="font-size: 24px"></div></strong></center>
@@ -141,10 +141,10 @@
 					<div class="col-md-6 bottommargin">
 						<div class="team team-list clearfix">
 							<div class="team-image" style="width: 150px;">
-								<img class="img-circle" src="{{ asset('../uploads/'.$gim) }}" alt="Bryant Kellam">
+								<img class="img-circle" src="{{ asset('../uploads/'.$groom_image) }}" alt="Bryant Kellam">
 							</div>
 							<div class="team-desc">
-								<div class="team-title"><h4>{{ $gnm }}</h4><span>Groom</span></div>
+								<div class="team-title"><h4>{{ $groom_name }}</h4><span>Groom</span></div>
 								<div class="team-content">Lorem ipsum dolor sit amet,
 consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis
  architecto, cupiditate fuga dolores nam accusamus iste molestias quos
@@ -170,10 +170,10 @@ non hic.</div>
 					<div class="col-md-6 bottommargin">
 						<div class="team team-list clearfix">
 							<div class="team-image" style="width: 150px;">
-								<img class="img-circle" src="{{ asset('../uploads/'.$bim) }}">
+								<img class="img-circle" src="{{ asset('../uploads/'.$bride_image) }}">
 							</div>
 							<div class="team-desc">
-								<div class="team-title"><h4>{{ $bnm }}</h4><span>Bride</span></div>
+								<div class="team-title"><h4>{{ $bride_name }}</h4><span>Bride</span></div>
 								<div class="team-content">Blanditiis adipisci laudantium
 reiciendis distinctio, molestiae, illum. Aut eveniet assumenda expedita
 labore nulla commodi numquam perspiciatis, amet doloribus cum sint,
@@ -204,20 +204,24 @@ quisquam possimus eos aspernatur distinctio similique perferendis.</div>
 
 					<div class="col-lg-8 divcenter bottommargin-lg">
                         <ul class="skills">
-                        		@foreach($wishlist_items as $items)
-                                    <li data-percent="80">
-                                        <span>{{ $items }}</span>
+                        		@foreach($Wishlist_Items as $product)
+                                    <li data-percent="">
+                                        <span>{{ $product['product_name'] }}</span>
                                         <div class="progress skills-animated divprogress">
-                                            <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="80" data-refresh-interval="30" data-speed="1100">0</span>%</div></div>
+                                            <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="" data-refresh-interval="30" data-speed="1100">0</span>%</div></div>
                                         </div>
                                     </li>
+                                    <div id="contibution-for-{{$product['id']}}" class="hide-content"></div>
+                                    <input type="hidden" id="productid_{{$product['id']}}" class="wishlist-product" value="{{ $product['id'] }}">
+                                    <button type="button" class="btn btn-primary btn-wishlist-product set-to-right" id="btn-wishlist-{{$product['id']}}" value="Contribute">Gift</button>
+                                    <a href="{{ url('product/'.$product['id']) }}" class="btn btn-success set-to-right">Gift</a>
                                     @endforeach
                                     </ul>
                                     
                                     					</div>
                     
                     <div class="center bottommargin-lg">
-                        <a href="#" class="button button-rounded button-xlarge">Contribute</a>
+                        <a href="#" class="button button-rounded button-xlarge">Gift</a>
                     </div>
 
 					<div class="clear"></div>
@@ -483,6 +487,6 @@ quisquam possimus eos aspernatur distinctio similique perferendis.</div>
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script type="text/javascript" src="js/countdown.js"></script>
-
+	<script type="text/javascript" src="js/contribution.js"></script>
 
 </body></html>

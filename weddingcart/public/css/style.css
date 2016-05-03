@@ -13283,3 +13283,6 @@ body:not(.no-transition) #wrapper,
 
 .bride-image img { border-radius: 50%; }
 
+.set-to-right { float: right; }
+
+.hide-content { display: none; }

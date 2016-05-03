@@ -1,7 +1,7 @@
       function addProduct()
       {
         var counter=$("#totalProduct").html();
-        alert(counter);
+        
         $("input:checkbox[class=chk]:checked").each(function () {
           var id=$(this).attr("id");
           if(id!="addNewProduct")
@@ -22,13 +22,6 @@
         });
         $("#totalProduct").html(counter++);
         $("#saveChanges").attr('data-dismiss',"modal");
-        
-        
-    
-
-      
-      
-        //document.write('<script type="text/javascript" src="js/wishlist_ajax.js"></script>');
     }
     
     function removeContainer(divid)

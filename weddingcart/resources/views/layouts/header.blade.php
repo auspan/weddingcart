@@ -17,6 +17,7 @@
             <nav id="primary-menu">
                 <ul class="sf-menu">
                     <li><a href="#"><div>Home</div></a></li>
+                    <li><a href="/invites"><div>Guest</div></a></li>
                     <li><a href="/logout"><div>{{ Auth::user()->name }}</div></a></li>
                 </ul>
 
