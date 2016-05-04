@@ -9,7 +9,7 @@
                 
        
           <div class="heading-block center">
-            <h2>Contribute</h2>
+            <h2>Wishlist For Your Contribution</h2>
             
           </div>
                     
@@ -48,7 +48,7 @@
                                     </center>
                             <!--        <input required aria-required="true" class="required form-control email" id="productPrice" name="productPrice" placeholder="Contribute Amount" type="text" value="{{ $productDetails['product_price'] }}">  -->
                               </div>
-                                 <div class="col-md-9 div-for-message"> 
+                                 <div class="col-md-12 div-for-message"> 
                                     {{ $productDetails['message'] }}
                                  </div>
                                 

@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+
 	$(".btn-wishlist-product").click(function(){
 		var product_id = $(this).attr('id');
 		var split_product_id = product_id.split(/[-]/);
@@ -30,4 +31,5 @@ $(document).ready(function(){
         	}
         })
 	})
-})
+});
+

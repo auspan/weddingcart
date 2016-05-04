@@ -47,11 +47,14 @@
                                     </center>
                             <!--        <input required aria-required="true" class="required form-control email" id="productPrice" name="productPrice" placeholder="Contribute Amount" type="text" value="{{ $productDetails['product_price'] }}">  -->
                               </div>
-                                 <div class="col-md-9 div-for-message"> 
+                                 <div class="col-md-12 div-for-message"> 
                                     {{ $productDetails['message'] }}
                                  </div>
-                                 <br><br> 
-                                 <input required aria-required="true" class="required form-control email" id="contributionproductPrice" name="contributionproductPrice" placeholder="Your Contribution" type="text" value="">     
+                                 <div class="input-group">
+                                  <div class="input-group-addon">&#8377</i></div>
+                                  <input required aria-required="true" class="required form-control email" id="contributionproductPrice" name="contributionproductPrice" placeholder="Gift Amount" type="text" value=""> 
+                                  <div class="input-group-addon">.00</div>
+                                </div>
                                 <textarea aria-required="true" class="required form-control short-textarea" id="contributionmessage" name="contributionmessage" rows="2" cols="30" placeholder="Message"></textarea>
                                 <center>
                                 {!! Form::button('Gift', ['class'=>'btn btn-success', 'type'=>'submit'] ) !!}
@@ -69,5 +72,7 @@
         </form> 
       </div>
    </section>
+
+  
 
  @stop

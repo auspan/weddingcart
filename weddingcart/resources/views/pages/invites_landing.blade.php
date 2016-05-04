@@ -211,10 +211,6 @@ quisquam possimus eos aspernatur distinctio similique perferendis.</div>
                                             <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="" data-refresh-interval="30" data-speed="1100">0</span>%</div></div>
                                         </div>
                                     </li>
-                                    <div id="contibution-for-{{$product['id']}}" class="hide-content"></div>
-                                    <input type="hidden" id="productid_{{$product['id']}}" class="wishlist-product" value="{{ $product['id'] }}">
-                                    <button type="button" class="btn btn-primary btn-wishlist-product set-to-right" id="btn-wishlist-{{$product['id']}}" value="Contribute">Gift</button>
-                                    <a href="{{ url('product/'.$product['id']) }}" class="btn btn-success set-to-right">Gift</a>
                                     @endforeach
                                     </ul>
                                     

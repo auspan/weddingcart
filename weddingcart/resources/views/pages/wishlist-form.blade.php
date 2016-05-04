@@ -40,7 +40,12 @@
                                           <input required aria-required="true" class="required form-control" id="productDescription{{ $count }}" name="productDescription{{ $count }}" placeholder="Item Description" type="text" value="{{ $product['product_description'] }}">
                                       </div>
                                       <div class="input-group col_one_third col_last">
-                                          <input required aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="productPrice{{ $count }}" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
+                                        <div class="input-group">
+                                  <div class="input-group-addon">&#8377</i></div>
+                                  <input required aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="productPrice{{ $count }}" placeholder="Amount" type="text" value="{{ $product['product_price'] }}"> 
+                                  <div class="input-group-addon">.00</div>
+                                </div>
+                                          
                                       </div>
                                       
                                       <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message"></textarea>
@@ -164,7 +169,12 @@
                                           <input required aria-required="true" class="required form-control" id="productDescription{{ $count }}" name="productDescription{{ $count }}" placeholder="Item Description" type="text" value="{{ $product['product_description'] }}">
                                       </div>
                                       <div class="input-group col_one_third col_last">
-                                          <input required aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="productPrice{{ $count }}" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
+                                          <div class="input-group">
+                                  <div class="input-group-addon">&#8377</i></div>
+                                  <input required aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="productPrice{{ $count }}" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
+                                  <div class="input-group-addon">.00</div>
+                                </div>
+                                          
                                       </div>
                                       
                                       <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message" value="{{ $product['message'] }}">{{ $product['message'] }}</textarea>
