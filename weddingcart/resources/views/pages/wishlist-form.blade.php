@@ -96,7 +96,7 @@
                                     <div class="modal-body">
                                       @foreach($Products as $product)
                                         <p class="nobottommargin"><input name="#" value="{{ $product['product_name'] }}" type="checkbox" class="chk" id="{{$product['id']}}">  {{ $product['product_name'] }}</p>
-                                        <input type="hidden" class="productHiddenId" id="productHiddenId-{{$product['id']}}" value="{{ $product['product_name'] }}-{{ $product['product_description'] }}-{{ $product['product_price'] }}-{{ $product['product_image'] }}">
+                                        <input type="hidden" class="productHiddenId" id="productHiddenId-{{$product['id']}}" value="{{ $product['product_name'] }}-{{ $product['product_description'] }}-{{ $product['product_price'] }}-{{ $product['product_image'] }}-{{ $product['message'] }}">
                                          @endforeach
                                   
                                         <p class="nobottommargin"><input name="addNewProduct" id="addNewProduct" value="Custom" type="checkbox" class="chk" id="0"> Custom</p>
@@ -167,7 +167,7 @@
                                           <input required aria-required="true" class="required form-control email" id="productPrice{{ $count }}" name="productPrice{{ $count }}" placeholder="Amount" type="text" value="{{ $product['product_price'] }}">
                                       </div>
                                       
-                                      <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message"></textarea>
+                                      <textarea aria-required="true" class="required form-control short-textarea" id="message{{ $count }}" name="message{{ $count }}" rows="2" cols="30" placeholder="Message" value="{{ $product['message'] }}">{{ $product['message'] }}</textarea>
       
                                       <input type="hidden" id="countervalue" name="countervalue" value="{{ $count }}">
                                       <div id="product_id_{{$count}}" class="hiddenproductId" style="display: none">{{ $product['id'] }}</div>
@@ -222,7 +222,7 @@
                                     <div class="modal-body">
                                       @foreach($MasterProducts as $product)
                                         <p class="nobottommargin"><input name="#" value="{{ $product['product_name'] }}" type="checkbox" class="chk" id="{{$product['id']}}">  {{ $product['product_name'] }}</p>
-                                        <input type="hidden" class="productHiddenId" id="productHiddenId-{{$product['id']}}" value="{{ $product['product_name'] }}-{{ $product['product_description'] }}-{{ $product['product_price'] }}-{{ $product['product_image'] }}">
+                                        <input type="hidden" class="productHiddenId" id="productHiddenId-{{$product['id']}}" value="{{ $product['product_name'] }}-{{ $product['product_description'] }}-{{ $product['product_price'] }}-{{ $product['product_image'] }}-{{ $product['message'] }}">
                                          @endforeach
                                   
                                         <p class="nobottommargin"><input name="addNewProduct" id="addNewProduct" value="Custom" type="checkbox" class="chk"> Custom</p>

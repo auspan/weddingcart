@@ -89,6 +89,13 @@ class InvitesController extends Controller
       return view ('pages.invites_landing',['Wishlist_Items'=>$user_event_wishlist_items])->with($data);
     }
 
+    public function showAllWishlistProductsToGuest()
+    {
+        $userEventRoleId = UserEventRole::where('user_id',Auth::User()->id)->value('id');
+        $UserEventWishlistItems = UserEventWishlistItem::all()->where('user_event_role_id',$userEventRoleId);
+        return view('pages.wishlist_products_for_contribution',['Wishlist_Items'=>$UserEventWishlistItems]);
+    }
+
     public function productDetails()
     {
         $product_id = intval(Input::get('id'));

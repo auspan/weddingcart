@@ -43,6 +43,7 @@ Route::group(['middleware' => 'web'], function () {
     
     Route::get('invites','InvitesController@invites');
     Route::post('productdetails','InvitesController@productDetails');
+    Route::get('wishlistproducts','InvitesController@showAllWishlistProductsToGuest');
     Route::post('contribution/{id}','InvitesController@contribution');
     Route::get('product/{id}','InvitesController@selectedProductDetails');
     

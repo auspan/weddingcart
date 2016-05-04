@@ -102,7 +102,8 @@ class WishlistController extends Controller
                     'product_name'=>Input::get('productName'),
                     'product_description'=>Input::get('productDescription'),
                     'product_image'=>$productImage,
-                    'product_price'=>Input::get('productPrice')
+                    'product_price'=>Input::get('productPrice'),
+                    'message'=>Input::get('message')
                     )); 
             
             }
@@ -113,7 +114,8 @@ class WishlistController extends Controller
                     'product_name'=>Input::get('productName'),
                     'product_description'=>Input::get('productDescription'),
                     'product_image'=>Input::get('productImage'),
-                    'product_price'=>Input::get('productPrice')
+                    'product_price'=>Input::get('productPrice'),
+                    'message'=>Input::get('message')
                     )); 
             }
             $id=$userEventWishlistItem['id'];
@@ -142,7 +144,7 @@ class WishlistController extends Controller
         if($productid)
         {
 
-            DB::table('user_event_wishlist_items')->where('id',$ProductId)->update(['product_name'=>Input::get('productName'),'product_description'=>Input::get('productDescription'),'product_image'=>Input::get('productImage'),'product_price'=>Input::get('productPrice')]);
+            DB::table('user_event_wishlist_items')->where('id',$ProductId)->update(['product_name'=>Input::get('productName'),'product_description'=>Input::get('productDescription'),'product_image'=>Input::get('productImage'),'product_price'=>Input::get('productPrice'),'message'=>Input::get('message')]);
             $response = [ 'status' => 1,
                 'title' => 'Success',
                 'message' => 'Item updated successfully',

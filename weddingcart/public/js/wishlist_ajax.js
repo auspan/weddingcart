@@ -57,6 +57,7 @@
         var productImage=$("#imgsrc"+counter).val();
         var productDescription=$("#productDescription"+counter).val();
         var productPrice=$("#productPrice"+counter).val();
+        var message=$("#message"+counter).val();
         
         // alert(productName);
 
@@ -69,6 +70,7 @@
               productImage:productImage,
               productDescription:productDescription,
               productPrice:productPrice,
+              message:message,
               changedImage:changedImage
 
               
@@ -231,6 +233,7 @@
         var productImage=$("#imgsrc"+counter).val();
         var productDescription=$("#productDescription"+counter).val();
         var productPrice=$("#productPrice"+counter).val();
+        var message=$("#message"+counter).val();
         $.ajax({
           type:"POST",
           url:"/updatewishlist",
@@ -239,7 +242,8 @@
               productName:productName,
               productImage:productImage,
               productDescription:productDescription,
-              productPrice:productPrice
+              productPrice:productPrice,
+              message:message,
             },
           
           success:function(data){

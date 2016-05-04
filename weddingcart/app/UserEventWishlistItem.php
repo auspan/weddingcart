@@ -18,7 +18,7 @@ class UserEventWishlistItem extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_event_role_id', 'product_price', 'product_id', 'created_by', 'updated_by','product_name','product_description','product_image'];
+    protected $fillable = ['user_event_role_id', 'product_price', 'product_id', 'created_by', 'updated_by','product_name','product_description','product_image','message'];
 
     // Relationships
 

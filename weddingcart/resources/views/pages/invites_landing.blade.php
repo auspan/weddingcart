@@ -221,7 +221,7 @@ quisquam possimus eos aspernatur distinctio similique perferendis.</div>
                                     					</div>
                     
                     <div class="center bottommargin-lg">
-                        <a href="#" class="button button-rounded button-xlarge">Gift</a>
+                        <a href="{{ url('wishlistproducts') }}" class="button button-rounded button-xlarge">Gift</a>
                     </div>
 
 					<div class="clear"></div>
