@@ -48,12 +48,12 @@
                                     </center>
                             <!--        <input required aria-required="true" class="required form-control email" id="productPrice" name="productPrice" placeholder="Contribute Amount" type="text" value="{{ $productDetails['product_price'] }}">  -->
                               </div>
-                                      
-                                <textarea aria-required="true" class="required form-control short-textarea" id="contributionmessage" name="contributionmessage" rows="2" cols="30" placeholder="Message"></textarea>
+                                 <div class="col-md-9 div-for-message"> 
+                                    {{ $productDetails['message'] }}
+                                 </div>
+                                
                                 <center>
                                 <a href="{{ url('product/'.$productDetails['id']) }}" class="btn btn-success">Gift</a>
-                                
-                                <a href="{{ url('/invites') }}" class="btn btn-success">Back</a>
                                 </center>
                           </div>
                         @endforeach

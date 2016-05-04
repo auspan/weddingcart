@@ -13286,3 +13286,14 @@ body:not(.no-transition) #wrapper,
 .set-to-right { float: right; }
 
 .hide-content { display: none; }
+
+.div-for-message { 
+	min-height: 75px; 
+	border:1px solid gray; 
+	border-radius: 5px; 
+	padding-left: 10px; 
+	padding-bottom: 8px; 
+	padding-top: 8px; 
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
