@@ -114,17 +114,18 @@ class InvitesController extends Controller
 
     public function contribution($id , Request $request)
     {
-        
-        $productId = $id;
-         WishlistItemContribution::create(array(
+        $productId = intval($id);
+        $contribution = $request->input('contributionproductPrice');
+        $guestMessage = $request->input('contributionmessage');
+        WishlistItemContribution::create(array(
                 'user_id' => Auth::User()->id,
-                'contribution_amount' => $request->input('contributionproductPrice'),
-                'message' => $request->input('contributionmessage'),
+                'contribution_amount' => $contribution,
+                'message' => $guestMessage,
                 'event_wishlist_item_id' => $productId
             ));
-        
-        return redirect('invites');
+        $productDetails = UserEventWishlistItem::select('id' , 'product_name' , 'product_description' , 'product_image' , 'product_price' , 'message')->where('id',$productId)->first()->toArray();
+        $guestContributionDetails = array('contribution_amount' => $contribution, 'guest_message' => $guestMessage);
+        $productDetails = array_merge($productDetails, $guestContributionDetails);
+        return view('pages.paymentconfirmation',['productDetails'=>$productDetails]);
     }
-
-    
 }
