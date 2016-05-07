@@ -97,4 +97,16 @@ class User extends Model implements AuthenticatableContract,
             return false;
         }
     }
+
+    public function createWedding()
+    {
+        $wedding =  $this->userEvents()->create(['event_id' => 1]);
+        $this->userEventRoles()->create([
+            'role' => 1,
+            'user_id' => $this->id,
+            'user_event_id' => $wedding->id
+        ]);
+
+        return $wedding;
+    }
 }

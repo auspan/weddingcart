@@ -94,7 +94,7 @@ class WishlistController extends Controller
                     
                     $productImage=Input::get('changedImage');
                     $destinationPath = '../public/uploads/products';
-                    $product_image = ImageName($productImage);
+                    $product_image = getImageName($productImage);
                     $productImage->move($destinationPath, $product_image);
 
                     $userEventWishlistItem = UserEventWishlistItem::create(array(

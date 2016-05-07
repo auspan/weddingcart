@@ -58,4 +58,16 @@ class UserEvent extends Model
     {
         return $this->userEventDetails()->pluck('attribute_value', 'attribute_code');
     }
+
+    public function saveWeddingDetails($weddingDetails)
+    {
+        $weddingAttributes = array();
+        foreach($weddingDetails as $attributeCode => $attributeValue)
+        {
+            $weddingAttribute = new UserEventDetail(['attribute_code' => $attributeCode, 'attribute_value' => $attributeValue, 'user_event_id' => $this->id]);
+            array_push($weddingAttributes, $weddingAttribute);
+
+        }
+        $this->userEventDetails()->saveMany($weddingAttributes);
+    }
  }

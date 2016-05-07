@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 //namespace weddingcart\Http\Controllers;
 //use Auth;
 //use weddingcart\UserEvent;
@@ -21,7 +23,7 @@ use Illuminate\Support\Str;
          
       }*/
 
-function ImageName($image_name)
+function getImageName($image_name)
 {
     return Str::lower(
         pathinfo($image_name->getClientOriginalName(), PATHINFO_FILENAME)
@@ -29,7 +31,24 @@ function ImageName($image_name)
         .uniqid()
         .'.'
         .$image_name->getClientOriginalExtension()
+    );
+}
+/**
+ * @param $image
+ * @return string
+ */
+function storeImage(UploadedFile $image)
+{
+    $name =  Str::lower(
+        pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME)
+        .'-'
+        .uniqid()
+        .'.'
+        .$image->getClientOriginalExtension()
         );
+
+    moveImage($image, $name);
+    return $name;
 }
 
 function flash($title = null, $message = null)
@@ -40,4 +59,11 @@ function flash($title = null, $message = null)
         return $flash;
     }
     return $flash->info($title, $message);
+}
+
+function moveImage(UploadedFile $image, String $name)
+{
+    $uploadPath = '../public/uploads/';
+
+    $image->move($uploadPath, $name);
 }

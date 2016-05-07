@@ -159,9 +159,9 @@ class WeddingController extends Controller
     //$elapsed = $interval->format('%a days %h hours %i minutes %S seconds');
 
         $destinationPath = '../public/uploads/';
-        $groom_image = ImageName($groomimage);  // helper function call
+        $groom_image = storeImage($groomimage);  // helper function call
 
-        $bride_image = ImageName($brideimage);  // helper function call
+        $bride_image = storeImage($brideimage);  // helper function call
 
         $groomimage->move($destinationPath, $groom_image);
         $brideimage->move($destinationPath, $bride_image);
@@ -228,6 +228,35 @@ class WeddingController extends Controller
         }
      }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function save(Request $request)
+    {
+        $user = Auth::user();
+        $weddingDetails = $this->getWeddingDetailsFromRequest($request);
+        $wedding = $user->createWedding();
+        $wedding->saveWeddingDetails($weddingDetails);
+
+        return redirect('home');
+
+    }
+
+    public function getWeddingDetailsFromRequest(Request $request)
+    {
+        $weddingDetails = [
+            'wdt'   => $request->input('wedding_date'),
+            'bnm'   => $request->input('bride_name'),
+            'gnm'   => $request->input('groom_name'),
+            'bab'   => $request->input('bride_about'),
+            'gab'   => $request->input('groom_about'),
+            'bim'   => storeImage($request->file('bride_image')),
+            'gim'   => storeImage($request->file('groom_image'))
+        ];
+
+        return $weddingDetails;
+    }
      public function edit($id)
      {
         $userId=$id;
@@ -304,7 +333,7 @@ class WeddingController extends Controller
         if(Input::file('groom_image')!=null)
         {
           $destinationPath = '../public/uploads/';
-          $groom_image = ImageName($groomimage);
+          $groom_image = getImageName($groomimage);
           $groomimage->move($destinationPath, $groom_image);
           DB::table('user_event_details')->where('id',$userEventDetailId[3])->update(['attribute_value'=>$groom_image]); 
         }
@@ -315,7 +344,7 @@ class WeddingController extends Controller
         if(Input::file('bride_image')!=null)
         {
           $destinationPath = '../public/uploads/';
-          $bride_image = ImageName($brideimage);
+          $bride_image = getImageName($brideimage);
           $brideimage->move($destinationPath, $bride_image);
           DB::table('user_event_details')->where('id',$userEventDetailId[4])->update(['attribute_value'=>$bride_image]); 
         }

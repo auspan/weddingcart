@@ -7,7 +7,7 @@
             @include('errors.weddValidation')
 			<div class="content-wrap">
 				<div class="container clearfix">
-                    {!! Form::open(['action'=>'WeddingController@store', 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
+                    {!! Form::open(['url'=>'/wedding', 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
     					<div class="heading-block center">
 	    					<h2>Create your event</h2>
 		    				<span class="divcenter">Please fill-up the details of the Bride and Groom.</span>
@@ -48,7 +48,7 @@
 
                                     <div class="col-full">
                                         <label for="bride-about">About</label>
-                                        <textarea id="bride-about" name="bride-about" class="sm-form-control fixed-textarea" rows="5" placeholder="About the Bride..."></textarea>
+                                        <textarea id="bride-about" name="bride_about" class="sm-form-control fixed-textarea" rows="5" placeholder="About the Bride..."></textarea>
                                         <input type="hidden" name="brideAbout" class="form-control" value="bab">
                                     </div>
 
@@ -83,7 +83,7 @@
 
                                     <div class="col-full">
                                         <label for="groom-about">About</label>
-                                        <textarea id="groom-about" name="groom-about" class="sm-form-control fixed-textarea" rows="5" placeholder="About the Groom..."></textarea>
+                                        <textarea id="groom-about" name="groom_about" class="sm-form-control fixed-textarea" rows="5" placeholder="About the Groom..."></textarea>
                                         <input type="hidden" name="groomAbout" class="form-control" value="gab">
                                     </div>
                                 </div><!-- Contact Form Overlay End -->
