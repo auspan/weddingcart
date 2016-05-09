@@ -70,4 +70,13 @@ class UserEvent extends Model
         }
         $this->userEventDetails()->saveMany($weddingAttributes);
     }
+
+    public function updateWeddingDetails($weddingDetails)
+    {
+        foreach($weddingDetails as $attributeCode => $attributeValue)
+        {
+            UserEventDetail::where('user_event_id', $this->id)->where('attribute_code', $attributeCode)->update(['attribute_value' => $attributeValue]);
+        }
+
+    }
  }

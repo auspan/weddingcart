@@ -250,11 +250,19 @@ class WeddingController extends Controller
             'bnm'   => $request->input('bride_name'),
             'gnm'   => $request->input('groom_name'),
             'bab'   => $request->input('bride_about'),
-            'gab'   => $request->input('groom_about'),
-            'bim'   => storeImage($request->file('bride_image')),
-            'gim'   => storeImage($request->file('groom_image'))
+            'gab'   => $request->input('groom_about')
         ];
-
+          $bim = $request->file('bride_image');
+          $gim = $request->file('groom_image');
+          if($bim!=null)
+          {
+            $weddingDetails['bim'] = storeImage($bim);
+          }
+          if($gim!=null)
+          {
+            $weddingDetails['gim'] = storeImage($gim);
+          }
+        
         return $weddingDetails;
     }
     
@@ -264,18 +272,19 @@ class WeddingController extends Controller
       $user = Auth::User();
       $userEventDetails = $user->userEvents()->first()->userEventAttributes()->toArray();
       $userEventDetails['user_event_id'] = $user->userEvents()->value('id');
-      //dd($userEventDetails);
       return view('pages.editweddingform')->with($userEventDetails);
     }
 
     
 
-     public function update($id, EditWeddingFormRequest $request)
+/*     public function update($id, EditWeddingFormRequest $request)
      {
       
         $userEventId = intval($id);
         $userEventDetailId=UserEventDetail::all()->where('user_event_id',$userEventId)->pluck('id');
 
+        $weddingDetails = $this->getWeddingDetailsFromRequest($request);
+        dd($weddingDetails);
         
         $weddingdate = $request->input('wedding_date');
         $groomname = $request->input('groom_name');
@@ -320,5 +329,40 @@ class WeddingController extends Controller
 
 
         
+     }  */
+
+     public function update($id , EditWeddingFormRequest $request)
+     {
+        $userEventId = intval($id);
+        $weddingDetails = $this->getWeddingDetailsFromRequest($request);
+
+
+
+        $wedding = UserEvent::where('id', $userEventId)->first();
+    //    $oldWeddingDetails = $wedding->userEventDetails()->pluck('id', 'attribute_code', 'attribute_value');
+
+        $wedding->updateWeddingDetails($weddingDetails);
+
+
+
+
+
+        return redirect('home');
      }
+
+/*     public function filterUpdatedValues($weddingDetails, $oldWeddingDetails)
+     {
+
+      foreach($weddingDetails as $attributeCode => $attributeValue)
+      {
+        foreach ($oldWeddingDetails as $attribute_code => $attribute_value)
+        {
+          if()
+        }
+      }
+
+
+
+     }  */
+
 }
