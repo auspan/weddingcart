@@ -101,7 +101,7 @@ class WeddingController extends Controller
       } 
     }
 
-     public function UserEvent()
+ /*    public function UserEvent()
      {   
        
     	   $user_event=array();
@@ -119,114 +119,15 @@ class WeddingController extends Controller
          {
            return $this->wedding();
          }
+      } */
+
+      public function UserEvent()
+      {
+        $user = Auth::User();
+        $eventAttribute = EventAttribute::all();
+        return view('pages.weddingform', ['EventAttr'=> $eventAttribute]);
+        
       }
-
-    public function store(WeddingFormRequest $request)
-    {
-//        $user = Auth::user();
-
-
-      $eventid = EventAttribute::all();
-    	 foreach ($eventid as $eid) 
-         {
-    	 	$event_id=$eid['event_id'];
-    	 }
-    	 
-        $user_event=array();
-         $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
-         foreach ($UserEvent as $Uevent) 
-         {
-            $user_event=$Uevent['id'];
-         }
-         if($user_event==null)
-         {  
-    	 $userEvent = UserEvent::create(array(
-                'event_id'=>$event_id,
-                'user_id'=>Auth::User()->id,
-          ));
-    	   $weddingdate = $request->input('wedding_date');
-        $groomname = $request->input('groom_name');
-        $bridename = $request->input('bride_name');
-        $groomimage=Input::file('groom_image');
-        $brideimage=Input::file('bride_image');
-        $wedcode = $request->input('wed_date');
-        $groomcode = $request->input('groom');
-        $bridecode = $request->input('bride');
-        $groomimagecode=$request->input('groom_img');
-        $brideimagecode=$request->input('bride_img');
-
-    
-    //$elapsed = $interval->format('%a days %h hours %i minutes %S seconds');
-
-        $destinationPath = '../public/uploads/';
-        $groom_image = storeImage($groomimage);  // helper function call
-
-        $bride_image = storeImage($brideimage);  // helper function call
-
-        $groomimage->move($destinationPath, $groom_image);
-        $brideimage->move($destinationPath, $bride_image);
-       // $weddinarray=array();
-        //$weddinarray=array($weddingdate,$groomname,$bridename);
-      
-       
-            $count=0;
-            while($count<5)
-            {
-                if($count==0)
-                {   
-                     UserEventDetail::create(array(
-                    'attribute_code'=>$wedcode,
-                    'attribute_value'=>$weddingdate,
-                    'user_event_id'=>$userEvent['id'],
-                    ));
-                }
-                if($count==1)
-                {
-                     UserEventDetail::create(array(
-                    'attribute_code'=>$groomcode,
-                    'attribute_value'=>$groomname,
-                    'user_event_id'=>$userEvent['id'],
-                    ));
-                }
-                if($count==2)
-                {
-                     UserEventDetail::create(array(
-                    'attribute_code'=>$bridecode,
-                    'attribute_value'=>$bridename,
-                    'user_event_id'=>$userEvent['id'],
-                    ));
-                 }
-                 if($count==3)
-                {
-                     UserEventDetail::create(array(
-                    'attribute_code'=>$groomimagecode,
-                    'attribute_value'=>$groom_image,
-                    'user_event_id'=>$userEvent['id'],
-                    ));
-                 }
-                 if($count==4)
-                {
-                     UserEventDetail::create(array(
-                    'attribute_code'=>$brideimagecode,
-                    'attribute_value'=>$bride_image,
-                    'user_event_id'=>$userEvent['id'],
-                    ));
-                 }
-                 $count++;
-            }
-           UserEventRole::create(array(
-                'user_id'=> Auth::User()->id,
-                'role'=> 1,
-                'user_event_id'=> $userEvent['id'],
-                ));
-            return redirect('home');
-        }
-
-        else
-        {
-            return redirect('home');
-        }
-     }
 
     /**
      * @param Request $request
@@ -275,94 +176,29 @@ class WeddingController extends Controller
       return view('pages.editweddingform')->with($userEventDetails);
     }
 
-    
 
-/*     public function update($id, EditWeddingFormRequest $request)
-     {
+   public function update($id , EditWeddingFormRequest $request)
+   {
+      $userEventId = intval($id);
+      $weddingDetails = $this->getWeddingDetailsFromRequest($request);
+      $wedding = UserEvent::where('id', $userEventId)->first();
+     // $oldWeddingDetails = $wedding->userEventDetails()->pluck('id', 'attribute_code', 'attribute_value');
+
+      $wedding->updateWeddingDetails($weddingDetails);
       
-        $userEventId = intval($id);
-        $userEventDetailId=UserEventDetail::all()->where('user_event_id',$userEventId)->pluck('id');
+      return redirect('home');
+   }
 
-        $weddingDetails = $this->getWeddingDetailsFromRequest($request);
-        dd($weddingDetails);
-        
-        $weddingdate = $request->input('wedding_date');
-        $groomname = $request->input('groom_name');
-        $bridename = $request->input('bride_name');
-        $brideimg = $request->input('brideImage');
-        $groomimg = $request->input('groomImage');
-        $groomimage = Input::file('groom_image');
-        $brideimage = Input::file('bride_image');
-        $aboutbride = $request->input('bride_about');
-        $aboutgroom = $request->input('groom_about');
+/*   public function filterUpdatedValues($weddingDetails, $oldWeddingDetails)
+   {
 
-        DB::table('user_event_details')->where('id',$userEventDetailId[0])->update(['attribute_value'=>$weddingdate]);
-        DB::table('user_event_details')->where('id',$userEventDetailId[1])->update(['attribute_value'=>$groomname]);
-        DB::table('user_event_details')->where('id',$userEventDetailId[2])->update(['attribute_value'=>$bridename]);
-        DB::table('user_event_details')->where('id',$userEventDetailId[3])->update(['attribute_value'=>$aboutbride]);
-        DB::table('user_event_details')->where('id',$userEventDetailId[4])->update(['attribute_value'=>$aboutgroom]);
-        if(Input::file('groom_image')!=null)
-        {
-          $destinationPath = '../public/uploads/';
-          $groom_image = getImageName($groomimage);
-          $groomimage->move($destinationPath, $groom_image);
-          DB::table('user_event_details')->where('id',$userEventDetailId[5])->update(['attribute_value'=>$groom_image]); 
-        }
-        else
-        {
-          DB::table('user_event_details')->where('id',$userEventDetailId[5])->update(['attribute_value'=>$groomimg]); 
-        }
-        if(Input::file('bride_image')!=null)
-        {
-          $destinationPath = '../public/uploads/';
-          $bride_image = getImageName($brideimage);
-          $brideimage->move($destinationPath, $bride_image);
-          DB::table('user_event_details')->where('id',$userEventDetailId[6])->update(['attribute_value'=>$bride_image]); 
-        }
-        else
-        {
-          DB::table('user_event_details')->where('id',$userEventDetailId[6])->update(['attribute_value'=>$brideimg]); 
-        }
-        
-        
-        return redirect('home');
-
-
-        
-     }  */
-
-     public function update($id , EditWeddingFormRequest $request)
-     {
-        $userEventId = intval($id);
-        $weddingDetails = $this->getWeddingDetailsFromRequest($request);
-
-
-
-        $wedding = UserEvent::where('id', $userEventId)->first();
-    //    $oldWeddingDetails = $wedding->userEventDetails()->pluck('id', 'attribute_code', 'attribute_value');
-
-        $wedding->updateWeddingDetails($weddingDetails);
-
-
-
-
-
-        return redirect('home');
-     }
-
-/*     public function filterUpdatedValues($weddingDetails, $oldWeddingDetails)
-     {
-
-      foreach($weddingDetails as $attributeCode => $attributeValue)
+    foreach($weddingDetails as $attributeCode => $attributeValue)
+    {
+      foreach ($oldWeddingDetails as $attribute_code => $attribute_value)
       {
-        foreach ($oldWeddingDetails as $attribute_code => $attribute_value)
-        {
-          if()
-        }
+        if()
       }
-
-
-
-     }  */
+    }
+  }  */
 
 }
