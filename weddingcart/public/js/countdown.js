@@ -5,9 +5,9 @@ function getTimeRemaining(endtime) {
     var date=datefields[1];
     var year=datefields[2];
     //alert(weddate);
-    var enddateis=Date.parse(new Date(year,month,date));   //(yy,mm,d)
+    var enddate=Date.parse(new Date(year,month,date));   //(yy,mm,d)
     var currentdate=Date.now();
-    var t = enddateis - currentdate;
+    var t = enddate - currentdate;
   
     if(t<=0)
     {
