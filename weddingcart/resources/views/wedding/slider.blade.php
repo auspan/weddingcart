@@ -11,21 +11,21 @@
     <div class="container vertical-middle dark center clearfix divconverticl">
         <div class="wedding-head clearfix">
             <div class="first-name">
-                @for($i = 0; $i < count($bride_name); ++$i )
-                    @if($i == 0)
-                        {{ $bride_name[$i] }}
-                    @else
-                        <span>{{ $bride_name[$i] }}</span>
-                    @endif
-                @endfor
-            </div>
-            <div class="and">&amp;</div>
-            <div class="first-name">
                 @for($i = 0; $i < count($groom_name); ++$i )
                     @if($i == 0)
                         {{ $groom_name[$i] }}
                     @else
                         <span>{{ $groom_name[$i] }}</span>
+                    @endif
+                @endfor
+            </div>
+            <div class="and">&amp;</div>
+            <div class="first-name">
+                @for($i = 0; $i < count($bride_name); ++$i )
+                    @if($i == 0)
+                        {{ $bride_name[$i] }}
+                    @else
+                        <span>{{ $bride_name[$i] }}</span>
                     @endif
                 @endfor
             </div>

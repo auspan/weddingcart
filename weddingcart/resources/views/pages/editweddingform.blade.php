@@ -16,13 +16,13 @@
                                <div class="clearfix">
 
                                @include('errors.weddValidation')
-
-                               {!! Form::open(['action'=>['WeddingController@update',$userEventId], 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
+                               
+                               {!! Form::open(['action'=>['WeddingController@update',$user_event_id], 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
                                		<div class="row">
                                                 <div class="input-daterange travel-date-group bottommargin-sm">
                                                     <div class="col-md-4 divcenter" style="position: relative; z-index: 10">
                                                         <label for="">Wedding Date</label>
-                                                        <input class="sm-form-control" name="wedding_date" placeholder="MM/DD/YYYY" type="text"  id="weddate" value="{{ $wedding_date }}">
+                                                        <input class="sm-form-control" name="wedding_date" placeholder="MM/DD/YYYY" type="text"  id="weddate" value="{{ $wdt }}">
                                                     </div>
                                                         <input type="hidden" name="wed_date" class="form-control" value="wdt">
                                                     
@@ -47,8 +47,8 @@
                                 
                                         <input type="hidden" name="bride_img" class="form-control" value="bim">
 								<div class="bride-image divcenter">
-										<a href="" onclick="return selectimage('bimg')"><img src="{{ asset('../uploads/' . $bride_image) }}" id="bimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
-                                        <input type="text" value="{{ $bride_image }}" id="brideImage" name="brideImage" style="display: none;">
+										<a href="" onclick="return selectimage('bimg')"><img src="{{ asset('../uploads/' . $bim) }}" id="bimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
+                                        <input type="text" value="{{ $bim }}" id="brideImage" name="brideImage" style="display: none;">
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
 
@@ -67,8 +67,14 @@
             
                                     <div class="col_full">
                                         <label for="template-contactform-name">Name <small>*</small></label>
-                                        <input id="template-contactform-name" name="bride_name" class="sm-form-control required" type="text" value="{{ $bride_name }}">
+                                        <input id="template-contactform-name" name="bride_name" class="sm-form-control required" type="text" value="{{ $bnm }}">
                                         <input type="hidden" name="bride" class="form-control" value="bnm">
+                                    </div>
+
+                                    <div class="col-full">
+                                        <label for="bride-about">About</label>
+                                        <textarea id="bride-about" name="bride_about" class="sm-form-control fixed-textarea" rows="5" placeholder="About the Bride...">{{ $bab }}</textarea>
+                                        <input type="hidden" name="brideAbout" class="form-control" value="bab">
                                     </div>
             
                              <!--       <div class="clear"></div>
@@ -136,8 +142,8 @@
                                 <input type="hidden" name="groom_img" class="form-control" value="gim">
 
 								<div class="bride-image divcenter">
-										<a href="" onclick="return selectimage('gimg')"><img src="{{ asset('../uploads/' . $groom_image) }}" id="gimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
-                                        <input type="text" value="{{ $groom_image }}" id="groomImage" name="groomImage" style="display: none;">
+										<a href="" onclick="return selectimage('gimg')"><img src="{{ asset('../uploads/' . $gim) }}" id="gimg" alt="Groom" style="width: 150px; height: 150px; object-fit: cover;"></a>
+                                        <input type="text" value="{{ $gim }}" id="groomImage" name="groomImage" style="display: none;">
 								</div>
                                 <div class="col_full center bottommargin">Minimum size 300 x 300 pixel.</div>
                                 
@@ -154,8 +160,14 @@
             
                                     <div class="col_full">
                                         <label for="template-contactform-name">Name <small>*</small></label>
-                                        <input id="template-contactform-name" name="groom_name" class="sm-form-control required" type="text" value="{{ $groom_name }}">
+                                        <input id="template-contactform-name" name="groom_name" class="sm-form-control required" type="text" value="{{ $gnm }}">
                                         <input type="hidden" name="groom" class="form-control" value="gnm">
+                                    </div>
+
+                                    <div class="col-full">
+                                        <label for="groom-about">About</label>
+                                        <textarea id="groom-about" name="groom_about" class="sm-form-control fixed-textarea" rows="5" placeholder="About the Groom...">{{ $gab }}</textarea>
+                                        <input type="hidden" name="groomAbout" class="form-control" value="gab">
                                     </div>
             
                           <!--          <div class="clear"></div>
@@ -220,7 +232,7 @@
 					{!! Form::button('Update', ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
 					<a href="#" class="button button-rounded button-xlarge">Back</a>
 					{!! Form::close() !!}
-
+                    
 				</div>
 
 			</div>
