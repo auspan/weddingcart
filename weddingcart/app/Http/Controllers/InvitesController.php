@@ -123,9 +123,22 @@ class InvitesController extends Controller
                 'message' => $guestMessage,
                 'event_wishlist_item_id' => $productId
             ));
-        $productDetails = UserEventWishlistItem::select('id' , 'product_name' , 'product_description' , 'product_image' , 'product_price' , 'message')->where('id',$productId)->first()->toArray();
-        $guestContributionDetails = array('contribution_amount' => $contribution, 'guest_message' => $guestMessage);
-        $productDetails = array_merge($productDetails, $guestContributionDetails);
+        $detailsOfProductForWhichGuestContributing = $this->getProductDetails($productId);
+        //$productDetails = UserEventWishlistItem::select('id' , 'product_name' , 'product_description' , 'product_image' , 'product_price' , 'message')->where('id',$productId)->first()->toArray();
+        $guestContributionDetails = $this->getGuestContributionDetails($contribution , $guestMessage);
+        //$guestContributionDetails = array('contribution_amount' => $contribution, 'guest_message' => $guestMessage);
+        $productDetails = array_merge($detailsOfProductForWhichGuestContributing, $guestContributionDetails);
+        
         return view('pages.paymentconfirmation',['productDetails'=>$productDetails]);
+    }
+
+    public function getProductDetails($productId)
+    {
+        return UserEventWishlistItem::select('id' , 'product_name' , 'product_description' , 'product_image' , 'product_price' , 'message')->where('id',$productId)->first()->toArray();
+    }
+
+    public function getGuestContributionDetails($guestContribution , $guestMessage)
+    {
+        return array('contribution_amount' => $guestContribution, 'guest_message' => $guestMessage);   
     }
 }
