@@ -26,8 +26,8 @@ class WeddingController extends Controller
         $this->middleware('auth');
     }
 
-	public function wedding()
-    {
+/*	   public function wedding()
+      {
         
         $user_event=array();
         $UserEvent=UserEvent::all()->where('user_id',Auth::User()->id);
@@ -99,7 +99,9 @@ class WeddingController extends Controller
 
         }
       } 
-    }
+    } */
+
+    
 
  /*    public function UserEvent()
      {   
@@ -121,9 +123,8 @@ class WeddingController extends Controller
          }
       } */
 
-      public function UserEvent()
+      public function create()
       {
-        $user = Auth::User();
         $eventAttribute = EventAttribute::all();
         return view('pages.weddingform', ['EventAttr'=> $eventAttribute]);
         
