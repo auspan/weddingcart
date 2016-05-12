@@ -17,7 +17,8 @@
                 <div class="clear"></div>
                 @include('wedding.events')
                 <div class="clear"></div>
-
+                @include('wedding.guests')
+                <div class="clear"></div>
             </div>
         </div>
     </section>

@@ -58,7 +58,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('contacts', 'ContactsController@getGoogleContacts');
     Route::post('savecontact','ContactsController@savecontacts');
 
+    Route::get('showinvite', 'ContactsController@showInvitesPage');
 
-    
-   
 });
