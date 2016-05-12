@@ -15,7 +15,7 @@
       {
         var hiddenProductId=values[i];
         var progressBarId=contributionvalues[i];
-        if($("#"+hiddenProductId).html()!="NULL")
+        if($("#"+hiddenProductId).html()!=0)
         {
           var splitId=values[i].split(/[_]/);
           var getOnlyIdNumber=splitId[2];

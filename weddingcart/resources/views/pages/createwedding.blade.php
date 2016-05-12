@@ -18,7 +18,7 @@
 								<p>Lorem ipsum dolor sit onsectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
 minim veniam, quis nostrud exercitation ullamco</p>
-                                <a href="{{ url('weddingdetails') }}" class="button button-border button-rounded button-xlarge topmargin" id="wedding_plan">Plan</a>
+                                <a href="{{ url('createwedding') }}" class="button button-border button-rounded button-xlarge topmargin" id="wedding_plan">Plan</a>
 
 							</div>
 						</div>
