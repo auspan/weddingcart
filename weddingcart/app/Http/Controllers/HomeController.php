@@ -32,8 +32,8 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->isHost()){
-            $userEventRole = Auth::user()->userEventRoles()->first();
-            $data = $userEventRole->userEvent()->first()->userEventAttributes();
+            $userEvent = Auth::user()->userEvents()->first();
+            $userEventAttributes = $userEvent->userEventAttributes();
             //$splitdate = $this->getSplitDate($data['wdt']);
             //$result = array_merge($data->toArray(),$splitdate);
         /*    $current_datetime = new DateTime();
@@ -45,11 +45,12 @@ class HomeController extends Controller
             $data['minutes'] = $difference->i;
             $data['seconds'] = $difference->s;  
             dd($data->toArray());   */
-            $data['bride_name'] = $this->splitname($data['bnm']);
-            $data['groom_name'] = $this->splitname($data['gnm']);
-            $array_wishlist_items = $userEventRole->userEventWishlistItems()->pluck('product_name');
+            $userEventAttributes['bride_name'] = $this->splitname($userEventAttributes['bnm']);
+            $userEventAttributes['groom_name'] = $this->splitname($userEventAttributes['gnm']);
             
-            return view('wedding.weddingpage',['wishlist_items'=>$array_wishlist_items])->with($data->toArray());
+            $array_wishlist_items = $userEvent->userEventWishlistItems()->pluck('product_name');
+            
+            return view('wedding.weddingpage',['wishlist_items'=>$array_wishlist_items])->with($userEventAttributes->toArray());
 //            return view('pages.invites_landing',['wishlist_items'=>$array_wishlist_items])->with($data->toArray());
         }
         else

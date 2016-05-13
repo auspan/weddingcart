@@ -47,7 +47,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('contribution/{id}','InvitesController@contribution');
     Route::get('product/{id}','InvitesController@selectedProductDetails');
     
-    Route::get('/showproducts','WishlistController@showproducts');   
+    Route::get('/showWishlist','WishlistController@showWishlist');   
     Route::post('/ajaxwishlist','WishlistController@addproduct');     
     Route::post('/editwishlist','WishlistController@editproduct');     
     Route::post('/updatewishlist','WishlistController@updateproduct');     

@@ -32,8 +32,5 @@ class UserEventRole extends Model
         return $this->belongsTo('weddingcart\User');
     }
 
-    public function userEventWishlistItems()
-    {
-        return $this->hasMany('weddingcart\UserEventWishlistItem');
-    }
+    
 }

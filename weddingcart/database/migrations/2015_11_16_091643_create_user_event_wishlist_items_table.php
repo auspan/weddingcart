@@ -15,9 +15,9 @@ class CreateUserEventWishlistItemsTable extends Migration {
 		Schema::create('user_event_wishlist_items', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('user_event_role_id')->index('fk_user_event_wishlist_items_user_event_roles1_idx');
+			$table->integer('user_event_id')->index('fk_user_event_wishlist_items_user_event_roles1_idx');
 			$table->decimal('product_price');
-			$table->integer('product_id')->index('fk_user_event_wishlist_items_products1_idx')->nullable();
+			$table->integer('product_id');
 			$table->timestamps();
 			$table->integer('created_by')->nullable();
 			$table->integer('updated_by')->nullable();

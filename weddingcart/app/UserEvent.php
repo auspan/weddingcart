@@ -54,6 +54,11 @@ class UserEvent extends Model
 
     }
 
+    public function userEventWishlistItems()
+    {
+        return $this->hasMany('weddingcart\UserEventWishlistItem');
+    }
+
     public function userEventAttributes()
     {
         return $this->userEventDetails()->pluck('attribute_value', 'attribute_code');
@@ -78,5 +83,41 @@ class UserEvent extends Model
             UserEventDetail::where('user_event_id', $this->id)->where('attribute_code', $attributeCode)->update(['attribute_value' => $attributeValue]);
         }
 
+    }
+
+    public function getProductDetails($productId)
+    {
+        return $this->userEventWishlistItems()->select('id' , 'product_name' , 'product_description' , 'product_image' , 'product_price' , 'message')->where('id',$productId)->first()->toArray();
+    }
+
+    public function createDefaultWishList($masterProductList, $userEventWishlistItems)
+    {
+        foreach ($masterProductList as $masterProduct)
+        {
+        $userEventWishlistItem = new UserEventWishlistItem([
+            'id'=> 0,
+            'product_name' => $masterProduct['product_name'],
+            'product_description' => $masterProduct['product_description'],
+            'product_price' => $masterProduct['product_price'],
+            'product_image' => $masterProduct['product_image'],
+            'message' => $masterProduct['message']
+            ]);
+
+        $userEventWishlistItems->push($userEventWishlistItem);
+
+        }
+        return $userEventWishlistItems;
+    }
+
+    public function setUserEventWishlistItems($userEventId, $productDetails, $productImage)
+    {
+        return $this->userEventWishlistItems()->create([
+                'user_event_id'=> $userEventId,
+                'product_name'=>$productDetails['productName'],
+                'product_description'=>$productDetails['productDescription'],
+                'product_image'=>$productImage,
+                'product_price'=>$productDetails['productPrice'],
+                'message'=>$productDetails['message']
+                ]);
     }
  }

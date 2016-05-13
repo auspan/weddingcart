@@ -1,7 +1,7 @@
 <?php
 
 namespace weddingcart;
-
+use Auth;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -110,5 +110,17 @@ class User extends Model implements AuthenticatableContract,
         return $wedding;
     }
 
+    public function setWishlistItemContributionDetails($productId , $contribution , $guestMessage)
+    {
+        $wishlistitemContributions = $this->wishlistitemContributions()->create([
+                'user_id' => Auth::User()->id,
+                'contribution_amount' => $contribution,
+                'message' => $guestMessage,
+                'event_wishlist_item_id' => $productId
+            ]);
+        return $wishlistitemContributions;
+    }
+
+    
     
 }

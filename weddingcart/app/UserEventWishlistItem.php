@@ -18,19 +18,15 @@ class UserEventWishlistItem extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_event_role_id', 'product_price', 'product_id', 'created_by', 'updated_by','product_name','product_description','product_image','message'];
+    protected $fillable = ['user_event_id', 'product_price', 'product_id', 'created_by', 'updated_by','product_name','product_description','product_image','message'];
 
     // Relationships
 
-    public function userEventRole() {
+    public function userEvent() {
 
-        return $this->belongsTo('weddingcart\UserEventRole');
+        return $this->belongsTo('weddingcart\UserEvent');
     }
 
-    public function product() {
-
-        return $this->belongsTo('weddingcart\Product');
-    }
 
     public function wishlistItemContributions() {
 

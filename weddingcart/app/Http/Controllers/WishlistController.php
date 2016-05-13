@@ -26,17 +26,16 @@ class WishlistController extends Controller
         $this->middleware('auth');
     }
 
-    public function showproducts()
+    public function showWishlist()
     {
         $user = Auth::user();
-        $userEventRole = $user->userEventRoles()->first();
+        $userEvent = $user->userEvents()->first();
         $masterProductList = $this->getMasterProducts();
-        $userEventWishlistItems = $userEventRole->userEventWishlistItems()->get();
-        
+        $userEventWishlistItems = $userEvent->userEventWishlistItems()->get();
         if($userEventWishlistItems->isEmpty())
         {
            
-            $userEventWishlistItems = $this->createDefaultWishList($masterProductList, $userEventWishlistItems);
+            $userEventWishlistItems = $user->userEvents()->first()->createDefaultWishList($masterProductList, $userEventWishlistItems);
         } 
         
         return view('pages.wishlist-form', ['wishListItems'=> $userEventWishlistItems,'masterProducts'=>$masterProductList]); 
@@ -44,8 +43,9 @@ class WishlistController extends Controller
 
     }
 
-    public function createDefaultWishList($masterProductList, $userEventWishlistItems)
+/*    public function createDefaultWishList($masterProductList, $userEventWishlistItems)
     {
+        
     foreach ($masterProductList as $masterProduct)
         {
         $userEventWishlistItem = new UserEventWishlistItem([
@@ -62,7 +62,7 @@ class WishlistController extends Controller
         }
 
     return $userEventWishlistItems;
-    }
+    }   */
 
 
     public function getMasterProducts()
@@ -73,39 +73,44 @@ class WishlistController extends Controller
     
     public function addproduct(Request $request)
     {
-        $userEventRoleId = Auth::User()->userEventRoles()->value('id');
-        if(Input::get('changedImage')!="")
+        $user = Auth::User();
+        $userEventId = $user->userEvents()->value('id');
+        $productDetails = Input::all();
+        $productImage = Input::get('productImage');
+        $changedImage = Input::get('changedImage');
+        if($changedImage!="")
         {       
-                
-                $productImage=Input::get('changedImage');
+                $ProductImage = storeImage($changedImage);
+            /*    $productImage=Input::get('changedImage');
                 $destinationPath = '../public/uploads/products';
                 $product_image = getImageName($productImage);
-                $productImage->move($destinationPath, $product_image);
-
-                $userEventWishlistItem = UserEventWishlistItem::create(array(
-                'user_event_role_id'=> $userEventRoleId,
+                $productImage->move($destinationPath, $product_image);  */
+                $userEventWishlistItem = $user->userEvents()->first()->setUserEventWishlistItems($userEventId, $productDetails, $productImage);
+            /*    $userEventWishlistItem = UserEventWishlistItem::create(array(
+                'user_event_id'=> $userEventId,
                 'product_name'=>Input::get('productName'),
                 'product_description'=>Input::get('productDescription'),
                 'product_image'=>$productImage,
                 'product_price'=>Input::get('productPrice'),
                 'message'=>Input::get('message')
-                )); 
+                )); */
         
         }
         else
-        {
-                $userEventWishlistItem = UserEventWishlistItem::create(array(
-                'user_event_role_id'=> $userEventRoleId,
+        {       
+                $userEventWishlistItem = $user->userEvents()->first()->setUserEventWishlistItems($userEventId, $productDetails, $productImage);
+
+            /*    $userEventWishlistItem = UserEventWishlistItem::create(array(
+                'user_event_id'=> $userEventId,
                 'product_name'=>Input::get('productName'),
                 'product_description'=>Input::get('productDescription'),
                 'product_image'=>Input::get('productImage'),
                 'product_price'=>Input::get('productPrice'),
                 'message'=>Input::get('message')
-                )); 
+                )); */
         }
         $id=$userEventWishlistItem['id'];
-        $response = $this->getJsonObject($id , 1 , "Success" , "Item added to wishlist" , "success");   
-        
+        $response = $this->getJsonObject($id , 1 , "Success" , "Item added to wishlist" , "success");
         return response()->json($response);
     }
 
@@ -116,11 +121,12 @@ class WishlistController extends Controller
 
     public function updateproduct()
     {
+        $user = Auth::User();
         $ProductId=Input::get('productid');
         $productid=UserEventWishlistItem::find($ProductId);
         if($productid)
         {
-        DB::table('user_event_wishlist_items')->where('id',$ProductId)->update(['product_name'=>Input::get('productName'),'product_description'=>Input::get('productDescription'),'product_image'=>Input::get('productImage'),'product_price'=>Input::get('productPrice'),'message'=>Input::get('message')]);
+          DB::table('user_event_wishlist_items')->where('id',$ProductId)->update(['product_name'=>Input::get('productName'),'product_description'=>Input::get('productDescription'),'product_image'=>Input::get('productImage'),'product_price'=>Input::get('productPrice'),'message'=>Input::get('message')]);
             $response = $this->getJsonObject(null , 1 , "Success" , "Item updated successfully" , "success");
             return response()->json($response);
         }
