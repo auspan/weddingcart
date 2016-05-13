@@ -13,6 +13,7 @@ class ContactsController extends Controller
 
     public function getGoogleContacts(Request $request)
     {
+//        dd($request);
         $token1 = $request->session()->get('_token');
         if ($request->session()->has('socialToken')) {
             $token = $request->session()->get('socialToken');
@@ -20,7 +21,10 @@ class ContactsController extends Controller
         }
         else
         {
-            return redirect('/social/auth/redirect/google');
+//            dd($request);
+            return redirect()->action('Auth\AuthController@redirectToProvider', ['provider' => 'google']);
+//            return redirect()->action('WishlistController@showproducts');
+//            return redirect('/social/auth/redirect/google');
         }
         $googleClient = $this->getGoogleClient($token);
         $peopleService = new \Google_Service_People($googleClient);
@@ -95,4 +99,18 @@ class ContactsController extends Controller
         return 1;
     }
     //
+
+    public function showInvitesPage()
+    {
+        $people = array();
+
+        $person = [
+            'name' => 'Utkal Pande',
+            'email' => 'utkal.pande@gmail.com',
+            'phone' => '9810967853'
+        ];
+
+        array_push($people, $person);
+        return view('pages.contacts', compact('people'));
+    }
 }

@@ -5,6 +5,7 @@ namespace weddingcart\Http\Controllers\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Socialite;
 use Validator;
 use weddingcart\Http\Controllers\Controller;
@@ -41,7 +42,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => ['logout', 'redirectToProvider', 'handleProviderCallback']]);
     }
 
     /**
@@ -82,7 +83,9 @@ class AuthController extends Controller
      */
     public function redirectToProvider($provider)
     {
+//        return("Reached Safely");
         $googleScopes = ['https://www.googleapis.com/auth/contacts.readonly', 'https://www.googleapis.com/auth/plus.login'];
+//        dd($googleScopes);
         if($provider == 'google')
         {
             return \Socialite::driver($provider)->scopes($googleScopes)->redirect();
@@ -113,7 +116,14 @@ class AuthController extends Controller
 
         $authUser = $this->findOrCreateUser($user, $provider);
 
-        auth()->login($authUser, true);
+        if(Auth::check())
+        {
+//            return ('User Already Logged In');
+            return redirect()->action('ContactsController@getGoogleContacts');
+        } else
+        {
+            auth()->login($authUser, true);
+        }
 
         return redirect()->to('/home');
     }
