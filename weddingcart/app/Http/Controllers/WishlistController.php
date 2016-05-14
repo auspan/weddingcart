@@ -122,11 +122,13 @@ class WishlistController extends Controller
     public function updateproduct()
     {
         $user = Auth::User();
-        $ProductId=Input::get('productid');
-        $productid=UserEventWishlistItem::find($ProductId);
-        if($productid)
+        $productId=Input::get('productid');
+        $productDetails = Input::all();
+        $findProductId=UserEventWishlistItem::find($productId);
+        if($findProductId)
         {
-          DB::table('user_event_wishlist_items')->where('id',$ProductId)->update(['product_name'=>Input::get('productName'),'product_description'=>Input::get('productDescription'),'product_image'=>Input::get('productImage'),'product_price'=>Input::get('productPrice'),'message'=>Input::get('message')]);
+            $updateProduct = $user->userEvents()->first()->getUpdateProduct($productId, $productDetails);
+        /*    DB::table('user_event_wishlist_items')->where('id',$ProductId)->update(['product_name'=>Input::get('productName'),'product_description'=>Input::get('productDescription'),'product_image'=>Input::get('productImage'),'product_price'=>Input::get('productPrice'),'message'=>Input::get('message')]); */
             $response = $this->getJsonObject(null , 1 , "Success" , "Item updated successfully" , "success");
             return response()->json($response);
         }

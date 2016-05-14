@@ -120,4 +120,13 @@ class UserEvent extends Model
                 'message'=>$productDetails['message']
                 ]);
     }
+
+    public function getUpdateProduct($productId, $productDetails)
+    {
+        return $this->UserEventWishlistItems()->where('id',$productId)->update(['product_name'=>$productDetails['productName'],
+            'product_description'=>$productDetails['productDescription'],
+            'product_image'=>$productDetails['productImage'],
+            'product_price'=>$productDetails['productPrice'],
+            'message'=>$productDetails['message']]);
+    }
  }
