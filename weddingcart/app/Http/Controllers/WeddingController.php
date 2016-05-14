@@ -183,23 +183,22 @@ class WeddingController extends Controller
       $userEventId = intval($id);
       $weddingDetails = $this->getWeddingDetailsFromRequest($request);
       $wedding = UserEvent::where('id', $userEventId)->first();
-     // $oldWeddingDetails = $wedding->userEventDetails()->pluck('id', 'attribute_code', 'attribute_value');
-
-      $wedding->updateWeddingDetails($weddingDetails);
-      
+      $oldWeddingDetails = $wedding->userEventDetails()->pluck('attribute_value' , 'attribute_code')->toArray();
+      $filtredWeddingDetails = array_diff($weddingDetails, $oldWeddingDetails);
+      $wedding->updateWeddingDetails($filtredWeddingDetails);
       return redirect('home');
    }
 
-/*   public function filterUpdatedValues($weddingDetails, $oldWeddingDetails)
+   public function filterUpdatedValues($weddingDetails, $oldWeddingDetails)
    {
-
-    foreach($weddingDetails as $attributeCode => $attributeValue)
+    
+/*    foreach($weddingDetails as $attributeCode => $attributeValue)
     {
       foreach ($oldWeddingDetails as $attribute_code => $attribute_value)
       {
-        if()
+        if($a)
       }
-    }
-  }  */
+    } */
+  }  
 
 }
