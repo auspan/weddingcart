@@ -121,7 +121,7 @@
         var idfields=id.split(/[-]/);
         var counter=idfields[2];
         // alert(counter);
-        if($("#product_id_"+counter).html()!="NULL")
+        if($("#product_id_"+counter).html()!=0)
         {
 
        $.ajaxSetup({
