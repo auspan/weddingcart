@@ -8,7 +8,7 @@
 
             <div class="menu-title">
                 <div style='margin:11px'>
-                    <div class="dropdown">
+                    <div class="dropdown-menu">
                         <a class="account" >
                             <span style="color: white">{{ Auth::user()->name }}</span>
                         </a>
