@@ -49,9 +49,4 @@
         </div>
     </div>
 
-    <script>
-    $('#uls').click(function(){
-        $('#lis').css("display","inherit");
-    })
-    </script>
 </header><!-- #header end -->

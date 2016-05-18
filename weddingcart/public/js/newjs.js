@@ -116,6 +116,10 @@ jQuery(document).ready( function($){
         //alert(newDate);
         $('#countdown-ex1').countdown({until: newDate});
     }
+
+    $('#uls').click(function(){
+        $('#lis').css("display","inherit");
+    });
 });
 
 jQuery(window).load(function()
@@ -193,3 +197,4 @@ function showAlert(title, message, level){
         showConfirmButton: false
     });
 }
+

@@ -13301,3 +13301,15 @@ body:not(.no-transition) #wrapper,
 .fixed-textarea {
 	resize: none;
 }
+
+td .btn,
+th .btn{
+	display: block;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 3px;
+	padding-right: 3px;
+	width: 100%;
+	height: 100%;
+	font-family: 'Glyphicons Halflings';
+}

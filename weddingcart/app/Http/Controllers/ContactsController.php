@@ -11,23 +11,85 @@ use Illuminate\Support\Facades\Input;
 class ContactsController extends Controller
 {
 
-    public function getGoogleContacts(Request $request)
+    public function index()
     {
-//        dd($request);
-        $token1 = $request->session()->get('_token');
+        $user = Auth::user();
+
+        $contacts = $user->contacts()->get();
+
+    }
+
+    public function store(Request $request)
+    {
+        $user = Auth::user();
+
+        $newContact = new Contact([
+           'name' => $request->input('contactName'),
+            'email' => $request->input('contactEmail'),
+            'phone' => $request->input('contactPhone')
+        ]);
+
+        $contact = $user->contacts()->save($newContact);
+
+        return response()->json([
+            'id'    => $contact->id,
+            'contactName'  => $contact->name,
+            'contactEmail' => $contact->email,
+            'contactPhone' => $contact->phone
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $contact = Contact::find($request->input('contactId'));
+
+        $contact['name'] = $request->input('contactName');
+        $contact['email'] = $request->input('contactEmail');
+        $contact['phone'] = $request->input('contactPhone');
+
+        $contact->save();
+
+        return response()->json([
+            'id'    => $contact->id,
+            'contactName'  => $contact->name,
+            'contactEmail' => $contact->email,
+            'contactPhone' => $contact->phone
+        ]);
+    }
+
+    public function destroy(Request $request)
+    {
+        Contact::destroy($request->input('contactId'));
+    }
+    public function importGoogleContacts(Request $request)
+    {
         if ($request->session()->has('socialToken')) {
-            $token = $request->session()->get('socialToken');
-//            dd($token." : "."$token1");
+            $googleToken = $request->session()->get('socialToken');
         }
         else
         {
-//            dd($request);
             return redirect()->action('Auth\AuthController@redirectToProvider', ['provider' => 'google']);
-//            return redirect()->action('WishlistController@showproducts');
-//            return redirect('/social/auth/redirect/google');
         }
-        $googleClient = $this->getGoogleClient($token);
+
+//        dd($googleToken);
+        $googleClient = $this->getGoogleClient($googleToken);
         $peopleService = new \Google_Service_People($googleClient);
+
+//        dd($peopleService);
+        $contacts = $this->getContactsFromGoogle($peopleService);
+        // @TODO Loop for pagination i.e. fetch page by page from google
+
+//        @TODO Store Synchtoken with the User Details so only incremental contact details are obtained in the next call
+//        $nextSyncToken = $result->getNextSyncToken();
+//        var_dump($contacts);
+        $people = $this->buildPeopleArray($contacts);
+//        var_dump($people);
+        return view('pages.contacts', compact('people'));
+    }
+
+
+    public function getContactsFromGoogle($peopleService)
+    {
         $nextPageToken = '';
         $contacts = array();
 //        dd("Token: ".$token);
@@ -44,16 +106,23 @@ class ContactsController extends Controller
 //            var_dump($nextPageToken);
         } while($result->getNextPageToken() != null);
 
-        // @TODO Loop for pagination i.e. fetch page by page from google
+        return $contacts;
 
-//        @TODO Store Synchtoken with the User Details so only incremental contact details are obtained in the next call
-        $nextSyncToken = $result->getNextSyncToken();
-//        var_dump($contacts);
-        $people = $this->buildPeopleArray($contacts);
-//        var_dump($people);
-        return view('pages.contacts', compact('people'));
+
     }
+    public function getGoogleToken(Request $request)
+    {
+        if ($request->session()->has('socialToken')) {
+             $token = $request->session()->get('socialToken');
+            return $token;
+        }
+        else
+        {
+            return redirect()->action('Auth\AuthController@redirectToProvider', ['provider' => 'google']);
+        }
 
+        return $token;
+    }
     /**
      * Extracts Required Information from Google Contact Api Results
      * @param \stdClass $contacts
@@ -102,15 +171,9 @@ class ContactsController extends Controller
 
     public function showInvitesPage()
     {
-        $people = array();
+       $user = Auth::user();
+       $people = $user->contacts()->get()->toArray();
 
-        $person = [
-            'name' => 'Utkal Pande',
-            'email' => 'utkal.pande@gmail.com',
-            'phone' => '9810967853'
-        ];
-
-        array_push($people, $person);
-        return view('pages.contacts', compact('people'));
+        return view('pages.myguests', compact('people'));
     }
 }

@@ -55,8 +55,12 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('social/auth/redirect/{provider}', 'Auth\AuthController@redirectToProvider');
     Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
-    Route::get('contacts', 'ContactsController@getGoogleContacts');
+    Route::get('googlecontacts', 'ContactsController@importGoogleContacts');
     Route::post('savecontact','ContactsController@savecontacts');
+    Route::post('addContact','ContactsController@store');
+    Route::post('contacts','ContactsController@index');
+    Route::post('updateContact','ContactsController@update');
+    Route::post('deleteContact','ContactsController@destroy');
 
     Route::get('showinvite', 'ContactsController@showInvitesPage');
 
