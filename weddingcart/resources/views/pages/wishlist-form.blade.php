@@ -75,7 +75,9 @@
                                 <div class="clear"></div>
                                 <a href="javascript::void(0)" id="btn-updatewishlist-{{ $count }}" class="hide-content btn-updatewishlist"><i class="icon-refresh" style="font-size:25px;color:blue"></i></a>
                                 <div class="clear"></div>
-                                <a href="javascript::void(0)" id="btn-canceltoupdatewishlist-{{ $count }}" class="hide-content btn-deletewishlist"><i class="icon-remove" style="font-size:25px;color:red"></i></a>
+                                <a href="javascript::void(0)" id="btn-canceltoupdatewishlist-{{ $count }}" class="hide-content btn-canceltoupdatewishlist"><i class="icon-remove" style="font-size:25px;color:red"></i></a>
+                                <div class="clear"></div>
+                                <a href="javascript::void(0)" id="btn-deletewishlist-{{ $count }}" class="hide-content btn-deletewishlist"><i class="icon-trash" style="font-size:25px;color:red"></i></a>
               <!--                  <button type="button" class="btn btn-danger btn-removewishlist" value="add" id="btn-removewishlist-{{$count}}">Remove</button>
                                 <br><br>
                                 <button type="button" class="btn btn-primary btn-addtowishlist" value="add" id="btn-addwishlist-{{ $count }}">Add</button>

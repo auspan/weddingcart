@@ -13301,3 +13301,15 @@ body:not(.no-transition) #wrapper,
 .fixed-textarea {
 	resize: none;
 }
+
+.icon-color-red
+{
+	font-size:25px;
+	color:red;
+}
+
+.icon-color-blue
+{
+	font-size: 25px;
+	color: blue;
+}
