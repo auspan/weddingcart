@@ -19,6 +19,7 @@
         {
           var splitId=values[i].split(/[_]/);
           var getOnlyIdNumber=splitId[2];
+          var a = $("#btn-editwishlist-"+getOnlyIdNumber);
           $("#btn-editwishlist-"+getOnlyIdNumber).css("display","inherit");
           $("#btn-removewishlist-"+getOnlyIdNumber).css("display","inherit");
           $("#btn-addwishlist-"+getOnlyIdNumber).css("display","none");

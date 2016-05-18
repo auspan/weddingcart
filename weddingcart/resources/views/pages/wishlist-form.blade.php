@@ -65,14 +65,26 @@
                               </div>
                             </div>
                             <div class="col-md-1 col_last tright">
-                                
-                                <button type="button" class="btn btn-danger btn-removewishlist" value="add" id="btn-removewishlist-{{$count}}">Remove</button>
+                                <a href="javascript::void(0)" id="btn-removewishlist-{{$count}}" class="btn-removewishlist"><i class="icon-trash" style="font-size:25px;color:red"></i></a>
+                                <div class="clear"></div>
+                                <a href="javascript::void(0)" id="btn-addwishlist-{{ $count }}" class=" btn-addtowishlist"><i class="icon-plus" style="font-size:25px;color:blue"></i></a>
+                                <div class="clear"></div>
+                                <a href="javascript::void(0)" class="hide-content btn-editwishlist" id="btn-editwishlist-{{ $count }}">
+                                  <i class="icon-pencil"  style="font-size:25px;color:blue"></i>
+                                </a>
+                                <div class="clear"></div>
+                                <a href="javascript::void(0)" id="btn-updatewishlist-{{ $count }}" class="hide-content btn-updatewishlist"><i class="icon-refresh" style="font-size:25px;color:blue"></i></a>
+                                <div class="clear"></div>
+                                <a href="javascript::void(0)" id="btn-canceltoupdatewishlist-{{ $count }}" class="hide-content btn-canceltoupdatewishlist"><i class="icon-remove" style="font-size:25px;color:red"></i></a>
+                                <div class="clear"></div>
+                                <a href="javascript::void(0)" id="btn-deletewishlist-{{ $count }}" class="hide-content btn-deletewishlist"><i class="icon-trash" style="font-size:25px;color:red"></i></a>
+              <!--                  <button type="button" class="btn btn-danger btn-removewishlist" value="add" id="btn-removewishlist-{{$count}}">Remove</button>
                                 <br><br>
                                 <button type="button" class="btn btn-primary btn-addtowishlist" value="add" id="btn-addwishlist-{{ $count }}">Add</button>
                                 <button type="button" class="btn btn-primary btn-editwishlist hide-content" value="edit" id="btn-editwishlist-{{ $count }}">Edit</button>
                                 <button type="button" class="btn btn-primary btn-updatewishlist hide-content" value="update" id="btn-updatewishlist-{{ $count }}">Update</button>
                                 <button type="button" class="btn btn-primary btn-canceltoupdatewishlist hide-content" value="cancel" id="btn-canceltoupdatewishlist-{{ $count }}">Cancel</button>
-                                <button type="button" class="btn btn-primary btn-deletewishlist hide-content" value="delete" id="btn-deletewishlist-{{ $count }}">Delete</button>
+                                <button type="button" class="btn btn-primary btn-deletewishlist hide-content" value="delete" id="btn-deletewishlist-{{ $count }}">Delete</button> -->
                                 
                             </div>
                             

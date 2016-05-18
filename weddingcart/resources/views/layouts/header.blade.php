@@ -19,34 +19,16 @@
                     <li><a href="/home"><div>Home</div></a></li>
 
                     <li><a href="/invites"><div>Guest</div></a></li>
-                    <li><a href="/logout"><div>{{ Auth::user()->name }}</div></a></li>
-
-                <!--    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" style="width: 50px">
-                          <li><a href="{{ url('/logout')  }}">Sign Out</a></li>
+                    <li><a href="/home"><div>{{ Auth::user()->name }}</div></a>
+                        <ul>
+                            <li>
+                                <a href="/logout">Sign Out</a>        
+                            </li>
                         </ul>
-                    </li>   -->
-
+                        
+                    </li>
                 </ul>
-
-
-                <!-- Top Search
-                {{--============================================= -->--}}
-                {{--<div id="top-search">--}}
-                    {{--<a href="#" id="top-search-trigger">--}}
-                        {{--<i class="icon-search3"></i>--}}
-                        {{--<i class="icon-line-cross"></i>--}}
-                    {{--</a>--}}
-                    {{--<form action="search.html" method="get">--}}
-                        {{--<input name="q" class="form-control" placeholder="Type &amp; Hit Enter.." type="text">--}}
-                    {{--</form>--}}
-                {{--</div><!-- #top-search end -->--}}
-
             </nav><!-- #primary-menu end -->
         </div>
     </div>
-
 </header><!-- #header end -->

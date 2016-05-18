@@ -13313,3 +13313,15 @@ th .btn{
 	height: 100%;
 	font-family: 'Glyphicons Halflings';
 }
+.icon-color-red
+{
+	font-size:25px;
+	color:red;
+}
+
+.icon-color-blue
+{
+	font-size: 25px;
+	color: blue;
+}
+
