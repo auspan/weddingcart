@@ -129,4 +129,6 @@ class UserEvent extends Model
             'product_price'=>$productDetails['productPrice'],
             'message'=>$productDetails['message']]);
     }
+
+    
  }

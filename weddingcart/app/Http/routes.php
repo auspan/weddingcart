@@ -52,6 +52,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/editwishlist','WishlistController@editproduct');     
     Route::post('/updatewishlist','WishlistController@updateproduct');     
     Route::post('/deletewishlist','WishlistController@removeproduct'); 
+    Route::post('/cancelwishlist','WishlistController@cancelproduct'); 
 
     Route::get('social/auth/redirect/{provider}', 'Auth\AuthController@redirectToProvider');
     Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
