@@ -197,23 +197,51 @@
 
       $('#posts').on('click', '.btn-canceltoupdatewishlist', function(event){
 
-        var id = $(this).attr('id');
-        var idfields=id.split(/[-]/);
-        var counter=idfields[2];
+              var id = $(this).attr('id');
+              var idfields=id.split(/[-]/);
+              var counter=idfields[2];
+              var productId = $('#product_id_'+counter).html();
+              $.ajaxSetup({
+                  headers:{
+                      'X-CSRF-Token':$('meta[name="_token"]').attr('content')
+                          }
+                        })
+              var productid=$("#product_id_"+counter).html();
 
-              $('#productName'+counter).attr("disabled", "disabled");
-              $('#productDescription'+counter).attr("disabled", "disabled");
-              $('#productPrice'+counter).attr("disabled", "disabled");
-              $('#message'+counter).attr("disabled", "disabled");
-              $("#btn-editwishlist-"+counter).css("display","inherit");
-              $("#btn-removewishlist-"+counter).css("display","inherit");
-              $("#btn-addwishlist-"+counter).css("display","none");
-              $("#btn-updatewishlist-"+counter).css("display","none");
-              $("#btn-canceltoupdatewishlist-"+counter).css("display","none");
-              $('#productName'+counter).attr("disabled", "disabled");
-              $('#productDescription'+counter).attr("disabled", "disabled");
-              $('#productPrice'+counter).attr("disabled", "disabled");
-              $('#message'+counter).attr("disabled", "disabled");
+              $.ajax({
+                type:"POST",
+                url:"/cancelwishlist",
+                data:{
+                    productId:productId
+                     },
+              success:function(data)
+              {
+                
+                $('#productName'+counter).val(data.product_name);
+                $('#productDescription'+counter).val(data.product_name);
+                $('#productPrice'+counter).val(data.product_price);
+                $('#message'+counter).val(data.message);
+                $('#productName'+counter).attr("disabled", "disabled");
+                $('#productDescription'+counter).attr("disabled", "disabled");
+                $('#productPrice'+counter).attr("disabled", "disabled");
+                $('#message'+counter).attr("disabled", "disabled");
+                $("#btn-editwishlist-"+counter).css("display","inherit");
+                $("#btn-removewishlist-"+counter).css("display","inherit");
+                $("#btn-addwishlist-"+counter).css("display","none");
+                $("#btn-updatewishlist-"+counter).css("display","none");
+                $("#btn-canceltoupdatewishlist-"+counter).css("display","none");
+                $('#productName'+counter).attr("disabled", "disabled");
+                $('#productDescription'+counter).attr("disabled", "disabled");
+                $('#productPrice'+counter).attr("disabled", "disabled");
+                $('#message'+counter).attr("disabled", "disabled");
+              },
+              error:function(data)
+              {
+                alert(data);
+              }
+            })
+              
+              
             
       })
 

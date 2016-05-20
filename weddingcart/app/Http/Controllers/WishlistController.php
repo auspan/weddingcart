@@ -170,6 +170,13 @@ class WishlistController extends Controller
                            ];
         }
     }
+
+    public function cancelproduct()
+    {
+        $productId = intval(Input::get('productId'));
+        $productDetails=UserEventWishlistItem::find($productId)->toArray();
+        return response()->json($productDetails);
+    }
         
 }
        
