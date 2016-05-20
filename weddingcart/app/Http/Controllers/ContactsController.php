@@ -15,8 +15,8 @@ class ContactsController extends Controller
     {
         $user = Auth::user();
 
-        $contacts = $user->contacts()->get();
-
+        $people = $user->contacts()->get()->toArray();
+        return view('pages.myguests', compact('people'));
     }
 
     public function store(Request $request)
@@ -24,42 +24,42 @@ class ContactsController extends Controller
         $user = Auth::user();
 
         $newContact = new Contact([
-           'name' => $request->input('contactName'),
-            'email' => $request->input('contactEmail'),
-            'phone' => $request->input('contactPhone')
+           'name' => $request->input('guestName'),
+            'email' => $request->input('guestEmail'),
+            'phone' => $request->input('guestPhone')
         ]);
 
         $contact = $user->contacts()->save($newContact);
 
         return response()->json([
             'id'    => $contact->id,
-            'contactName'  => $contact->name,
-            'contactEmail' => $contact->email,
-            'contactPhone' => $contact->phone
+            'guestName'  => $contact->name,
+            'guestEmail' => $contact->email,
+            'guestPhone' => $contact->phone
         ]);
     }
 
     public function update(Request $request)
     {
-        $contact = Contact::find($request->input('contactId'));
+        $contact = Contact::find($request->input('guestId'));
 
-        $contact['name'] = $request->input('contactName');
-        $contact['email'] = $request->input('contactEmail');
-        $contact['phone'] = $request->input('contactPhone');
+        $contact['name'] = $request->input('guestName');
+        $contact['email'] = $request->input('guestEmail');
+        $contact['phone'] = $request->input('guestPhone');
 
         $contact->save();
 
         return response()->json([
             'id'    => $contact->id,
-            'contactName'  => $contact->name,
-            'contactEmail' => $contact->email,
-            'contactPhone' => $contact->phone
+            'guestName'  => $contact->name,
+            'guestEmail' => $contact->email,
+            'guestPhone' => $contact->phone
         ]);
     }
 
     public function destroy(Request $request)
     {
-        Contact::destroy($request->input('contactId'));
+        Contact::destroy($request->input('guestId'));
     }
     public function importGoogleContacts(Request $request)
     {
@@ -171,9 +171,17 @@ class ContactsController extends Controller
 
     public function showInvitesPage()
     {
-       $user = Auth::user();
-       $people = $user->contacts()->get()->toArray();
+       $googleContacts = Array();
 
-        return view('pages.myguests', compact('people'));
+        for($i = 1; $i <55; $i++)
+        {
+            $contact = [
+             'name' => 'John '.$i.' Doe', 'email' => 'jdoe'.$i.'@ats.com'
+            ];
+
+            array_push($googleContacts, $contact);
+        }
+
+        return response()->json($googleContacts);
     }
 }

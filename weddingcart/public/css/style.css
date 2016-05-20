@@ -13325,3 +13325,51 @@ th .btn{
 	color: blue;
 }
 
+.multiGrid
+{
+	font-size: 0.8em;
+	border: solid 1px #FF2F00;
+	padding-top: 10px;
+}
+
+.multiGrid button
+{
+	padding-right: 2px;
+	padding-left: 2px;
+	border-radius: 50%;
+	border: none;
+	background-color: inherit;
+
+}
+
+.multiGrid .editRow
+{
+	color: #00ACEE;
+}
+
+.multiGrid .deleteRow,
+.multiGrid .cancelEditRow
+{
+	color: red;
+}
+
+.multiGrid .updateRow,
+.multiGrid .addGuest,
+#addRow
+{
+	color: #39FF14;
+}
+
+#addRow
+{
+	height: 20px;
+	width: 20px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+#addRow span
+{
+	text-align: right;
+	vertical-align: top;
+}

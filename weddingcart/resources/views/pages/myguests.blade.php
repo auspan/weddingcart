@@ -10,8 +10,8 @@
     </div>
     <div class="container clearfix">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                <table id="myTable" class="table table-striped table-hover table-responsive">
+            <div class="col-md-7 multiGrid">
+                <table id="guestsTable" class="table table-striped table-hover table-responsive">
                     <thead>
                         <tr>
                             <th class="hidden"></th>
@@ -26,7 +26,7 @@
                                 <input type="text" name="newPhone" id="newPhone">
                             </th>
                             <th>
-                                <button id="addRow" type="button" class="btn btn-default btn-danger" aria-label="Add">
+                                <button id="addRow" type="button" class="btn btn-default" aria-label="Add">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 </button>
                             </th>
@@ -63,11 +63,51 @@
                                     </button>
                                 <td>
                                     <button class="deleteRow" type="button" class="btn btn-default" aria-label="Delete">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                     </button>
                                 </td>
                             </tr>
                         @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-5 multiGrid">
+                <table id="contactsTable" class="table table-striped table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th>
+                                <button id="getGoogleContacts" type="button" class="btn social-icon si-dark si-rounded si-gplus" aria-label="Delete">
+                                    <i class="icon-gplus"></i>
+                                </button>
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <div class="checkbox-inline">
+                                    <label>
+                                        <input type="checkbox" id="selectAll" name="selectAll">
+                                    </label>
+                                </div>
+                            </th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><input type="checkbox" class="selectRow" name="selectRow"></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="addGuest" type="button" class="btn btn-default" aria-label="Add">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

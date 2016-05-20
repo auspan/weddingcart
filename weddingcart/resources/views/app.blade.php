@@ -27,13 +27,10 @@
 			.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}
 		</style>
 		<script type="text/javascript" src="js/jquery.js"></script>
-<<<<<<< HEAD
 		<script type="text/javascript" src="js/plugins.js"></script>
 		<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
-=======
->>>>>>> 34531dcfd8ec92efa08d2dfa5f22fcaea5f167a7
 
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -80,5 +77,6 @@
 	<script type="text/javascript" src="js/wishlistform.js"></script>
 	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
 	<script type="text/javascript" src="js/tables.js"></script>
+	<script type="text/javascript" src="js/contacts.js"></script>
 		</body>
 		</html>
