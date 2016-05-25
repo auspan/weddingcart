@@ -218,7 +218,7 @@
               {
                 
                 $('#productName'+counter).val(data.product_name);
-                $('#productDescription'+counter).val(data.product_name);
+                $('#productDescription'+counter).val(data.product_description);
                 $('#productPrice'+counter).val(data.product_price);
                 $('#message'+counter).val(data.message);
                 $('#productName'+counter).attr("disabled", "disabled");

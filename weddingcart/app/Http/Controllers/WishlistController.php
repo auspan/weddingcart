@@ -38,7 +38,7 @@ class WishlistController extends Controller
             $userEventWishlistItems = $user->userEvents()->first()->createDefaultWishList($masterProductList, $userEventWishlistItems);
         } 
         
-        return view('pages.wishlist-form', ['wishListItems'=> $userEventWishlistItems,'masterProducts'=>$masterProductList]); 
+        return view('wishlist.wishlist-form', ['wishListItems'=> $userEventWishlistItems,'masterProducts'=>$masterProductList]); 
         
 
     }

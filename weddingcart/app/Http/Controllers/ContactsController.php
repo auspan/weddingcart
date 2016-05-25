@@ -16,7 +16,7 @@ class ContactsController extends Controller
         $user = Auth::user();
 
         $people = $user->contacts()->get()->toArray();
-        return view('pages.myguests', compact('people'));
+        return view('contacts.myguests', compact('people'));
     }
 
     public function store(Request $request)

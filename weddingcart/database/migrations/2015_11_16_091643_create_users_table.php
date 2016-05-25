@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration {
 			$table->dateTime('date_of_birth')->nullable();
 			$table->integer('phone')->nullable();
 			$table->string('password', 60)->nullable();
+            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
 			$table->string('salt', 20)->nullable();
 			$table->boolean('is_active')->nullable();
 			$table->boolean('is_logged_in')->nullable();
@@ -34,7 +36,7 @@ class CreateUsersTable extends Migration {
 			$table->rememberToken();
 			$table->integer('created_by')->nullable();
 			$table->integer('updated_by')->nullable();
-		});
+ 		});
 	}
 
 

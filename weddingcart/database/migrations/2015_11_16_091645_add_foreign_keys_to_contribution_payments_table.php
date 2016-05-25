@@ -14,7 +14,7 @@ class AddForeignKeysToContributionPaymentsTable extends Migration {
 	{
 		Schema::table('contribution_payments', function(Blueprint $table)
 		{
-			$table->foreign('wishlist_item_contribution_id', 'fk_contribution_payments_wishlist_item_contributions1')->references('id')->on('wishlist_item_contributions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('wishlist_item_contribution_id', 'fk_contribution_payments_wishlist_item_contributions1')->references('id')->on('wishlist_item_contributions')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

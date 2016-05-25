@@ -1,16 +1,4 @@
-@extends('app')
-
-@section('content')
-
-
-    <meta name="_token" content="{{ csrf_token() }}">
-
-    <div class="heading-block center topmargin page-section">
-        <h2>Contacts</h2>
-    </div>
-    <div class="container clearfix">
-        <div class="row">
-            <div class="col-md-7 multiGrid">
+<div class="col-md-7 multiGrid">
                 <table id="guestsTable" class="table table-striped table-hover table-responsive">
                     <thead>
                         <tr>
@@ -71,50 +59,3 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-5 multiGrid">
-                <table id="contactsTable" class="table table-striped table-hover table-responsive">
-                    <thead>
-                        <tr>
-                            <th>
-                                <button id="getGoogleContacts" type="button" class="btn social-icon si-dark si-rounded si-gplus" aria-label="Delete">
-                                    <i class="icon-gplus"></i>
-                                </button>
-                            </th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <div class="checkbox-inline">
-                                    <label>
-                                        <input type="checkbox" id="selectAll" name="selectAll">
-                                    </label>
-                                </div>
-                            </th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row"><input type="checkbox" class="selectRow" name="selectRow"></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="addGuest" type="button" class="btn btn-default" aria-label="Add">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-<div class="center bottommargin-lg">
-{{--    <a href="{{ url('contacts') }}" class="button button-rounded button-xlarge">Import Google Contacts</a>--}}
-</div>
-
-@stop

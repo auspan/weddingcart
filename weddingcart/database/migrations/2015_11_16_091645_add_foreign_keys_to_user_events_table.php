@@ -14,8 +14,8 @@ class AddForeignKeysToUserEventsTable extends Migration {
 	{
 		Schema::table('user_events', function(Blueprint $table)
 		{
-			$table->foreign('user_id', 'fk_user_events_users1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('event_id', 'fk_user_role_events_events1')->references('id')->on('events')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('user_id', 'fk_user_events_users1')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('event_id', 'fk_user_role_events_events1')->references('id')->on('events')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

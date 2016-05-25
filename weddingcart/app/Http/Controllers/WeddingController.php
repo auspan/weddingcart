@@ -126,7 +126,7 @@ class WeddingController extends Controller
       public function create()
       {
         $eventAttribute = EventAttribute::all();
-        return view('pages.weddingform', ['EventAttr'=> $eventAttribute]);
+        return view('wedding.weddingform', ['EventAttr'=> $eventAttribute]);
         
       }
 
@@ -174,7 +174,7 @@ class WeddingController extends Controller
       $user = Auth::User();
       $userEventDetails = $user->userEvents()->first()->userEventAttributes()->toArray();
       $userEventDetails['user_event_id'] = $user->userEvents()->value('id');
-      return view('pages.editweddingform')->with($userEventDetails);
+      return view('wedding.editweddingform')->with($userEventDetails);
     }
 
 

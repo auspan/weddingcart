@@ -19,7 +19,7 @@
                     <li><a href="/home"><div>Home</div></a></li>
 
                     <li><a href="/invites"><div>Guest</div></a></li>
-                    <li><a href="/home"><div>{{ Auth::user()->name }}</div></a>
+                    <li><a href="/logout"><div>{{ Auth::user()->name }}</div></a>
                         <ul>
                             <li>
                                 <a href="/logout">Sign Out</a>        

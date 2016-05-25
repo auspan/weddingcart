@@ -14,7 +14,7 @@ class AddForeignKeysToEventAttributesTable extends Migration {
 	{
 		Schema::table('event_attributes', function(Blueprint $table)
 		{
-			$table->foreign('event_id', 'fk_eventAttributes_events1')->references('id')->on('events')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('event_id', 'fk_eventAttributes_events1')->references('id')->on('events')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 
