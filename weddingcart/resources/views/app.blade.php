@@ -49,13 +49,17 @@
 	<!-- Document Wrapper
 	============================================= -->
 		<div id="wrapper" class="clearfix animate">
+		@if(Auth::User())
 			@include('layouts.header')
 
 			{{--@include('layouts.menu')--}}
+		@endif	
 
 			@yield('content')
 
+		
 			@include('layouts.footer')
+		
 
 		</div><!-- #wrapper end -->
 
@@ -63,8 +67,9 @@
 	============================================= -->
 		<div id="gotoTop" class="icon-angle-up"></div>
 
+	@if(Auth::User())	
 	@include('layouts.flash')
-
+	@endif
 	<!-- Footer Scripts
 	============================================= -->
 

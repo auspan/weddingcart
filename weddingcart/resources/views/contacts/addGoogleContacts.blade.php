@@ -7,7 +7,6 @@
                         <i class="icon-gplus"></i>
                     </button>
                 </th>
-                <th></th>
             </tr>
             <tr>
                 <th>Name</th>
