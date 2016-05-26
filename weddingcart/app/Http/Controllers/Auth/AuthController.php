@@ -108,18 +108,23 @@ class AuthController extends Controller
 
         try {
             $user = Socialite::driver($provider)->user();
-        } catch (Exception $e) {
+        } 
+        catch (Exception $e) 
+        {
             return Redirect::to('/auth/login');
         }
 
-        $request->session()->put('socialToken', $user->token);
+        if($provider == 'google')
+        {
+            $request->session()->put('socialToken', $user->token);
+        }
 
         $authUser = $this->findOrCreateUser($user, $provider);
 
         if(Auth::check())
         {
 //            return ('User Already Logged In');
-            return redirect()->action('ContactsController@getGoogleContacts');
+            return redirect()->action('ContactsController@importGoogleContacts');
         } else
         {
             auth()->login($authUser, true);

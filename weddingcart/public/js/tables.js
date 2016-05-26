@@ -104,15 +104,13 @@ $(document).ready(function(){
             },
             success: function(){
                 updateRow(guestsTable, nRow);
+                resetEditFlags();
                 showAlert("Yippe!!", "Guest Updated", "success");
             },
             error: function(){
 
             }
         });
-
-
-
     } );
 
     $('#guestsTable').on('click', '.cancelEditRow', function (e) {
@@ -127,12 +125,13 @@ $(document).ready(function(){
         jqTds[6].innerHTML = '<button type="button" class="deleteRow btn btn-default" aria-label="Delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
         guestsTable.row(editGuestRow).draw();
 
-
+        resetEditFlags();
     });
 
     $('#addRow').on( 'click', function (e) {
 
         e.preventDefault();
+
         var guestName = $('#newName').val();
         var guestEmail = $('#newEmail').val();
         var guestPhone = $('#newPhone').val();
@@ -213,11 +212,19 @@ $(document).ready(function(){
         oTable.cell(nRow, 4).data(jqInputs[3].value);
         jqTds[5].innerHTML = '<button type="button" class="editRow btn btn-default" aria-label="Edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>';
         jqTds[6].innerHTML = '<button type="button" class="deleteRow btn btn-default" aria-label="Delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
-        table.row(nRow).draw();
+        oTable.row(nRow).draw();
     }
 
     function showRowBeingEditedAlert ()
     {
         showAlert("Hmmm!!", "Row being edited. Please update or cancel", "success");
+    }
+
+    function resetEditFlags()
+    {
+        editGuestRow = null;
+        editGuestName = null;
+        editGuestEmail = null;
+        editGuestPhone = null;
     }
 } );

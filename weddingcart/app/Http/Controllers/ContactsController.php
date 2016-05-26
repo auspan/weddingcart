@@ -61,6 +61,7 @@ class ContactsController extends Controller
     {
         Contact::destroy($request->input('guestId'));
     }
+
     public function importGoogleContacts(Request $request)
     {
         if ($request->session()->has('socialToken')) {
@@ -99,13 +100,14 @@ class ContactsController extends Controller
                 'pageSize' => 300,
                 'requestMask.includeField' => 'person.names,person.emailAddresses,person.phoneNumbers'
             ]);
-//            dd($result);
+            // dd($result);
             $nextPageToken = $result->getNextPageToken();
             $contacts = array_merge($contacts, $result->toSimpleObject()->connections);
 
 //            var_dump($nextPageToken);
         } while($result->getNextPageToken() != null);
 
+        // dd($contacts);
         return $contacts;
 
 
@@ -135,6 +137,8 @@ class ContactsController extends Controller
         foreach ($contacts as $contact)
         {
             $person = array(
+                //'id' => explode ("/",array_get($contact, 'resourceName')),
+                'id' => substr(array_get($contact, 'resourceName'), 7),
                 'name' => array_get($contact, 'names.0.displayName'),
                 'email' => array_get($contact, 'emailAddresses.0.value'),
                 'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')
@@ -143,6 +147,7 @@ class ContactsController extends Controller
                 array_push($people, $person);
             }
         }
+        dd($people);
         return $people;
     }
 
