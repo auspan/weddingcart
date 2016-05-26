@@ -104,15 +104,13 @@ $(document).ready(function(){
             },
             success: function(){
                 updateRow(guestsTable, nRow);
+                resetEditFlags();
                 showAlert("Yippe!!", "Guest Updated", "success");
             },
             error: function(){
 
             }
         });
-
-
-
     } );
 
     $('#guestsTable').on('click', '.cancelEditRow', function (e) {
@@ -127,12 +125,13 @@ $(document).ready(function(){
         jqTds[6].innerHTML = '<button type="button" class="deleteRow btn btn-default" aria-label="Delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
         guestsTable.row(editGuestRow).draw();
 
-
+        resetEditFlags();
     });
 
     $('#addRow').on( 'click', function (e) {
 
         e.preventDefault();
+
         var guestName = $('#newName').val();
         var guestEmail = $('#newEmail').val();
         var guestPhone = $('#newPhone').val();
@@ -219,5 +218,13 @@ $(document).ready(function(){
     function showRowBeingEditedAlert ()
     {
         showAlert("Hmmm!!", "Row being edited. Please update or cancel", "success");
+    }
+
+    function resetEditFlags()
+    {
+        editGuestRow = null;
+        editGuestName = null;
+        editGuestEmail = null;
+        editGuestPhone = null;
     }
 } );

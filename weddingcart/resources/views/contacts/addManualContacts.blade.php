@@ -14,7 +14,7 @@
                                 <input type="text" name="newPhone" id="newPhone">
                             </th>
                             <th>
-                                <button id="addRow" type="button" class="btn btn-default" aria-label="Add">
+                                <button id="addRow" type="button" class="btn-add btn" aria-label="Add">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 </button>
                             </th>
@@ -46,11 +46,11 @@
                                 <td>{{ $person['email'] }}</td>
                                 <td>{{ $person['phone'] }}</td>
                                 <td>
-                                    <button class="editRow" type="button" class="btn btn-default" aria-label="Edit">
+                                    <button class="editRow btn btn-default" type="button" aria-label="Edit">
                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </button>
                                 <td>
-                                    <button class="deleteRow" type="button" class="btn btn-default" aria-label="Delete">
+                                    <button class="deleteRow btn btn-default" type="button" class="btn btn-default" aria-label="Delete">
                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                     </button>
                                 </td>

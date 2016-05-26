@@ -3,15 +3,17 @@
         <thead>
             <tr>
                 <th>
-                    <button id="getGoogleContacts" type="button" class="btn" aria-label="Delete">
+                    <button id="getGoogleContacts" type="button" class="btn btn-default" aria-label="Google">
                         <i class="icon-gplus"></i>
                     </button>
                 </th>
+                <th></th>
                 <th></th>
             </tr>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th></th>
             </tr>
         </thead>
     </table>
