@@ -24,16 +24,26 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>
+                                <button id="addSelected" type="button" class="btn-add btn addSelected" aria-label="Add">Add
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i=1 ?>
                         @foreach($people as $person)
-                            <tr>
-                                <td scope="row"><input type="checkbox" id="checkbox{{ $i }}" name="query_myTextEditBox"></td>
+                            <tr id="row{{$i}}">
+                                <td scope="row"><input type="checkbox" id="checkbox{{ $i }}" name="googleContacts"></td>
                                 <td id="name{{$i}}">{{ $person['name']}}</td>
                                 <td id="email{{$i}}">{{ $person['email'] }}</td>
                                 <td id="phone{{$i}}">{{ $person['phone'] }}</td>
+                                <td>
+                                    <button id="add-{{$i}}" type="button" class="btn-add btn addRow" aria-label="Add">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </button>
+                                </td>
                             </tr>
                             <?php  $i++; ?>
                         @endforeach
@@ -43,13 +53,8 @@
         </div>
     </div>
 <div class="center bottommargin-lg">
-{{--    <a href="{{ url('contacts') }}" class="button button-rounded button-xlarge">Import Google Contacts</a>--}}
+    <a href="{{ url('contacts') }}" class="button button-rounded button-xlarge">Ok</a>
 </div>
 
-    <script>
-        $(document).ready(function(){
-            $('#myTable').DataTable({
-            });
-        });
-    </script>
+    
 @stop

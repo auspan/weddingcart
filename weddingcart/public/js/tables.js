@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-
+    
     var editGuestRow = null;
     var editGuestName = null;
     var editGuestEmail = null;
@@ -137,6 +137,7 @@ $(document).ready(function(){
         var guestPhone = $('#newPhone').val();
 
         // Ajax call for add guest
+
         $.ajax({
             type: "POST",
             url:"addContact",
@@ -157,7 +158,44 @@ $(document).ready(function(){
             }
         });
 
-    } );
+    });
+
+    $(".addRow").on('click', function(e) {
+
+        e.preventDefault();
+        var rowId = $(this).attr('id');
+        var counter=rowId.split(/[-]/);
+        var guestName = $('#name'+counter[1]).html();
+        var guestEmail = $('#email'+counter[1]).html();
+        var guestPhone = $('#phone'+counter[1]).html();
+        
+        $.ajax({
+            type:"POST",
+            url:"addContact",
+            data:{
+                guestName: guestName,
+                guestEmail: guestEmail,
+                guestPhone: guestPhone
+            },
+            success:function(data)
+            {
+                $('#row'+counter[1]).remove();
+                showAlert("Yippe!!", "Guest Added", "success");
+            },
+            error:function(data)
+            {
+                
+            }
+        });
+    })
+
+    $("#addSelected").on('click', function(e) {
+
+        e.preventDefault();
+        var checked = $( "input:checked").length;
+        //var total=$(this).find('input[name="googleContacts"]:checked').length;
+        alert(checked);
+    })
 
 
     function addRowToGuestsTable(guestsTable, guestsData)

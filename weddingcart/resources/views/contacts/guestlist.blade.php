@@ -9,8 +9,6 @@
     <div class="container clearfix">
         <div class="row">
             @include('contacts.addManualContacts')
-            
-            @include('contacts.addGoogleContacts')
         </div>
     </div>
 <div class="center bottommargin-lg">

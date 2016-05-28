@@ -83,9 +83,10 @@ class AuthController extends Controller
      */
     public function redirectToProvider($provider)
     {
-//        return("Reached Safely");
+       // return("Reached Safely");
         $googleScopes = ['https://www.googleapis.com/auth/contacts.readonly', 'https://www.googleapis.com/auth/plus.login'];
-//        dd($googleScopes);
+     
+     // dd($googleScopes);  
         if($provider == 'google')
         {
             return \Socialite::driver($provider)->scopes($googleScopes)->redirect();
@@ -105,14 +106,17 @@ class AuthController extends Controller
      */
     public function handleProviderCallback($provider, Request $request)
     {
-
         try {
             $user = Socialite::driver($provider)->user();
         } 
         catch (Exception $e) 
         {
-            return Redirect::to('/auth/login');
+                    return Redirect::to('/auth/login');
         }
+
+        // dd(Socialite::driver($provider));
+
+
 
         if($provider == 'google')
         {
@@ -123,7 +127,7 @@ class AuthController extends Controller
 
         if(Auth::check())
         {
-//            return ('User Already Logged In');
+           // return ('User Already Logged In');
             return redirect()->action('ContactsController@importGoogleContacts');
         } else
         {

@@ -16,7 +16,7 @@ class ContactsController extends Controller
         $user = Auth::user();
 
         $people = $user->contacts()->get()->toArray();
-        return view('contacts.myguests', compact('people'));
+        return view('contacts.guestlist', compact('people'));
     }
 
     public function store(Request $request)
@@ -27,6 +27,7 @@ class ContactsController extends Controller
            'name' => $request->input('guestName'),
             'email' => $request->input('guestEmail'),
             'phone' => $request->input('guestPhone')
+           
         ]);
 
         $contact = $user->contacts()->save($newContact);
@@ -64,7 +65,9 @@ class ContactsController extends Controller
 
     public function importGoogleContacts(Request $request)
     {
-        if ($request->session()->has('socialToken')) {
+
+        if ($request->session()->has('socialToken')) 
+        {
             $googleToken = $request->session()->get('socialToken');
         }
         else
@@ -72,7 +75,10 @@ class ContactsController extends Controller
             return redirect()->action('Auth\AuthController@redirectToProvider', ['provider' => 'google']);
         }
 
-//        dd($googleToken);
+
+        // $googleToken = $request->session()->get('socialToken');
+
+       // dd($googleToken);
         $googleClient = $this->getGoogleClient($googleToken);
         $peopleService = new \Google_Service_People($googleClient);
 
@@ -85,7 +91,7 @@ class ContactsController extends Controller
 //        var_dump($contacts);
         $people = $this->buildPeopleArray($contacts);
 //        var_dump($people);
-        return view('pages.contacts', compact('people'));
+        return view('contacts.contacts', compact('people'));
     }
 
 
@@ -102,6 +108,7 @@ class ContactsController extends Controller
             ]);
             // dd($result);
             $nextPageToken = $result->getNextPageToken();
+
             $contacts = array_merge($contacts, $result->toSimpleObject()->connections);
 
 //            var_dump($nextPageToken);
@@ -147,7 +154,7 @@ class ContactsController extends Controller
                 array_push($people, $person);
             }
         }
-        dd($people);
+        // dd($people);
         return $people;
     }
 
