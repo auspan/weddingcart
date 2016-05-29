@@ -18,6 +18,11 @@
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 </button>
                             </th>
+                            <th>
+                                <a href="{{ url('googlecontacts') }}"><button type="button" class="btn btn-default" aria-label="Google">
+                                    <i class="icon-gplus"></i>
+                                </button>
+                            </th>
                             <th></th>
                         </tr>
                         <tr>
@@ -32,6 +37,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>

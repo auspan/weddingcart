@@ -16,7 +16,7 @@ class ContactsController extends Controller
         $user = Auth::user();
 
         $people = $user->contacts()->get()->toArray();
-        return view('contacts.myguests', compact('people'));
+        return view('contacts.guestlist', compact('people'));
     }
 
     public function store(Request $request)
@@ -27,6 +27,7 @@ class ContactsController extends Controller
            'name' => $request->input('guestName'),
             'email' => $request->input('guestEmail'),
             'phone' => $request->input('guestPhone')
+           
         ]);
 
         $contact = $user->contacts()->save($newContact);
@@ -61,9 +62,12 @@ class ContactsController extends Controller
     {
         Contact::destroy($request->input('guestId'));
     }
+
     public function importGoogleContacts(Request $request)
     {
-        if ($request->session()->has('socialToken')) {
+
+        if ($request->session()->has('socialToken')) 
+        {
             $googleToken = $request->session()->get('socialToken');
         }
         else
@@ -71,7 +75,10 @@ class ContactsController extends Controller
             return redirect()->action('Auth\AuthController@redirectToProvider', ['provider' => 'google']);
         }
 
-//        dd($googleToken);
+
+        // $googleToken = $request->session()->get('socialToken');
+
+       // dd($googleToken);
         $googleClient = $this->getGoogleClient($googleToken);
         $peopleService = new \Google_Service_People($googleClient);
 
@@ -84,7 +91,7 @@ class ContactsController extends Controller
 //        var_dump($contacts);
         $people = $this->buildPeopleArray($contacts);
 //        var_dump($people);
-        return view('pages.contacts', compact('people'));
+        return view('contacts.contacts', compact('people'));
     }
 
 
@@ -99,13 +106,15 @@ class ContactsController extends Controller
                 'pageSize' => 300,
                 'requestMask.includeField' => 'person.names,person.emailAddresses,person.phoneNumbers'
             ]);
-//            dd($result);
+            // dd($result);
             $nextPageToken = $result->getNextPageToken();
+
             $contacts = array_merge($contacts, $result->toSimpleObject()->connections);
 
 //            var_dump($nextPageToken);
         } while($result->getNextPageToken() != null);
 
+        // dd($contacts);
         return $contacts;
 
 
@@ -135,6 +144,8 @@ class ContactsController extends Controller
         foreach ($contacts as $contact)
         {
             $person = array(
+                //'id' => explode ("/",array_get($contact, 'resourceName')),
+                'id' => substr(array_get($contact, 'resourceName'), 7),
                 'name' => array_get($contact, 'names.0.displayName'),
                 'email' => array_get($contact, 'emailAddresses.0.value'),
                 'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')
@@ -143,6 +154,7 @@ class ContactsController extends Controller
                 array_push($people, $person);
             }
         }
+        // dd($people);
         return $people;
     }
 
