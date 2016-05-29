@@ -31,6 +31,7 @@
 		<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+		<script type="text/javascript" src="js/typeahead.bundle.js"></script>
 
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
