@@ -60,9 +60,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('savecontact','ContactsController@savecontacts');
     Route::post('addContact','ContactsController@store');
     Route::get('contacts','ContactsController@index');
+    Route::get('getcontacts','ContactsController@getContacts');
     Route::post('updateContact','ContactsController@update');
     Route::post('deleteContact','ContactsController@destroy');
 
-    Route::get('showinvite', 'ContactsController@showInvitesPage');
+    Route::get('showinvite', 'InvitesController@showInvitesPage');
+//    Route::get('showinvite', 'ContactsController@showInvitesPage');
+
 
 });

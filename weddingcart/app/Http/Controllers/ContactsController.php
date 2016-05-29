@@ -197,11 +197,14 @@ class ContactsController extends Controller
         return response()->json($googleContacts);
     }
 
-    public function getContacts()
+    public function getContacts(Request $request)
     {
+
+        $query = $request->input('name');
         $user = Auth::user();
 
-        $contacts = $user->contacts()->get(['name', 'email'])->toArray();
+
+        $contacts = $user->contacts()->where('name', 'LIKE', "%$query%")->get(['name'])->toArray();
         return response()->json($contacts);
 
     }
