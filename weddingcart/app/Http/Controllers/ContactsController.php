@@ -184,4 +184,13 @@ class ContactsController extends Controller
 
         return response()->json($googleContacts);
     }
+
+    public function getContacts()
+    {
+        $user = Auth::user();
+
+        $contacts = $user->contacts()->get(['name', 'email'])->toArray();
+        return response()->json($contacts);
+
+    }
 }
