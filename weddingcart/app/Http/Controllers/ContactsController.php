@@ -31,7 +31,7 @@ class ContactsController extends Controller
         ]);
         $email = $newContact->email;
         $allContactPersonsEmail = Contact::where('user_id',$user->id )->pluck('email')->toArray();
-        if (in_array($email, $allContactPersonsEmail)) 
+        if (in_array(strtolower($email), $allContactPersonsEmail)) 
         {
             return response()->json([
                     'message' => "Guest Already Exits"
@@ -149,8 +149,9 @@ class ContactsController extends Controller
      */
     private function buildPeopleArray(Array $contacts)
     {
+        $user = Auth::user();
+        $existingContacts = $user->contacts()->pluck('email')->toArray();
         $people = array();
-
         foreach ($contacts as $contact)
         {
             $person = array(
@@ -160,7 +161,11 @@ class ContactsController extends Controller
                 'email' => array_get($contact, 'emailAddresses.0.value'),
                 'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')
             );
-            if($person['email']){
+            if(in_array($person['email'],$existingContacts))
+            {
+            }
+            else
+            {
                 array_push($people, $person);
             }
         }
