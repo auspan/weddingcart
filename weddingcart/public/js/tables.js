@@ -147,12 +147,20 @@ $(document).ready(function(){
                 guestPhone: guestPhone
             },
             success: function(data){
-                addRowToGuestsTable(guestsTable, data);
-                $('#newName').val('');
-                $('#newEmail').val('');
-                $('#newPhone').val('');
-                //showAlert(data.title, data.message, data.level);
-                showAlert("Yippe!!", "Guest Added", "success");
+
+                if(data.message)
+                {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else
+                {
+                    addRowToGuestsTable(guestsTable, data);
+                    $('#newName').val('');
+                    $('#newEmail').val('');
+                    $('#newPhone').val('');
+                    //showAlert(data.title, data.message, data.level);
+                    showAlert("Yippe!!", "Guest Added", "success");
+                }
             },
             error: function(){
             }
@@ -179,8 +187,15 @@ $(document).ready(function(){
             },
             success:function(data)
             {
-                $('#row'+counter[1]).remove();
-                showAlert("Yippe!!", "Guest Added", "success");
+                if(data.message)
+                {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else
+                {    
+                    $('#row'+counter[1]).remove();
+                    showAlert("Yippe!!", "Guest Added", "success");
+                }    
             },
             error:function(data)
             {

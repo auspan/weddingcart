@@ -29,15 +29,25 @@ class ContactsController extends Controller
             'phone' => $request->input('guestPhone')
            
         ]);
+        $email = $newContact->email;
+        $allContactPersonsEmail = Contact::where('user_id',$user->id )->pluck('email')->toArray();
+        if (in_array($email, $allContactPersonsEmail)) 
+        {
+            return response()->json([
+                    'message' => "Guest Already Exits"
+                ]);
+        }
 
-        $contact = $user->contacts()->save($newContact);
-
-        return response()->json([
-            'id'    => $contact->id,
-            'guestName'  => $contact->name,
-            'guestEmail' => $contact->email,
-            'guestPhone' => $contact->phone
-        ]);
+        else
+        {
+            $contact = $user->contacts()->save($newContact);
+            return response()->json([
+                'id'    => $contact->id,
+                'guestName'  => $contact->name,
+                'guestEmail' => $contact->email,
+                'guestPhone' => $contact->phone
+            ]);
+        }
     }
 
     public function update(Request $request)

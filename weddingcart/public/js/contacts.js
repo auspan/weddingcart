@@ -4,7 +4,7 @@ $(document).ready(function(){
     $('#myTable').DataTable({
             });
     $("#checkAll").change(function () {
-    $("input:checkbox").prop('checked', $(this).prop("checked"));
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
     });
     
     $.ajaxSetup({
