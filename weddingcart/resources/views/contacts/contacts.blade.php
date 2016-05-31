@@ -14,6 +14,7 @@
                 <table id="myTable" class="table table-striped table-hover table-responsive table-condensed" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th class="hidden"></th>
                             <th>
                                 <div class="checkbox-inline">
                                     <label>
@@ -35,6 +36,7 @@
                         <?php $i=1 ?>
                         @foreach($people as $person)
                             <tr id="row{{$i}}">
+                                <td id="id{{$i}}" class="hidden">{{ $person['googleId'] }}</td>
                                 <td scope="row"><input type="checkbox" id="checkbox-{{ $i }}" name="googleContacts"></td>
                                 <td id="name{{$i}}">{{ $person['name']}}</td>
                                 <td id="email{{$i}}">{{ $person['email'] }}</td>

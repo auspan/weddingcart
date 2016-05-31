@@ -30,7 +30,7 @@ class ContactsController extends Controller
            
         ]);
         $email = $newContact->email;
-        $allContactPersonsEmail = Contact::where('user_id',$user->id )->pluck('email')->toArray();
+        $allContactPersonsEmail = $user->contacts()->pluck('email')->toArray();
         if (in_array(strtolower($email), $allContactPersonsEmail)) 
         {
             return response()->json([
@@ -156,7 +156,7 @@ class ContactsController extends Controller
         {
             $person = array(
                 //'id' => explode ("/",array_get($contact, 'resourceName')),
-                'id' => substr(array_get($contact, 'resourceName'), 7),
+                'googleId' => substr(array_get($contact, 'resourceName'), 7),
                 'name' => array_get($contact, 'names.0.displayName'),
                 'email' => array_get($contact, 'emailAddresses.0.value'),
                 'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')

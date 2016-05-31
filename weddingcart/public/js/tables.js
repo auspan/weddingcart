@@ -207,21 +207,35 @@ $(document).ready(function(){
     $("#addSelected").on('click', function(e) {
 
         e.preventDefault();
-        var totalChecked = $( "input[name='googleContacts']:checked").map(function (index, el) {
-       return $(el).attr('id').split(/[-]/) 
+        var totalChecked = $( "input[name='googleContacts']:checked").map(function (index, el) 
+        {
+            return $(el).attr('id').split(/[-]/)[1] 
       }).get();
         
+        
         // var i;
-        // var contacts = new array[];
+        // var contacts = new Array();
+       
+        // alert(contacts);
+
         // for(i=0; i<totalChecked.length; i++)
         // {
-        //     var guestName = $('#name'+totalChecked[1]).html();
-        //     var guestEmail = $('#email'+totalChecked[1]).html();
-        //     var guestPhone = $('#phone'+totalChecked[1]).html();
+        //     contacts[i] = {
+        //                     "guestName" : $('#name'+totalChecked[i]).html() 
+        //                     , "guestEmail": $('#email'+totalChecked[i]).html()
+        //                     , "guestPhone" : $('#phone'+totalChecked[i]).html()
+        //                     };
+        //     alert($('#name'+totalChecked[i]).html());
+        //     // contacts[i]['guestName'] = $('#name'+totalChecked[i]).html();
+        //     // contacts[i]['guestEmail'] = $('#email'+totalChecked[i]).html();
+        //     // contacts[i]['guestPhone'] = $('#phone'+totalChecked[i]).html();
+            
         // }
+
+        // alert(contacts);
         
        
-    })
+    });
 
 
     function addRowToGuestsTable(guestsTable, guestsData)
