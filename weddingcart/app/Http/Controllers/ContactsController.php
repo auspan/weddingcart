@@ -202,9 +202,7 @@ class ContactsController extends Controller
 
         $query = $request->input('name');
         $user = Auth::user();
-
-
-        $contacts = $user->contacts()->where('name', 'LIKE', "%$query%")->get(['name'])->toArray();
+        $contacts = $user->contacts()->where('name', 'LIKE', "%$query%")->get(['name', 'email'])->toArray();
         return response()->json($contacts);
 
     }
