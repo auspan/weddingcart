@@ -8,6 +8,6 @@
 
 <div class="center bottommargin-lg">
     <a href="{{ url('contacts') }}" class="button button-rounded button-xlarge">Guest List</a>
-<!--    <a href="{{ url('contacts') }}" class="button button-rounded button-xlarge">Invite</a>	-->
+    <a href="{{ url('showinvite') }}" class="button button-rounded button-xlarge">Invite</a>
 </div>
 

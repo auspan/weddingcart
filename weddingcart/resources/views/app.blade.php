@@ -31,6 +31,8 @@
 		<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+		<script type="text/javascript" src="js/typeahead.bundle.js"></script>
+		<script type="text/javascript" src="js/bloodhound.js"></script>
 
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -83,5 +85,6 @@
 	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
 	<script type="text/javascript" src="js/tables.js"></script>
 	<script type="text/javascript" src="js/contacts.js"></script>
+	<script type="text/javascript" src="js/sendinvite.js"></script>
 		</body>
 		</html>

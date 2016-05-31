@@ -211,4 +211,14 @@ class ContactsController extends Controller
 
         return response()->json($googleContacts);
     }
+
+    public function getContacts(Request $request)
+    {
+
+        $query = $request->input('name');
+        $user = Auth::user();
+        $contacts = $user->contacts()->where('name', 'LIKE', "%$query%")->get(['name', 'email'])->toArray();
+        return response()->json($contacts);
+
+    }
 }
