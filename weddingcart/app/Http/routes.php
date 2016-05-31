@@ -65,6 +65,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('deleteContact','ContactsController@destroy');
 
     Route::get('showinvite', 'InvitesController@showInvitesPage');
+    Route::post('sendinvite', 'InvitesController@sendInvite');
 //    Route::get('showinvite', 'ContactsController@showInvitesPage');
 
 

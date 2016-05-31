@@ -15,11 +15,14 @@ use weddingcart\UserEventDetail;
 use weddingcart\UserEventWishlistItem;
 use weddingcart\product;
 use weddingcart\Http\Redirect;
+use weddingcart\Mailers\AppMailer;
 class InvitesController extends Controller
 {
-     public function __construct()
+    protected $mailer;
+    public function __construct(AppMailer $mailer)
     {
         $this->middleware('auth');
+        $this->mailer = $mailer;
     }
 
       public function invites()
@@ -126,5 +129,30 @@ class InvitesController extends Controller
     public function getGuestContributionDetails($guestContribution , $guestMessage)
     {
         return array('contribution_amount' => $guestContribution, 'guest_message' => $guestMessage);   
+    }
+
+    public function sendInvite(Request $request)
+    {
+//        $recepient = $request->input('toAddress');
+        $user = Auth::user();
+        $link = 'A1B255FFGH098JK';
+        $userEvent = Auth::user()->userEvents()->first();
+        $userEventAttributes = $userEvent->userEventAttributes();
+
+        $recepient = 'utkal.pande@gmail.com';
+        $data = array('to' => $recepient);
+        $data['link'] = $link;
+        $data['weddingDetails'] = $userEventAttributes;
+
+
+
+
+//        $this->mailer->sendInviteEmail($data);
+        return $data;
+    }
+
+    public function showInvitesPage()
+    {
+        return view('invitations.invite');
     }
 }

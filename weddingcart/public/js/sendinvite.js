@@ -4,13 +4,14 @@ jQuery(document).ready(function($) {
 var contacts = new Bloodhound({
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     datumTokenizer: function (datum) {
-        return Bloodhound.tokenizers.whitespace(datum.name);
+        return Bloodhound.tokenizers.whitespace(datum.name, datum.email);
     },
-    remote: {
-        url: 'getcontacts?name=%QUERY%',
-        wildcard: '%QUERY%'
-        //transform: function(response) { return response.data.contacts; }
-    }
+    prefetch: 'getcontacts'
+    //remote: {
+    //    url: 'getcontacts?name=%QUERY%',
+    //    wildcard: '%QUERY%'
+    //    //transform: function(response) { return response.data.contacts; }
+    //}
 });
 
 //function customTokenizer(datum) {
@@ -23,12 +24,18 @@ var contacts = new Bloodhound({
 
 $('#to-address').typeahead({
     hint: true,
-    highlight: true
+    highlight: true,
+    minLength: 2
    },
    {
        name: 'contacts',
        displayKey: 'name',
-       source: contacts
+       source: contacts,
+       templates: {
+           empty: [
+               '<div class="empty-message">Not Found</div>'
+           ]
+       }
    }
 );
 
