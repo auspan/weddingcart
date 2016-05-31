@@ -35,7 +35,7 @@
                         <?php $i=1 ?>
                         @foreach($people as $person)
                             <tr id="row{{$i}}">
-                                <td scope="row"><input type="checkbox" id="checkbox{{ $i }}" name="googleContacts"></td>
+                                <td scope="row"><input type="checkbox" id="checkbox-{{ $i }}" name="googleContacts"></td>
                                 <td id="name{{$i}}">{{ $person['name']}}</td>
                                 <td id="email{{$i}}">{{ $person['email'] }}</td>
                                 <td id="phone{{$i}}">{{ $person['phone'] }}</td>

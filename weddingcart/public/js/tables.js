@@ -147,12 +147,20 @@ $(document).ready(function(){
                 guestPhone: guestPhone
             },
             success: function(data){
-                addRowToGuestsTable(guestsTable, data);
-                $('#newName').val('');
-                $('#newEmail').val('');
-                $('#newPhone').val('');
-                //showAlert(data.title, data.message, data.level);
-                showAlert("Yippe!!", "Guest Added", "success");
+
+                if(data.message)
+                {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else
+                {
+                    addRowToGuestsTable(guestsTable, data);
+                    $('#newName').val('');
+                    $('#newEmail').val('');
+                    $('#newPhone').val('');
+                    //showAlert(data.title, data.message, data.level);
+                    showAlert("Yippe!!", "Guest Added", "success");
+                }
             },
             error: function(){
             }
@@ -179,8 +187,15 @@ $(document).ready(function(){
             },
             success:function(data)
             {
-                $('#row'+counter[1]).remove();
-                showAlert("Yippe!!", "Guest Added", "success");
+                if(data.message)
+                {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else
+                {    
+                    $('#row'+counter[1]).remove();
+                    showAlert("Yippe!!", "Guest Added", "success");
+                }    
             },
             error:function(data)
             {
@@ -192,9 +207,20 @@ $(document).ready(function(){
     $("#addSelected").on('click', function(e) {
 
         e.preventDefault();
-        var checked = $( "input:checked").length;
-        //var total=$(this).find('input[name="googleContacts"]:checked').length;
-        alert(checked);
+        var totalChecked = $( "input[name='googleContacts']:checked").map(function (index, el) {
+       return $(el).attr('id').split(/[-]/) 
+      }).get();
+        
+        // var i;
+        // var contacts = new array[];
+        // for(i=0; i<totalChecked.length; i++)
+        // {
+        //     var guestName = $('#name'+totalChecked[1]).html();
+        //     var guestEmail = $('#email'+totalChecked[1]).html();
+        //     var guestPhone = $('#phone'+totalChecked[1]).html();
+        // }
+        
+       
     })
 
 
