@@ -147,7 +147,7 @@ class InvitesController extends Controller
 
 
 
-//        $this->mailer->sendInviteEmail($data);
+        $this->mailer->sendInviteEmail($data);
         return $data;
     }
 

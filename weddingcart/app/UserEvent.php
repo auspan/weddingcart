@@ -66,6 +66,7 @@ class UserEvent extends Model
 
     public function saveWeddingDetails($weddingDetails)
     {
+        $weddingDetails['tok'] = str_random(20);
         $weddingAttributes = array();
         foreach($weddingDetails as $attributeCode => $attributeValue)
         {

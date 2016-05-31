@@ -27,7 +27,24 @@
 
                 <div class="widget clearfix">
                     <h4>Instagram Photos</h4>
-                    <div id="instagram-photos" class="instagram-photos masonry-thumbs col-5 instagram-img" data-user="269801886" data-count="15" data-type="tag"><a class="hyper1" href="#"><img src="images/12534155_1560541377602787_1541335658_n.jpg"></a><a class="hyper2" href="#"><img src="images/12519238_221865368156969_1556800533_n.jpg"></a><a class="hyper3" href="#"><img src="images/12568150_122106881506736_1703161949_n.jpg"></a><a class="hyper4" href="#"><img src="images/12547281_1714853642134575_1224288594_n.jpg"></a><a class="hyper5" href="#"><img src="images/12547304_1682485595359195_1681366963_n.jpg"></a><a class="hyper6" href="#"><img src="images/12523527_153800574999321_126513698_n.jpg"></a><a class="hyper7" href="#"><img src="images/12543357_1101288516557355_1715998086_n.jpg"></a><a class="hyper8" href="#"><img src="images/12552284_1729700877242700_2083329412_n.jpg"></a><a class="hyper9" href="#"><img src="images/12558845_109182169467648_589240705_n.jpg"></a><a class="hyper10" href="#"><img src="images/12501965_1531963710434051_758803768_n.jpg"></a><a class="hyper11" href="#"><img src="images/12547570_1671266466459173_2090740497_n.jpg"></a><a class="hyper12" href="#"><img src="images/12677151_1534033093561933_33203703_n.jpg"></a><a class="hyper13" href="#"><img src="images/12558311_160950027616181_1827369882_n.jpg"></a><a class="hyper14" href="#"><img src="images/12534574_1673697626224490_125094360_n.jpg"></a><a class="hyper15" href="#"><img src="images/12677283_1688142274799142_558484289_n.jpg"></a></div>
+                    <div id="instagram-photos" class="instagram-photos masonry-thumbs col-5 instagram-img"
+                         data-user="269801886" data-count="15" data-type="tag">
+                        <a class="hyper1" href="#"><img src="images/12534155_1560541377602787_1541335658_n.jpg"></a>
+                        <a class="hyper2" href="#"><img src="images/12519238_221865368156969_1556800533_n.jpg"></a>
+                        <a class="hyper4" href="#"><img src="images/12547281_1714853642134575_1224288594_n.jpg"></a>
+                        <a class="hyper3" href="#"><img src="images/12568150_122106881506736_1703161949_n.jpg"></a>
+                        <a class="hyper5" href="#"><img src="images/12547304_1682485595359195_1681366963_n.jpg"></a>
+                        <a class="hyper6" href="#"><img src="images/12523527_153800574999321_126513698_n.jpg"></a>
+                        <a class="hyper7" href="#"><img src="images/12543357_1101288516557355_1715998086_n.jpg"></a>
+                        <a class="hyper8" href="#"><img src="images/12552284_1729700877242700_2083329412_n.jpg"></a>
+                        <a class="hyper9" href="#"><img src="images/12558845_109182169467648_589240705_n.jpg"></a>
+                        <a class="hyper10" href="#"><img src="images/12501965_1531963710434051_758803768_n.jpg"></a>
+                        <a class="hyper11" href="#"><img src="images/12547570_1671266466459173_2090740497_n.jpg"></a>
+                        <a class="hyper12" href="#"><img src="images/12677151_1534033093561933_33203703_n.jpg"></a>
+                        <a class="hyper13" href="#"><img src="images/12558311_160950027616181_1827369882_n.jpg"></a>
+                        <a class="hyper14" href="#"><img src="images/12534574_1673697626224490_125094360_n.jpg"></a>
+                        <a class="hyper15" href="#"><img src="images/12677283_1688142274799142_558484289_n.jpg"></a>
+                    </div>
                 </div>
 
 

@@ -41,18 +41,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('wedding/{id}/edit','WeddingController@edit');
     Route::post('wedding/update/{id}','WeddingController@update');
     
-    Route::get('invites','InvitesController@invites');
-    Route::post('productdetails','InvitesController@productDetails');
-    Route::get('wishlistproducts','InvitesController@showAllWishlistProductsToGuest');
-    Route::post('contribution/{id}','InvitesController@contribution');
-    Route::get('product/{id}','InvitesController@selectedProductDetails');
-    
-    Route::get('/showWishlist','WishlistController@showWishlist');   
-    Route::post('/ajaxwishlist','WishlistController@addproduct');     
-    Route::post('/editwishlist','WishlistController@editproduct');     
-    Route::post('/updatewishlist','WishlistController@updateproduct');     
-    Route::post('/deletewishlist','WishlistController@removeproduct'); 
-    Route::post('/cancelwishlist','WishlistController@cancelproduct'); 
+
+    Route::get('/showWishlist','WishlistController@showWishlist');
+    Route::post('/ajaxwishlist','WishlistController@addproduct');
+    Route::post('/editwishlist','WishlistController@editproduct');
+    Route::post('/updatewishlist','WishlistController@updateproduct');
+    Route::post('/deletewishlist','WishlistController@removeproduct');
+    Route::post('/cancelwishlist','WishlistController@cancelproduct');
 
     Route::get('social/auth/redirect/{provider}', 'Auth\AuthController@redirectToProvider');
     Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
@@ -68,5 +63,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('sendinvite', 'InvitesController@sendInvite');
 //    Route::get('showinvite', 'ContactsController@showInvitesPage');
 
+    Route::get('invitation/{token}', 'GuestsController@getWeddingForToken');
+    Route::get('wishlistproducts/{id}','GuestsController@showAllWishlistProductsToGuest');
+    Route::get('invites','InvitesController@invites');
+    Route::post('productdetails','InvitesController@productDetails');
+    Route::post('contribution/{id}','InvitesController@contribution');
+    Route::get('product/{id}','InvitesController@selectedProductDetails');
 
 });
