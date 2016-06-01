@@ -64,10 +64,10 @@ Route::group(['middleware' => 'web'], function () {
 //    Route::get('showinvite', 'ContactsController@showInvitesPage');
 
     Route::get('invitation/{token}', 'GuestsController@getWeddingForToken');
-    Route::get('wishlistproducts/{id}','GuestsController@showAllWishlistProductsToGuest');
+    Route::get('wishlistproducts/{id}','GuestsController@showWishlistToGuest');
+    Route::get('wishlistItem/{id}','GuestsController@getWishlistItem');
+    Route::post('contribution/{id}','InvitesController@contribution');
     Route::get('invites','InvitesController@invites');
     Route::post('productdetails','InvitesController@productDetails');
-    Route::post('contribution/{id}','InvitesController@contribution');
-    Route::get('product/{id}','InvitesController@selectedProductDetails');
 
 });

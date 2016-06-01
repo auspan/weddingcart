@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use weddingcart\Http\Requests;
 use weddingcart\UserEvent;
 use weddingcart\User;
+use weddingcart\UserEventWishlistItem;
 
 class GuestsController extends Controller
 {
@@ -26,6 +27,7 @@ class GuestsController extends Controller
         $weddingDetails = $wedding->userEventAttributes();
 
         $weddingDetails['user_id'] = $wedding['user_id'];
+        $weddingDetails['user_event_id'] = $wedding['id'];
 
         $array_wishlist_items = $wedding->userEventWishlistItems()->pluck('product_name');
 
@@ -33,14 +35,19 @@ class GuestsController extends Controller
         return $weddingDetails;
     }
 
-    public function showAllWishlistProductsToGuest($id)
+    public function showWishlistToGuest($id)
     {
-        $UserEventWishlistItems = User::find($id)->userEvents()->first()->userEventWishlistItems()->get();
+        $userEventWishlistItems = User::find($id)->userEvents()->first()->userEventWishlistItems()->get();
 
-        //$userEventId = UserEvent::where('user_id',Auth::User()->id)->value('id');
-        //$UserEventWishlistItems = UserEventWishlistItem::all()->where('user_event_id',$userEventId);
+        return view('pages.wishlist_products_for_contribution',['Wishlist_Items'=>$userEventWishlistItems]);
+    }
 
-        return view('pages.wishlist_products_for_contribution',['Wishlist_Items'=>$UserEventWishlistItems]);
+    public function getWishlistItem($id)
+    {
+        $itemId = intval($id);
+        $wishlistItem = UserEventWishlistItem::find($id);
+//        return $wishlistItem;
+        return view('pages.contribution',['wishlistItem'=>$wishlistItem]);
     }
 
 }

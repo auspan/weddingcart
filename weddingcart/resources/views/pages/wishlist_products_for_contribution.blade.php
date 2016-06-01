@@ -49,7 +49,7 @@
                         </div>
                                     
                         <center>
-                        <a href="{{ url('product/'.$productDetails['id']) }}" class="btn btn-success">Gift</a>
+                        <a href="{{ url('wishlistItem/'.$productDetails['id']) }}" class="btn btn-success">Gift</a>
                         </center>
                       </div>
                     </div>

@@ -3,6 +3,7 @@
 namespace weddingcart;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class UserEventWishlistItem extends Model
 {
@@ -30,7 +31,20 @@ class UserEventWishlistItem extends Model
 
     public function wishlistItemContributions() {
 
-        return $this->hasMany('weddingcart\WishlistItemContribution');
+        return $this->hasMany('weddingcart\WishlistItemContribution', 'event_wishlist_item_id');
     }
-    
+
+
+    public function setWishlistItemContributionDetails($wishlistItemId , $contribution , $guestMessage)
+    {
+        $wishlistitemContributions = $this->wishlistItemContributions()->create([
+            'user_id' => Auth::User()->id,
+            'contribution_amount' => $contribution,
+            'message' => $guestMessage,
+            'event_wishlist_item_id' => $wishlistItemId
+        ]);
+        return $wishlistitemContributions;
+    }
+
+
 }

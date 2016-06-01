@@ -27,9 +27,9 @@ class WishlistItemContribution extends Model
         return $this->hasOne('weddingcart\ContributionPayment');
     }
 
-    public function UsereventWishlistItem() {
+    public function userEventWishlistItem() {
 
-        return $this->belongsTo('weddingcart\UserEventWishlistItem');
+        return $this->belongsTo('weddingcart\UserEventWishlistItem', 'event_wishlist_item_id');
     }
 
     public function user() {
