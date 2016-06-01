@@ -34,34 +34,15 @@ class HomeController extends Controller
         if(Auth::user()->isHost()){
             $userEvent = Auth::user()->userEvents()->first();
             $userEventAttributes = $userEvent->userEventAttributes();
-            //$splitdate = $this->getSplitDate($data['wdt']);
-            //$result = array_merge($data->toArray(),$splitdate);
-        /*    $current_datetime = new DateTime();
-            $wedding_datetime = new DateTime($data['wdt']);
-            $difference = $current_datetime->diff($wedding_datetime);
 
-            $data['days']    = $difference->d;
-            $data['hours']   = $difference->h;
-            $data['minutes'] = $difference->i;
-            $data['seconds'] = $difference->s;  
-            dd($data->toArray());   */
-            $userEventAttributes['bride_name'] = $this->splitname($userEventAttributes['bnm']);
-            $userEventAttributes['groom_name'] = $this->splitname($userEventAttributes['gnm']);
-            
             $array_wishlist_items = $userEvent->userEventWishlistItems()->pluck('product_name');
             
             return view('wedding.weddingpage',['wishlist_items'=>$array_wishlist_items])->with($userEventAttributes->toArray());
-//            return view('pages.invites_landing',['wishlist_items'=>$array_wishlist_items])->with($data->toArray());
         }
         else
         {
             return view('pages.createwedding');
         }
-    }
-
-    public function splitname(String $name){
-
-        return str_word_count($name, 1);
     }
 
 }

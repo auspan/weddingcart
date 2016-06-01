@@ -67,3 +67,8 @@ function moveImage(UploadedFile $image, String $name)
 
     $image->move($uploadPath, $name);
 }
+
+function splitname(String $name){
+
+    return str_word_count($name, 1);
+}

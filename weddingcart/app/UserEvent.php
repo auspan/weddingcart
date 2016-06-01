@@ -20,6 +20,15 @@ class UserEvent extends Model
      */
     protected $fillable = ['event_id' , 'user_id' , 'created_by' , 'updated_by'];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($userEvent){
+           $userEvent->token =str_random(30);
+        });
+    }
+
     // Relationships
 
     /**
@@ -61,11 +70,17 @@ class UserEvent extends Model
 
     public function userEventAttributes()
     {
-        return $this->userEventDetails()->pluck('attribute_value', 'attribute_code');
+        $userEventAttributes =  $this->userEventDetails()->pluck('attribute_value', 'attribute_code');
+
+        $userEventAttributes['bride_name'] = splitname($userEventAttributes['bnm']);
+        $userEventAttributes['groom_name'] = splitname($userEventAttributes['gnm']);
+
+        return $userEventAttributes;
     }
 
     public function saveWeddingDetails($weddingDetails)
     {
+//        $weddingDetails['tok'] = str_random(20);
         $weddingAttributes = array();
         foreach($weddingDetails as $attributeCode => $attributeValue)
         {

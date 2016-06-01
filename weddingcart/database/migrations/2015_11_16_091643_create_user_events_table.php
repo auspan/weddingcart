@@ -18,6 +18,7 @@ class CreateUserEventsTable extends Migration {
 			$table->integer('event_id')->index('fk_user_role_events_events1_idx');
 			$table->integer('user_id')->index('fk_user_events_users1_idx');
 			$table->date('event_date')->nullable();
+			$table->string('token')->nullable();
 			$table->timestamps();
 			$table->integer('created_by')->nullable();
 			$table->integer('updated_by')->nullable();
