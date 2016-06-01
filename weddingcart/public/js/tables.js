@@ -128,13 +128,131 @@ $(document).ready(function(){
         resetEditFlags();
     });
 
+        
+
     $('#addRow').on( 'click', function (e) {
 
-        e.preventDefault();
+            e.preventDefault();
 
+    //     $("#newContact").validate({
+    //         rules: {
+    //         newName: "required",
+    //         newEmail: {
+    //             required: true,
+    //             email: true
+    //         },
+    //         newPhone: {
+    //             required: true,
+    //             number: true,
+    //             minlength: 10,
+                
+    //         }
+    //     },
+
+    //         messages: {
+    //         newName: "Please enter your first name",
+    //         newPhone: {
+    //             required: "Please provide a contact number",
+    //             minlength: "Your contact number must be 10 digits long",
+    //             maxlength: "Your contact number must be 10 digits long"
+    //         },
+    //         newEmail: "Please enter a valid email address",
+    //     },
+    //         submitHandler: function(form) {
+            
+    //         var guestName = $('#newName').val();
+    //     var guestEmail = $('#newEmail').val();
+    //     var guestPhone = $('#newPhone').val();
+
+    //     // Ajax call for add guest
+
+    //     $.ajax({
+    //         type: "POST",
+    //         url:"addContact",
+    //         data:{
+    //             guestName: guestName,
+    //             guestEmail: guestEmail,
+    //             guestPhone: guestPhone
+    //         },
+    //         success: function(data){
+
+    //             if(data.message)
+    //             {
+    //                 showAlert("ooops!!", data.message, "error");
+    //             }
+    //             else
+    //             {
+    //                 addRowToGuestsTable(guestsTable, data);
+    //                 $('#newName').val('');
+    //                 $('#newEmail').val('');
+    //                 $('#newPhone').val('');
+    //                 //showAlert(data.title, data.message, data.level);
+    //                 showAlert("Yippe!!", "Guest Added", "success");
+    //             }
+    //         },
+    //         error: function(){
+    //         }
+    //     });
+    //     }
+    // });
+        
+        
         var guestName = $('#newName').val();
         var guestEmail = $('#newEmail').val();
         var guestPhone = $('#newPhone').val();
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        var mobilePatten= /^[9786][\d]{9}$/;
+        if(guestName=='')
+        {
+            alert("please insert name");
+            newName.focus();
+            newName.style.border="1px solid red";
+            return false;
+        }
+        else
+        {
+            newName.style.border="";
+        }
+        if(guestEmail=='')
+        {
+            alert("please Insert Email");
+            newEmail.focus(); 
+            newEmail.value='';
+            newEmail.style.border="1px solid red";
+            return false;
+        }
+        else if(!emailPattern.test(guestEmail))
+                    {
+                    alert("Please insert Email Correctaly"); 
+                    newEmail.focus(); 
+                  //  newEmail.value='';
+                    newEmail.style.border="1px solid red";
+                    return false;
+                } 
+        else
+        {
+            newEmail.style.border="";
+        } 
+
+        if(guestPhone=="")       
+                    {
+                    alert("please Enter Phone number"); 
+                    newPhone.focus();
+                    newPhone.style.border="1px solid red";
+                    return false;
+                }
+         else if(!mobilePatten.test(newPhone.value))
+            {
+            alert("Enter Number Correctaly"); 
+            newPhone.focus();                                                                     
+            //newPhone.value='';                    
+            newPhone.style.border="1px solid red";                                                 
+            return false;
+            } 
+        else
+        {
+            newPhone.style.border="";
+        }             
 
         // Ajax call for add guest
 
@@ -162,12 +280,14 @@ $(document).ready(function(){
                     showAlert("Yippe!!", "Guest Added", "success");
                 }
             },
-            error: function(){
+            error: function(data){
+                $("#errorlog").html(data.responseText);
+                console.log(data.responseText);
             }
         });
-
-    });
-
+        });
+        
+   
     $(".addRow").on('click', function(e) {
 
         e.preventDefault();
@@ -211,27 +331,20 @@ $(document).ready(function(){
         {
             return $(el).attr('id').split(/[-]/)[1] 
       }).get();
+         var i;
+         var contacts = new Array();
+         for(i=0; i<totalChecked.length; i++)
+         {
+             contacts[i] = {
+                            "guestName" : $('#name'+totalChecked[i]).html() 
+                            , "guestEmail": $('#email'+totalChecked[i]).html()
+                            , "guestPhone" : $('#phone'+totalChecked[i]).html()
+                             };
         
-        
-        // var i;
-        // var contacts = new Array();
-       
-        // alert(contacts);
-
-        // for(i=0; i<totalChecked.length; i++)
-        // {
-        //     contacts[i] = {
-        //                     "guestName" : $('#name'+totalChecked[i]).html() 
-        //                     , "guestEmail": $('#email'+totalChecked[i]).html()
-        //                     , "guestPhone" : $('#phone'+totalChecked[i]).html()
-        //                     };
-        //     alert($('#name'+totalChecked[i]).html());
-        //     // contacts[i]['guestName'] = $('#name'+totalChecked[i]).html();
-        //     // contacts[i]['guestEmail'] = $('#email'+totalChecked[i]).html();
-        //     // contacts[i]['guestPhone'] = $('#phone'+totalChecked[i]).html();
-            
-        // }
-
+         }
+         // create an array of each records
+         //then pass it to controller through ajax call and add multiple rows in one action
+         
         // alert(contacts);
         
        

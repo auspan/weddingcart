@@ -21,6 +21,10 @@ class ContactsController extends Controller
 
     public function store(Request $request)
     {
+        // $this->validate($request, ['newName' => 'required',
+        //  'newEmail' => 'required',
+        //   'newPhone' => 'required']);
+        
         $user = Auth::user();
 
         $newContact = new Contact([
