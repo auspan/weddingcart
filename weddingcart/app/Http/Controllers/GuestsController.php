@@ -5,7 +5,7 @@ namespace weddingcart\Http\Controllers;
 use Illuminate\Http\Request;
 
 use weddingcart\Http\Requests;
-use weddingcart\UserEventDetail;
+use weddingcart\UserEvent;
 use weddingcart\User;
 
 class GuestsController extends Controller
@@ -20,7 +20,7 @@ class GuestsController extends Controller
     public function getWeddingForToken($token)
     {
         $wedding = UserEvent::select()->where(
-            ['token', $token]
+            'token', $token
             )->first();
 
         $weddingDetails = $wedding->userEventAttributes();
