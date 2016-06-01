@@ -15,7 +15,7 @@
     <h3>{{ $weddingDetails['wdt'] }}</h3>
     You are invited to the wedding of  wedding.
 
-    To visit the wedding page <a href="{{ url("invitation/{$weddingDetails['wdt']}") }}">click here</a>.
+    To visit the wedding page <a href="{{ url("invitation/{$weddingDetails['tok']}") }}">click here</a>.
     This invitation is to be improved further.
 
 </body>

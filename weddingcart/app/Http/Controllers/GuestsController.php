@@ -19,19 +19,13 @@ class GuestsController extends Controller
 
     public function getWeddingForToken($token)
     {
-        $weddingToken = UserEventDetail::select()->where([
-            ['attribute_code', 'tok'],
-            ['attribute_value', $token]
-        ])->first();
-
-        $wedding = $weddingToken->userEvent()->first();
+        $wedding = UserEvent::select()->where(
+            ['token', $token]
+            )->first();
 
         $weddingDetails = $wedding->userEventAttributes();
 
-        $weddingDetails['bride_name'] = splitname($weddingDetails['bnm']);
-        $weddingDetails['groom_name'] = splitname($weddingDetails['gnm']);
         $weddingDetails['user_id'] = $wedding['user_id'];
-
 
         $array_wishlist_items = $wedding->userEventWishlistItems()->pluck('product_name');
 

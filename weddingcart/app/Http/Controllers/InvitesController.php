@@ -133,19 +133,13 @@ class InvitesController extends Controller
 
     public function sendInvite(Request $request)
     {
-//        $recepient = $request->input('toAddress');
-        $user = Auth::user();
-        $link = 'A1B255FFGH098JK';
         $userEvent = Auth::user()->userEvents()->first();
         $userEventAttributes = $userEvent->userEventAttributes();
+        $userEventAttributes['tok'] = $userEvent->token;
 
         $recepient = 'utkal.pande@gmail.com';
         $data = array('to' => $recepient);
-        $data['link'] = $link;
         $data['weddingDetails'] = $userEventAttributes;
-
-
-
 
         $this->mailer->sendInviteEmail($data);
         return $data;
