@@ -1,6 +1,9 @@
 $(document).ready(function() {
  
-  $( "#weddate" ).datepicker();
+  $( "#weddate" ).datepicker({
+      autoclose:true,
+      startDate: "+1m"
+  });
  
 });
 

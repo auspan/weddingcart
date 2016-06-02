@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="css/responsive.css" type="text/css">
 		<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
 	    <link rel="stylesheet" href="css/dataTables.bootstrap.css" type="text/css">
+	    <link rel="stylesheet" href="css/bootstrap-datepicker3.css" type="text/css">
 		<style id="fit-vids-style">
 			.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}
 		</style>
