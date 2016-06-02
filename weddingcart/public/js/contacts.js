@@ -14,10 +14,7 @@ $(document).ready(function(){
     })
 
     $('#getGoogleContacts').on('click', function (){
-
         // $.get('social/auth/redirect/google');
-
-
         $.ajax({
             type:"GET",
             async: false,
@@ -32,31 +29,65 @@ $(document).ready(function(){
             }
         });
 
+     });
 
-        // var contactsTable = $('#contactsTable').DataTable( {
-        //     "retrieve": true,
-        //     "pagingType": "simple_numbers",
-        //     "processing": true,
-        //     "ajax": {
-        //         "url": "social/auth/redirect/google",
-        //         "dataSrc": ""
-        //     },
-        //     "dom": "<'row'<'col-sm-12'<'form-inline'<'form-group'f>>" +  "<'row'<'col-sm-12'tr>>" +   "<'row'<'col-sm-12'i>>" + "<'row'<'col-sm-12'p>>",
-        //     "renderer": "bootstrap",
-        //     "columns": [
-        //         { "orderable": true,
-        //             "data": "name" },
-        //         { "orderable": false,
-        //             "data": "email" },
-        //         {"defaultContent": "<button class='btn btn-sm btn-default btn-success btn-add import-contact' type='button'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button>"}
-        //     ]
-        // } );
 
-        //contactsTable.ajax.url('showinvite').load();
-        //var contacts = contactsTable.ajax.json();
-        //contactsTable.rows.add(contacts).draw();
+     $(".addRow").on('click', function(e) {
 
-     })
+        e.preventDefault();
+        var rowId = $(this).attr('id');
+        var counter=rowId.split(/[-]/);
+        var guestName = $('#name'+counter[1]).html();
+        var guestEmail = $('#email'+counter[1]).html();
+        var guestPhone = $('#phone'+counter[1]).html();
+        
+        $.ajax({
+            type:"POST",
+            url:"addContact",
+            data:{
+                guestName: guestName,
+                guestEmail: guestEmail,
+                guestPhone: guestPhone
+            },
+            success:function(data)
+            {
+                if(data.message)
+                {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else
+                {    
+                    $('#row'+counter[1]).remove();
+                    showAlert("Yippe!!", "Guest Added", "success");
+                }    
+            },
+            error:function(data)
+            {
+                
+            }
+        });
+    })
+
+    $("#addSelected").on('click', function(e) {
+
+        e.preventDefault();
+        var totalChecked = $( "input[name='googleContacts']:checked").map(function (index, el) 
+        {
+            return $(el).attr('id').split(/[-]/)[1] 
+      }).get();
+         var i;
+         var contacts = new Array();
+         for(i=0; i<totalChecked.length; i++)
+         {
+             contacts[i] = {
+                            "guestName" : $('#name'+totalChecked[i]).html() 
+                            , "guestEmail": $('#email'+totalChecked[i]).html()
+                            , "guestPhone" : $('#phone'+totalChecked[i]).html()
+                             };
+        
+         }
+         
+    });
 
 
     });
