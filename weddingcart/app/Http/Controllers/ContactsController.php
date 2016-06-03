@@ -14,7 +14,6 @@ class ContactsController extends Controller
     public function index()
     {
         $user = Auth::user();
-
         $people = $user->contacts()->get()->toArray();
         return view('contacts.guestlist', compact('people'));
     }

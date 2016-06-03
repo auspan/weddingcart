@@ -121,6 +121,8 @@ class InvitesController extends Controller
 
     public function showInvitesPage()
     {
-        return view('invitations.invite');
+        $user = Auth::user();
+        $people = $user->contacts()->get()->toArray();
+        return view('invitations.invite', compact('people'));
     }
 }

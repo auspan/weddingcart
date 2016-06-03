@@ -1,5 +1,4 @@
 <div class="col-md-7 multiGrid">
-            <div id="errorlog"></div>
                 <table id="guestsTable" class="table table-striped table-hover table-responsive">
                     <thead>
                         <tr>
