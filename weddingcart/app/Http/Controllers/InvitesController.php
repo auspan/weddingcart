@@ -111,7 +111,7 @@ class InvitesController extends Controller
         $userEventAttributes = $userEvent->userEventAttributes();
         $userEventAttributes['tok'] = $userEvent->token;
 
-        $recepient = 'utkal.pande@gmail.com';
+        $recepient = 'rajancs5553@gmail.com';
         $data = array('to' => $recepient);
         $data['weddingDetails'] = $userEventAttributes;
 

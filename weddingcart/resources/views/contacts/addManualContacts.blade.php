@@ -1,4 +1,5 @@
 <div class="col-md-7 multiGrid">
+            <div id="errorlog"></div>
                 <table id="guestsTable" class="table table-striped table-hover table-responsive">
                     <thead>
                         <tr>
@@ -14,7 +15,7 @@
                                 <input type="text" name="newPhone" id="newPhone">
                             </th>
                             <th>
-                                <button id="addRow" type="button" class="btn-add btn" aria-label="Add">
+                                <button  id="addRow" type="button" class="btn-add btn" aria-label="Add">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 </button>
                             </th>
@@ -65,3 +66,5 @@
                     </tbody>
                 </table>
             </div>
+
+           

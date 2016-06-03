@@ -128,13 +128,73 @@ $(document).ready(function(){
         resetEditFlags();
     });
 
+    function newContactValidation(guestName,guestEmail,guestPhone)
+    {
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        var mobilePatten= /^[9786][\d]{9}$/;
+        if(guestName=='')
+        {
+            alert("please insert name");
+            newName.focus();
+            newName.style.border="1px solid red";
+            exit();
+        }
+        else
+        {
+            newName.style.border="";
+        }
+        if(guestEmail=='')
+        {
+            alert("please Insert Email");
+            newEmail.focus(); 
+            newEmail.value='';
+            newEmail.style.border="1px solid red";
+            exit();
+        }
+        else if(!emailPattern.test(guestEmail))
+            {
+            alert("Please insert Email Correctaly"); 
+            newEmail.focus(); 
+            newEmail.style.border="1px solid red";
+            exit();
+            } 
+        else
+            {
+                newEmail.style.border="";
+            } 
+
+        if(guestPhone=="")       
+            {
+            alert("please Enter Phone number"); 
+            newPhone.focus();
+            newPhone.style.border="1px solid red";
+            exit();
+            }
+        else if(!mobilePatten.test(newPhone.value))
+            {
+            alert("Enter Number Correctaly"); 
+            newPhone.focus();                                                                     
+            //newPhone.value='';                    
+            newPhone.style.border="1px solid red"; 
+            exit();                                                
+            } 
+        else
+            {
+                newPhone.style.border="";
+            }             
+    }
+        
+
     $('#addRow').on( 'click', function (e) {
 
-        e.preventDefault();
+            e.preventDefault();
 
         var guestName = $('#newName').val();
         var guestEmail = $('#newEmail').val();
         var guestPhone = $('#newPhone').val();
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        var mobilePatten= /^[9786][\d]{9}$/;
+        newContactValidation(guestName,guestEmail,guestPhone);
 
         // Ajax call for add guest
 
@@ -162,68 +222,14 @@ $(document).ready(function(){
                     showAlert("Yippe!!", "Guest Added", "success");
                 }
             },
-            error: function(){
+            error: function(data){
+                $("#errorlog").html(data.responseText);
+                console.log(data.responseText);
             }
         });
-
     });
-
-    $(".addRow").on('click', function(e) {
-
-        e.preventDefault();
-        var rowId = $(this).attr('id');
-        var counter=rowId.split(/[-]/);
-        var guestName = $('#name'+counter[1]).html();
-        var guestEmail = $('#email'+counter[1]).html();
-        var guestPhone = $('#phone'+counter[1]).html();
         
-        $.ajax({
-            type:"POST",
-            url:"addContact",
-            data:{
-                guestName: guestName,
-                guestEmail: guestEmail,
-                guestPhone: guestPhone
-            },
-            success:function(data)
-            {
-                if(data.message)
-                {
-                    showAlert("ooops!!", data.message, "error");
-                }
-                else
-                {    
-                    $('#row'+counter[1]).remove();
-                    showAlert("Yippe!!", "Guest Added", "success");
-                }    
-            },
-            error:function(data)
-            {
-                
-            }
-        });
-    })
-
-    $("#addSelected").on('click', function(e) {
-
-        e.preventDefault();
-        var totalChecked = $( "input[name='googleContacts']:checked").map(function (index, el) {
-       return $(el).attr('id').split(/[-]/) 
-      }).get();
-        
-        // var i;
-        // var contacts = new array[];
-        // for(i=0; i<totalChecked.length; i++)
-        // {
-        //     var guestName = $('#name'+totalChecked[1]).html();
-        //     var guestEmail = $('#email'+totalChecked[1]).html();
-        //     var guestPhone = $('#phone'+totalChecked[1]).html();
-        // }
-        
-       
-    })
-
-
+   
     function addRowToGuestsTable(guestsTable, guestsData)
     {
 
