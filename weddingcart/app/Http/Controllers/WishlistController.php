@@ -12,7 +12,7 @@ use weddingcart\UserEventDetail;
 use weddingcart\UserEventWishlistItem;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
-use weddingcart\product;
+use weddingcart\Product;
 use weddingcart\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use weddingcart\Http\Controllers\Controller;
