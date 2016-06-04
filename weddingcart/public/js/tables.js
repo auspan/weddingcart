@@ -66,6 +66,36 @@ $(document).ready(function(){
         });
     } );
 
+    $('#guestsTable').on('click', '.addContactForEmail', function (e) {
+        e.preventDefault();
+        var nRow = $(this).parents('tr')[0];
+        
+        var contactEmail = guestsTable.cell(nRow, 2).data();
+
+        // Ajax request for deleting data in the backend
+        $.ajax({
+           type: "get",
+            url: 'showinvite',
+            
+            success: function() {
+                var oldContact=$('#to-address').val();
+                if(oldContact=='')
+                {
+                    $('#to-address').val(contactEmail);
+                    guestsTable.row(nRow).remove().draw();
+                }
+                else
+                {
+                    $('#to-address').val(oldContact+" "+contactEmail);
+                    guestsTable.row(nRow).remove().draw();
+                }    
+            },
+            error: function() {
+
+            }
+        });
+    } );
+
     $('#guestsTable').on('click', '.editRow', function (e) {
         e.preventDefault();
         var nRow = $(this).parents('tr')[0];
@@ -134,7 +164,7 @@ $(document).ready(function(){
         var mobilePatten= /^[9786][\d]{9}$/;
         if(guestName=='')
         {
-            alert("please insert name");
+            showAlert("ooops!!", "please enter name", "error");
             newName.focus();
             newName.style.border="1px solid red";
             exit();
@@ -145,7 +175,7 @@ $(document).ready(function(){
         }
         if(guestEmail=='')
         {
-            alert("please Insert Email");
+            showAlert("ooops!!", "please enter email", "error");
             newEmail.focus(); 
             newEmail.value='';
             newEmail.style.border="1px solid red";
@@ -153,7 +183,7 @@ $(document).ready(function(){
         }
         else if(!emailPattern.test(guestEmail))
             {
-            alert("Please insert Email Correctaly"); 
+            showAlert("ooops!!", "please enter email Correctaly", "error"); 
             newEmail.focus(); 
             newEmail.style.border="1px solid red";
             exit();
@@ -165,14 +195,14 @@ $(document).ready(function(){
 
         if(guestPhone=="")       
             {
-            alert("please Enter Phone number"); 
+            showAlert("ooops!!", "please enter contact number", "error");
             newPhone.focus();
             newPhone.style.border="1px solid red";
             exit();
             }
         else if(!mobilePatten.test(newPhone.value))
             {
-            alert("Enter Number Correctaly"); 
+            showAlert("ooops!!", "please enter contact number Correctaly", "error");
             newPhone.focus();                                                                     
             //newPhone.value='';                    
             newPhone.style.border="1px solid red"; 
