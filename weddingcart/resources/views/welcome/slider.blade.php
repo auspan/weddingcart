@@ -25,7 +25,7 @@
             <div class="container clearfix">
                 <div class="slider-caption slider-caption-center">
                     <p data-caption-animate="fadeInUp">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia</p>
-                    <a href="login-register.html" class="button button-border button-light button-rounded button-xlarge topmargin" data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
+                    <a href="{{ url('/register') }}" class="button button-border button-light button-rounded button-xlarge topmargin" data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
                 </div>
             </div>
         </div>
