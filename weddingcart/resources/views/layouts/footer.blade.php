@@ -27,7 +27,7 @@
 
                 <div class="widget clearfix">
                     <h4>Instagram Photos</h4>
-                    <div id="instagram-photos" class="instagram-photos masonry-thumbs col-5 instagram-img"
+                    <div id="footer-photos" class="footer-photos masonry-thumbs col-5 instagram-img"
                          data-user="269801886" data-count="15" data-type="tag">
                         <a class="hyper1" href="#"><img src="images/12534155_1560541377602787_1541335658_n.jpg"></a>
                         <a class="hyper2" href="#"><img src="images/12519238_221865368156969_1556800533_n.jpg"></a>
