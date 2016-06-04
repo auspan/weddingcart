@@ -18,9 +18,9 @@
                     @include('welcome.clientSlider')
                 </div>
 
-                <div class="container clearfix divcontainer">
-                    @include('welcome.aboutTeam')
-                </div>
+                {{--<div class="container clearfix divcontainer">--}}
+                    {{--@include('welcome.aboutTeam')--}}
+                {{--</div>--}}
             </div>
         </section><!-- #content end -->
    </div><!-- #wrapper end -->
