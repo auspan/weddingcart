@@ -55,20 +55,16 @@
 
 						<ul class="sf-menu">
 							<li class="current"><a href="{{url("/")}}"><div>Home</div></a></li>
-							<li><a href="#"><div>Services</div></a></li>
-							<li><a href="#"><div>Testimonials</div></a></li>
-							<li><a href="#"><div>About</div></a></li>
-							<li><a href="#"><div>Contact</div></a></li>
 						</ul>
 
 						<!-- Top Search
 						============================================= -->
-						<div id="top-search">
-							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-							<form action="search.html" method="get">
-								<input name="q" class="form-control" placeholder="Type &amp; Hit Enter.." type="text">
-							</form>
-						</div><!-- #top-search end -->
+						{{--<div id="top-search">--}}
+							{{--<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>--}}
+							{{--<form action="search.html" method="get">--}}
+								{{--<input name="q" class="form-control" placeholder="Type &amp; Hit Enter.." type="text">--}}
+							{{--</form>--}}
+						{{--</div><!-- #top-search end -->--}}
 
 					</nav><!-- #primary-menu end -->
 

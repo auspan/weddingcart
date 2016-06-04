@@ -32,7 +32,7 @@
         </div>
 
         <div class="divider divider-short divider-center"><i class="icon-heart3"></i></div>
-        <p class="lead">Getting <strong>Hitched</strong> on:</p>
+        <p class="lead">Getting <strong>Hitched</strong> in:</p>
 
         <div id="countdown-ex1" class="countdown countdown-large coming-soon divcenter">
             <div id="dates" style="display: none">{{ $wdt }}</div>

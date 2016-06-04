@@ -1,26 +1,26 @@
-<div id="top-bar" class="hidden-xs">
-    <div class="container clearfix">
-        <div class="col_half nobottommargin">
-            <p class="nobottommargin">Transforming Indian Weddings | <strong>Call:</strong> 1800-547-2145</p>
-        </div>
-        <div class="col_half col_last fright nobottommargin">
-            <div class="top-links">
-                <ul class="sf-menu clearfix">
-                    <li><a href="#">HELP</a>
-                    </li>
-                    <li><a href="#">COUPLE</a>
-                    </li>
-                    <li><a href="{{ url('/invites') }}">GUEST</a>
-                    </li>
-                    <li><a href="{{ url('/login') }}">Login</a>
-                    </li>
-                    <li><a href="{{ url('/register') }}">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div><!-- #top-bar end -->
+{{--<div id="top-bar" class="hidden-xs">--}}
+    {{--<div class="container clearfix">--}}
+        {{--<div class="col_half nobottommargin">--}}
+            {{--<p class="nobottommargin">Transforming Indian Weddings | <strong>Call:</strong> 1800-547-2145</p>--}}
+        {{--</div>--}}
+        {{--<div class="col_half col_last fright nobottommargin">--}}
+            {{--<div class="top-links">--}}
+                {{--<ul class="sf-menu clearfix">--}}
+                    {{--<li><a href="#">HELP</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="#">COUPLE</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="{{ url('/invites') }}">GUEST</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="{{ url('/login') }}">Login</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="{{ url('/register') }}">Register</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div><!-- #top-bar end -->--}}
 
         <!-- Header
         ============================================= -->
@@ -39,11 +39,9 @@
                     ============================================= -->
             <nav id="primary-menu">
                 <ul class="sf-menu">
-                    <li class="current"><a href="{{ url('/') }}"><div>Home</div></a></li>
-                    <li><a href="#"><div>Services</div></a></li>
-                    <li><a href="#"><div>Testimonials</div></a></li>
-                    <li><a href="#"><div>About</div></a></li>
-                    <li><a href="#"><div>Contact</div></a></li>
+                    {{--<li class="current"><a href="{{ url('/') }}"><div>Home</div></a></li>--}}
+                    <li><a href="{{ url('/login') }}"><div>Sign In</div></a></li>
+                    <li><a href="{{ url('/register') }}"><div>Register</div></a></li>
                 </ul>
 
                         <!-- Top Search

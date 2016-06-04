@@ -14,9 +14,9 @@
             <div class="content-wrap">
             @include('welcome.infoLinks')
 
-                <div class="section parallax dark nobottommargin divsecbackground" data-stellar-background-ratio="0.4">
-                    @include('welcome.clientSlider')
-                </div>
+                {{--<div class="section parallax dark nobottommargin divsecbackground" data-stellar-background-ratio="0.4">--}}
+                    {{--@include('welcome.clientSlider')--}}
+                {{--</div>--}}
 
                 {{--<div class="container clearfix divcontainer">--}}
                     {{--@include('welcome.aboutTeam')--}}
