@@ -2,9 +2,14 @@ $(document).ready(function() {
  
   $( "#weddate" ).datepicker({
       autoclose:true,
-      startDate: "+1m"
+      format: "dd/mm/yyyy",
+      startDate: "+1m",
+      toggleActive: true
   });
- 
+
+    $("#wedding_date").mask('00/00/0000');
+    //$("#wedding_date").focusout(alert("Hello"));
+
 });
 
  function selectimage(txt)

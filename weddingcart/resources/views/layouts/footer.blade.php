@@ -112,7 +112,7 @@
         <div class="container clearfix">
 
             <div class="col_full nobottommargin center">
-                Copyrights © 2014 All Rights Reserved by WeddingCart.
+                Copyrights © 2016 All Rights Reserved by WeddinCart.
             </div>
 
         </div>
