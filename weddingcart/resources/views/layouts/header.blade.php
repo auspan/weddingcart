@@ -17,7 +17,7 @@
             <nav id="primary-menu">
                 <ul class="sf-menu">
                     <li><a href="/home"><div>Home</div></a></li>
-                    <li><a href="/logout"><div>{{ Auth::user()->name }}</div></a>
+                    <li><a href="" class="disable-anchor-click"><div>{{ Auth::user()->name }}</div></a>
                         <ul>
                             <li>
                                 <a href="/logout">Sign Out</a>        
