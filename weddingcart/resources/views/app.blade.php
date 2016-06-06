@@ -19,7 +19,6 @@
 		<link rel="stylesheet" href="css/newstyle.css" type="text/css">
 		<link rel="stylesheet" href="css/jquery.ui.core.css" type="text/css">
 		<link rel="stylesheet" href="css/jquery.ui.theme.css" type="text/css">
-		<link rel="stylesheet" href="css/jquery.ui.datepicker.css" type="text/css">
 		<link rel="stylesheet" href="css/responsive.css" type="text/css">
 		<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
 	    <link rel="stylesheet" href="css/dataTables.bootstrap.css" type="text/css">
@@ -29,11 +28,12 @@
 		</style>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/plugins.js"></script>
-		<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
 		<script type="text/javascript" src="js/typeahead.bundle.js"></script>
 		<script type="text/javascript" src="js/bloodhound.js"></script>
+		<script type="text/javascript" src="js/dropzone.js"></script>
+		<script type="text/javascript" src="js/jquery.mask.js"></script>
 
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
