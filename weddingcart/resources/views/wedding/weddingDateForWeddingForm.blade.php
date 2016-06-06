@@ -7,7 +7,7 @@
         <div class="col-md-2 divcenter center">
             <label for="weddate">Wedding Date</label>
             <div id="weddate" class="input-group date">
-                <input  name="wedding_date" type="text" class="form-control" placeholder="MM/DD/YYYY">
+                <input  name="wedding_date" type="text" id="wedding_date" class="form-control" placeholder="DD/MM/YYYY">
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
                 </div>
