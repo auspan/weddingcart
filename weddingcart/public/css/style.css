@@ -13461,5 +13461,8 @@ th .btn{
 .empty-message
 {
 	color:red;
-
+}
+.disable-anchor-click
+{
+	pointer-events:none;
 }

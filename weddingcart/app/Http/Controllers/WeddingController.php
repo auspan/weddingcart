@@ -37,15 +37,13 @@ class WeddingController extends Controller {
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function save(Request $request)
+    public function save(WeddingFormRequest $request)
     {
         $user = Auth::user();
         $weddingDetails = $this->getWeddingDetailsFromRequest($request);
         $wedding = $user->createWedding();
         $wedding->saveWeddingDetails($weddingDetails);
-
         return redirect('home');
-
     }
 
     public function getWeddingDetailsFromRequest(Request $request)
@@ -67,7 +65,6 @@ class WeddingController extends Controller {
         {
             $weddingDetails['gim'] = storeImage($gim);
         }
-
         return $weddingDetails;
     }
 

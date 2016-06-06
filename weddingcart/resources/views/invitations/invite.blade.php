@@ -55,7 +55,8 @@
                 <div id="prefetch" class="form-group">
                     <label for="toAddress" class="control-label col-sm-2">To: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control typeahead" id="to-address" name="toAddress">
+                        <div class="form-control" id="to-address">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">

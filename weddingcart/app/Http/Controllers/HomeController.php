@@ -36,7 +36,6 @@ class HomeController extends Controller
             $userEventAttributes = $userEvent->userEventAttributes();
 
             $array_wishlist_items = $userEvent->userEventWishlistItems()->pluck('product_name');
-            
             return view('wedding.weddingpage',['wishlist_items'=>$array_wishlist_items])->with($userEventAttributes->toArray());
         }
         else

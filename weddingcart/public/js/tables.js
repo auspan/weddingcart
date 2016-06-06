@@ -70,30 +70,43 @@ $(document).ready(function(){
         e.preventDefault();
         var nRow = $(this).parents('tr')[0];
         
-        var contactEmail = guestsTable.cell(nRow, 2).data();
-
+        var contactName = guestsTable.cell(nRow, 2).data();
+        var contactEmail = guestsTable.cell(nRow, 3).data();
+        alert(contactName+" "+contactEmail);
+        var contact = '<li style="display:inline">'+contactName+'<input type="text" value="'+contactEmail+'" name="contactEmail" style="display:none"></li>'
+        var oldContact = $('#to-address').html();
+        if(oldContact=='')
+        {
+            $('#to-address').html(contact);
+            guestsTable.row(nRow).remove().draw();
+        }
+        else
+        {
+            $('#to-address').html(oldContact+" "+contact);
+            guestsTable.row(nRow).remove().draw();
+        }
         // Ajax request for deleting data in the backend
-        $.ajax({
-           type: "get",
-            url: 'showinvite',
+        // $.ajax({
+        //    type: "get",
+        //     url: 'showinvite',
             
-            success: function() {
-                var oldContact=$('#to-address').val();
-                if(oldContact=='')
-                {
-                    $('#to-address').val(contactEmail);
-                    guestsTable.row(nRow).remove().draw();
-                }
-                else
-                {
-                    $('#to-address').val(oldContact+" "+contactEmail);
-                    guestsTable.row(nRow).remove().draw();
-                }    
-            },
-            error: function() {
+        //     success: function() {
+        //         var oldContact=$('#to-address').val();
+        //         if(oldContact=='')
+        //         {
+        //             $('#to-address').val(contactEmail);
+        //             guestsTable.row(nRow).remove().draw();
+        //         }
+        //         else
+        //         {
+        //             $('#to-address').val(oldContact+" "+contactEmail);
+        //             guestsTable.row(nRow).remove().draw();
+        //         }    
+        //     },
+        //     error: function() {
 
-            }
-        });
+        //     }
+        // });
     } );
 
     $('#guestsTable').on('click', '.editRow', function (e) {

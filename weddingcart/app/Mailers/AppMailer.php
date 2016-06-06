@@ -32,6 +32,7 @@ class AppMailer {
         $this->data = $data;
         $this->from = 'invites@weddincart.com';
         $this->subject = 'Wedding Invitation';
+        $this->subject = $data['subject'];
         $this->view = "emails.invite";
         $this->deliver();
     }
@@ -44,8 +45,4 @@ class AppMailer {
             ->subject($this->subject);
         });
     }
-
-
-
-
 }

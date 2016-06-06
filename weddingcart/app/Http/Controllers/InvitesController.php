@@ -110,11 +110,14 @@ class InvitesController extends Controller
         $userEvent = Auth::user()->userEvents()->first();
         $userEventAttributes = $userEvent->userEventAttributes();
         $userEventAttributes['tok'] = $userEvent->token;
+        // $recepientName = $request->input('toAddress');
+        // $recepientEmail = Auth::user()->contacts()->where('name' , $recepientName)->value('email');
+        $subject = $request->input('subject');
 
         $recepient = 'rajancs5553@gmail.com';
         $data = array('to' => $recepient);
         $data['weddingDetails'] = $userEventAttributes;
-
+        $data['subject'] = $subject;
         $this->mailer->sendInviteEmail($data);
         return $data;
     }
