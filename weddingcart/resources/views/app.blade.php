@@ -34,6 +34,8 @@
 		<script type="text/javascript" src="js/bloodhound.js"></script>
 		<script type="text/javascript" src="js/dropzone.js"></script>
 		<script type="text/javascript" src="js/jquery.mask.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+		<script type="text/javascript" src="js/additional-methods.js"></script>
 
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
