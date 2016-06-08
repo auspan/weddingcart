@@ -1,13 +1,25 @@
 
 $(document).ready(function(){
-    
+
+    $(".message-div").hide();
+
+    $('#add-guest-form input').tooltip({
+        trigger: 'custom',
+        onlyOne: false,    // allow multiple tips to be open at a time
+        position: 'right'  // display the tips to the right of the element
+    });
+
     var editGuestRow = null;
+    var editGuestId = null;
     var editGuestName = null;
     var editGuestEmail = null;
     var editGuestPhone = null;
 
+    //$('#add-guest').ajaxForm();
+
     var guestsTable = $('#guestsTable').DataTable( {
         "pagingType": "simple_numbers",
+        "order": [2, 'asc'],
         "dom": "<'row'<'col-sm-12'<'form-inline'<'form-group'f>>" +  "<'row'<'col-sm-12'tr>>" +   "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         "renderer": "bootstrap",
         "columns": [
@@ -28,8 +40,8 @@ $(document).ready(function(){
     })
 
     $('#guestsTable tr').on( 'click', '.selectRow', function (e) {
-
         e.preventDefault();
+        clearErrors();
         if(editGuestRow != null)
         {
             showRowBeingEditedAlert();
@@ -41,6 +53,7 @@ $(document).ready(function(){
 
     $('#guestsTable').on('click', '.deleteRow', function (e) {
         e.preventDefault();
+        clearErrors();
         var nRow = $(this).parents('tr')[0];
         if(editGuestRow != null)
         {
@@ -49,7 +62,6 @@ $(document).ready(function(){
         }
         var guestId = guestsTable.cell(nRow, 0).data();
 
-        // Ajax request for deleting data in the backend
         $.ajax({
            type: "POST",
             url: 'deleteContact',
@@ -68,6 +80,7 @@ $(document).ready(function(){
 
     $('#guestsTable').on('click', '.addContactForEmail', function (e) {
         e.preventDefault();
+        clearErrors();
         var nRow = $(this).parents('tr')[0];
         
         var contactName = guestsTable.cell(nRow, 2).data();
@@ -85,32 +98,11 @@ $(document).ready(function(){
             $('#to-address').html(oldContact+" "+contact);
             guestsTable.row(nRow).remove().draw();
         }
-        // Ajax request for deleting data in the backend
-        // $.ajax({
-        //    type: "get",
-        //     url: 'showinvite',
-            
-        //     success: function() {
-        //         var oldContact=$('#to-address').val();
-        //         if(oldContact=='')
-        //         {
-        //             $('#to-address').val(contactEmail);
-        //             guestsTable.row(nRow).remove().draw();
-        //         }
-        //         else
-        //         {
-        //             $('#to-address').val(oldContact+" "+contactEmail);
-        //             guestsTable.row(nRow).remove().draw();
-        //         }    
-        //     },
-        //     error: function() {
-
-        //     }
-        // });
     } );
 
     $('#guestsTable').on('click', '.editRow', function (e) {
         e.preventDefault();
+        clearErrors();
         var nRow = $(this).parents('tr')[0];
         if(editGuestRow != null && editGuestRow != nRow){
             resetEditRow();
@@ -119,48 +111,12 @@ $(document).ready(function(){
         editRow(guestsTable, nRow);
     } );
 
-    $('#guestsTable').on('click', '.updateRow', function (e) {
-        e.preventDefault();
-        var nRow = $(this).parents('tr')[0];
-        if(editGuestRow != null && editGuestRow != nRow)
-        {
-            showRowBeingEditedAlert();
-            return;
-        }
-        var jqInputs = $('input', nRow);
-        var guestId = guestsTable.cell(nRow, 0).data();
-        var guestName = jqInputs[1].value;
-        var guestEmail = jqInputs[2].value;
-        var guestPhone = jqInputs[3].value;
-
-        alert(guestId+" : "+guestName+" : "+guestEmail+" : "+guestPhone);
-
-        // Ajax request for updating data in the backend
-        $.ajax({
-           type: "POST",
-            url: "updateContact",
-            data: {
-                guestId: guestId,
-                guestName: guestName,
-                guestEmail: guestEmail,
-                guestPhone: guestPhone
-            },
-            success: function(){
-                updateRow(guestsTable, nRow);
-                resetEditFlags();
-                showAlert("Yippe!!", "Guest Updated", "success");
-            },
-            error: function(){
-
-            }
-        });
-    } );
-
     $('#guestsTable').on('click', '.cancelEditRow', function (e) {
 
         e.preventDefault();
         var jqTds = $('>td', editGuestRow);
 
+        guestsTable.cell(editGuestRow, 0).data(editGuestId);
         guestsTable.cell(editGuestRow, 2).data(editGuestName);
         guestsTable.cell(editGuestRow, 3).data(editGuestEmail);
         guestsTable.cell(editGuestRow, 4).data(editGuestPhone);
@@ -171,108 +127,120 @@ $(document).ready(function(){
         resetEditFlags();
     });
 
-    function newContactValidation(guestName,guestEmail,guestPhone)
-    {
-        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        var mobilePatten= /^[9786][\d]{9}$/;
-        if(guestName=='')
-        {
-            showAlert("ooops!!", "please enter name", "error");
-            newName.focus();
-            newName.style.border="1px solid red";
-            exit();
-        }
-        else
-        {
-            newName.style.border="";
-        }
-        if(guestEmail=='')
-        {
-            showAlert("ooops!!", "please enter email", "error");
-            newEmail.focus(); 
-            newEmail.value='';
-            newEmail.style.border="1px solid red";
-            exit();
-        }
-        else if(!emailPattern.test(guestEmail))
-            {
-            showAlert("ooops!!", "please enter email Correctaly", "error"); 
-            newEmail.focus(); 
-            newEmail.style.border="1px solid red";
-            exit();
-            } 
-        else
-            {
-                newEmail.style.border="";
-            } 
 
-        if(guestPhone=="")       
-            {
-            showAlert("ooops!!", "please enter contact number", "error");
-            newPhone.focus();
-            newPhone.style.border="1px solid red";
-            exit();
-            }
-        else if(!mobilePatten.test(newPhone.value))
-            {
-            showAlert("ooops!!", "please enter contact number Correctaly", "error");
-            newPhone.focus();                                                                     
-            //newPhone.value='';                    
-            newPhone.style.border="1px solid red"; 
-            exit();                                                
-            } 
-        else
-            {
-                newPhone.style.border="";
-            }             
-    }
-        
-
-    $('#addRow').on( 'click', function (e) {
-
-            e.preventDefault();
-
-        var guestName = $('#newName').val();
-        var guestEmail = $('#newEmail').val();
-        var guestPhone = $('#newPhone').val();
-        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        var mobilePatten= /^[9786][\d]{9}$/;
-        newContactValidation(guestName,guestEmail,guestPhone);
-
-        // Ajax call for add guest
-
-        $.ajax({
-            type: "POST",
-            url:"addContact",
-            data:{
-                guestName: guestName,
-                guestEmail: guestEmail,
-                guestPhone: guestPhone
+    $('#add-guest-form').validate({
+        onfocusout: false,
+        onkeyup: false,
+        ignore: ".dataTables_filter input",
+        rules: {
+            guestName: "required",
+                editName: "required",
+            guestEmail: {
+                required: true,
+                email: true
             },
-            success: function(data){
-
-                if(data.message)
-                {
-                    showAlert("ooops!!", data.message, "error");
-                }
-                else
-                {
-                    addRowToGuestsTable(guestsTable, data);
-                    $('#newName').val('');
-                    $('#newEmail').val('');
-                    $('#newPhone').val('');
-                    //showAlert(data.title, data.message, data.level);
-                    showAlert("Yippe!!", "Guest Added", "success");
+                editEmail: {
+                    required: true,
+                    email: true
                 }
             },
-            error: function(data){
-                $("#errorlog").html(data.responseText);
-                console.log(data.responseText);
-            }
-        });
+        messages: {
+            guestName: "Name is required",
+            guestEmail: {
+                required: "Email is required",
+                email: "Email format should valid"
+            },
+        },
+        submitHandler: function(form){
+            clearErrors();
+            $(form).ajaxSubmit({
+                headers:{
+                    'X-CSRF-Token':$('meta[name="_token"]').attr('content')
+                },
+                type: "POST",
+                url: "addContact",
+                data: $('#add-guest-form').serialize(),
+                success: function (data) {
+
+                    if (data.message) {
+                        showAlert("ooops!!", data.message, "error");
+                    }
+                    else {
+                        addRowToGuestsTable(guestsTable, data);
+                        showAlert("Yippe!!", "Guest Added", "success");
+                        resetForm($('#add-guest-form'));
+                    }
+                },
+                error: function (data) {
+                    $("#errorlog").html(data.responseText);
+                    console.log(data.responseText);
+                }
+            });
+        },
+        invalidHandler: function(event, validator) {
+            return;
+        },
+        showErrors: function(errorMap, errorList){
+            displayErrors(errorMap);
+            highlightErrors(errorList);
+        },
+
     });
-        
-   
+
+
+    $('#update-guest-form').validate({
+        showErrors: function(errorMap, errorList){
+            displayErrors(errorMap);
+            highlightErrors(errorList);
+        },
+        onfocusout: false,
+        onkeyup: false,
+        ignore: ".dataTables_filter input",
+        rules: {
+            editName: "required",
+            editEmail: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            editName: "Name is required",
+            editEmail: {
+                required: "Email is required",
+                email: "Email format should valid"
+            }
+        },
+        submitHandler: function(form){
+            clearErrors();
+            $(form).ajaxSubmit({
+                headers:{
+                    'X-CSRF-Token':$('meta[name="_token"]').attr('content')
+                },
+                type: "POST",
+                url: "updateContact",
+                data: $('#update-guest-form').serialize(),
+                success: function (data) {
+
+                    if (data.message) {
+                        showAlert("ooops!!", data.message, "error");
+                    }
+                    else {
+                        updateRow(guestsTable, editGuestRow);
+                        resetEditFlags();
+                        showAlert("Yippe!!", "Guest Updated", "success");
+                    }
+                },
+                error: function (data) {
+                    $("#errorlog").html(data.responseText);
+                    console.log(data.responseText);
+                }
+            });
+        },
+        invalidHandler: function(event, validator) {
+            return;
+        }
+    });
+
     function addRowToGuestsTable(guestsTable, guestsData)
     {
 
@@ -298,20 +266,23 @@ $(document).ready(function(){
     function editRow ( oTable, nRow )
     {
 
+        var id = oTable.cell(nRow, 0).data();
         var name = oTable.cell(nRow, 2).data();
         var email = oTable.cell(nRow, 3).data();
         var phone = oTable.cell(nRow, 4).data();
 
         editGuestRow = nRow;
+        editGuestId = id;
         editGuestName = name;
         editGuestEmail = email;
         editGuestPhone = phone;
 
         var jqTds = $('>td', nRow);
-        jqTds[2].innerHTML = '<input type="text" value="'+name+'">';
-        jqTds[3].innerHTML = '<input type="email" value="'+email+'">';
-        jqTds[4].innerHTML = '<input type="text" value="'+phone+'">';
-        jqTds[5].innerHTML = '<button type="button" class="updateRow btn btn-default" aria-label="Update"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>';
+        jqTds[0].innerHTML = '<input type="hidden" name="editId" id="editId" value="'+id+'">';
+        jqTds[2].innerHTML = '<input type="text" name="editName" id="editName" value="'+name+'">';
+        jqTds[3].innerHTML = '<input type="email" name="editEmail" id="editEmail" value="'+email+'">';
+        jqTds[4].innerHTML = '<input type="text" name="editPhone" id="editPhone" value="'+phone+'">';
+        jqTds[5].innerHTML = '<button type="submit" class="btn btn-default" aria-label="Update"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>';
         jqTds[6].innerHTML = '<button type="button" class="cancelEditRow btn btn-default" aria-label="Update"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>';
     }
 
@@ -320,9 +291,9 @@ $(document).ready(function(){
         var jqInputs = $('input', nRow);
         var jqTds = $('>td', nRow);
 
-        oTable.cell(nRow, 2).data(jqInputs[1].value);
-        oTable.cell(nRow, 3).data(jqInputs[2].value);
-        oTable.cell(nRow, 4).data(jqInputs[3].value);
+        oTable.cell(nRow, 2).data(jqInputs[2].value);
+        oTable.cell(nRow, 3).data(jqInputs[3].value);
+        oTable.cell(nRow, 4).data(jqInputs[4].value);
         jqTds[5].innerHTML = '<button type="button" class="editRow btn btn-default" aria-label="Edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>';
         jqTds[6].innerHTML = '<button type="button" class="deleteRow btn btn-default" aria-label="Delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
         oTable.row(nRow).draw();
@@ -336,8 +307,17 @@ $(document).ready(function(){
     function resetEditFlags()
     {
         editGuestRow = null;
+        editGuestId = null;
         editGuestName = null;
         editGuestEmail = null;
         editGuestPhone = null;
     }
-} );
+
+    $('#addRow').on( 'click', function (e) {
+        if(editGuestRow != null)
+        {
+            e.preventDefault();
+            showRowBeingEditedAlert();
+        }
+    });
+});

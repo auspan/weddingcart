@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Input;
 
 class ContactsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -55,19 +59,19 @@ class ContactsController extends Controller
 
     public function update(Request $request)
     {
-        $contact = Contact::find($request->input('guestId'));
+        $contact = Contact::find($request->input('editId'));
 
-        $contact['name'] = $request->input('guestName');
-        $contact['email'] = $request->input('guestEmail');
-        $contact['phone'] = $request->input('guestPhone');
+        $contact['name'] = $request->input('editName');
+        $contact['email'] = $request->input('editEmail');
+        $contact['phone'] = $request->input('editPhone');
 
         $contact->save();
 
         return response()->json([
-            'id'    => $contact->id,
-            'guestName'  => $contact->name,
-            'guestEmail' => $contact->email,
-            'guestPhone' => $contact->phone
+            'editId'    => $contact->id,
+            'editName'  => $contact->name,
+            'editEmail' => $contact->email,
+            'editPhone' => $contact->phone
         ]);
     }
 

@@ -71,7 +71,7 @@
 
                     <h5><strong>Be Social &amp; Stay Connected</strong></h5>
 
-                    <a href="#" class="social-icon si-dark si-rounded si-facebook">
+                    <a href="http://www.facebook.com" class="social-icon si-dark si-rounded si-facebook">
                         <i class="icon-facebook"></i>
                         <i class="icon-facebook"></i>
                     </a>

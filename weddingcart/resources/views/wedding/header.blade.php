@@ -14,7 +14,7 @@
             ============================================= -->
             <nav id="primary-menu" class="style-2 center">
 
-                <ul class="one-page-menu sf-js-enabled">
+                <ul class="one-page-menu sf-menu">
                     <li><a href="#" data-href="#most-toppest"><div>Start</div></a></li>
                     <li><a href="#" data-href="#section-couple"><div>The Couple</div></a></li>
                     <li class=""><a href="#" data-href="#section-list"><div>Wish List</div></a></li>

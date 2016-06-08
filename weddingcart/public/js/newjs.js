@@ -198,3 +198,40 @@ function showAlert(title, message, level){
     });
 }
 
+function displayErrors(errorList){
+    clearErrors();
+    $.each(errorList, function(index, error){
+        $("#error-list").append('<li><i class="fa-li fa fa-exclamation-circle"></i>'+ error+ '</li>');
+    });
+    $(".message-div").show();
+
+}
+
+function clearErrors() {
+    $("#error-list li").remove();
+    $(".message-div").hide();
+}
+
+function resetForm($form) {
+    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    $form.find('input:text, input:password, input:file, select, textarea').removeClass('error');
+    $form.find('input:radio, input:checkbox')
+        .removeAttr('checked').removeAttr('selected');
+}
+
+function highlightErrors(errorList){
+    $.each(errorList, function(index, errors){
+        $.each(errors, function(index, elements){
+            if(index == 'element')
+            {
+                    console.log("Index: " + index + "Highlight: " + elements);
+                    console.log("ATTR: " + $(elements).addClass('error'));
+                //$.each(elements, function(index, values){
+
+                //});
+            }
+        });
+    });
+}
+
+

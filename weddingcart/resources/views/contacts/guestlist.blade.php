@@ -4,7 +4,7 @@
 
     <meta name="_token" content="{{ csrf_token() }}">
     <div class="heading-block center topmargin page-section">
-        <h2>Contacts</h2>
+        <h2>Guest List</h2>
     </div>
     <div class="container clearfix">
         <div class="row">
