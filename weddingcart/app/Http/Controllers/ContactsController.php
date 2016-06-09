@@ -5,7 +5,7 @@ namespace weddingcart\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use weddingcart\Http\Requests;
-use weddingcart\contact;
+use weddingcart\Contact;
 use Illuminate\Support\Facades\Input;
 
 class ContactsController extends Controller
