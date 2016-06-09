@@ -112,7 +112,7 @@ jQuery(document).ready( function($){
 
     if(weddate != null){
         var dateFields=weddate.split(/[/]/);
-        var newDate = new Date(dateFields[2], dateFields[0]-1, dateFields[1]);
+        var newDate = new Date(dateFields[2], dateFields[1]-1, dateFields[0]-1);
         //alert(newDate);
         $('#countdown-ex1').countdown({until: newDate});
     }
