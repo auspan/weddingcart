@@ -23,7 +23,7 @@
 
 		      <div class="center bottommargin-lg">
 			         {!! Form::button('Update', ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
-				<a href="#" class="button button-rounded button-xlarge">Back</a>
+				<a href="{{ url('/home') }}" class="button button-rounded button-xlarge">Back</a>
 					{!! Form::close() !!}
 		</div>
 	</div>
