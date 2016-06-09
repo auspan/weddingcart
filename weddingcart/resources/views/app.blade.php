@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/dark.css" type="text/css">
 		<link rel="stylesheet" href="css/font-icons.css" type="text/css">
+		<link rel="stylesheet" href="css/font-awesome.css" type="text/css">
 		<link rel="stylesheet" href="css/animate.css" type="text/css">
 		<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
 		<link rel="stylesheet" href="css/newstyle.css" type="text/css">
@@ -34,6 +35,7 @@
 		<script type="text/javascript" src="js/bloodhound.js"></script>
 		<script type="text/javascript" src="js/dropzone.js"></script>
 		<script type="text/javascript" src="js/jquery.mask.js"></script>
+		<script type="text/javascript" src="js/jquery.form.js"></script>
 		<script type="text/javascript" src="js/jquery.validate.js"></script>
 		<script type="text/javascript" src="js/additional-methods.js"></script>
 
@@ -60,6 +62,7 @@
 			{{--@include('layouts.menu')--}}
 		@endif	
 
+			@include('layouts.error')
 			@yield('content')
 
 		
