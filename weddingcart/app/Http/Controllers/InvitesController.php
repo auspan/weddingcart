@@ -30,7 +30,6 @@ class InvitesController extends Controller
       
         $userevent=UserEvent::all()->where('user_id',Auth::User()->id);
         
-        
         foreach ($userevent as $usereventid)
         {
             $ueid=$usereventid['id'];

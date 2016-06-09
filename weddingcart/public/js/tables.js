@@ -3,11 +3,11 @@ $(document).ready(function(){
 
     $(".message-div").hide();
 
-    $('#add-guest-form input').tooltip({
-        trigger: 'custom',
-        onlyOne: false,    // allow multiple tips to be open at a time
-        position: 'right'  // display the tips to the right of the element
-    });
+    // $('#add-guest-form input').tooltip({
+    //     trigger: 'custom',
+    //     onlyOne: false,    // allow multiple tips to be open at a time
+    //     position: 'right'  // display the tips to the right of the element
+    // });
 
     var editGuestRow = null;
     var editGuestId = null;

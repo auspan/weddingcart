@@ -70,8 +70,8 @@ class WeddingController extends Controller {
 
     public function edit($id)
     {
-        $userId = $id;
-        $user = Auth::User();
+        // $userId = $id;
+        $user = User::find($id);
         $userEventDetails = $user->userEvents()->first()->userEventAttributes()->toArray();
         $userEventDetails['user_event_id'] = $user->userEvents()->value('id');
 
@@ -85,6 +85,7 @@ class WeddingController extends Controller {
         $weddingDetails = $this->getWeddingDetailsFromRequest($request);
         $wedding = UserEvent::where('id', $userEventId)->first();
         $oldWeddingDetails = $wedding->userEventDetails()->pluck('attribute_value', 'attribute_code')->toArray();
+        // dd($weddingDetails);
         $filtredWeddingDetails = array_diff($weddingDetails, $oldWeddingDetails);
         $wedding->updateWeddingDetails($filtredWeddingDetails);
 

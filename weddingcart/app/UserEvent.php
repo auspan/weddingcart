@@ -71,6 +71,14 @@ class UserEvent extends Model
     public function userEventAttributes()
     {
         $userEventAttributes =  $this->userEventDetails()->pluck('attribute_value', 'attribute_code');
+        if(!$userEventAttributes->has('bim'))
+        {
+            $userEventAttributes['bim'] = "favatar.png";
+        }
+        if(!$userEventAttributes->has('gim'))
+        {
+            $userEventAttributes['gim'] = "mavatar.png";
+        }
 
         $userEventAttributes['bride_name'] = splitname($userEventAttributes['bnm']);
         $userEventAttributes['groom_name'] = splitname($userEventAttributes['gnm']);
@@ -93,9 +101,12 @@ class UserEvent extends Model
 
     public function updateWeddingDetails($weddingDetails)
     {
+
         foreach($weddingDetails as $attributeCode => $attributeValue)
         {
-            UserEventDetail::where('user_event_id', $this->id)->where('attribute_code', $attributeCode)->update(['attribute_value' => $attributeValue]);
+            UserEventDetail::updateOrCreate(
+                ['user_event_id' => $this->id, 'attribute_code' => $attributeCode], 
+                ['attribute_code' => $attributeCode, 'attribute_value' => $attributeValue]);
         }
 
     }
