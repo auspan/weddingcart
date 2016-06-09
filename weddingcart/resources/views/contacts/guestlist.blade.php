@@ -8,7 +8,7 @@
     </div>
     <div class="container clearfix">
         <div class="row">
-            {{-- @include('contacts.addManualContacts') --}}
+             @include('contacts.addManualContacts')
         </div>
     </div>
 <div class="center bottommargin-lg">
