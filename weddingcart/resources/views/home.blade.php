@@ -44,40 +44,40 @@
 
 	<!-- Top Bar
     ============================================= -->
-	<div id="top-bar" class="hidden-xs">
+	{{--<div id="top-bar" class="hidden-xs">--}}
 
-		<div class="container clearfix">
+		{{--<div class="container clearfix">--}}
 
-			<div class="col_half nobottommargin">
+			{{--<div class="col_half nobottommargin">--}}
 
-				<p class="nobottommargin">Transforming Indian Weddings | <strong>Call:</strong> 1800-547-2145</p>
+				{{--<p class="nobottommargin">Transforming Indian Weddings | <strong>Call:</strong> 1800-547-2145</p>--}}
 
-			</div>
+			{{--</div>--}}
 
-			<div class="col_half col_last fright nobottommargin">
+			{{--<div class="col_half col_last fright nobottommargin">--}}
 
-				<!-- Top Links
-                ============================================= -->
-				<div class="top-links">
-					<ul class="sf-menu clearfix">
-						<li><a href="#">HELP</a>
-						</li>
-						<li><a href="#">COUPLE</a>
-						</li>
-						<li><a href="#">GUEST</a>
-						</li>
-						<li><a href="{{ url('/login') }}">Login</a>
-						</li>
-						<li><a href="{{ url('/register') }}">Register</a>
-						</li>
-					</ul>
-				</div><!-- .top-links end -->
+				{{--<!-- Top Links--}}
+                {{--============================================= -->--}}
+				{{--<div class="top-links">--}}
+					{{--<ul class="sf-menu clearfix">--}}
+						{{--<li><a href="#">HELP</a>--}}
+						{{--</li>--}}
+						{{--<li><a href="#">COUPLE</a>--}}
+						{{--</li>--}}
+						{{--<li><a href="#">GUEST</a>--}}
+						{{--</li>--}}
+						{{--<li><a href="{{ url('/login') }}">Login</a>--}}
+						{{--</li>--}}
+						{{--<li><a href="{{ url('/register') }}">Register</a>--}}
+						{{--</li>--}}
+					{{--</ul>--}}
+				{{--</div><!-- .top-links end -->--}}
 
-			</div>
+			{{--</div>--}}
 
-		</div>
+		{{--</div>--}}
 
-	</div><!-- #top-bar end -->
+	{{--</div><!-- #top-bar end -->--}}
 
 
 	@yield('content')

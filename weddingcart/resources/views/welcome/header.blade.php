@@ -25,18 +25,18 @@
                     <li class="current"><a href="{{ url('/') }}">
                             <div>Home</div>
                         </a></li>
-                    <li><a href="#">
-                            <div>Services</div>
+                    <li><a href="{{ url('/login') }}">
+                            <div>Sign In</div>
                         </a></li>
-                    <li><a href="#">
-                            <div>Testimonials</div>
+                    <li><a href="{{ url('/register') }}">
+                            <div>Register</div>
                         </a></li>
-                    <li><a href="#">
-                            <div>About</div>
-                        </a></li>
-                    <li><a href="#">
-                            <div>Contact</div>
-                        </a></li>
+                    {{--<li><a href="#">--}}
+                            {{--<div>About</div>--}}
+                        {{--</a></li>--}}
+                    {{--<li><a href="#">--}}
+                            {{--<div>Contact</div>--}}
+                        {{--</a></li>--}}
                 </ul>
 
                 <!-- Top Search
