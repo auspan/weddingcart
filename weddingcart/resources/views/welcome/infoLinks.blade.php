@@ -3,7 +3,7 @@
     <div class="col_one_third">
         <div class="feature-box fbox-center fbox-border fbox-effect nobottomborder not-animated" data-animate="fadeIn" data-delay="200">
             <div class="fbox-icon">
-                <a href="#"><i class="icon-line-paper"></i></a>
+                <a href="/login"><i class="icon-line-paper"></i></a>
             </div>
             <h7>PLAN</h7>
             <span class="after-heading">your wedding</span>
@@ -14,7 +14,7 @@
     <div class="col_one_third">
         <div class="feature-box fbox-center fbox-border fbox-effect nobottomborder not-animated" data-animate="fadeIn" data-delay="200">
             <div class="fbox-icon">
-                <a href="#"><i class="icon-magic"></i></a>
+                <a href="/login"><i class="icon-magic"></i></a>
             </div>
             <h7>CREATE</h7>
             <span class="after-heading">your wish list</span>
@@ -25,7 +25,7 @@
     <div class="col_one_third col_last">
         <div class="feature-box fbox-center fbox-border fbox-effect nobottomborder not-animated" data-animate="fadeIn" data-delay="200">
             <div class="fbox-icon">
-                <a href="http://dipankarpaul.com/auspan/#"><i class="icon-line2-envelope-letter"></i></a>
+                <a href="/login"><i class="icon-line2-envelope-letter"></i></a>
             </div>
             <h7>INVITE</h7>
             <span class="after-heading">your gests</span>
