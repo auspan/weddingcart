@@ -1,6 +1,6 @@
 <form class="form-inline" id="add-guest-form">
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+    <div class="table-responsive table-bordered table-hover">
+        <table class="table">
         <tr>
             <th class="hidden"></th>
             <th></th>
@@ -34,7 +34,8 @@
     </div>
 </form>
 <form id="update-guest-form">
-    <table id="guestsTable" class="table table-striped table-hover table-responsive">
+<div class="table-striped table-hover table-responsive">
+    <table id="guestsTable" class="table">
     <thead>
         <tr>
             <th class="hidden"></th>
@@ -75,5 +76,6 @@
         @endforeach
     </tbody>
 </table>
+</div>
 </form>
 
