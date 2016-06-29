@@ -1,6 +1,6 @@
 <form class="form-inline" id="add-guest-form">
     <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover">
         <tr>
             <th class="hidden"></th>
             <th></th>
@@ -17,12 +17,12 @@
                 <input class="form-control" type="text" name="guestPhone" id="guestPhone" placeholder="Phone">
             </th>
             <th>
-                <button  id="addRow" type="submit" class="btn-add btn" aria-label="Add">
+                <button  id="addRow" data-toggle="tooltip" title="add contact" data-placement="bottom" type="submit" class="btn-add btn" aria-label="Add">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
             </th>
             <th>
-                <a href="{{ url('googlecontacts') }}">
+                <a href="{{ url('googlecontacts') }}" data-toggle="tooltip" title="get google contacts" data-placement="bottom">
                     <i class="icon-gplus"></i>
                 </a>
                 {{--<button type="button" class="btn btn-default" aria-label="Google">--}}
@@ -63,11 +63,11 @@
                 <td>{{ $person['email'] }}</td>
                 <td>{{ $person['phone'] }}</td>
                 <td>
-                    <button class="editRow btn btn-default" type="button" aria-label="Edit">
+                    <button class="editRow btn btn-default" data-toggle="tooltip" title="Edit" data-placement="bottom" type="button" aria-label="Edit">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </button>
                 <td>
-                    <button class="deleteRow btn btn-default" type="button" class="btn btn-default" aria-label="Delete">
+                    <button class="deleteRow btn btn-default" data-toggle="tooltip" title="Delete" data-placement="bottom" type="button" class="btn btn-default" aria-label="Delete">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
                 </td>
@@ -76,3 +76,4 @@
     </tbody>
 </table>
 </form>
+

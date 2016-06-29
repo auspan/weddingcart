@@ -22,6 +22,7 @@
 		<link rel="stylesheet" href="css/jquery.ui.theme.css" type="text/css">
 		<link rel="stylesheet" href="css/responsive.css" type="text/css">
 		<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
+		<link rel="stylesheet" href="css/dropzone.css" type="text/css">
 	    <link rel="stylesheet" href="css/dataTables.bootstrap.css" type="text/css">
 	    <link rel="stylesheet" href="css/bootstrap-datepicker3.css" type="text/css">
 		<style id="fit-vids-style">
@@ -38,6 +39,7 @@
 		<script type="text/javascript" src="js/jquery.form.js"></script>
 		<script type="text/javascript" src="js/jquery.validate.js"></script>
 		<script type="text/javascript" src="js/additional-methods.js"></script>
+		<script type="text/javascript" src="js/customtooltip.js"></script>
 
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>

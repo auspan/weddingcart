@@ -13487,3 +13487,15 @@ th .btn{
 {
 	pointer-events:none;
 }
+
+#dropzoneFileUpload{
+	border: none;
+	/*border-radius: 50%;*/
+	width: 100px;
+	height: 100px;
+}
+
+#dropzoneFileUpload dz-image{
+
+border-radius: 50% !important;
+}
