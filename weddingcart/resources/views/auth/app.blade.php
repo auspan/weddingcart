@@ -7,14 +7,14 @@
 	<!-- Stylesheets
 	============================================= -->
 	<link href="css/css.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-	<link rel="stylesheet" href="css/style.css" type="text/css">
-	<link rel="stylesheet" href="css/dark.css" type="text/css">
-	<link rel="stylesheet" href="css/font-icons.css" type="text/css">
-	<link rel="stylesheet" href="css/animate.css" type="text/css">
-	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-	<link rel="stylesheet" href="css/newstyle.css" type="text/css">
-	<link rel="stylesheet" href="css/responsive.css" type="text/css">
+	<link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="/css/style.css" type="text/css">
+	<link rel="stylesheet" href="/css/dark.css" type="text/css">
+	<link rel="stylesheet" href="/css/font-icons.css" type="text/css">
+	<link rel="stylesheet" href="/css/animate.css" type="text/css">
+	<link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
+	<link rel="stylesheet" href="/css/newstyle.css" type="text/css">
+	<link rel="stylesheet" href="/css/responsive.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -22,8 +22,8 @@
 
 	<!-- External JavaScripts
 	============================================= -->
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/plugins.js"></script>
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/plugins.js"></script>
 
 	<!-- Document Title
 	============================================= -->
@@ -45,8 +45,8 @@
 					<!-- Logo
 					============================================= -->
 					<div id="logo">
-						<a href="#" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="WeddingCart Logo"></a>
-						<a href="#" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo2x.png" alt="WeddingCart Logo"></a>
+						<a href="#" class="standard-logo" data-dark-logo="/images/logo-dark.png"><img src="/images/logo.png" alt="WeddingCart Logo"></a>
+						<a href="#" class="retina-logo" data-dark-logo="/images/logo-dark@2x.png"><img src="/images/logo2x.png" alt="WeddingCart Logo"></a>
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation
@@ -106,51 +106,51 @@ qui officia deserunt mollit anim id est laborum.</p>
     
                             <div class="widget clearfix">
                                 <h4>Instagram Photos</h4>
-                                <div id="instagram-photos" class="instagram-photos masonry-thumbs col-5 instagram-img" data-user="269801886" data-count="15" data-type="tag">
+                                <div id="footer-photos" class="footer-photos masonry-thumbs col-5 instagram-img" data-user="269801886" data-count="15" data-type="tag">
                                     <a class="hyper1" href="#">
-                                        <img src="images/12555878_188238081533165_640356224_n.jpg">
+                                        <img src="/images/12555878_188238081533165_640356224_n.jpg">
                                     </a>
                                     <a class="hyper2" href="#">
-                                        <img src="images/12501967_978230242271209_857803718_n.jpg">
+                                        <img src="/images/12501967_978230242271209_857803718_n.jpg">
                                     </a>
                                     <a class="hyper3" href="#">
-                                        <img src="images/12568188_1688046084804432_1926321366_n.jpg">
+                                        <img src="/images/12568188_1688046084804432_1926321366_n.jpg">
                                     </a>
                                     <a class="hyper4" href="#">
-                                        <img src="images/12716988_1659886770892373_432994149_n.jpg">
+                                        <img src="/images/12716988_1659886770892373_432994149_n.jpg">
                                     </a>
                                     <a class="hyper5" href="#">
-                                        <img src="images/12545473_588857034595095_1014176981_n.jpg">
+                                        <img src="/images/12545473_588857034595095_1014176981_n.jpg">
                                     </a>
                                     <a class="hyper6" href="#">
-                                        <img src="images/12599353_963222677099849_202858577_n.jpg">
+                                        <img src="/images/12599353_963222677099849_202858577_n.jpg">
                                     </a>
                                     <a class="hyper7" href="#">
-                                        <img src="images/12716901_1262181377131636_624563083_n.jpg">
+                                        <img src="/images/12716901_1262181377131636_624563083_n.jpg">
                                     </a>
                                     <a class="hyper8" href="#">
-                                        <img src="images/12545347_464508217083387_1401162239_n.jpg">
+                                        <img src="/images/12545347_464508217083387_1401162239_n.jpg">
                                     </a>
                                     <a class="hyper9" href="#">
-                                        <img src="images/12627997_1653493874901913_1543590537_n.jpg">
+                                        <img src="/images/12627997_1653493874901913_1543590537_n.jpg">
                                     </a>
                                     <a class="hyper10" href="#">
-                                        <img src="images/12547212_473465702839684_1082559451_n.jpg">
+                                        <img src="/images/12547212_473465702839684_1082559451_n.jpg">
                                     </a>
                                     <a class="hyper11" href="#">
-                                        <img src="images/12716993_985474188212198_521071465_n.jpg">
+                                        <img src="/images/12716993_985474188212198_521071465_n.jpg">
                                     </a>
                                     <a class="hyper12" href="#">
-                                        <img src="images/12568204_234976083504657_569276587_n.jpg">
+                                        <img src="/images/12568204_234976083504657_569276587_n.jpg">
                                     </a>
                                     <a class="hyper13" href="#">
-                                        <img src="images/12716841_528248660687131_1736073586_n.jpg">
+                                        <img src="/images/12716841_528248660687131_1736073586_n.jpg">
                                     </a>    
                                     <a class="hyper14" href="#">
-                                        <img src="images/12446155_767393880071025_1829055534_n.jpg">
+                                        <img src="/images/12446155_767393880071025_1829055534_n.jpg">
                                     </a>
                                     <a class="hyper15" href="#">
-                                        <img src="images/12545473_588857034595095_1014176981_n.jpg">
+                                        <img src="/images/12545473_588857034595095_1014176981_n.jpg">
                                     </a>
                                 </div>
                             </div>
@@ -237,7 +237,7 @@ qui officia deserunt mollit anim id est laborum.</p>
 
     <!-- Footer Scripts
     ============================================= -->
-    <script type="text/javascript" src="js/functions.js"></script>
-    <script type="text/javascript" src="js/newjs.js"></script>
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script type="text/javascript" src="/js/newjs.js"></script>
 	</body>
 	</html>
