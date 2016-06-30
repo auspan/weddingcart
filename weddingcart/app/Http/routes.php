@@ -38,6 +38,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('wedding','WeddingController@wedding');
     Route::get('createwedding','WeddingController@create');
 	Route::post('wedding','WeddingController@save');
+    Route::get('createWeddingEvent','WeddingController@createWeddingEvent');
+    Route::post('weddingEvent','WeddingController@weddingEvent');
     Route::get('wedding/{id}/edit','WeddingController@edit');
     Route::post('wedding/update/{id}','WeddingController@update');
     
@@ -69,5 +71,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('contribution/{id}','InvitesController@contribution');
     Route::get('invites','InvitesController@invites');
     Route::post('productdetails','InvitesController@productDetails');
+
+    Route::get('dropzone', 'DropzoneController@index');
+    Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles');
 
 });

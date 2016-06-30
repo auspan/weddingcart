@@ -43,13 +43,15 @@
             {
                 required : true,
                 minlength : 2,
-                maxlength : 35
+                maxlength : 35,
+                digits : false
             },
             groom_name: 
             {
                 required: true,
                 minlength: 2,
-                maxlength: 35
+                maxlength: 35,
+                digits : false
             },
          },
         

@@ -2,7 +2,12 @@
     <h2>Events Schedule</h2>
     <span>List of all the Scheduled Events for your Information</span>
 </div>
+    <div class="col-lg-8 divcenter bottommargin-lg">
+    </div>
 
+<div class="center bottommargin-lg">
+    <a href="{{ url('createWeddingEvent') }}" class="button button-rounded button-xlarge">Manage Events</a>
+</div>
 <div class="col_one_third">
     <div class="feature-box center media-box fbox-bg">
         <div class="fbox-media">

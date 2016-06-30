@@ -92,16 +92,22 @@ class WeddingController extends Controller {
         return redirect('home');
     }
 
-    public function filterUpdatedValues($weddingDetails, $oldWeddingDetails)
+    public function createWeddingEvent()
     {
+        return view('wedding.weddingEvents');
+    }
 
-        /*    foreach($weddingDetails as $attributeCode => $attributeValue)
-            {
-              foreach ($oldWeddingDetails as $attribute_code => $attribute_value)
-              {
-                if($a)
-              }
-            } */
+    public function weddingEvent(Request $request)
+    {
+        $user = Auth::user();
+        $weddingEventDetails = [
+        'weddingEventName' => $request->input('weddingEvent'),
+        'weddingEventVenue' => $request->input('venue'),
+        'weddingEventDate' => $request->input('wedding_date')
+        ];
+        $weddingEvent = $user->userEvents()->first()->saveWeddingEvent($weddingEventDetails);
+        return redirect('home');
+
     }
 
 }

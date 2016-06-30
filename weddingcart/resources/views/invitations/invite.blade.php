@@ -11,7 +11,8 @@
         <div class="container clearfix content-wrap">
             <div class="row">
                 <div class="col-xs-6 multigrid">
-                    <table id="guestsTable" class="table table-striped table-hover table-responsive">
+                    <div class="table-striped table-hover table-responsive">
+                    <table id="guestsTable" class="table">
                     <thead>
                         <tr>
                             <th class="hidden"></th>
@@ -40,7 +41,7 @@
                                 <td>{{ $person['email'] }}</td>
                                 <td></td>
                                 <td>
-                                    <button  id="addContactForMail" type="button" class="btn-add btn addContactForEmail" aria-label="Add">
+                                    <button  id="addContactForMail" data-toggle="tooltip" title="Add contact to send invitation" data-placement="bottom" type="button" class="btn-add btn addContactForEmail" aria-label="Add">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 </button>
                                 </td>
@@ -50,13 +51,15 @@
                     </tbody>
                 </table>
                 </div>
+                </div>
                 <div class="col-xs-6">
             {!! Form::open(['url'=>'/sendinvite', 'class'=>'form-horizontal nobottommargin', 'method'=>'post']) !!}
                 <div id="prefetch" class="form-group">
                     <label for="toAddress" class="control-label col-sm-2">To: </label>
                     <div class="col-sm-10">
-                        <div class="form-control" id="to-address">
-                        </div>
+                        <!-- <div class="form-control" id="to-address">
+                        </div> -->
+                        <input type="text" class="form-control invite-form" id="subject" name="to">
                     </div>
                 </div>
                 <div class="form-group">

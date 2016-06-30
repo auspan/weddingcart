@@ -113,7 +113,7 @@ class InvitesController extends Controller
         // $recepientEmail = Auth::user()->contacts()->where('name' , $recepientName)->value('email');
         $subject = $request->input('subject');
 
-        $recepient = 'rajancs5553@gmail.com';
+        $recepient = $request->input('to');
         $data = array('to' => $recepient);
         $data['weddingDetails'] = $userEventAttributes;
         $data['subject'] = $subject;
