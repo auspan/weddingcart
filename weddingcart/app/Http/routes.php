@@ -72,7 +72,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('invites','InvitesController@invites');
     Route::post('productdetails','InvitesController@productDetails');
 
-    Route::get('dropzone', 'DropzoneController@index');
-    Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles');
+   
 
 });
