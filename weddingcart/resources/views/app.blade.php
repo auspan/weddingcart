@@ -22,7 +22,6 @@
 		<link rel="stylesheet" href="css/jquery.ui.theme.css" type="text/css">
 		<link rel="stylesheet" href="css/responsive.css" type="text/css">
 		<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
-		<link rel="stylesheet" href="css/dropzone.css" type="text/css">
 	    <link rel="stylesheet" href="css/dataTables.bootstrap.css" type="text/css">
 	    <link rel="stylesheet" href="css/bootstrap-datepicker3.css" type="text/css">
 		<style id="fit-vids-style">
@@ -94,5 +93,7 @@
 	<script type="text/javascript" src="js/tables.js"></script>
 	<script type="text/javascript" src="js/contacts.js"></script>
 	<script type="text/javascript" src="js/sendinvite.js"></script>
+	<script type="text/javascript" src="js/weddingformValidate.js"></script>
+
 		</body>
 		</html>
