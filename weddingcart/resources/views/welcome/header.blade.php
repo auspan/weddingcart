@@ -22,9 +22,9 @@
             <nav id="primary-menu">
 
                 <ul class="sf-menu">
-                    <li class="current"><a href="{{ url('/') }}">
-                            <div>Home</div>
-                        </a></li>
+                    {{--<li class="current"><a href="{{ url('/') }}">--}}
+                            {{--<div>Home</div>--}}
+                        {{--</a></li>--}}
                     <li><a href="{{ url('/login') }}">
                             <div>Sign In</div>
                         </a></li>
@@ -41,12 +41,13 @@
 
                 <!-- Top Search
                 ============================================= -->
-                <div id="top-search">
-                    <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-                    <form action="#" method="get">
-                        <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
-                    </form>
-                </div><!-- #top-search end -->
+                {{--<div id="top-search">--}}
+                    {{--<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>--}}
+                    {{--<form action="#" method="get">--}}
+                        {{--<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">--}}
+                    {{--</form>--}}
+                {{--</div>--}}
+                <!-- #top-search end -->
 
             </nav><!-- #primary-menu end -->
 
