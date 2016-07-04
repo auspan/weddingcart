@@ -17,7 +17,7 @@
 
             <div class="col_full">
                 <label for="groom_name">Name <small>*</small></label>
-                <input id="groom_name" name="groom_name" class="sm-form-control required" type="text">
+                <input id="groom_name" name="groom_name" class="sm-form-control required lettersonly" type="text">
                 <input type="hidden" name="groom" class="form-control" value="gnm">
             </div>
 

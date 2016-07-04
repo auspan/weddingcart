@@ -28,21 +28,24 @@ class AppMailer {
 
     public function sendInviteEmail($data)
     {
-        $this->to = $data['to'];
+        $recepients = $data['to'];
         $this->data = $data;
         $this->from = 'invites@weddincart.com';
         $this->subject = 'Wedding Invitation';
         $this->subject = $data['subject'];
         $this->view = "emails.invite";
-        $this->deliver();
+        $this->deliver($recepients);
     }
 
-    public function deliver()
+    public function deliver($recepients)
     {
+        foreach ($recepients as $recepient) {
+            $this->to = $recepient;
         $this->mailer->send($this->view, $this->data, function($message){
             $message->from($this->from, 'WeddinCart Invitation')
                 ->to($this->to)
             ->subject($this->subject);
         });
+    }
     }
 }

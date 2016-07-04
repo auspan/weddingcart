@@ -12,7 +12,7 @@
 
                         @include('errors.weddValidation');
                                
-                        {!! Form::open(['action'=>['WeddingController@update',$user_event_id], 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'files'=>true]) !!}
+                        {!! Form::open(['action'=>['WeddingController@update',$user_event_id], 'class'=>'form-horizontal nobottommargin', 'method'=>'post', 'id'=>'wedding_form', 'files'=>true]) !!}
                       @include('wedding.weddingDate');
                     </div>
                 </div>

@@ -85,8 +85,8 @@ $(document).ready(function(){
         var count = 1;
         var contactName = guestsTable.cell(nRow, 2).data();
         var contactEmail = guestsTable.cell(nRow, 3).data();
-        var contact = '<div style="position:relative;display:inline-block"><span email="'+contactEmail+'"><div>'+contactName+'</div></span>div>'
-        var recepients = $('#recepient').val();
+        var contact = '<div style="position:relative;display:inline-block"><span email="'+contactEmail+'"><div>'+contactName+'</div></span></div>'
+        var recepients = $('#to-recepient').val();
         if(recepients=='')
         {
         $('#to-recepient').val(contactEmail);

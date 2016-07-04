@@ -31,7 +31,7 @@
 		<script type="text/javascript" src="js/plugins.js"></script>
 		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
-		<script type="text/javascript" src="js/typeahead.bundle.js"></script>
+		<!-- <script type="text/javascript" src="js/typeahead.bundle.js"></script> -->
 		<script type="text/javascript" src="js/bloodhound.js"></script>
 		<script type="text/javascript" src="js/dropzone.js"></script>
 		<script type="text/javascript" src="js/jquery.mask.js"></script>
@@ -92,7 +92,7 @@
 	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
 	<script type="text/javascript" src="js/tables.js"></script>
 	<script type="text/javascript" src="js/contacts.js"></script>
-	<script type="text/javascript" src="js/sendinvite.js"></script>
+	<!-- <script type="text/javascript" src="js/sendinvite.js"></script> -->
 	<script type="text/javascript" src="js/weddingformValidate.js"></script>
 
 		</body>

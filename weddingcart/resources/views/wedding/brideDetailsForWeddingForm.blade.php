@@ -14,7 +14,7 @@
 
                 <div class="col_full">
                     <label for="bride-name">Name <small>*</small></label>
-                    <input id="bride-name" name="bride_name" class="sm-form-control required" type="text">
+                    <input id="bride-name" name="bride_name" class="sm-form-control required lettersonly" type="text">
                     <input type="hidden" name="bride" class="form-control" value="bnm">
                 </div>
 

@@ -165,7 +165,7 @@ class UserEvent extends Model
     public function saveWeddingEvent($weddingEventDetails)
     {
         return $this->weddingEvents()->create([
-            'event_id'=>$this->id,
+            'user_event_id'=>$this->id,
             'wedding_event'=>$weddingEventDetails['weddingEventName'],
             'venue'=>$weddingEventDetails['weddingEventVenue'],
             'event_date'=>$weddingEventDetails['weddingEventDate']

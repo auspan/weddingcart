@@ -54,12 +54,14 @@
                 </div>
                 <div class="col-xs-6">
             {!! Form::open(['url'=>'/sendinvite', 'class'=>'form-horizontal nobottommargin', 'method'=>'post']) !!}
-                <div id="prefetch" class="form-group">
+                <div class="form-group">
                     <label for="toAddress" class="control-label col-sm-2">To: </label>
                     <div class="col-sm-10">
                         <!-- <div class="form-control" id="to-address">
                         </div> -->
-                        <input type="text" class="form-control invite-form" id="subject" name="to">
+                        <!-- <input type="text" class="form-control invite-form" id="to-address" name="to"> -->
+                        <input type="hidden" id="to-recepient" name="to-recepient" value="">
+                        <div id="recepient" style="display:inline-block;position:relative;min-width:468px;height:30px;border:1px solid gray"></div>
                     </div>
                 </div>
                 <div class="form-group">
