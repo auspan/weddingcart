@@ -39,17 +39,17 @@ $(document).ready(function(){
         }
     })
 
-    $('#guestsTable tr').on( 'click', '.selectRow', function (e) {
-        e.preventDefault();
-        clearErrors();
-        if(editGuestRow != null)
-        {
-            showRowBeingEditedAlert();
-            return;
-        }
-        var rowData = guestsTable.row().data();
-        alert(rowData);
-    } );
+    // $('#guestsTable tr').on( 'click', '.selectRow', function (e) {
+    //     e.preventDefault();
+    //     clearErrors();
+    //     if(editGuestRow != null)
+    //     {
+    //         showRowBeingEditedAlert();
+    //         return;
+    //     }
+    //     var rowData = guestsTable.row().data();
+    //     alert("dfgdgdg");
+    // } );
 
     $('#guestsTable').on('click', '.deleteRow', function (e) {
         e.preventDefault();
@@ -82,22 +82,33 @@ $(document).ready(function(){
         e.preventDefault();
         clearErrors();
         var nRow = $(this).parents('tr')[0];
-        
+        var count = 1;
         var contactName = guestsTable.cell(nRow, 2).data();
         var contactEmail = guestsTable.cell(nRow, 3).data();
-        alert(contactName+" "+contactEmail);
-        var contact = '<li style="display:inline">'+contactName+'<input type="text" value="'+contactEmail+'" name="contactEmail" style="display:none"></li>'
-        var oldContact = $('#to-address').html();
-        if(oldContact=='')
+        var contact = '<div style="position:relative;display:inline-block"><span email="'+contactEmail+'"><div>'+contactName+'</div></span>div>'
+        var recepients = $('#recepient').val();
+        if(recepients=='')
         {
-            $('#to-address').html(contact);
-            guestsTable.row(nRow).remove().draw();
+        $('#to-recepient').val(contactEmail);
         }
         else
         {
-            $('#to-address').html(oldContact+" "+contact);
-            guestsTable.row(nRow).remove().draw();
+        $('#to-recepient').val(recepients+","+contactEmail);    
         }
+        //alert(contact);
+        //var oldContact = $('#recepient').html();
+        //alert(oldContact);
+         // if(oldContact=='')
+         // {
+             $('#recepient').append(contact+' ');
+             guestsTable.row(nRow).remove().draw();
+        //  }
+        // else
+        // {
+        //    $('#recepient').append(oldContact+" , "+contact);
+        //    guestsTable.row(nRow).remove().draw();
+        // }
+        count = count+1;
     } );
 
     $('#guestsTable').on('click', '.editRow', function (e) {
