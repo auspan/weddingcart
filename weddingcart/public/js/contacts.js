@@ -75,6 +75,7 @@ $(document).ready(function(){
         {
             return $(el).attr('id').split(/[-]/)[1] 
       }).get();
+        console.log(totalChecked);
          var i;
          var contacts = new Array();
          for(i=0; i<totalChecked.length; i++)
@@ -84,8 +85,35 @@ $(document).ready(function(){
                             , "guestEmail": $('#email'+totalChecked[i]).html()
                             , "guestPhone" : $('#phone'+totalChecked[i]).html()
                              };
+            console.log(contacts[i]);
         
          }
+
+         console.log(contacts);
+
+         $.ajax({
+            type:"POST",
+            url:"addMultipleGoogleContacts",
+            data:{
+                contacts: contacts
+            },
+            success:function(data)
+            {
+                if(data.message)
+                {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else
+                {    
+                    //$('#row'+counter[1]).remove();
+                    showAlert("Yippe!!", "Guest Added", "success");
+                }    
+            },
+            error:function(data)
+            {
+                
+            }
+        });
          
     });
 

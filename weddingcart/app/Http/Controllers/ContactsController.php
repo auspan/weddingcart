@@ -57,6 +57,22 @@ class ContactsController extends Controller
         }
     }
 
+    public function addMultipleContacts()
+    {
+        $googleContacts = Input::get('contacts');
+        $user = Auth::user();
+        foreach ($googleContacts as $contact) 
+        {
+                $newContact = new Contact([
+                    'name' => $contact['guestName'],
+                    'email' => $contact['guestEmail'],
+                    'phone' => $contact['guestPhone']
+                ]); 
+                $contact = $user->contacts()->save($newContact);
+            } 
+            
+        }
+
     public function update(Request $request)
     {
         $contact = Contact::find($request->input('editId'));

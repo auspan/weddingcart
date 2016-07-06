@@ -20,7 +20,7 @@
         
             <div class="col_full">
                 <label for="template-contactform-name">Name <small>*</small></label>
-                <input id="template-contactform-name" name="groom_name" class="sm-form-control required" type="text" value="{{ $gnm }}">
+                <input id="groom_name" name="groom_name" class="sm-form-control required" type="text" value="{{ $gnm }}">
                 <input type="hidden" name="groom" class="form-control" value="gnm">
             </div>
 

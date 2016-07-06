@@ -24,6 +24,7 @@
 		<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
 	    <link rel="stylesheet" href="css/dataTables.bootstrap.css" type="text/css">
 	    <link rel="stylesheet" href="css/bootstrap-datepicker3.css" type="text/css">
+	    <link rel="stylesheet" href="css/tooltipster.css" type="text/css">
 		<style id="fit-vids-style">
 			.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}
 		</style>
@@ -92,6 +93,7 @@
 	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
 	<script type="text/javascript" src="js/tables.js"></script>
 	<script type="text/javascript" src="js/contacts.js"></script>
+	<script type="text/javascript" src="js/tooltipster.js"></script>
 	<!-- <script type="text/javascript" src="js/sendinvite.js"></script> -->
 	<script type="text/javascript" src="js/weddingformValidate.js"></script>
 

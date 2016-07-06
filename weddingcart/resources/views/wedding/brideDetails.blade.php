@@ -18,7 +18,7 @@
         <div class="clear"></div>
             <div class="col_full">
                 <label for="template-contactform-name">Name <small>*</small></label>
-                <input id="template-contactform-name" name="bride_name" class="sm-form-control required" type="text" value="{{ $bnm }}">
+                <input id="bride_name" name="bride_name" class="sm-form-control required" type="text" value="{{ $bnm }}">
                 <input type="hidden" name="bride" class="form-control" value="bnm">
             </div>
             <div class="col-full">

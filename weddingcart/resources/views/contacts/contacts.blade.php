@@ -10,8 +10,8 @@
     </div>
     <div class="container clearfix">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                <table id="myTable" class="table table-striped table-hover table-responsive table-condensed" cellspacing="0" width="100%">
+            <div class=" table-striped table-hover table-responsive">
+                <table id="myTable" class="table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th class="hidden"></th>
