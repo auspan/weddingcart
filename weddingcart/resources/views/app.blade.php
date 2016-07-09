@@ -40,6 +40,8 @@
 		<script type="text/javascript" src="js/jquery.validate.js"></script>
 		<script type="text/javascript" src="js/additional-methods.js"></script>
 		<script type="text/javascript" src="js/customtooltip.js"></script>
+		<script type="text/javascript" src="js/sweetalert-dev.js"></script>
+		<script type="text/javascript" src="js/tooltipster.js"></script>
 
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -58,6 +60,9 @@
 	<!-- Document Wrapper
 	============================================= -->
 		<div id="wrapper" class="clearfix animate">
+		<!-- @if(Session::has('flash_message'))
+			<div class="alert alert-success">{{Session::get('flash_message')}}</div>
+		@endif -->
 		@if(Auth::User())
 			@include('layouts.header')
 
@@ -77,15 +82,14 @@
 	============================================= -->
 		<div id="gotoTop" class="icon-angle-up"></div>
 
-	@if(Auth::User())	
+		
 	@include('layouts.flash')
-	@endif
+	
 	<!-- Footer Scripts
 	============================================= -->
 
 	<script type="text/javascript" src="js/datepicker.js"></script>
 	<script type="text/javascript" src="js/functions.js"></script>
-	<script type="text/javascript" src="js/sweetalert-dev.js"></script>
 	<script type="text/javascript" src="js/newjs.js"></script>
 	<script type="text/javascript" src="js/images.js"></script>
 	<script type="text/javascript" src="js/countdown.js"></script>
@@ -93,7 +97,6 @@
 	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
 	<script type="text/javascript" src="js/tables.js"></script>
 	<script type="text/javascript" src="js/contacts.js"></script>
-	<script type="text/javascript" src="js/tooltipster.js"></script>
 	<!-- <script type="text/javascript" src="js/sendinvite.js"></script> -->
 	<script type="text/javascript" src="js/weddingformValidate.js"></script>
 

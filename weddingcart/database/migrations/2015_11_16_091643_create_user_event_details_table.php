@@ -18,7 +18,6 @@ class CreateUserEventDetailsTable extends Migration {
 			$table->string('attribute_code', 45)->nullable();
 			$table->string('attribute_value', 1000)->nullable();
 			$table->integer('user_event_id')->index('fk_user_role_event_details_user_role_events1');
-			$table->timestamps('event_date');
 			$table->timestamps();
 			$table->integer('created_by')->nullable();
 			$table->integer('updated_by')->nullable();

@@ -5,8 +5,11 @@
     <input id="flashMessageLevel" type="hidden" value="{{ session('flash_message.level') }}">
     <script type="text/javascript">
         swal({
-            title: "{{ session('flash_message.title') }}",
-            text: "{{ session('flash_message.message') }}",
+            // title: "{{ session('flash_message.title') }}",
+            // text: "{{ session('flash_message.message') }}",
+            // type: "{{ session('flash_message.level') }}",
+            title: "{{ Session::get('flash_message') }}",
+            text: "{{ Session::get('flash_message') }}",
             type: "{{ session('flash_message.level') }}",
             timer: 1500,
             showConfirmButton: false

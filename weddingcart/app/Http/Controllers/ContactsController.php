@@ -73,6 +73,16 @@ class ContactsController extends Controller
             
         }
 
+    public function deleteMultipleContacts()
+    {
+        $googleContacts = Input::get('contacts');
+        $user = Auth::user();
+        foreach ($googleContacts as $contact) 
+        {
+            $user->contacts()->where('email',$contact)->destroy();
+        } 
+    }
+
     public function update(Request $request)
     {
         $contact = Contact::find($request->input('editId'));

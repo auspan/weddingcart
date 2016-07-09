@@ -16,13 +16,18 @@ use weddingcart\UserEventWishlistItem;
 use weddingcart\product;
 use weddingcart\Http\Redirect;
 use weddingcart\Mailers\AppMailer;
+use weddingcart\Http\Flash;
+use Session;
 class InvitesController extends Controller
 {
     protected $mailer;
-    public function __construct(AppMailer $mailer)
+    protected $flash;
+
+    public function __construct(AppMailer $mailer, Flash $flash)
     {
         $this->middleware('auth');
         $this->mailer = $mailer;
+        $this->flash = $flash;
     }
 
       public function invites()
@@ -120,7 +125,15 @@ class InvitesController extends Controller
         $data['weddingDetails'] = $userEventAttributes;
         $data['subject'] = $subject;
         $this->mailer->sendInviteEmail($data);
-        return $data;
+        // flash('Email','Email Sent');
+        // session()->flash('flash_message', [
+        //     'title' => 'Email',
+        //     'message' => 'Email Sent',
+        //     'level' => 'success'
+        // ]);
+        //$this->flash->success('Email','Email Sent');
+        Session::flash('flash_message','Your Email has been sent');
+        return Redirect('home');
     }
 
     public function showInvitesPage()

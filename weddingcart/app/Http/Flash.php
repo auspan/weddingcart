@@ -1,5 +1,5 @@
 <?php
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 namespace weddingcart\Http;
 
 

@@ -75,7 +75,6 @@ $(document).ready(function(){
         {
             return $(el).attr('id').split(/[-]/)[1] 
       }).get();
-        console.log(totalChecked);
          var i;
          var contacts = new Array();
          for(i=0; i<totalChecked.length; i++)
@@ -85,11 +84,7 @@ $(document).ready(function(){
                             , "guestEmail": $('#email'+totalChecked[i]).html()
                             , "guestPhone" : $('#phone'+totalChecked[i]).html()
                              };
-            console.log(contacts[i]);
-        
          }
-
-         console.log(contacts);
 
          $.ajax({
             type:"POST",
@@ -106,7 +101,51 @@ $(document).ready(function(){
                 else
                 {    
                     //$('#row'+counter[1]).remove();
-                    showAlert("Yippe!!", "Guest Added", "success");
+                    
+                    showAlert("Yippe!!", "Guests Added", "success");
+                }    
+            },
+            error:function(data)
+            {
+                
+            }
+        });
+         
+    });
+
+    $("#deleteSelected").on('click', function(e) {
+
+        e.preventDefault();
+        var totalChecked = $( "input[name='contacts']:checked").map(function (index, el) 
+        {
+            return $(el).attr('id').split(/[-]/)[1]
+      }).get();
+         var i;
+         var contacts = new Array();
+         for(i=0; i<totalChecked.length; i++)
+         {
+             contacts[i] = {
+                             "guestEmail": $('#email'+totalChecked[i]).html()
+                             };
+         }
+
+         $.ajax({
+            type:"POST",
+            url:"deleteMultipleGoogleContacts",
+            data:{
+                contacts: contacts
+            },
+            success:function(data)
+            {
+                if(data.message)
+                {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else
+                {    
+                    //$('#row'+counter[1]).remove();
+                    
+                    showAlert("Yippe!!", "Guests deleted", "success");
                 }    
             },
             error:function(data)

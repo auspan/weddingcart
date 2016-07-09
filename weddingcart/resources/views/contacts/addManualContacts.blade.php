@@ -50,18 +50,20 @@
             <th>Email</th>
             <th>Phone</th>
             <th></th>
-            <th></th>
+            <th><button class="btn btn-default" id="deleteSelected" data-toggle="tooltip" title="Delete" data-placement="bottom" type="button" class="btn btn-default" aria-label="Delete">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-
+        <?php $i=1 ?>
         @foreach($people as $person)
             <tr>
                 <td class="hidden">{{ $person['id'] }}</td>
-                <td scope="row"><input type="checkbox" class="selectRow" name="query_myTextEditBox"></td>
+                <td scope="row"><input type="checkbox" id="checkbox-{{ $i }}" class="selectRow" name="contacts"></td>
                 <td>{{ $person['name']}}</td>
-                <td>{{ $person['email'] }}</td>
+                <td id="email{{$i}}">{{ $person['email'] }}</td>
                 <td>{{ $person['phone'] }}</td>
                 <td>
                     <button class="editRow btn btn-default" data-toggle="tooltip" title="Edit" data-placement="bottom" type="button" aria-label="Edit">
@@ -73,6 +75,7 @@
                     </button>
                 </td>
             </tr>
+            <?php  $i++; ?>
         @endforeach
     </tbody>
 </table>

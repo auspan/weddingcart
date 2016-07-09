@@ -57,6 +57,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('savecontact','ContactsController@savecontacts');
     Route::post('addContact','ContactsController@store');
     Route::post('addMultipleGoogleContacts','ContactsController@addMultipleContacts');
+    Route::post('deleteMultipleGoogleContacts','ContactsController@deleteMultipleContacts');
     Route::get('contacts','ContactsController@index');
     Route::get('getcontacts','ContactsController@getContacts');
     Route::post('updateContact','ContactsController@update');

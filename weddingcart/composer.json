@@ -29,7 +29,8 @@
             "database"
         ],
         "files": [
-            "app/Http/helpers.php"
+            "app/Http/helpers.php",
+            "app/Http/Flash.php"
         ],
         "psr-4": {
             "weddingcart\\": "app/"

@@ -40,7 +40,7 @@
        
     });
 
-    $("#wedding_form").validate().form();
+    $('#wedding_form').validate().form();
 
 });
 
