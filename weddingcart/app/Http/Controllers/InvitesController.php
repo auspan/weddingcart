@@ -125,14 +125,7 @@ class InvitesController extends Controller
         $data['weddingDetails'] = $userEventAttributes;
         $data['subject'] = $subject;
         $this->mailer->sendInviteEmail($data);
-        // flash('Email','Email Sent');
-        // session()->flash('flash_message', [
-        //     'title' => 'Email',
-        //     'message' => 'Email Sent',
-        //     'level' => 'success'
-        // ]);
-        //$this->flash->success('Email','Email Sent');
-        Session::flash('flash_message','Your Email has been sent');
+        flash()->success('Email Sent Successfully');
         return Redirect('home');
     }
 

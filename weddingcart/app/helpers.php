@@ -51,15 +51,15 @@ function storeImage(UploadedFile $image)
     return $name;
 }
 
-function flash($title = null, $message = null)
-{
-    $flash = app('weddingcart\Http\Flash');
-
-    if (func_num_args() == 0) {
-        return $flash;
-    }
-    return $flash->info($title, $message);
-}
+//function flash($title = null, $message = null)
+//{
+//    $flash = app('weddingcart\Http\Flash');
+//
+//    if (func_num_args() == 0) {
+//        return $flash;
+//    }
+//    return $flash->info($title, $message);
+//}
 
 function moveImage(UploadedFile $image, String $name)
 {
