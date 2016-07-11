@@ -99,7 +99,11 @@ $(document).ready(function(){
                     showAlert("ooops!!", data.message, "error");
                 }
                 else
-                {    
+                {   
+                    for(i=0; i<totalChecked.length; i++)
+                        {
+                           $('#row'+totalChecked[i]).remove();
+                        } 
                     //$('#row'+counter[1]).remove();
                     
                     showAlert("Yippe!!", "Guests Added", "success");
@@ -124,11 +128,9 @@ $(document).ready(function(){
          var contacts = new Array();
          for(i=0; i<totalChecked.length; i++)
          {
-             contacts[i] = {
-                             "guestEmail": $('#email'+totalChecked[i]).html()
-                             };
+             
+            contacts.push($('#email'+totalChecked[i]).html());
          }
-
          $.ajax({
             type:"POST",
             url:"deleteMultipleGoogleContacts",
@@ -143,6 +145,10 @@ $(document).ready(function(){
                 }
                 else
                 {    
+                    for(i=0; i<totalChecked.length; i++)
+                    {
+                        $('#row'+totalChecked[i]).remove();
+                    }
                     //$('#row'+counter[1]).remove();
                     
                     showAlert("Yippe!!", "Guests deleted", "success");

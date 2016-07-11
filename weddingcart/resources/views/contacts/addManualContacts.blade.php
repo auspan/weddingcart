@@ -59,7 +59,7 @@
     <tbody>
         <?php $i=1 ?>
         @foreach($people as $person)
-            <tr>
+            <tr id="row{{$i}}">
                 <td class="hidden">{{ $person['id'] }}</td>
                 <td scope="row"><input type="checkbox" id="checkbox-{{ $i }}" class="selectRow" name="contacts"></td>
                 <td>{{ $person['name']}}</td>

@@ -79,7 +79,7 @@ class ContactsController extends Controller
         $user = Auth::user();
         foreach ($googleContacts as $contact) 
         {
-            $user->contacts()->where('email',$contact)->destroy();
+            Contact::where('email',$contact)->where('user_id',$user->id)->delete();
         } 
     }
 
