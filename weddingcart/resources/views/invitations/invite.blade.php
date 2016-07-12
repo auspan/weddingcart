@@ -67,7 +67,7 @@
                 <div class="form-group">
                     <label for="subject" class="control-label col-sm-2">Subject: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control invite-form" id="subject" name="subject">
+                        <input type="text" class="form-control invite-form" id="subject" name="subject" value="Wedding Invitation">
                     </div>
                 </div>
                 <div class="form-group">
