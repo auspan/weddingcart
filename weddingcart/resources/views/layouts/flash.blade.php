@@ -1,28 +1,22 @@
-@if(session()->has('flash_message'))
+@if(session()->has('flash_notification.message'))
 
-    <input id="flashMessageTitle" type="hidden" value="{{ session('flash_message.title') }}">
-    <input id="flashMessage" type="hidden" value="{{ session('flash_message.message') }}">
-    <input id="flashMessageLevel" type="hidden" value="{{ session('flash_message.level') }}">
     <script type="text/javascript">
         swal({
-            // title: "{{ session('flash_message.title') }}",
-            // text: "{{ session('flash_message.message') }}",
-            // type: "{{ session('flash_message.level') }}",
-            title: "{{ Session::get('flash_message') }}",
-            text: "{{ Session::get('flash_message') }}",
-            type: "{{ session('flash_message.level') }}",
+            title: "{{ session('flash_notification.title') }}",
+            text: "{{ session('flash_notification.message') }}",
+            type: "{{ session('flash_notification.level') }}",
             timer: 1500,
             showConfirmButton: false
         });
     </script>
 @endif
 
-@if(session()->has('flash_message_overlay'))
+@if(session()->has('flash_notification.overlay'))
     <script type="text/javascript">
         swal({
-            title: "{{ session('flash_message_overlay.title') }}",
-            text: "{{ session('flash_message_overlay.message') }}",
-            type: "{{ session('flash_message_overlay.level') }}",
+            title: "{{ session('flash_notification.title') }}",
+            text: "{{ session('flash_notification.message') }}",
+            type: "{{ session('flash_notification.level') }}",
             confirmButtonText: "OK!"
         });
     </script>

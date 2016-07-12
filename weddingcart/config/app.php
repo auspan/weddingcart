@@ -149,6 +149,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Artdarek\OAuth\OAuthServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -208,6 +210,7 @@ return [
         'Carbon'    => 'Carbon\Carbon',
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'OAuth'     => Artdarek\OAuth\Facade\OAuth::class,
+        'Flash' => Laracasts\Flash\Flash::class,
     ],
 
 ];

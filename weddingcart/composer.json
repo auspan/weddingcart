@@ -14,7 +14,8 @@
         "google/apiclient": "^2.0.0@RC",
         "barryvdh/laravel-ide-helper": "^2.1",
         "doctrine/dbal": "^2.5",
-        "mgallegos/laravel-jqgrid": "^1.0"
+        "mgallegos/laravel-jqgrid": "^1.0",
+        "laracasts/flash": "^2.0"
              
     },
     "require-dev": {
@@ -29,8 +30,7 @@
             "database"
         ],
         "files": [
-            "app/Http/helpers.php",
-            "app/Http/Flash.php"
+            "app/helpers.php"
         ],
         "psr-4": {
             "weddingcart\\": "app/"
