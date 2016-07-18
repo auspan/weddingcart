@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EventTableSeeder::class);
         $this->call(EventAttributeTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
+        $this->call(MasterEventTableSeeder::class);
     }
 }

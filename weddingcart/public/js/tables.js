@@ -95,20 +95,9 @@ $(document).ready(function(){
         {
         $('#to-recepient').val(recepients+","+contactEmail);    
         }
-        //alert(contact);
-        //var oldContact = $('#recepient').html();
-        //alert(oldContact);
-         // if(oldContact=='')
-         // {
              $('#recepient').append(contact+' ');
              guestsTable.row(nRow).remove().draw();
-        //  }
-        // else
-        // {
-        //    $('#recepient').append(oldContact+" , "+contact);
-        //    guestsTable.row(nRow).remove().draw();
-        // }
-        count = count+1;
+            count = count+1;
     } );
 
     $('#guestsTable').on('click', '.editRow', function (e) {

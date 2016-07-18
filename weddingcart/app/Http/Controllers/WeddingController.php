@@ -94,7 +94,7 @@ class WeddingController extends Controller {
 
     public function createWeddingEvent()
     {
-        return view('wedding.weddingEvents');
+        return view('wedding.master_wedding_events');
     }
 
     public function weddingEvent(Request $request)
