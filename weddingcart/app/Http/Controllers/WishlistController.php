@@ -34,7 +34,6 @@ class WishlistController extends Controller
         $userEventWishlistItems = $userEvent->userEventWishlistItems()->get();
         if($userEventWishlistItems->isEmpty())
         {
-           
             $userEventWishlistItems = $user->userEvents()->first()->createDefaultWishList($masterProductList, $userEventWishlistItems);
         } 
         

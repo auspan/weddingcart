@@ -18,11 +18,11 @@ class WeddingEvent extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_event_id','wedding_event','venue', 'event_date', 'created_by', 'updated_by'];
+    protected $fillable = ['event_name','event_image','created_by', 'updated_by'];
 
-    public function userEvent() {
+    public function userWeddingEvents() {
 
-        return $this->belongsTo('weddingcart\UserEvent');
-    
+       return $this->hasMany('weddingcart\UserWeddingEvent');
+
     }
 }

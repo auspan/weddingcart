@@ -51,9 +51,9 @@ class UserEvent extends Model
 
     }
 
-    public function weddingEvents() {
+    public function userWeddingEvents() {
 
-       return $this->hasMany('weddingcart\WeddingEvent');
+       return $this->hasMany('weddingcart\UserWeddingEvent');
 
     }
 
@@ -162,14 +162,14 @@ class UserEvent extends Model
             'message'=>$productDetails['message']]);
     }
 
-    public function saveWeddingEvent($weddingEventDetails)
+
+    public function setUserWeddingEvents($userEventId, $eventDetails)
     {
-        return $this->weddingEvents()->create([
-            'user_event_id'=>$this->id,
-            'wedding_event'=>$weddingEventDetails['weddingEventName'],
-            'venue'=>$weddingEventDetails['weddingEventVenue'],
-            'event_date'=>$weddingEventDetails['weddingEventDate']
-            ]);
+        return $this->userWeddingEvents()->create([
+                'user_event_id'=> $this->id,
+                'wedding_event_id'=>$eventDetails['eventId'],
+                'venue'=>$eventDetails['eventVenue']
+                ]);
     }
 
     

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class MasterEventTableSeeder extends Seeder
+class WeddingEventTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,21 +11,21 @@ class MasterEventTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('master_events')->insert([
+        DB::table('wedding_events')->insert([
 			'event_name' => 'Mehndi Ceremony',
 			'event_image' => '../images/master_events_images/mehndi.jpg',
             'created_by' => '999999',
 			'updated_by' => '999999'
 		]);
 
-		DB::table('master_events')->insert([
+		DB::table('wedding_events')->insert([
 			'event_name' => 'Wedding Ceremony',
 			'event_image' => '../images/master_events_images/wedding.jpg',
             'created_by' => '999999',
 			'updated_by' => '999999'
 		]);
 
-		DB::table('master_events')->insert([
+		DB::table('wedding_events')->insert([
 			'event_name' => 'Reception Ceremony',
 			'event_image' => '../images/master_events_images/reception.jpg',
             'created_by' => '999999',

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWeddingEventsTable extends Migration
+class CreateUserWeddingEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateWeddingEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wedding_events', function(Blueprint $table)
+        Schema::create('user_wedding_events', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('user_event_id')->index('fk_wedding_events_user_events1_idx');
-            $table->string('wedding_event',50)->nullable();
+            $table->integer('user_event_id')->index('fk_user_wedding_events_user_events1_idx');
+            $table->integer('wedding_event_id')->index('fk_user_wedding_events_wedding_events1_idx');
             $table->string('venue',255)->nullable();
             $table->dateTime('event_date');
             $table->timestamps();
@@ -32,6 +32,6 @@ class CreateWeddingEventsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('wedding_events');
+        Schema::drop('user_wedding_events');
     }
 }
