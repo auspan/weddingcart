@@ -18,7 +18,7 @@ class CreateUserWeddingEventsTable extends Migration
             $table->integer('user_event_id')->index('fk_user_wedding_events_user_events1_idx');
             $table->integer('wedding_event_id')->index('fk_user_wedding_events_wedding_events1_idx');
             $table->string('venue',255)->nullable();
-            $table->dateTime('event_date');
+            $table->dateTime('event_date')->nullable();
             $table->timestamps();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();

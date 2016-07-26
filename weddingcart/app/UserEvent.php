@@ -172,5 +172,25 @@ class UserEvent extends Model
                 ]);
     }
 
+    public function createDefaultEvent($masterEvents, $userWeddingEvents)
+    {
+        foreach ($masterEvents as $masterEvent)
+        {
+        $userWeddingEvents = new UserWeddingEvent([
+            'id'=> 0,
+            'user_event_id'=>55,
+            'wedding_event_id'=>2,
+            'event_name' => $masterEvent['event_name'],
+            'event_image' => $masterEvent['event_image'],
+            'venue' => null,
+            'event_date' => ''
+            ]);
+
+        $userWeddingEvents->push($userWeddingEvents);
+
+        }
+        return $userWeddingEvents;
+    }
+
     
  }

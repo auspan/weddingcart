@@ -95,8 +95,28 @@ class WeddingController extends Controller {
 
     public function createWeddingEvent()
     {
+        $user = Auth::User();
+        $userEvent = $user->userEvents()->first();
         $masterEvents=WeddingEvent::all();
-        return view('wedding.master_wedding_events',['MasterEvent' => $masterEvents]);
+        $userWeddingEvents =  WeddingEvent::leftJoin('user_wedding_events', 'wedding_events.id', '=', 'user_wedding_events.wedding_event_id')
+            ->select('wedding_events.id', 'wedding_events.event_name', 'wedding_events.event_image', 'user_wedding_events.id as user_wedding_event_id', 'user_wedding_events.venue', 'user_wedding_events.event_date')
+            ->where('user_wedding_events.user_event_id',"=",$userEvent->id)->get();
+           // dd($userWeddingEvents);
+        if($userWeddingEvents->isEmpty())
+        {
+            $userWeddingEvents =  WeddingEvent::all();
+            foreach ($userWeddingEvents as $userWeddingEvent) {
+                $userWeddingEvent['venue'] = null;
+                $userWeddingEvent['event_date'] = null;
+            }
+            
+            // return view('wedding.master_wedding_events',['MasterEvent' => $masterEvents]);
+            // dd($userWeddingEvents);
+            // $userWeddingEvents = $user->userEvents()->first()->createDefaultEvent($masterEvents, $userWeddingEvents);
+        }
+
+        return view('wedding.user_wedding_events',['UserWeddingEvents' => $userWeddingEvents , 'MasterEvents' => $masterEvents]);
+        
     }
 
     public function addMasterEvents()
