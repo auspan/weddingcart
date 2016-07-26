@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMasterEventsTable extends Migration
+class CreateWeddingEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateMasterEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_events', function(Blueprint $table)
+        Schema::create('wedding_events', function(Blueprint $table)
         {
             $table->integer('id', true);
             $table->string('event_name', 100);
@@ -30,6 +30,6 @@ class CreateMasterEventsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('master_events');
+        Schema::drop('wedding_events');
     }
 }

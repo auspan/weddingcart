@@ -99,6 +99,7 @@
 	<script type="text/javascript" src="js/contacts.js"></script>
 	<!-- <script type="text/javascript" src="js/sendinvite.js"></script> -->
 	<script type="text/javascript" src="js/weddingformValidate.js"></script>
+	<script type="text/javascript" src="js/master_events.js"></script>
 
 		</body>
 		</html>

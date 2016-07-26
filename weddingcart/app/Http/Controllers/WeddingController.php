@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use weddingcart\Http\Requests;
 use weddingcart\Http\Controllers\Controller;
 use weddingcart\EventAttribute;
+use weddingcart\WeddingEvent;
 use weddingcart\UserEvent;
 use weddingcart\User;
 use weddingcart\UserEventDetail;
@@ -94,20 +95,20 @@ class WeddingController extends Controller {
 
     public function createWeddingEvent()
     {
-        return view('wedding.master_wedding_events');
+        $masterEvents=WeddingEvent::all();
+        return view('wedding.master_wedding_events',['MasterEvent' => $masterEvents]);
     }
 
-    public function weddingEvent(Request $request)
+    public function addMasterEvents()
     {
-        $user = Auth::user();
-        $weddingEventDetails = [
-        'weddingEventName' => $request->input('weddingEvent'),
-        'weddingEventVenue' => $request->input('venue'),
-        'weddingEventDate' => $request->input('wedding_date')
-        ];
-        $weddingEvent = $user->userEvents()->first()->saveWeddingEvent($weddingEventDetails);
-        return redirect('home');
-
+        $user = Auth::User();
+        $userEventId = $user->userEvents()->value('id');
+        $eventDetails = Input::all();
+        $userWeddingEvents = $user->userEvents()->first()->setUserWeddingEvents($userEventId, $eventDetails);
+        //$id=$userWeddingEvents['id'];
+        $response = ['status' => 1,'title' => 'Success','message' => 'Event Added Successfully','level' => 'success'];
+        return response()->json($response);
     }
+
 
 }

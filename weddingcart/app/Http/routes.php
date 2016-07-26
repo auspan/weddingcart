@@ -39,7 +39,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('createwedding','WeddingController@create');
 	Route::post('wedding','WeddingController@save');
     Route::get('createWeddingEvent','WeddingController@createWeddingEvent');
-    Route::post('weddingEvent','WeddingController@weddingEvent');
+    Route::post('addevents','WeddingController@addMasterEvents');
     Route::get('wedding/{id}/edit','WeddingController@edit');
     Route::post('wedding/update/{id}','WeddingController@update');
     

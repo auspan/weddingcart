@@ -5,21 +5,26 @@
     <div class="col-lg-8 divcenter bottommargin-lg">
     </div>
 
-<div class="center bottommargin-lg">
-    <a href="{{ url('createWeddingEvent') }}" class="button button-rounded button-xlarge">Manage Events</a>
-</div>
+
+
+@foreach($user_wedding_events as $userWeddingEvent)
 <div class="col_one_third">
     <div class="feature-box center media-box fbox-bg">
         <div class="fbox-media">
-            <img src="../images/mehndi.jpg" alt="Mehndi">
+            <img src="{{$userWeddingEvent->event_image}}" alt="Mehndi">
         </div>
         <div class="fbox-desc">
-            <h3>Mehndi Ceremony<span class="subtitle">Hotel Park Land, 25th May</span></h3>
+            <h3>{{$userWeddingEvent->event_name}}<span class="subtitle">{{$userWeddingEvent->venue}}, 25th May</span></h3>
         </div>
     </div>
 </div>
+@endforeach
+</div>
+<div class="center bottommargin-lg">
+    <a href="{{ url('createWeddingEvent') }}" class="button button-rounded button-xlarge">Manage Events</a>
+</div>
 
-<div class="col_one_third">
+<!-- <div class="col_one_third">
     <div class="feature-box center media-box fbox-bg">
         <div class="fbox-media">
             <img src="../images/wedding.jpg" alt="Wedding">
@@ -40,3 +45,4 @@
         </div>
     </div>
 </div>
+ -->

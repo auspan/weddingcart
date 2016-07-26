@@ -10,29 +10,40 @@
             <h2>Wedding Events</h2>
           </div>
           <div class="events small-thumbs">
-          		<div>
+          <?php $count = 1 ?>
+          <div id="events">
+          @foreach($MasterEvent as $masterEvents)
 			      <div class="entry clearfix">
 			        <div class="col-md-2">
-			            <img src="../images/master_events_images/mehndi.jpg" alt="Event_Image" id="eventImage" name="eventImage">
+			        	<input type="hidden" id="weddingEventId{{$count}}" name="weddingEventId{{$count}}" value="{{$masterEvents['id']}}">
+			            <img src="{{$masterEvents['event_image']}}" alt="Event_Image" id="eventImage{{$count}}" name="eventImage{{$count}}">
+			            <input type="hidden" class="hide-content" value="{{$masterEvents['event_image']}}" id="eventImgName{{ $count }}" name="eventImgName{{ $count }}">
 			            <div class="clear"></div>
 			            <div class="entry-title">
-			            <input required aria-required="true" class="required form-control" id="eventName" name="eventName" placeholder="Event Name" type="text" value="Mehndi Ceremony">
+			            <input required aria-required="true" class="required form-control" id="eventName{{$count}}" name="eventName{{$count}}" placeholder="Event Name" type="text" value="{{$masterEvents['event_name']}}">
 			          </div>
 			        </div>
 			        <div class="col-md-9">
 			          <div class="quick-contact-widget clearfix">
-			            <div class="input-group col_two_third">
-			              <input required aria-required="true" class="required form-control" id="venue" name="venue" placeholder="Venue" type="text">
-			            </div>
 			            
-			            <textarea aria-required="true" class="required form-control short-textarea" id="venueAddress" name="venueAddress" rows="2" cols="30" placeholder="Venue Address"></textarea>
-			            
+			            <textarea aria-required="true" class="required form-control short-textarea" id="venue{{$count}}" name="venue{{$count}}" rows="2" cols="30" placeholder="Venue"></textarea>
+
+			            <div id="weddate" class="input-group date">
+			                <input  name="wedding_date{{$count}}" type="text" id="wedding_date{{$count}}" class="form-control" placeholder="DD/MM/YYYY">
+			                <div class="input-group-addon">
+			                    <span class="glyphicon glyphicon-th"></span>
+			                </div>
+            			</div>
+        				<input type="hidden" name="wed_date" class="form-control" value="wdt">
+
 			          </div>
 			        </div>
 			        <div class="col-md-1 col_last tright">
-			            <a href="javascript::void(0)" id="btn-addevent" class=" btn-addtoevent"><i class="icon-plus icon-color-blue"></i></a>
+			            <a href="javascript::void(0)" id="btn-addevent-{{$count}}" class="btn-addtoevent"><i class="icon-plus icon-color-blue"></i></a>
 			          </div>
 			        </div>
+      <?php $count++ ?>
+      @endforeach
       </div>
           </div>
          </div>
