@@ -80,5 +80,8 @@
     </tbody>
 </table>
 </div>
+<div class="center bottommargin-lg">
+<a href="{{ url('showinvite') }}" class="button button-rounded button-xlarge">Invite</a>
+</div>
 </form>
 

@@ -35,19 +35,19 @@
           </div>
         </div>
         <div class="col-md-1 col_last tright">
-          <a href="javascript::void(0)" id="btn-removewishlist-{{$count}}" class="btn-removewishlist"><i class="icon-trash icon-color-red"></i></a>
+          <a href="javascript::void(0)" id="btn-removewishlist-{{$count}}" class="btn-removewishlist" data-toggle="tooltip" title="Delete" data-placement="bottom"><i class="icon-trash icon-color-red"></i></a>
           <div class="clear"></div>
-            <a href="javascript::void(0)" id="btn-addwishlist-{{ $count }}" class=" btn-addtowishlist"><i class="icon-plus icon-color-blue"></i></a>
+            <a href="javascript::void(0)" id="btn-addwishlist-{{ $count }}" class=" btn-addtowishlist" data-toggle="tooltip" title="Add" data-placement="bottom"><i class="icon-plus icon-color-blue"></i></a>
             <div class="clear"></div>
-            <a href="javascript::void(0)" class="hide-content btn-editwishlist" id="btn-editwishlist-{{ $count }}">
+            <a href="javascript::void(0)" class="hide-content btn-editwishlist" data-toggle="tooltip" title="Edit" data-placement="bottom" id="btn-editwishlist-{{ $count }}">
               <i class="icon-pencil icon-color-blue"></i>
             </a>
             <div class="clear"></div>
-            <a href="javascript::void(0)" id="btn-updatewishlist-{{ $count }}" class="hide-content btn-updatewishlist"><i class="icon-refresh icon-color-blue"></i></a>
+            <a href="javascript::void(0)" id="btn-updatewishlist-{{ $count }}" class="hide-content btn-updatewishlist" data-toggle="tooltip" title="Update" data-placement="bottom"><i class="icon-refresh icon-color-blue"></i></a>
             <div class="clear"></div>
-            <a href="javascript::void(0)" id="btn-canceltoupdatewishlist-{{ $count }}" class="hide-content btn-canceltoupdatewishlist"><i class="icon-remove icon-color-red"></i></a>
+            <a href="javascript::void(0)" id="btn-canceltoupdatewishlist-{{ $count }}" class="hide-content btn-canceltoupdatewishlist" data-toggle="tooltip" title="Cancel" data-placement="bottom"><i class="icon-remove icon-color-red"></i></a>
             <div class="clear"></div>
-            <a href="javascript::void(0)" id="btn-deletewishlist-{{ $count }}" class="hide-content btn-deletewishlist"><i class="icon-trash icon-color-red"></i></a>
+            <a href="javascript::void(0)" id="btn-deletewishlist-{{ $count }}" class="hide-content btn-deletewishlist" data-toggle="tooltip" title="Delete" data-placement="bottom"><i class="icon-trash icon-color-red"></i></a>
           </div>
         </div>
       </div>
