@@ -162,6 +162,12 @@ class UserEvent extends Model
             'message'=>$productDetails['message']]);
     }
 
+    public function updateUserWeddingEvent($userWeddingEventId, $userWeddingEventDetails)
+    {
+        return $this->userWeddingEvents()->where('id',$userWeddingEventId)->update(['venue'=>$userWeddingEventDetails['eventVenue']]);
+            
+    }
+
 
     public function setUserWeddingEvents($userEventId, $eventDetails)
     {

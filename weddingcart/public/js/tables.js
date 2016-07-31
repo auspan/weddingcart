@@ -85,20 +85,42 @@ $(document).ready(function(){
         var count = 1;
         var contactName = guestsTable.cell(nRow, 2).data();
         var contactEmail = guestsTable.cell(nRow, 3).data();
-        var contact = '<div style="position:relative;display:inline-block"><span email="'+contactEmail+'"><div>'+contactName+'</div></span></div>'
+        var contact = '<div style="position:relative;display:inline-block" class="removeContact"><span email="'+contactEmail+'"><div class="contactName">'+contactName+'&nbsp;<a href="javascript::void(0)" id="btn-removewishlist" class="removeContact" style="width:10px;"><i class="icon-remove"></i></a></div></span></div>'
         var recepients = $('#to-recepient').val();
         if(recepients=='')
         {
-        $('#to-recepient').val(contactEmail);
+        $('#to-recepient').val(contactName+":"+contactEmail);
+        $('#recepient').append(contact+' ');
         }
         else
         {
-        $('#to-recepient').val(recepients+","+contactEmail);    
+            var splitRecepients = recepients.split(/[,]/);
+            console.log(splitRecepients);
+            if(jQuery.inArray( contactName+':'+contactEmail, splitRecepients )==-1)
+             {
+                $('#to-recepient').val(recepients+","+contactName+":"+contactEmail); 
+                $('#recepient').append(contact+' ');
+                  
+            }
+            else
+            {
+                showAlert("Whoops!!", "Already Exist", "success");
+            }
         }
-             $('#recepient').append(contact+' ');
-             guestsTable.row(nRow).remove().draw();
+             // guestsTable.row(nRow).remove().draw();
             count = count+1;
     } );
+
+
+    $('#recepient').on('click', '.removeContact', function (e) {
+        e.preventDefault();
+        clearErrors();
+        // $recepients=$("#to-recepient").val();
+        // alert($("#recepient .contactName").html());
+        // alert(this.html());
+        $(this).remove();
+
+    });
 
     $('#guestsTable').on('click', '.editRow', function (e) {
         e.preventDefault();
