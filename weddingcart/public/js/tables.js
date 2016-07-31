@@ -85,7 +85,7 @@ $(document).ready(function(){
         var count = 1;
         var contactName = guestsTable.cell(nRow, 2).data();
         var contactEmail = guestsTable.cell(nRow, 3).data();
-        var contact = '<div style="position:relative;display:inline-block" class="toRecepients"><span><div class="contactName">'+contactName+'<div style="display:none">'+":"+contactEmail+'</div>&nbsp;<a href="javascript::void(0)" id="btn-removewishlist" class="removeContact" style="width:10px;"><i class="icon-remove"></i></a></div></span></div>'
+        var contact = '<div style="position:relative;display:inline-block" class="toRecepients"><span><div class="contactName">'+contactName+'<div style="display:none">'+":"+contactEmail+'</div><a href="javascript::void(0)" id="btn-removewishlist" class="removeContact" style="width:10px;"><i class="icon-remove"></i></a></div></span></div>'
         var recepients = $('#to-recepient').val();
         if(recepients=='')
         {
@@ -115,8 +115,8 @@ $(document).ready(function(){
         e.preventDefault();
         clearErrors();
          var recepients=$("#to-recepient").val();
-         
-         var splitRecepients = recepients.split(/[,]/);
+         var splitRecepients = new Array();
+         splitRecepients = recepients.split(/[,]/);
          console.log(splitRecepients);
          //var totalRecepients = splitRecepients.length;
          // var i;
@@ -130,8 +130,8 @@ $(document).ready(function(){
          // var newname = '"'+contactName+'"';
          console.log(contactName);
          // var index = splitRecepients.indexOf(contactName);
-         var index = $.inArray(contactName, splitRecepients);
-         console.log(index);
+         // var index = $.inArray(contactName, splitRecepients);
+         // console.log(index);
          splitRecepients.splice($.inArray(contactName, splitRecepients),1);
          // if(index==-1)
          // {
@@ -141,7 +141,7 @@ $(document).ready(function(){
          $("#to-recepient").val(splitRecepients);
 
          // var arr = ["jQuery","Java Script","HTML","Ajax","Css"];
-         
+
         //  console.log(arr);
         // var itemtoRemove = "Java Script";
         // console.log(itemtoRemove);
