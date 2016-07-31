@@ -14,6 +14,7 @@ use weddingcart\Http\Requests;
 use weddingcart\Http\Controllers\Controller;
 use weddingcart\EventAttribute;
 use weddingcart\WeddingEvent;
+use weddingcart\UserWeddingEvent;
 use weddingcart\UserEvent;
 use weddingcart\User;
 use weddingcart\UserEventDetail;
@@ -87,16 +88,38 @@ class WeddingController extends Controller {
         $wedding = UserEvent::where('id', $userEventId)->first();
         $oldWeddingDetails = $wedding->userEventDetails()->pluck('attribute_value', 'attribute_code')->toArray();
         // dd($weddingDetails);
-        $filtredWeddingDetails = array_diff($weddingDetails, $oldWeddingDetails);
-        $wedding->updateWeddingDetails($filtredWeddingDetails);
+        // $filtredWeddingDetails = array_diff($weddingDetails, $oldWeddingDetails);
+        // $filtredWeddingDetails = array_udiff($weddingDetails, $oldWeddingDetails, 'strcasecmp');
+        // dd($weddingDetails);
+        $wedding->updateWeddingDetails($weddingDetails);
 
         return redirect('home');
     }
 
     public function createWeddingEvent()
     {
+        $user = Auth::User();
+        $userEvent = $user->userEvents()->first();
         $masterEvents=WeddingEvent::all();
-        return view('wedding.master_wedding_events',['MasterEvent' => $masterEvents]);
+        $userWeddingEvents =  WeddingEvent::leftJoin('user_wedding_events', 'wedding_events.id', '=', 'user_wedding_events.wedding_event_id')
+            ->select('wedding_events.id', 'wedding_events.event_name', 'wedding_events.event_image', 'user_wedding_events.id as user_wedding_event_id', 'user_wedding_events.venue', 'user_wedding_events.event_date')
+            ->where('user_wedding_events.user_event_id',"=",$userEvent->id)->get();
+           // dd($userWeddingEvents);
+        if($userWeddingEvents->isEmpty())
+        {
+            $userWeddingEvents =  WeddingEvent::all();
+            foreach ($userWeddingEvents as $userWeddingEvent) {
+                $userWeddingEvent['venue'] = null;
+                $userWeddingEvent['event_date'] = null;
+            }
+            
+            // return view('wedding.master_wedding_events',['MasterEvent' => $masterEvents]);
+            // dd($userWeddingEvents);
+            // $userWeddingEvents = $user->userEvents()->first()->createDefaultEvent($masterEvents, $userWeddingEvents);
+        }
+
+        return view('wedding.user_wedding_events',['UserWeddingEvents' => $userWeddingEvents , 'MasterEvents' => $masterEvents]);
+        
     }
 
     public function addMasterEvents()
@@ -108,6 +131,26 @@ class WeddingController extends Controller {
         //$id=$userWeddingEvents['id'];
         $response = ['status' => 1,'title' => 'Success','message' => 'Event Added Successfully','level' => 'success'];
         return response()->json($response);
+    }
+
+    public function updateEvents()
+    {
+        $user = Auth::User();
+        $userWeddingEventId=Input::get('userWeddingEventId');
+        $userWeddingEventDetails = Input::all();
+        // dd($userWeddingEventDetails);
+        $findUserWeddingEventId=UserWeddingEvent::find($userWeddingEventId);
+        if($findUserWeddingEventId)
+        {
+            $updateUserWeddingEvent = $user->userEvents()->first()->updateUserWeddingEvent($userWeddingEventId, $userWeddingEventDetails);
+            $response = ['status' => 1,'title' => 'Success','message' => 'Event Updated Successfully','level' => 'success'];
+            // dd($response);
+            return response()->json($response);
+        }
+        else
+        {
+          return 0;
+        }
     }
 
 

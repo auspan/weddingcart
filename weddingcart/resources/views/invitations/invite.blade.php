@@ -61,7 +61,7 @@
                         </div> -->
                         <!-- <input type="text" class="form-control invite-form" id="to-address" name="to"> -->
                         <input type="hidden" id="to-recepient" name="to-recepient" value="">
-                        <div id="recepient" style="display:inline-block;position:relative;min-width:468px;height:30px;border:1px solid gray"></div>
+                        <div id="recepient" style="display:inline-block;position:relative;min-width:468px;min-height:30px;border:1px solid gray"></div>
                     </div>
                 </div>
                 <div class="form-group">

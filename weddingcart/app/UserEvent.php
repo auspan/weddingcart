@@ -162,6 +162,12 @@ class UserEvent extends Model
             'message'=>$productDetails['message']]);
     }
 
+    public function updateUserWeddingEvent($userWeddingEventId, $userWeddingEventDetails)
+    {
+        return $this->userWeddingEvents()->where('id',$userWeddingEventId)->update(['venue'=>$userWeddingEventDetails['eventVenue']]);
+            
+    }
+
 
     public function setUserWeddingEvents($userEventId, $eventDetails)
     {
@@ -170,6 +176,26 @@ class UserEvent extends Model
                 'wedding_event_id'=>$eventDetails['eventId'],
                 'venue'=>$eventDetails['eventVenue']
                 ]);
+    }
+
+    public function createDefaultEvent($masterEvents, $userWeddingEvents)
+    {
+        foreach ($masterEvents as $masterEvent)
+        {
+        $userWeddingEvents = new UserWeddingEvent([
+            'id'=> 0,
+            'user_event_id'=>55,
+            'wedding_event_id'=>2,
+            'event_name' => $masterEvent['event_name'],
+            'event_image' => $masterEvent['event_image'],
+            'venue' => null,
+            'event_date' => ''
+            ]);
+
+        $userWeddingEvents->push($userWeddingEvents);
+
+        }
+        return $userWeddingEvents;
     }
 
     
