@@ -13,7 +13,7 @@
           <?php $count = 1 ?>
           <div id="events">
           @foreach($UserWeddingEvents as $userWeddingEvent)
-			      <div class="entry clearfix">
+			      <div class="entry clearfix" id="event{{$count}}">
 			        <div class="col-md-2">
 			        	<input type="hidden" id="weddingEventId{{$count}}" name="weddingEventId{{$count}}" value="{{$userWeddingEvent['id']}}">
 			        	<input type="hidden" id="userWeddingEventId{{$count}}" class="userWeddingEventId" name="userWeddingEventId{{$count}}" value="{{$userWeddingEvent['user_wedding_event_id']}}">

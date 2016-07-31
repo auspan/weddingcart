@@ -85,7 +85,7 @@ $(document).ready(function(){
         var count = 1;
         var contactName = guestsTable.cell(nRow, 2).data();
         var contactEmail = guestsTable.cell(nRow, 3).data();
-        var contact = '<div style="position:relative;display:inline-block" class="removeContact"><span email="'+contactEmail+'"><div class="contactName">'+contactName+'&nbsp;<a href="javascript::void(0)" id="btn-removewishlist" class="removeContact" style="width:10px;"><i class="icon-remove"></i></a></div></span></div>'
+        var contact = '<div style="position:relative;display:inline-block" class="toRecepients"><span><div class="contactName">'+contactName+'&nbsp;<a href="javascript::void(0)" id="btn-removewishlist" class="removeContact" style="width:10px;"><i class="icon-remove"></i></a></div></span></div>'
         var recepients = $('#to-recepient').val();
         if(recepients=='')
         {
@@ -95,7 +95,6 @@ $(document).ready(function(){
         else
         {
             var splitRecepients = recepients.split(/[,]/);
-            console.log(splitRecepients);
             if(jQuery.inArray( contactName+':'+contactEmail, splitRecepients )==-1)
              {
                 $('#to-recepient').val(recepients+","+contactName+":"+contactEmail); 
@@ -115,10 +114,18 @@ $(document).ready(function(){
     $('#recepient').on('click', '.removeContact', function (e) {
         e.preventDefault();
         clearErrors();
-        // $recepients=$("#to-recepient").val();
-        // alert($("#recepient .contactName").html());
-        // alert(this.html());
-        $(this).remove();
+         var recepients=$("#to-recepient").val();
+         var splitRecepients = recepients.split(/[,]/);
+         var totalRecepients = splitRecepients.length;
+         var i;
+         var onlyRecepientName = new Array();
+         for(i=0;i<totalRecepients;i++)
+         {
+            var onlyContactName = splitRecepients[i].split(/[:]/)[0];
+            onlyRecepientName.push(onlyContactName);
+         }
+         var contactNames = $("#recepient .contactName").text();
+         $(this).parent().remove();
 
     });
 

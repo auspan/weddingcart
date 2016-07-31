@@ -22,6 +22,10 @@ $('#events').on('click', '.btn-addtoevent', function(event)
       {
         if(data.status==1)
         {
+          $("#event"+counter).hide(1000, function(){
+          $(this).remove();
+        })
+ 
           showAlert(data.title, data.message, data.level);
         }
       },
