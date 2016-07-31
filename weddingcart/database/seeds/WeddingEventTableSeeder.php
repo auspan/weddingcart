@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
+
 class WeddingEventTableSeeder extends Seeder
 {
     /**
