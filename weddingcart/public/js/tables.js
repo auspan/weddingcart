@@ -85,7 +85,7 @@ $(document).ready(function(){
         var count = 1;
         var contactName = guestsTable.cell(nRow, 2).data();
         var contactEmail = guestsTable.cell(nRow, 3).data();
-        var contact = '<div style="position:relative;display:inline-block" class="toRecepients"><span><div class="contactName">'+contactName+'&nbsp;<a href="javascript::void(0)" id="btn-removewishlist" class="removeContact" style="width:10px;"><i class="icon-remove"></i></a></div></span></div>'
+        var contact = '<div style="position:relative;display:inline-block" class="toRecepients"><span><div class="contactName">'+contactName+'<div style="display:none">'+":"+contactEmail+'</div>&nbsp;<a href="javascript::void(0)" id="btn-removewishlist" class="removeContact" style="width:10px;"><i class="icon-remove"></i></a></div></span></div>'
         var recepients = $('#to-recepient').val();
         if(recepients=='')
         {
@@ -115,16 +115,45 @@ $(document).ready(function(){
         e.preventDefault();
         clearErrors();
          var recepients=$("#to-recepient").val();
+         
          var splitRecepients = recepients.split(/[,]/);
-         var totalRecepients = splitRecepients.length;
-         var i;
-         var onlyRecepientName = new Array();
-         for(i=0;i<totalRecepients;i++)
-         {
-            var onlyContactName = splitRecepients[i].split(/[:]/)[0];
-            onlyRecepientName.push(onlyContactName);
-         }
-         var contactNames = $("#recepient .contactName").text();
+         console.log(splitRecepients);
+         //var totalRecepients = splitRecepients.length;
+         // var i;
+         // var onlyRecepientName = new Array();
+         // for(i=0;i<totalRecepients;i++)
+         // {
+         //    var onlyContactName = splitRecepients[i].split(/[:]/)[0];
+         //    onlyRecepientName.push(onlyContactName);
+         // }
+         var contactName = $(this).parent().text();
+         // var newname = '"'+contactName+'"';
+         console.log(contactName);
+         // var index = splitRecepients.indexOf(contactName);
+         var index = $.inArray(contactName, splitRecepients);
+         console.log(index);
+         splitRecepients.splice($.inArray(contactName, splitRecepients),1);
+         // if(index==-1)
+         // {
+         //    splitRecepients.splice(index,1);
+         // }
+         console.log(splitRecepients);
+         $("#to-recepient").val(splitRecepients);
+
+         // var arr = ["jQuery","Java Script","HTML","Ajax","Css"];
+         
+        //  console.log(arr);
+        // var itemtoRemove = "Java Script";
+        // console.log(itemtoRemove);
+        // arr.splice($.inArray(itemtoRemove, arr),1);
+
+        // console.log(arr);
+         // console.log(contactName);
+         // var recepientName = onlyRecepientName.split(/[,]/);
+         // if(jQuery.inArray( contactName, splitRecepients )!=-1)
+         // {
+
+         // }
          $(this).parent().remove();
 
     });

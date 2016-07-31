@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use weddingcart\Http\Requests;
 use weddingcart\UserEvent;
 use weddingcart\User;
+use DB;
+use weddingcart\UserWeddingEvent;
+use weddingcart\WeddingEvent;
 use weddingcart\UserEventWishlistItem;
 
 class GuestsController extends Controller
@@ -30,8 +33,12 @@ class GuestsController extends Controller
         $weddingDetails['user_event_id'] = $wedding['id'];
 
         $array_wishlist_items = $wedding->userEventWishlistItems()->pluck('product_name');
+        $userWeddingEvents =  DB::table('wedding_events')
+            ->leftJoin('user_wedding_events', 'wedding_events.id', '=', 'user_wedding_events.wedding_event_id')
+            ->select('wedding_events.id', 'wedding_events.event_name', 'wedding_events.event_image', 'user_wedding_events.venue', 'user_wedding_events.event_date')
+            ->where('user_wedding_events.user_event_id',"=",$wedding['id'])->get();
 
-        return view('guests.guestlanding',['wishlist_items'=>$array_wishlist_items])->with($weddingDetails->toArray());
+        return view('guests.guestlanding',['wishlist_items'=>$array_wishlist_items , 'user_wedding_events'=>$userWeddingEvents])->with($weddingDetails->toArray());
         return $weddingDetails;
     }
 

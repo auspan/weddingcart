@@ -120,8 +120,16 @@ class InvitesController extends Controller
 
         $recepients = $request->input('to-recepient');
         $recepientsList = explode(",",$recepients);
+        $recepientsEmail = [];
+        foreach ($recepientsList as $recepient) {
+            $splitRecepient = explode(":", $recepient);
+            $recepientEmail = $splitRecepient[1];
+            array_push($recepientsEmail, $recepientEmail);
+
+        }
+        // dd($recepientsEmail);
          // $recepient = array('rajancs5553@gmail.com','rmprajan786@gmail.com','akhleshrana016@gmail.com');
-        $data = array('to' => $recepientsList);
+        $data = array('to' => $recepientsEmail);
         $data['weddingDetails'] = $userEventAttributes;
         $data['subject'] = $subject;
         $this->mailer->sendInviteEmail($data);

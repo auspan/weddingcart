@@ -15,6 +15,8 @@
                 <div class="clear"></div>
                 @include('guests.wishlist')
                 <div class="clear"></div>
+                @include('guests.events')
+                <div class="clear"></div>
             </div>
         </div>
     </section>
