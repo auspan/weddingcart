@@ -76,22 +76,22 @@
                         <i class="icon-facebook"></i>
                     </a>
 
-                    <a href="#" class="social-icon si-dark si-rounded si-linkedin">
+                    <a href="http://www.linkedin.com" class="social-icon si-dark si-rounded si-linkedin">
                         <i class="icon-linkedin"></i>
                         <i class="icon-linkedin"></i>
                     </a>
 
-                    <a href="#" class="social-icon si-dark si-rounded si-twitter">
+                    <a href="http://www.twitter.com" class="social-icon si-dark si-rounded si-twitter">
                         <i class="icon-twitter"></i>
                         <i class="icon-twitter"></i>
                     </a>
 
-                    <a href="#" class="social-icon si-dark si-rounded si-gplus">
+                    <a href="https://plus.google.com" class="social-icon si-dark si-rounded si-gplus">
                         <i class="icon-gplus"></i>
                         <i class="icon-gplus"></i>
                     </a>
 
-                    <a href="#" class="social-icon si-dark si-rounded si-pinterest">
+                    <a href="https://www.pinterest.com/" class="social-icon si-dark si-rounded si-pinterest">
                         <i class="icon-pinterest"></i>
                         <i class="icon-pinterest"></i>
                     </a>
