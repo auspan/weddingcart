@@ -4,30 +4,32 @@
             <div class="swiper-slide dark welcome_slider1">
                 <div class="container clearfix">
                     <div class="slider-caption slider-caption-center">
-                        <p data-caption-animate="fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                            cupidatat non proident sunt in culpa</p>
+                        <p data-caption-animate="fadeInUp"><strong>Every love story is worth sharing and celebrating.</br>
+                                Spend more time making your wedding an affair to remember.</strong>
+                            <br><br><br><br>
+                            <span>Inform guests, review gifts contributions, prioritize your wedding wish list, etc. <br>
+                            It all starts with “home sweet home”!</span></p>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide dark welcome_slider2">
                 <div class="container clearfix">
                     <div class="slider-caption slider-caption-center">
-                        <p data-caption-animate="fadeInUp">Sed do eiusmod tempor incididunt ut labore</p>
+                        <p data-caption-animate="fadeInUp">A great marriage deserves an even greater start. As we say, you would have planned for your house but we let you come back to your home.</p>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide dark welcome_slider3">
                 <div class="container clearfix">
                     <div class="slider-caption slider-caption-center">
-                        <p data-caption-animate="fadeInUp">Ut enim ad minim veniam, quis nostrud exercitation</p>
+                        <p data-caption-animate="fadeInUp">A marriage is not just a union of two souls but a communion of two large communities. Ensure everyone close to you and your spouse contribute together to your beautiful new start. No more confusions and unwanted duplicates as gifts.</p>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide dark welcome_slider4">
                 <div class="container clearfix">
                     <div class="slider-caption slider-caption-center">
-                        <p data-caption-animate="fadeInUp">Excepteur sint occaecat cupidatat non proident sunt in culpa
-                            qui officia</p>
+                        <p data-caption-animate="fadeInUp">The best gift is love. The one who receives it is happy and even if it’s returned, you don’t mind it.</p>
                         <a href="/login"
                            class="button button-border button-light button-rounded button-xlarge topmargin"
                            data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
