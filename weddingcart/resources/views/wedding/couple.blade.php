@@ -6,7 +6,7 @@
 <div class="col-md-6 bottommargin">
     <div class="team team-list clearfix">
         <div class="team-image" style="width: 150px;">
-            <img class="img-circle" src="{{ asset('../uploads/'.$bim) }}">
+            <img class="img-circle" src="{{ asset('../uploads/'.$bim) }}" alt="Bride Image">
        
         </div>
         <div class="team-desc">
@@ -33,7 +33,7 @@
     <div class="team team-list clearfix">
         <div class="team-image" style="width: 150px;">
         
-            <img class="img-circle" src="{{ asset('../uploads/'.$gim) }}" alt="Bryant Kellam">
+            <img class="img-circle" src="{{ asset('../uploads/'.$gim) }}" alt="Groom Image">
         
         </div>
         <div class="team-desc">

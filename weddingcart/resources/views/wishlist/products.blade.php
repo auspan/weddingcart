@@ -6,7 +6,7 @@
             <input required aria-required="true" class="required form-control" id="productName{{ $count }}" name="productName{{ $count }}" placeholder="Product Name" type="text" value="{{ $product['product_name'] }}">
           </div>
           <div class="clear"></div>
-            <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Product_Image" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
+            <img src="{{ asset('../uploads/Products/' . $product['product_image']) }}" alt="Product Image" id="productImage{{ $count }}" name="productImage{{ $count }}" required>
             <input type="text" class="hide-content" value="{{ $product['product_image'] }}" id="imgsrc{{ $count }}" name="imgname{{ $count }}">
         </div>
         <div class="col-md-9">
