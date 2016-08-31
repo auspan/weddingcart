@@ -1,9 +1,9 @@
     @extends('app')
 
     @section('content')
-    
-    
-		<section id="content" class="secbkgrnd">
+
+
+        <section id="content" class="secbkgrnd">
             @include('errors.weddValidation')
 			<div class="content-wrap">
 				<div class="container clearfix">
@@ -32,7 +32,7 @@
 		</section><!-- #content end -->
 
         <script>
-           
+            $('#wedding_form').validate().form();
         </script>
 
         @stop

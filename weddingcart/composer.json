@@ -15,7 +15,8 @@
         "barryvdh/laravel-ide-helper": "^2.1",
         "doctrine/dbal": "^2.5",
         "mgallegos/laravel-jqgrid": "^1.0",
-        "laracasts/flash": "^2.0"
+        "laracasts/flash": "^2.0",
+        "intervention/image": "^2.3"
              
     },
     "require-dev": {

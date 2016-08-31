@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US"><head>
+<html dir="ltr" lang="en-US">
+
+<head>
 
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta name="author" content="WeddingCart">
+		<meta name="author" content="WeddinCart">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="_token" content="{{ csrf_token() }}">
 		<base href="/" target="_top">
 
 		{{--Stylesheets--}}
@@ -25,9 +28,13 @@
 	    <link rel="stylesheet" href="css/dataTables.bootstrap.css" type="text/css">
 	    <link rel="stylesheet" href="css/bootstrap-datepicker3.css" type="text/css">
 	    <link rel="stylesheet" href="css/tooltipster.css" type="text/css">
+	    <link rel="stylesheet" href="css/dropzone.css" type="text/css">
+	    <link rel="stylesheet" href="css/Jcrop.css" type="text/css">
 		<style id="fit-vids-style">
 			.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}
 		</style>
+
+        {{--Scripts --}}
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/plugins.js"></script>
 		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -41,16 +48,17 @@
 		<script type="text/javascript" src="js/additional-methods.js"></script>
 		<script type="text/javascript" src="js/customtooltip.js"></script>
 		<script type="text/javascript" src="js/sweetalert-dev.js"></script>
-		<script type="text/javascript" src="js/tooltipster.js"></script>
+        <script type="text/javascript" src="js/tooltipster.bundle.js"></script>
+        <script type="text/javascript" src="js/Jcrop.js"></script>
 
-	<!--[if lt IE 9]>
+	    <!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	<![endif]-->
+	    <![endif]-->
 
 
 
-	<!-- Document Title
-	============================================= -->
+	    <!-- Document Title
+	    ============================================= -->
 		<title>WeddingCart | Transforming Indian Weddings</title>
 
 	</head>
@@ -65,16 +73,14 @@
 		@endif -->
 		@if(Auth::User())
 			@include('layouts.header')
-
 			{{--@include('layouts.menu')--}}
-		@endif	
+		@endif
 
 			@include('layouts.error')
 			@yield('content')
 
-		
 			@include('layouts.footer')
-		
+
 
 		</div><!-- #wrapper end -->
 
@@ -82,24 +88,24 @@
 	============================================= -->
 		<div id="gotoTop" class="icon-angle-up"></div>
 
-		
+
 	@include('layouts.flash')
-	
-	<!-- Footer Scripts
-	============================================= -->
 
-	<script type="text/javascript" src="js/datepicker.js"></script>
-	<script type="text/javascript" src="js/functions.js"></script>
-	<script type="text/javascript" src="js/newjs.js"></script>
-	<script type="text/javascript" src="js/images.js"></script>
-	<script type="text/javascript" src="js/countdown.js"></script>
-	<script type="text/javascript" src="js/wishlistform.js"></script>
-	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
-	<script type="text/javascript" src="js/tables.js"></script>
-	<script type="text/javascript" src="js/contacts.js"></script>
-	<!-- <script type="text/javascript" src="js/sendinvite.js"></script> -->
-	<script type="text/javascript" src="js/weddingformValidate.js"></script>
-	<script type="text/javascript" src="js/master_events.js"></script>
+	    <!-- Footer Scripts
+	    ============================================= -->
+        <script type="text/javascript" src="js/weddingformValidate.js"></script>
 
-		</body>
-		</html>
+        <script type="text/javascript" src="js/datepicker.js"></script>
+	    <script type="text/javascript" src="js/functions.js"></script>
+    	<script type="text/javascript" src="js/newjs.js"></script>
+	    <script type="text/javascript" src="js/images.js"></script>
+    	<script type="text/javascript" src="js/countdown.js"></script>
+	    <script type="text/javascript" src="js/wishlistform.js"></script>
+    	<script type="text/javascript" src="js/wishlist_ajax.js"></script>
+	    <script type="text/javascript" src="js/tables.js"></script>
+	    <script type="text/javascript" src="js/contacts.js"></script>
+	    <!-- <script type="text/javascript" src="js/sendinvite.js"></script> -->
+    	<script type="text/javascript" src="js/master_events.js"></script>
+
+	</body>
+</html>

@@ -72,3 +72,10 @@ function splitname(String $name){
 
     return str_word_count($name, 1);
 }
+
+function saveImage(\Intervention\Image\Image $image, String $imgName)
+{
+    $uploadPath = '../public/uploads/'.$imgName;
+    $image->save($uploadPath);
+    return $uploadPath;
+}

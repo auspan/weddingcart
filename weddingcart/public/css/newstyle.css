@@ -1137,3 +1137,22 @@ width: 66px; height: 26px; cursor: pointer;
     height: 100%;
 }
 /*end style*/
+
+
+/* Dropzone and Crop Image Styles */
+
+.img-frame{
+    width: 300px;
+    height: 300px;
+    /*border: solid 2px;*/
+    text-align: center;
+}
+
+.img-frame img{
+    display: block;
+    margin: auto;
+}
+
+#snap-dropzone{
+    border: none;
+}

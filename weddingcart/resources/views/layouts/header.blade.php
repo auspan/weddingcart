@@ -6,9 +6,9 @@
             <!-- Logo
             ============================================= -->
             <div id="logo">
-                <a href="#" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="WeddingCart Logo">
+                <a href="#" class="standard-logo" data-dark-logo="images/logo.png"><img src="images/logo.png" alt="WeddingCart Logo">
                 </a>
-                <a href="#" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo2x.png" alt="WeddingCart Logo">
+                <a href="#" class="retina-logo" data-dark-logo="images/logo2x.png"><img src="images/logo2x.png" alt="WeddingCart Logo">
                 </a>
             </div><!-- #logo end -->
 

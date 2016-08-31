@@ -16,8 +16,17 @@
     // initialize validate plugin on the form
     $('#wedding_form').validate({
         errorPlacement: function (error, element) {
-            $(element).tooltipster('update', $(error).text());
-            $(element).tooltipster('show');
+            var lastError = $(element).data('lastError'),
+                newError = $(error).text();
+
+            $(element).data('lastError', newError);
+
+            if(newError !== '' && newError !== lastError){
+                $(element).tooltipster('content', newError);
+                $(element).tooltipster('show');
+            }
+            //$(element).tooltipster('update', $(error).text());
+            //$(element).tooltipster('show');
         },
         success: function (label, element) {
             $(element).tooltipster('hide');
@@ -39,8 +48,7 @@
         },
        
     });
-
-    $('#wedding_form').validate().form();
+    //$('#wedding_form').validate().form();
 
 });
 

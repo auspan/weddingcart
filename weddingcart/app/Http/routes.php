@@ -75,6 +75,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('invites','InvitesController@invites');
     Route::post('productdetails','InvitesController@productDetails');
 
-   
+    Route::get('showAddPhotoPage', 'PhotosController@showAddPhotoPage');
+    Route::post('uploadBrideImage', 'PhotosController@uploadBrideImage');
+    Route::post('cropImage', 'PhotosController@cropImage');
+    Route::post('uploadGroomImage', 'PhotosController@uploadGroomImage');
+
 
 });
