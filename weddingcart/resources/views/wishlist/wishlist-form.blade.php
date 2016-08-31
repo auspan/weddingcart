@@ -11,9 +11,9 @@
           </div>
           <div id="posts" class="events small-thumbs">
             <?php $count=1 ?>
-              @include('wishlist.products');
+              @include('wishlist.products')
           </div>
-             @include('wishlist.addProducts');       
+             @include('wishlist.addProducts')
       <div class="divider divider-center"><a href="#" data-scrollto="#header"><i class="icon-chevron-up"></i></a></div>
 
       <div class="center bottommargin-lg">
