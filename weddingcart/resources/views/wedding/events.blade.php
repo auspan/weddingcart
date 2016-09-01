@@ -2,13 +2,12 @@
     <h2>Events Schedule</h2>
     <span>List of all the Scheduled Events for your Information</span>
 </div>
-    <div class="col-lg-8 divcenter bottommargin-lg">
-    </div>
+    {{--<div class="col-lg-8 divcenter bottommargin-lg">   </div>--}}
 
 
 
 @foreach($user_wedding_events as $userWeddingEvent)
-<div class="col_one_third">
+<div class="col_one_fourth">
     <div class="feature-box center media-box fbox-bg">
         <div class="fbox-media">
             <img src="{{$userWeddingEvent->event_image}}" alt="Mehndi">

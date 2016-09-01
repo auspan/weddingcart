@@ -8,7 +8,12 @@
 
             <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 
-            <div id="logo"></div>
+            <div id="logo">
+                <a href="#" class="standard-logo" data-dark-logo="images/logo.png"><img src="images/logo.png"
+                                                                                        alt="WeddingCart Logo"></a>
+                <a href="#" class="retina-logo" data-dark-logo="images/logo2x.png"><img
+                            src="images/logo2x.png" alt="WeddingCart Logo"></a>
+            </div>
 
             <!-- Primary Navigation
             ============================================= -->
@@ -20,6 +25,13 @@
                     <li class=""><a href="#" data-href="#section-list"><div>Wish List</div></a></li>
                     <li class=""><a href="#" data-href="#section-events"><div>Events Schedule</div></a></li>
                     <li class=""><a href="#" data-href="#section-guests"><div>Guests</div></a></li>
+                    <li><a href="" class="disable-anchor-click"><div>{{ Auth::user()->name }}</div></a>
+                        <ul>
+                            <li>
+                                <a href="/logout">Sign Out</a>
+                            </li>
+                        </ul>
+                    </li>
                     {{--<li class=""><a href="#" data-href="#section-guests"><div>Add Photos</div></a></li>--}}
                     {{--<li class=""><a href="#" data-href="#section-locations"><div>Locations</div></a></li>--}}
                     {{--<li class=""><a href="#" data-href="#section-rsvp"><div>RSVP</div></a></li>--}}

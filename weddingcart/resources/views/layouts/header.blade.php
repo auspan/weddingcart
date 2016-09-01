@@ -15,15 +15,19 @@
             <!-- Primary Navigation
             ============================================= -->
             <nav id="primary-menu">
-                <ul class="sf-menu">
-                    <li><a href="/home"><div>Home</div></a></li>
+                <ul class="one-page-menu sf-menu">
+                    <li><a href="#" data-href="#most-toppest"><div>Start</div></a></li>
+                    <li><a href="#" data-href="#section-couple"><div>The Couple</div></a></li>
+                    <li class=""><a href="#" data-href="#section-list"><div>Wish List</div></a></li>
+                    <li class=""><a href="#" data-href="#section-events"><div>Events Schedule</div></a></li>
+                    <li class=""><a href="#" data-href="#section-guests"><div>Guests</div></a></li>
+                    {{--<li><a href="/home"><div>Home</div></a></li>--}}
                     <li><a href="" class="disable-anchor-click"><div>{{ Auth::user()->name }}</div></a>
                         <ul>
                             <li>
-                                <a href="/logout">Sign Out</a>        
+                                <a href="/logout">Sign Out</a>
                             </li>
                         </ul>
-                        
                     </li>
                 </ul>
             </nav><!-- #primary-menu end -->
