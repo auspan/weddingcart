@@ -4,7 +4,7 @@
 
         <section class="sectionmar" id="content">
 
-            <div class="content-wrap contdeg">
+            <div id="register-wrap" class="content-wrap contdeg">
 
                 <div class="container clearfix">
 

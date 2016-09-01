@@ -161,6 +161,7 @@ return [
         weddingcart\Providers\RouteServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Softon\Indipay\IndipayServiceProvider::class,
 
     ],
 
@@ -213,6 +214,7 @@ return [
         'OAuth'     => Artdarek\OAuth\Facade\OAuth::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Indipay' => Softon\Indipay\Facades\Indipay::class,
     ],
 
 ];

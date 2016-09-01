@@ -16,7 +16,7 @@
 {
     max-width: 550px;
     background-color: rgba(255,255,255,0.93);
-    padding: 40px;"
+    padding: 20px 40px;
 }
 
 .acc_content
@@ -1155,4 +1155,13 @@ width: 66px; height: 26px; cursor: pointer;
 
 #snap-dropzone{
     border: none;
+}
+
+#login-wrap,
+#register-wrap {
+    padding: 60px 0;
+}
+
+#login-form{
+    margin-bottom: 10px;
 }
