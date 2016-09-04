@@ -1,166 +1,154 @@
+$(document).ready(function () {
 
-$(document).ready(function(){
-
-    $('#myTable').DataTable({
-            });
-    $("#checkAll").change(function () {
-        $("input:checkbox").prop('checked', $(this).prop("checked"));
+    var googleCOntactsTable = $('#myTable').DataTable({
+        "columns": [
+            {"orderable": false},
+            null,
+            null,
+            null,
+            {"orderable": false}
+        ]
     });
-    
+
+    $("#checkAll").change(function () {
+        var cells = googleCOntactsTable.cells( ).nodes();
+        $( cells ).find(':checkbox').prop('checked', $(this).is(':checked'));
+    });
+
     $.ajaxSetup({
-        headers:{
-            'X-CSRF-Token':$('meta[name="_token"]').attr('content')
+        headers: {
+            'X-CSRF-Token': $('meta[name="_token"]').attr('content')
         }
     })
 
-    $('#getGoogleContacts').on('click', function (){
+    $('#getGoogleContacts').on('click', function () {
         // $.get('social/auth/redirect/google');
         $.ajax({
-            type:"GET",
+            type: "GET",
             async: false,
-            url:"social/auth/redirect/google",
-            succes:function(data)
-            {
+            url: "social/auth/redirect/google",
+            succes: function (data) {
                 alert("Yes");
             },
-            error:function(data)
-            {
+            error: function (data) {
                 alert(data.error);
             }
         });
 
-     });
+    });
 
 
-     $(".addRow").on('click', function(e) {
+    $(".addRow").on('click', function (e) {
 
         e.preventDefault();
         var rowId = $(this).attr('id');
-        var counter=rowId.split(/[-]/);
-        var guestName = $('#name'+counter[1]).html();
-        var guestEmail = $('#email'+counter[1]).html();
-        var guestPhone = $('#phone'+counter[1]).html();
-        
+        var counter = rowId.split(/[-]/);
+        var guestName = $('#name' + counter[1]).html();
+        var guestEmail = $('#email' + counter[1]).html();
+        var guestPhone = $('#phone' + counter[1]).html();
+
         $.ajax({
-            type:"POST",
-            url:"addContact",
-            data:{
+            type: "POST",
+            url: "addContact",
+            data: {
                 guestName: guestName,
                 guestEmail: guestEmail,
                 guestPhone: guestPhone
             },
-            success:function(data)
-            {
-                if(data.message)
-                {
+            success: function (data) {
+                if (data.message) {
                     showAlert("ooops!!", data.message, "error");
                 }
-                else
-                {    
-                    $('#row'+counter[1]).remove();
+                else {
+                    $('#row' + counter[1]).remove();
                     showAlert("Yippe!!", "Guest Added", "success");
-                }    
+                }
             },
-            error:function(data)
-            {
-                
+            error: function (data) {
+
             }
         });
     })
 
-    $("#addSelected").on('click', function(e) {
+    $("#addSelected").on('click', function (e) {
 
         e.preventDefault();
-        var totalChecked = $( "input[name='googleContacts']:checked").map(function (index, el) 
-        {
-            return $(el).attr('id').split(/[-]/)[1] 
-      }).get();
-         var i;
-         var contacts = new Array();
-         for(i=0; i<totalChecked.length; i++)
-         {
-             contacts[i] = {
-                            "guestName" : $('#name'+totalChecked[i]).html() 
-                            , "guestEmail": $('#email'+totalChecked[i]).html()
-                            , "guestPhone" : $('#phone'+totalChecked[i]).html()
-                             };
-         }
-
-         $.ajax({
-            type:"POST",
-            url:"addMultipleGoogleContacts",
-            data:{
-                contacts: contacts
-            },
-            success:function(data)
-            {
-                if(data.message)
-                {
-                    showAlert("ooops!!", data.message, "error");
-                }
-                else
-                {   
-                    for(i=0; i<totalChecked.length; i++)
-                        {
-                           $('#row'+totalChecked[i]).remove();
-                        } 
-                    //$('#row'+counter[1]).remove();
-                    
-                    showAlert("Yippe!!", "Guests Added", "success");
-                }    
-            },
-            error:function(data)
-            {
-                
-            }
-        });
-         
-    });
-
-    $("#deleteSelected").on('click', function(e) {
-
-        e.preventDefault();
-        var totalChecked = $( "input[name='contacts']:checked").map(function (index, el) 
-        {
+        var totalChecked = $("input[name='googleContacts']:checked").map(function (index, el) {
             return $(el).attr('id').split(/[-]/)[1]
-      }).get();
-         var i;
-         var contacts = new Array();
-         for(i=0; i<totalChecked.length; i++)
-         {
-             
-            contacts.push($('#email'+totalChecked[i]).html());
-         }
-         $.ajax({
-            type:"POST",
-            url:"deleteMultipleGoogleContacts",
-            data:{
+        }).get();
+        var i;
+        var contacts = new Array();
+        for (i = 0; i < totalChecked.length; i++) {
+            contacts[i] = {
+                "guestName": $('#name' + totalChecked[i]).html()
+                , "guestEmail": $('#email' + totalChecked[i]).html()
+                , "guestPhone": $('#phone' + totalChecked[i]).html()
+            };
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "addMultipleGoogleContacts",
+            data: {
                 contacts: contacts
             },
-            success:function(data)
-            {
-                if(data.message)
-                {
+            success: function (data) {
+                if (data.message) {
                     showAlert("ooops!!", data.message, "error");
                 }
-                else
-                {    
-                    for(i=0; i<totalChecked.length; i++)
-                    {
-                        $('#row'+totalChecked[i]).remove();
+                else {
+                    for (i = 0; i < totalChecked.length; i++) {
+                        $('#row' + totalChecked[i]).remove();
                     }
                     //$('#row'+counter[1]).remove();
-                    
-                    showAlert("Yippe!!", "Guests deleted", "success");
-                }    
+
+                    showAlert("Yippe!!", "Guests Added", "success");
+                }
             },
-            error:function(data)
-            {
-                
+            error: function (data) {
+
             }
         });
-         
+
+    });
+
+    $("#deleteSelected").on('click', function (e) {
+
+        e.preventDefault();
+        var totalChecked = $("input[name='contacts']:checked").map(function (index, el) {
+            return $(el).attr('id').split(/[-]/)[1]
+        }).get();
+        var i;
+        var contacts = new Array();
+        for (i = 0; i < totalChecked.length; i++) {
+
+            contacts.push($('#email' + totalChecked[i]).html());
+        }
+        $.ajax({
+            type: "POST",
+            url: "deleteMultipleGoogleContacts",
+            data: {
+                contacts: contacts
+            },
+            success: function (data) {
+                if (data.message) {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else {
+                    for (i = 0; i < totalChecked.length; i++) {
+                        $('#row' + totalChecked[i]).remove();
+                    }
+                    //$('#row'+counter[1]).remove();
+
+                    showAlert("Yippe!!", "Guests deleted", "success");
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+
     });
 
 
-    });
+});

@@ -80,5 +80,20 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('cropImage', 'PhotosController@cropImage');
     Route::post('uploadGroomImage', 'PhotosController@uploadGroomImage');
 
+    Route::get('showWishlistSection', function(){
+       return redirect()->to('/home'.'#section-list');
+    });
+
+    Route::get('showCouple', function(){
+        return redirect()->to('/home'.'#section-couple');
+    });
+
+    Route::get('showGuests', function(){
+        return redirect()->to('/home'.'#section-guests');
+    });
+
+    Route::get('showEvents', function(){
+        return redirect()->to('/home'.'#section-events');
+    });
 
 });

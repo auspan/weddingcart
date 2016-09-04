@@ -16,11 +16,11 @@
             ============================================= -->
             <nav id="primary-menu">
                 <ul class="one-page-menu sf-menu">
-                    <li><a href="#" data-href="#most-toppest"><div>Start</div></a></li>
-                    <li><a href="#" data-href="#section-couple"><div>The Couple</div></a></li>
-                    <li class=""><a href="#" data-href="#section-list"><div>Wish List</div></a></li>
-                    <li class=""><a href="#" data-href="#section-events"><div>Events Schedule</div></a></li>
-                    <li class=""><a href="#" data-href="#section-guests"><div>Guests</div></a></li>
+                    <li><a href="/home" data-href="#most-toppest"><div>Start</div></a></li>
+                    <li><a href="showCouple" data-href="#section-couple"><div>The Couple</div></a></li>
+                    <li class=""><a href="showWishlistSection" data-href="#section-list"><div>Wish List</div></a></li>
+                    <li class=""><a href="showEvents" data-href="#section-events"><div>Functions</div></a></li>
+                    <li class=""><a href="showGuests" data-href="#section-guests"><div>Guests</div></a></li>
                     {{--<li><a href="/home"><div>Home</div></a></li>--}}
                     <li><a href="" class="disable-anchor-click"><div>{{ Auth::user()->name }}</div></a>
                         <ul>

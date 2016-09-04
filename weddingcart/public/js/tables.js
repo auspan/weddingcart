@@ -23,13 +23,13 @@ $(document).ready(function(){
         "dom": "<'row'<'col-sm-12'<'form-inline'<'form-group'f>>" +  "<'row'<'col-sm-12'tr>>" +   "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         "renderer": "bootstrap",
         "columns": [
-            { "orderable": false },
-            { "orderable": false },
+            {"orderable": false},
+            {"orderable": false},
             null,
             null,
             null,
-            { "orderable": false },
-            { "orderable": false }
+            {"orderable": false},
+            {"orderable": false}
         ]
     } );
 
@@ -38,18 +38,6 @@ $(document).ready(function(){
             'X-CSRF-Token':$('meta[name="_token"]').attr('content')
         }
     })
-
-    // $('#guestsTable tr').on( 'click', '.selectRow', function (e) {
-    //     e.preventDefault();
-    //     clearErrors();
-    //     if(editGuestRow != null)
-    //     {
-    //         showRowBeingEditedAlert();
-    //         return;
-    //     }
-    //     var rowData = guestsTable.row().data();
-    //     alert("dfgdgdg");
-    // } );
 
     $('#guestsTable').on('click', '.deleteRow', function (e) {
         e.preventDefault();
@@ -118,44 +106,12 @@ $(document).ready(function(){
          var splitRecepients = new Array();
          splitRecepients = recepients.split(/[,]/);
          console.log(splitRecepients);
-         //var totalRecepients = splitRecepients.length;
-         // var i;
-         // var onlyRecepientName = new Array();
-         // for(i=0;i<totalRecepients;i++)
-         // {
-         //    var onlyContactName = splitRecepients[i].split(/[:]/)[0];
-         //    onlyRecepientName.push(onlyContactName);
-         // }
          var contactName = $(this).parent().text();
-         // var newname = '"'+contactName+'"';
          console.log(contactName);
-         // var index = splitRecepients.indexOf(contactName);
-         // var index = $.inArray(contactName, splitRecepients);
-         // console.log(index);
          splitRecepients.splice($.inArray(contactName, splitRecepients),1);
-         // if(index==-1)
-         // {
-         //    splitRecepients.splice(index,1);
-         // }
          console.log(splitRecepients);
          $("#to-recepient").val(splitRecepients);
-
-         // var arr = ["jQuery","Java Script","HTML","Ajax","Css"];
-
-        //  console.log(arr);
-        // var itemtoRemove = "Java Script";
-        // console.log(itemtoRemove);
-        // arr.splice($.inArray(itemtoRemove, arr),1);
-
-        // console.log(arr);
-         // console.log(contactName);
-         // var recepientName = onlyRecepientName.split(/[,]/);
-         // if(jQuery.inArray( contactName, splitRecepients )!=-1)
-         // {
-
-         // }
          $(this).parent().remove();
-
     });
 
     $('#guestsTable').on('click', '.editRow', function (e) {

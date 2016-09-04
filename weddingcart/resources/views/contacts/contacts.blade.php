@@ -26,7 +26,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>
-                                <button id="addSelected" type="button" class="btn-add btn addSelected" aria-label="Add">Add
+                                <button id="addSelected" type="button" class="btn-add btn addSelected" aria-label="Add">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 </button>
                             </th>
