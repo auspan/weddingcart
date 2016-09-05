@@ -13,6 +13,10 @@
                             <span class="slider-subtext">Inform guests, review gifts contributions, prioritize your wedding wish list, etc.
                             It all starts with “home sweet home”!</span>
                         </p>
+                        <br><br>
+                        <a href="/login"
+                           class="button button-border button-light button-rounded button-xlarge topmargin"
+                           data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
                     </div>
                 </div>
             </div>
@@ -24,6 +28,10 @@
                             <span class="slider-subtext">
                                 Plan your most important home items that will make the best start for your new life. Make the list and ask for contribution.
                             </span></p>
+                        <br><br>
+                        <a href="/login"
+                           class="button button-border button-light button-rounded button-xlarge topmargin"
+                           data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
                     </div>
                 </div>
             </div>
@@ -33,9 +41,12 @@
                         <p data-caption-animate="fadeInUp">A marriage is not just a union of two souls but a communion of two large communities.
                             <br><br><br>
                             <span class="slider-subtext">
-                            Ensure everyone close to you and your spouse contribute together to your beautiful new start. No more confusions and unwanted duplicates as gifts.</p>
-
-                            </span>
+                            Ensure everyone close to you and your spouse contribute together to your beautiful new start. No more confusions and unwanted duplicates as gifts.
+                            </span></p>
+                        <br><br>
+                        <a href="/login"
+                           class="button button-border button-light button-rounded button-xlarge topmargin"
+                           data-caption-animate="fadeInUp" data-caption-delay="200"><span>Start</span></a>
                     </div>
                 </div>
             </div>
