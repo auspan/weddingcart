@@ -10698,6 +10698,12 @@ label {
 	cursor: pointer;
 }
 
+label span{
+	text-transform: none;
+	/*font-size: 12px;*/
+	/*font-weight: 500;*/
+}
+
 label.label-muted {
 	color: #999;
 	font-weight: normal;
@@ -13516,4 +13522,8 @@ th .btn{
 #dropzoneFileUpload dz-image{
 
 border-radius: 50% !important;
+}
+
+.inline-label{
+	margin-top: 10px;
 }

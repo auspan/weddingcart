@@ -21,7 +21,15 @@
                         @include('wedding.brideDetailsForWeddingForm')
 
                         @include('wedding.groomDetailsForWeddingForm')
-                        
+
+                        <div class="center bottommargin-lg">
+                            <div class="col-full">
+                                <label for="our-story">Our Story</label>
+                                <textarea id="our-story" name="our_story" class="sm-form-control fixed-textarea" rows="5" placeholder="Your Story..."></textarea>
+                                <input type="hidden" name="ourStory" class="form-control" value="ost">
+                            </div>
+                        </div>
+
                         <div class="center bottommargin-lg">
                             {!! Form::button('Save', ['class'=>'button button-rounded button-xlarge', 'type'=>'submit'] ) !!}
                             <a href="{{ url('/home') }}" class="button button-rounded button-xlarge">Back</a>

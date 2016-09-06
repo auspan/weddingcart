@@ -43,6 +43,7 @@ class WeddingController extends Controller {
     {
         $user = Auth::user();
         $weddingDetails = $this->getWeddingDetailsFromRequest($request);
+//        dd($weddingDetails);
         $wedding = $user->createWedding();
         $wedding->saveWeddingDetails($weddingDetails);
         return redirect('home');
@@ -55,7 +56,14 @@ class WeddingController extends Controller {
             'bnm' => $request->input('bride_name'),
             'gnm' => $request->input('groom_name'),
             'bab' => $request->input('bride_about'),
-            'gab' => $request->input('groom_about')
+            'gab' => $request->input('groom_about'),
+            'ost' => $request->input('our_story'),
+            'gfu' => $request->input('groom_facebook_url'),
+            'gtu' => $request->input('groom_twitter_url'),
+            'giu' => $request->input('groom_instagram_url'),
+            'bfu' => $request->input('bride_facebook_url'),
+            'btu' => $request->input('bride_twitter_url'),
+            'biu' => $request->input('bride_instagram_url'),
         ];
         $bim = $request->file('bride_image');
         $gim = $request->file('groom_image');

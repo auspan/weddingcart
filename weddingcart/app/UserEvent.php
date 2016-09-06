@@ -103,6 +103,7 @@ class UserEvent extends Model
 
         }
         $this->userEventDetails()->saveMany($weddingAttributes);
+//        dd($weddingAttributes);
     }
 
     public function updateWeddingDetails($weddingDetails)
