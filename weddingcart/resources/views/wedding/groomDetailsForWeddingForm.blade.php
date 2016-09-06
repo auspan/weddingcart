@@ -36,26 +36,36 @@
             </div>
 
             <div class="col_full">
-                <div class="col_one_fourth">
-                    <label for="facebook-url">Facebook</label>
+                <div class="col_one_fifth">
+                    <label class="inline-label" for="facebook-url">Facebook</label>
                 </div>
-                <div class="col_three_fourth col_last">
+                <div class="col_two_fifth">
+                    <label class="inline-label" for="groom-facebook-url"><span>http://www.facebook.com/</span></label>
+                </div>
+
+                <div class="col_two_fifth col_last">
                     <input id="groom-facebook-url" name="groom_facebook_url" class="sm-form-control" type="text">
                 </div>
                 <input type="hidden" name="groomFacebookUrl" class="form-control" value="gfu">
 
-                <div class="col_one_fourth">
-                    <label for="facebook-url">Twitter</label>
+                <div class="col_one_fifth">
+                    <label class="inline-label" for="groom-twitter-url">Twitter</label>
                 </div>
-                <div class="col_three_fourth col_last">
+                <div class="col_two_fifth">
+                    <label class="inline-label" for="groom-twitter-url"><span>http://www.twitter.com/</span></label>
+                </div>
+                <div class="col_two_fifth col_last">
                     <input id="groom-twitter-url" name="groom_twitter_url" class="sm-form-control" type="text">
                 </div>
                 <input type="hidden" name="groomTwitterUrl" class="form-control" value="gtu">
 
-                <div class="col_one_fourth">
-                    <label for="facebook-url">InstaGram</label>
+                <div class="col_one_fifth">
+                    <label class="inline-label" for="groom-instagram-url">Instagram</label>
                 </div>
-                <div class="col_three_fourth col_last">
+                <div class="col_two_fifth">
+                    <label class="inline-label" for="groom-instagram-url"><span>http://www.instagram.com/</span></label>
+                </div>
+                <div class="col_two_fifth col_last">
                     <input id="groom-instagram-url" name="groom_instagram_url" class="sm-form-control" type="text">
                 </div>
                 <input type="hidden" name="groomInstagramUrl" class="form-control" value="giu">
