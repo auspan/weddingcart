@@ -27,7 +27,8 @@ class ContactsController extends Controller
         // $this->validate($request, ['newName' => 'required',
         //  'newEmail' => 'required',
         //   'newPhone' => 'required']);
-        
+
+        // @TODO store social_media_reference e.g. google id along with the contact
         $user = Auth::user();
 
         $newContact = new Contact([
@@ -119,9 +120,9 @@ class ContactsController extends Controller
         }
 
 
-        // $googleToken = $request->session()->get('socialToken');
-
+       // $googleToken = $request->session()->get('socialToken');
        // dd($googleToken);
+
         $googleClient = $this->getGoogleClient($googleToken);
         $peopleService = new \Google_Service_People($googleClient);
 
@@ -134,6 +135,7 @@ class ContactsController extends Controller
 //        var_dump($contacts);
         $people = $this->buildPeopleArray($contacts);
 //        var_dump($people);
+//        dd($people);
         return view('contacts.contacts', compact('people'));
     }
 
@@ -151,7 +153,6 @@ class ContactsController extends Controller
             ]);
             // dd($result);
             $nextPageToken = $result->getNextPageToken();
-
             $contacts = array_merge($contacts, $result->toSimpleObject()->connections);
 
 //            var_dump($nextPageToken);
@@ -159,9 +160,8 @@ class ContactsController extends Controller
 
         // dd($contacts);
         return $contacts;
-
-
     }
+
     public function getGoogleToken(Request $request)
     {
         if ($request->session()->has('socialToken')) {
@@ -187,22 +187,21 @@ class ContactsController extends Controller
         $people = array();
         foreach ($contacts as $contact)
         {
-            $person = array(
-                //'id' => explode ("/",array_get($contact, 'resourceName')),
-                'googleId' => substr(array_get($contact, 'resourceName'), 7),
-                'name' => array_get($contact, 'names.0.displayName'),
-                'email' => array_get($contact, 'emailAddresses.0.value'),
-                'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')
-            );
             if(in_array($person['email'],$existingContacts))
             {
+                continue;
             }
             else
             {
+                $person = array(
+                    'googleId' => substr(array_get($contact, 'resourceName'), 7),
+                    'name' => array_get($contact, 'names.0.displayName'),
+                    'email' => array_get($contact, 'emailAddresses.0.value'),
+                    'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')
+                );
                 array_push($people, $person);
             }
         }
-        // dd($people);
         return $people;
     }
 

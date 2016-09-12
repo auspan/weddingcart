@@ -13527,3 +13527,36 @@ border-radius: 50% !important;
 .inline-label{
 	margin-top: 10px;
 }
+
+/* Contacts Layout */
+
+.selected-contact{
+	background-color: #FF0000;
+}
+li.google-contact:hover{
+	background-color: #FF0000;
+	cursor:hand ;
+}
+.google-contact{
+	background-color: grey;
+	color: white;
+	border-radius: 5px;
+	width: 200px;
+	padding: 5px;
+	float: left;
+	margin: 10px 0px 0px 10px;
+	height: 100px;
+}
+.iconDesc{
+	margin-left: 10px;
+	word-break: break-word;
+	/*float: left;*/
+	display: inline-block;
+	width: 165px;
+}
+.icon{
+	float: left;
+	margin-top: 5px;
+	display: inline-block;
+	width: 15px;
+}

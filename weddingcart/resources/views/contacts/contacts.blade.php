@@ -11,7 +11,29 @@
     <div class="container clearfix">
         <div class="row">
             <div class=" table-striped table-hover table-responsive">
-                <table id="myTable" class="table" cellspacing="0" width="100%">
+                <style>
+
+                </style>
+                <ul id="mygooglecontacts" style="list-style: none;float: left;">
+                    <?php $i=1 ?>
+                    @foreach($people as $person)
+
+                    <li googleId="{{$person['googleId']}}" class="google-contact" googleName="{{$person['name']}}" googlePhone="{{$person['phone']}}" googleEmail="{{$person['email']}}" onclick="AddContactFromGoogle('{{$person['googleId']}}')">
+                        <div>
+                            <div style="border-bottom: 1px solid white">
+                                <span class=""><input type="checkbox" name="googleContacts"/></span><span style="margin-left: 10px">{{ $person['name']}}</span>
+                            </div>
+                            <div>
+                               <div><span class="fa fa-phone icon"></span><span class="iconDesc">{{ $person['phone'] }}</span></div>
+                                <div><span class="fa fa-envelope icon"></span><span class="iconDesc">{{ $person['email'] }}</span></div>
+                            </div>
+                        </div>
+                    </li>
+                            <?php  $i++; ?>
+                        @endforeach
+                </ul>
+                <div style="clear:both"></div>
+                <!--<table id="myTable" class="table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th class="hidden"></th>
@@ -50,7 +72,7 @@
                             <?php  $i++; ?>
                         @endforeach
                     </tbody>
-                </table>
+                </table>-->
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    ShowSelected();
     var googleCOntactsTable = $('#myTable').DataTable({
         "columns": [
             {"orderable": false},
@@ -69,6 +70,7 @@ $(document).ready(function () {
             }
         });
     })
+
 
     $("#addSelected").on('click', function (e) {
 
@@ -152,3 +154,64 @@ $(document).ready(function () {
 
 
 });
+
+function ShowSelected(){
+    $("input[name='googleContacts']:checked").parents("li").addClass('selected-contact')
+}
+
+function AddContactFromGoogle(obj) {
+    //var rowId = $(this).attr('id');
+    //var counter = rowId.split(/[-]/);
+    //var guestName = $('#name' + counter[1]).html();
+    //var guestEmail = $('#email' + counter[1]).html();
+    //var guestPhone = $('#phone' + counter[1]).html();
+
+    var count = $("li[googleId='" + obj + "']").find("input[name='googleContacts']:checked").length
+
+    if(count <=0)
+    {
+        $("li[googleId='" + obj + "']").find("input[name='googleContacts']").prop('checked', true);
+
+    }
+    else
+    {
+        $("li[googleId='" + obj + "']").find("input[name='googleContacts']").prop('checked', false);
+    }
+    ShowSelected();
+}
+    function AddSelectContactsFromGoogle(){
+        var contacts =[];
+        $("input[name='googleContacts']:checked").each(function(index){
+            var googleId =$(this).parents("li").attr("googleId");
+            var googleName = $(this).parents("li").attr("googleName");
+            var googlePhone = $(this).parents("li").attr("googlePhone");
+            var googleEmail = $(this).parents("li").attr("googleEmail");
+            contacts.push({
+                guestName: googleName,
+                guestEmail: googlePhone,
+                guestPhone: googleEmail
+            })
+
+        })
+        $.ajax({
+            type: "POST",
+            url: "addMultipleGoogleContacts",
+            data: {
+                contacts: contacts
+            },
+            success: function (data) {
+                if (data.message) {
+                    showAlert("ooops!!", data.message, "error");
+                }
+                else {
+
+                    //$('#row'+counter[1]).remove();
+
+                    showAlert("Yippe!!", "Guests Added", "success");
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+    }
