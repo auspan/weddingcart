@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     ShowSelected();
+    $('#mygooglecontacts').listnav();
     var googleCOntactsTable = $('#myTable').DataTable({
         "columns": [
             {"orderable": false},

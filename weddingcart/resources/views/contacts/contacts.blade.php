@@ -11,9 +11,6 @@
     <div class="container clearfix">
         <div class="row">
             <div class=" table-striped table-hover table-responsive">
-                <style>
-
-                </style>
                 <ul id="mygooglecontacts" style="list-style: none;float: left;">
                     <?php $i=1 ?>
                     @foreach($people as $person)
@@ -32,7 +29,7 @@
                             <?php  $i++; ?>
                         @endforeach
                 </ul>
-                <div style="clear:both"></div>
+                <div class="clear"></div>
                 <!--<table id="myTable" class="table" cellspacing="0" width="100%">
                     <thead>
                         <tr>

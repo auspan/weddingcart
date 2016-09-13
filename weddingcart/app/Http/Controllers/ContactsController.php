@@ -187,22 +187,25 @@ class ContactsController extends Controller
         $people = array();
         foreach ($contacts as $contact)
         {
-            if(in_array($person['email'],$existingContacts))
+            $person = array(
+                'googleId' => substr(array_get($contact, 'resourceName'), 7),
+                'name' => array_get($contact, 'names.0.displayName'),
+                'email' => array_get($contact, 'emailAddresses.0.value'),
+                'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')
+            );
+            if(in_array($person['email'],$existingContacts) || empty($person['name']) )
             {
                 continue;
             }
             else
             {
-                $person = array(
-                    'googleId' => substr(array_get($contact, 'resourceName'), 7),
-                    'name' => array_get($contact, 'names.0.displayName'),
-                    'email' => array_get($contact, 'emailAddresses.0.value'),
-                    'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')
-                );
                 array_push($people, $person);
             }
         }
-        return $people;
+        return array_sort($people, function($value){
+            return $value['name'];
+        });
+//        return array_sort_recursive($people);
     }
 
     private function getGoogleClient(String $token)

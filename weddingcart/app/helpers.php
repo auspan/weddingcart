@@ -79,3 +79,7 @@ function saveImage(\Intervention\Image\Image $image, String $imgName)
     $image->save($uploadPath);
     return $uploadPath;
 }
+
+function isNullOrEmptyString(String $string){
+    return (!isset($string) || trim($string)==='');
+}

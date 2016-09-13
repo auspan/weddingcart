@@ -13538,7 +13538,7 @@ li.google-contact:hover{
 	cursor:hand ;
 }
 .google-contact{
-	background-color: grey;
+	background-color: #333333;
 	color: white;
 	border-radius: 5px;
 	width: 200px;
@@ -13546,10 +13546,11 @@ li.google-contact:hover{
 	float: left;
 	margin: 10px 0px 0px 10px;
 	height: 100px;
+	/*box-shadow: 0px 20px 30px -30px rgba(0, 0, 0, 0.3);*/
 }
 .iconDesc{
 	margin-left: 10px;
-	word-break: break-word;
+	word-break: break-all;
 	/*float: left;*/
 	display: inline-block;
 	width: 165px;
@@ -13559,4 +13560,25 @@ li.google-contact:hover{
 	margin-top: 5px;
 	display: inline-block;
 	width: 15px;
+}
+
+#mygooglecontacts-nav{
+	margin-left: 10px;
+	width: 1040px;
+	margin-bottom: 10px;
+}
+
+.ln-letters a {
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 37px;
+	background-color: #FF0000;
+	color: white;
+	text-align: center;
+}
+
+#mygooglecontacts-nav .ln-letters a:hover,
+#mygooglecontacts-nav .ln-letters .ln-selected
+{
+	background-color: #333333;
 }
