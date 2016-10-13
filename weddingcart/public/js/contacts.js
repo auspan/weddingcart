@@ -189,8 +189,8 @@ function AddContactFromGoogle(obj) {
             var googleEmail = $(this).parents("li").attr("googleEmail");
             contacts.push({
                 guestName: googleName,
-                guestEmail: googlePhone,
-                guestPhone: googleEmail
+                guestEmail: googleEmail,
+                guestPhone: googlePhone
             })
 
         })

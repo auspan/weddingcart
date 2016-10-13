@@ -8,8 +8,7 @@ use weddingcart\Http\Requests;
 use weddingcart\Contact;
 use Illuminate\Support\Facades\Input;
 
-class ContactsController extends Controller
-{
+class ContactsController extends Controller {
     public function __construct()
     {
         $this->middleware('auth');
@@ -19,6 +18,7 @@ class ContactsController extends Controller
     {
         $user = Auth::user();
         $people = $user->contacts()->get()->toArray();
+
         return view('contacts.guestlist', compact('people'));
     }
 
@@ -32,26 +32,25 @@ class ContactsController extends Controller
         $user = Auth::user();
 
         $newContact = new Contact([
-           'name' => $request->input('guestName'),
+            'name' => $request->input('guestName'),
             'email' => $request->input('guestEmail'),
-            'phone' => $request->input('guestPhone')
-           
+            'phone' => str_replace('+', '00', $request->input('guestPhone'))
+
         ]);
         $email = $newContact->email;
         $allContactPersonsEmail = $user->contacts()->pluck('email')->toArray();
-        if (in_array(strtolower($email), $allContactPersonsEmail)) 
+        if (in_array(strtolower($email), $allContactPersonsEmail))
         {
             return response()->json([
-                    'message' => "Guest Already Exits"
-                ]);
-        }
-
-        else
+                'message' => "Guest Already Exits"
+            ]);
+        } else
         {
             $contact = $user->contacts()->save($newContact);
+
             return response()->json([
-                'id'    => $contact->id,
-                'guestName'  => $contact->name,
+                'id' => $contact->id,
+                'guestName' => $contact->name,
                 'guestEmail' => $contact->email,
                 'guestPhone' => $contact->phone
             ]);
@@ -62,26 +61,26 @@ class ContactsController extends Controller
     {
         $googleContacts = Input::get('contacts');
         $user = Auth::user();
-        foreach ($googleContacts as $contact) 
+        foreach ($googleContacts as $contact)
         {
-                $newContact = new Contact([
-                    'name' => $contact['guestName'],
-                    'email' => $contact['guestEmail'],
-                    'phone' => $contact['guestPhone']
-                ]); 
-                $contact = $user->contacts()->save($newContact);
-            } 
-            
+            $newContact = new Contact([
+                'name' => $contact['guestName'],
+                'email' => $contact['guestEmail'],
+                'phone' => $contact['guestPhone']
+            ]);
+            $contact = $user->contacts()->save($newContact);
         }
+
+    }
 
     public function deleteMultipleContacts()
     {
         $googleContacts = Input::get('contacts');
         $user = Auth::user();
-        foreach ($googleContacts as $contact) 
+        foreach ($googleContacts as $contact)
         {
-            Contact::where('email',$contact)->where('user_id',$user->id)->delete();
-        } 
+            Contact::where('email', $contact)->where('user_id', $user->id)->delete();
+        }
     }
 
     public function update(Request $request)
@@ -95,8 +94,8 @@ class ContactsController extends Controller
         $contact->save();
 
         return response()->json([
-            'editId'    => $contact->id,
-            'editName'  => $contact->name,
+            'editId' => $contact->id,
+            'editName' => $contact->name,
             'editEmail' => $contact->email,
             'editPhone' => $contact->phone
         ]);
@@ -110,18 +109,17 @@ class ContactsController extends Controller
     public function importGoogleContacts(Request $request)
     {
 
-        if ($request->session()->has('socialToken')) 
+        if ($request->session()->has('socialToken'))
         {
             $googleToken = $request->session()->get('socialToken');
-        }
-        else
+        } else
         {
             return redirect()->action('Auth\AuthController@redirectToProvider', ['provider' => 'google']);
         }
 
 
-       // $googleToken = $request->session()->get('socialToken');
-       // dd($googleToken);
+        // $googleToken = $request->session()->get('socialToken');
+        // dd($googleToken);
 
         $googleClient = $this->getGoogleClient($googleToken);
         $peopleService = new \Google_Service_People($googleClient);
@@ -145,7 +143,8 @@ class ContactsController extends Controller
         $nextPageToken = '';
         $contacts = array();
 //        dd("Token: ".$token);
-        do{
+        do
+        {
             $result = $peopleService->people_connections->listPeopleConnections('people/me', [
                 'pageToken' => $nextPageToken,
                 'pageSize' => 300,
@@ -156,7 +155,7 @@ class ContactsController extends Controller
             $contacts = array_merge($contacts, $result->toSimpleObject()->connections);
 
 //            var_dump($nextPageToken);
-        } while($result->getNextPageToken() != null);
+        } while ($result->getNextPageToken() != null);
 
         // dd($contacts);
         return $contacts;
@@ -164,17 +163,19 @@ class ContactsController extends Controller
 
     public function getGoogleToken(Request $request)
     {
-        if ($request->session()->has('socialToken')) {
-             $token = $request->session()->get('socialToken');
+        if ($request->session()->has('socialToken'))
+        {
+            $token = $request->session()->get('socialToken');
+
             return $token;
-        }
-        else
+        } else
         {
             return redirect()->action('Auth\AuthController@redirectToProvider', ['provider' => 'google']);
         }
 
         return $token;
     }
+
     /**
      * Extracts Required Information from Google Contact Api Results
      * @param \stdClass $contacts
@@ -193,16 +194,17 @@ class ContactsController extends Controller
                 'email' => array_get($contact, 'emailAddresses.0.value'),
                 'phone' => array_get($contact, 'phoneNumbers.0.canonicalForm')
             );
-            if(in_array($person['email'],$existingContacts) || empty($person['name']) )
+            if (in_array($person['email'], $existingContacts) || empty($person['name']))
             {
                 continue;
-            }
-            else
+            } else
             {
                 array_push($people, $person);
             }
         }
-        return array_sort($people, function($value){
+
+        return array_sort($people, function ($value)
+        {
             return $value['name'];
         });
 //        return array_sort_recursive($people);
@@ -215,30 +217,33 @@ class ContactsController extends Controller
         $googleClient->setClientSecret(env('GMAIL_CLIENT_SECRET'));
         $googleClient->setAccessToken(['access_token' => $token, 'expires_in' => 3600]);
         $googleClient->setScopes(['https://www.googleapis.com/auth/contacts.readonly', 'https://www.googleapis.com/auth/plus.login']);
+
         return $googleClient;
     }
 
     public function savecontacts()
     {
-        $userid=Auth::User()->id;
+        $userid = Auth::User()->id;
         contact::create(array(
-                'Name'=>Input::get('personName'),
-                'Email'=>Input::get('personEmail'),
-                'Phone'=>Input::get('personPhone'),
-                'user_id'=>$userid
-            ));
+            'Name' => Input::get('personName'),
+            'Email' => Input::get('personEmail'),
+            'Phone' => Input::get('personPhone'),
+            'user_id' => $userid
+        ));
+
         return 1;
     }
+
     //
 
     public function showInvitesPage()
     {
-       $googleContacts = Array();
+        $googleContacts = Array();
 
-        for($i = 1; $i <55; $i++)
+        for ($i = 1; $i < 55; $i++)
         {
             $contact = [
-             'name' => 'John '.$i.' Doe', 'email' => 'jdoe'.$i.'@ats.com'
+                'name' => 'John ' . $i . ' Doe', 'email' => 'jdoe' . $i . '@ats.com'
             ];
 
             array_push($googleContacts, $contact);
@@ -253,6 +258,7 @@ class ContactsController extends Controller
         $query = $request->input('name');
         $user = Auth::user();
         $contacts = $user->contacts()->where('name', 'LIKE', "%$query%")->get(['name', 'email'])->toArray();
+
         return response()->json($contacts);
 
     }

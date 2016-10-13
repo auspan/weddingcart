@@ -30,12 +30,12 @@
                         @endforeach
                 </ul>
                 <div class="clear"></div>
-                
+
             </div>
         </div>
     </div>
 <div class="center bottommargin-lg">
-    <a href="{{ url('contacts') }}" class="button button-rounded button-xlarge">Ok</a>
+    <button id="addSelectedGoogleContacts" class="button button-rounded button-xlarge" onclick="AddSelectContactsFromGoogle()">Ok</button>
 </div>
 
     
